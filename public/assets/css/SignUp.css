@@ -1,0 +1,36 @@
+.container {
+    display: grid;
+    position: relative;
+    height: 80vh;
+}
+
+.form {
+    place-self: center;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 1rem;
+    border: 2px solid teal;
+    border-radius: 0.25rem;
+}
+
+.form>div:first-of-type {
+    margin-bottom: 0.5rem;
+    align-self: center;
+    font-size: 1.25rem;
+}
+
+label {
+    margin-top: 0.25rem;
+}
+
+input {
+    margin: 0.25rem;
+    width: 15rem;
+    align-self: center;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 0.25rem;
+}
