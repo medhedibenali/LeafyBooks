@@ -6,22 +6,31 @@ abstract class Repository
     protected PDO $db;
     protected $aliases;
 
-    public function __construct(protected $tableName, protected $attributes, protected $ids)
+    public function __construct(protected $tableName, protected $attributes, protected $id)
     {
+        if (
+            !empty(array_diff(
+                $this->id,
+                $this->attributes
+            ))
+        ) {
+            throw new Exception("the fields of the id must be valid attributes");
+        }
         $this->db = ConnexionDB::getInstance();
         $this->aliases = [];
         $max = max(
-            array_map(function ($val) {
-                return strlen($val);
-            }, $this->attributes)
+            array_map(
+                fn ($val) => strlen($val),
+                $this->attributes
+            )
         );
         $base = str_repeat("x", $max);
-        foreach ($this->ids as $index => $id) {
+        foreach ($this->id as $index => $id) {
             $this->aliases[$id] = $base . $index;
         }
     }
 
-    final protected function isValidAttribute($input)
+    final protected function areValidAttributes($input)
     {
         return empty(array_diff(
             array_keys($input),
@@ -31,12 +40,14 @@ abstract class Repository
 
     final protected function isValidId($input)
     {
-        return empty(array_diff(
-            array_keys($input),
-            $this->ids
-        )) &&
+        return
+            !empty($this->id) &&
             empty(array_diff(
-                $this->ids,
+                array_keys($input),
+                $this->id
+            )) &&
+            empty(array_diff(
+                $this->id,
                 array_keys($input)
             ));
     }
@@ -50,31 +61,91 @@ abstract class Repository
         return $output;
     }
 
-    public function find($input)
+    protected function whereClause($input)
     {
-        if (!$this->isValidAttribute($input)) {
-            return array();
+        if (empty($input)) {
+            return '';
         }
-        $conditions = (empty($input)) ? '' : 'WHERE ' .
+        return ' WHERE ' .
             implode(
                 " and ",
-                array_map(function ($name) {
-                    return "$name = :$name";
-                }, array_keys($input))
+                array_map(
+                    fn ($name) => "$name = :$name",
+                    array_keys($input)
+                )
             );
-        $params = $this->formatInput($input);
+    }
+
+    protected function orderByClause($input)
+    {
+        if (
+            empty($input) ||
+            !$this->areValidAttributes($input)
+        ) {
+            return '';
+        }
+        array_walk(
+            $input,
+            fn (&$value, $key) => $value = strtoupper($value)
+        );
+        $directions = ['ASC', 'DESC'];
+        if (!empty(array_diff(array_values($input), $directions))) {
+            return '';
+        }
+        array_walk(
+            $input,
+            fn (&$value, $key) => $value = "$key $value"
+        );
+        return ' ORDER BY' .
+            implode(
+                " , ",
+                array_values($input)
+            );
+    }
+
+    protected function limitClause($input)
+    {
+        if (
+            !isset($input['limit'])
+        ) {
+            return '';
+        }
+        $limit = ' LIMIT ' . intval($input['limit']);
+        if (!isset($input['offset'])) {
+            return $limit;
+        }
+        return $limit .
+            ' OFFSET ' . intval($input['offset']);
+    }
+
+    public function find($input = array(), $options = array())
+    {
+        if (!$this->areValidAttributes($input)) {
+            return;
+        }
+        $isUnique = $this->isValidId($input) ||
+            (intval($options['limit'] ?? '0') == 1);
+        $conditions = $this->whereClause($input);
+        $orderBy = $this->orderByClause($options['order_by'] ?? []);
+        $limit = $this->limitClause($options);
         $request =
             "SELECT *
             FROM $this->tableName
-            $conditions";
+            $conditions
+            $orderBy
+            $limit";
         $reponse = $this->db->prepare($request);
+        $params = $this->formatInput($input);
         $reponse->execute($params);
-        return $reponse->fetch(PDO::FETCH_OBJ);
+        if ($isUnique) {
+            return $reponse->fetch(PDO::FETCH_OBJ);
+        }
+        return $reponse->fetchALL(PDO::FETCH_OBJ);
     }
 
     public function insert($input)
     {
-        if (!$this->isValidAttribute($input)) {
+        if (!$this->areValidAttributes($input)) {
             return false;
         }
         $keys = implode(',', array_keys($input));
@@ -93,15 +164,17 @@ abstract class Repository
         }
         $conditions = implode(
             " and ",
-            array_map(function ($name) {
-                return "$name = :$name";
-            }, $this->ids)
+            array_map(
+                fn ($name) => "$name = :$name",
+                $this->id
+            )
         );
         $request =
             "DELETE FROM $this->tableName
             WHERE $conditions";
         $reponse = $this->db->prepare($request);
-        $reponse->execute($id);
+        $params = $this->formatInput($id);
+        $reponse->execute($params);
         return true;
     }
 
@@ -109,33 +182,36 @@ abstract class Repository
     {
         if (
             !$this->isValidId($inputConditions) ||
-            !$this->isValidAttribute($inputValues)
+            !$this->areValidAttributes($inputValues)
         ) {
             return false;
         }
         $values =
             implode(
                 ',',
-                array_map(function ($name) {
-                    return "$name = :$name";
-                }, array_keys($inputValues))
+                array_map(
+                    fn ($name) => "$name = :$name",
+                    array_keys($inputValues)
+                )
             );
         $conditions =
             implode(
                 ',',
-                array_map(function ($name) {
-                    return "$name = :" . $this->aliases[$name];
-                }, $inputConditions)
+                array_map(
+                    fn ($name) => "$name = :" . $this->aliases[$name],
+                    array_keys($inputConditions)
+                )
             );
-        $id = $this->formatInput(array_map(function ($name) {
-            return $this->aliases[$name];
-        }, $inputConditions));
-        $params = $this->formatInput($inputValues);
         $request =
             "UPDATE $this->tableName 
             SET $values
             WHERE $conditions";
         $reponse = $this->db->prepare($request);
+        $id = [];
+        foreach ($inputConditions as $key => $value) {
+            $id[':' . $this->aliases[$key]] = $value;
+        }
+        $params = $this->formatInput($inputValues) + $id;
         $reponse->execute($params);
         return true;
     }
