@@ -2,18 +2,18 @@
 
 require_once dirname(__FILE__, 2) . '/database/Repository.php';
 
-class UserReviewsReository extends Repository
+class UserReviewsRepository extends Repository
 {
 
     public function __construct()
     {
-        $tableName = 'books';
-        $attributes = ['ISBN', 'title', 'author', 'publisher', 'picture', 'publishing_year', 'rating'];
-        $ids = ['ISBN'];
+        $tableName = 'user_reviews';
+        $attributes = ['ISBN', 'username','review','rating'];
+        $ids = ['ISBN','username'];
         parent::__construct($tableName, $attributes, $ids);
     }
 
-    public function find($input)
+    public function findALL($input)
     {
         if (!$this->isValidAttribute($input)) {
             return array();
@@ -33,6 +33,11 @@ class UserReviewsReository extends Repository
         $reponse->execute($params);
         return $reponse->fetchAll(PDO::FETCH_OBJ);
     }
+
+
+
+
+
 
 
 }

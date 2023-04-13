@@ -15,7 +15,9 @@ require_once dirname(__FILE__, 2) . '/modules/book_identification/BookRepository
 $bookRepo=new BookRepository();
 $books=$bookRepo->find(["rating"=>0]);
 
+
 $direction= dirname(__FILE__, 2) . '/public/book_identity.php';
+
 
  foreach ($books as $book)
      {
@@ -24,7 +26,7 @@ $direction= dirname(__FILE__, 2) . '/public/book_identity.php';
 
         <div class="bookImage">
             <a href="book_identity.php?ISBN=<?=$book->ISBN?>">
-              <img src="<?=$book->picture?>">
+                <img src="<?=$book->picture?>">
             </a>
         </div>
         <div class="bookTitle&Author">
