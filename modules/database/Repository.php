@@ -68,7 +68,7 @@ abstract class Repository
         }
         return ' WHERE ' .
             implode(
-                " and ",
+                ' AND ',
                 array_map(
                     fn ($name) => "$name = :$name",
                     array_keys($input)
@@ -78,6 +78,7 @@ abstract class Repository
 
     protected function orderByClause($input)
     {
+        $input = $input['order_by'] ?? [];
         if (
             empty($input) ||
             !$this->areValidAttributes($input)
@@ -96,7 +97,7 @@ abstract class Repository
             $input,
             fn (&$value, $key) => $value = "$key $value"
         );
-        return ' ORDER BY' .
+        return ' ORDER BY ' .
             implode(
                 " , ",
                 array_values($input)
@@ -118,15 +119,20 @@ abstract class Repository
             ' OFFSET ' . intval($input['offset']);
     }
 
+    protected function isUnique($input, $options)
+    {
+        return
+            $this->isValidId($input) ||
+            (intval($options['limit'] ?? '0') == 1);
+    }
+
     public function find($input = array(), $options = array())
     {
         if (!$this->areValidAttributes($input)) {
             return;
         }
-        $isUnique = $this->isValidId($input) ||
-            (intval($options['limit'] ?? '0') == 1);
         $conditions = $this->whereClause($input);
-        $orderBy = $this->orderByClause($options['order_by'] ?? []);
+        $orderBy = $this->orderByClause($options);
         $limit = $this->limitClause($options);
         $request =
             "SELECT *
@@ -137,7 +143,7 @@ abstract class Repository
         $reponse = $this->db->prepare($request);
         $params = $this->formatInput($input);
         $reponse->execute($params);
-        if ($isUnique) {
+        if ($this->isUnique($input, $options)) {
             return $reponse->fetch(PDO::FETCH_OBJ);
         }
         return $reponse->fetchALL(PDO::FETCH_OBJ);
