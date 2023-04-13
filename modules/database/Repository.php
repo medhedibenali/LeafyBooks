@@ -13,7 +13,7 @@ abstract class Repository
         $max = max(
             array_map(function ($val) {
                 return strlen($val);
-            }, $this->ids)
+            }, $this->attributes)
         );
         $base = str_repeat("x", $max);
         foreach ($this->ids as $index => $id) {
@@ -55,17 +55,18 @@ abstract class Repository
         if (!$this->isValidAttribute($input)) {
             return array();
         }
-        $conditions = implode(
-            " and ",
-            array_map(function ($name) {
-                return "$name = :$name";
-            }, array_keys($input))
-        );
+        $conditions = (empty($input)) ? '' : 'WHERE ' .
+            implode(
+                " and ",
+                array_map(function ($name) {
+                    return "$name = :$name";
+                }, array_keys($input))
+            );
         $params = $this->formatInput($input);
         $request =
             "SELECT *
             FROM $this->tableName
-            WHERE $conditions";
+            $conditions";
         $reponse = $this->db->prepare($request);
         $reponse->execute($params);
         return $reponse->fetch(PDO::FETCH_OBJ);
