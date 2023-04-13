@@ -15,10 +15,10 @@
             <div>
                 Sign Up
             </div>
-            <label for="firstName">First Name</label>
-            <input type="text" name="firstName" id="firstName" required>
-            <label for="lastName">Last Name</label>
-            <input type="text" name="lastName" id="lastName" required>
+            <label for="first_name">First Name</label>
+            <input type="text" name="first_name" id="first_name" required>
+            <label for="last_name">Last Name</label>
+            <input type="text" name="last_name" id="last_name" required>
             <label for="username">Username</label>
             <input type="text" name="username" id="username" required>
             <label for="password">Password</label>
