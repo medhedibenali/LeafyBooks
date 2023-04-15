@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,18 +19,31 @@
             <div>
                 Sign In
             </div>
+
+            <?php
+            if (isset($_SESSION['error'])) {
+            ?>
+                <div class="error">
+                    <?= $_SESSION['error'] ?>
+                </div>
+            <?php
+                unset($_SESSION['error']);
+            }
+            ?>
+
             <form action="php/SignInManager.php" method="post">
                 <label for="username">Username</label>
-                <input type="text" name="username" id="username" required>
+                <input type="text" name="username" id="username" value="<?= $_SESSION['attempted_username'] ?? '' ?>" required>
                 <label for="password">Password</label>
                 <input type="password" name="password" id="password" autocomplete="new-password" required>
-                <div class="buttons">
-                    <button type="submit">Sign Up</button>
-                    <button type="reset">Cancel</button>
-                </div>
+                <button type="submit">Sign in</button>
             </form>
         </div>
     </div>
 </body>
 
 </html>
+
+<?php
+unset($_SESSION['attempted_username']);
+?>

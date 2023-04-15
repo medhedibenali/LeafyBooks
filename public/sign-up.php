@@ -26,10 +26,7 @@
                 <input type="password" name="password" id="password" autocomplete="new-password" required>
                 <label for="birthday">Birthday</label>
                 <input type="date" name="birthday" id="birthday" required>
-                <div class="buttons">
-                    <button type="submit">Sign Up</button>
-                    <button type="reset">Cancel</button>
-                </div>
+                <button type="submit">Sign up</button>
             </form>
         </div>
     </div>

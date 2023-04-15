@@ -6,6 +6,7 @@
 
 .container {
     place-self: center;
+    width: 20rem;
     display: flex;
     flex-direction: column;
     border: 2px solid teal;
@@ -18,8 +19,19 @@
     font-size: 1.25rem;
 }
 
+.error {
+    place-self: center;
+    margin: 0 0.25rem;
+    padding: 0.25rem 1rem;
+    background-color: rgb(252, 193, 183);
+    border: 1px solid red;
+    color: red;
+}
+
 form {
     place-self: center;
+    box-sizing: border-box;
+    width: 100%;
     display: flex;
     flex-direction: column;
     padding: 1rem 1rem;
@@ -35,8 +47,8 @@ input {
     align-self: center;
 }
 
-.buttons {
-    display: flex;
-    justify-content: space-evenly;
-    margin: 0.25rem;
+button {
+    width: fit-content;
+    place-self: center;
+    margin-top: 0.25rem;
 }
