@@ -1,22 +1,28 @@
-.container {
+.wrapper {
     display: grid;
     position: relative;
     height: 80vh;
 }
 
-.form {
+.container {
     place-self: center;
     display: flex;
     flex-direction: column;
-    padding: 2rem 1rem;
     border: 2px solid teal;
     border-radius: 0.25rem;
 }
 
-.form>div:first-of-type {
-    margin-bottom: 0.5rem;
-    align-self: center;
+.container>div:first-child {
+    place-self: center;
+    padding: 1rem 1rem;
     font-size: 1.25rem;
+}
+
+form {
+    place-self: center;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 1rem;
 }
 
 label {
