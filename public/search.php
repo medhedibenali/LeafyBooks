@@ -1,9 +1,12 @@
 <?php
 
-$pageTitle = 'Search';
-require_once dirname(__FILE__, 2) . '/templates/header.php';
+require_once dirname(__FILE__, 2) . '/config/config.php';
 
-include_once dirname(__FILE__, 2) . '/modules/search/BooksRepository.php';
+$pageTitle = 'Search';
+require_once TEMPLATES_PATH . '/header.php';
+
+require_once MODULES_PATH . '/search/BooksRepository.php';
+
 $bookRepo = new BookRepository();
 if (!isset($_GET['search'])) {
     return;
@@ -49,4 +52,4 @@ $books = $bookRepo->findByTitleOrAuthorLimit($search, $page_first_result, $resul
 </div>
 
 <?php
-require_once dirname(__FILE__, 2) . '/templates/header.php';
+require_once TEMPLATES_PATH . '/templates/header.php';
