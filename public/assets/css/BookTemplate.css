@@ -1,0 +1,101 @@
+.container
+{
+    display: flex;
+    flex-direction: row;
+}
+
+
+.ImagePos
+{
+    display: flex;
+    margin-top: 10%;
+    margin-left: 10%;
+    flex-direction: column;
+    width: 15em;
+    height:15em ;
+
+}
+#cover
+{
+    box-shadow: 0 0 10px #99ffff;
+}
+#addtolist
+{
+    margin-left: 20px;
+    margin-top: 20px;
+    color: white;
+    font-size: 22px;
+    width: 9em;
+    padding: 5px 5px 9px 10px;
+    border: 0px;
+    border-radius: 40px;
+    background-color: #b4a378;
+}
+#addtolist:hover
+{
+    background-color: #c4b387;
+}
+.box1
+{
+    margin-left: 5em;
+    display: flex;
+    margin-top: 5%;
+    flex-direction: column;
+    width: 50%;
+
+}
+#synopsis
+{
+    font-family: " Times New Roman, serif";
+    padding-top: 20px;
+    font-size: 18px;
+}
+#liste
+{
+    margin-left:30px ;
+    list-style: none;
+}
+#lii
+{
+    font-family: 'DecoType Naskh';
+    font-size: 20px;
+    display: inline-block;
+    margin-right: 10px;
+}
+#lii:hover
+{
+    text-decoration:underline;
+    text-decoration-color: darkgreen;
+    text-decoration-thickness: 2.5px;
+    animation: underline 2s infinite;
+}
+@keyframes underline {
+    from {
+        text-decoration-color: green;
+    }
+    to {
+        text-decoration-color: ghostwhite;
+    }
+}
+.author
+{
+    margin-top: 20px;
+    font-family:  'Times New Roman, serif';
+    font-size: 18px;
+}
+#authorpic
+{
+    border-radius: 70%;
+    width: 10%;
+    height: 20%;
+}
+
+.recommendation
+{
+    margin-top: 70px;
+}
+.comments
+{
+    margin-top: ;
+}
+
