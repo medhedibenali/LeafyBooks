@@ -1,9 +1,15 @@
+.navbar-light {
+    background-color: #eed8a3;
+}
+
+
+
+
 .container
 {
     display: flex;
     flex-direction: row;
 }
-
 
 .ImagePos
 {
@@ -39,7 +45,7 @@
 {
     margin-left: 5em;
     display: flex;
-    margin-top: 5%;
+    margin-top: 2%;
     flex-direction: column;
     width: 50%;
 
@@ -86,16 +92,39 @@
 #authorpic
 {
     border-radius: 70%;
-    width: 10%;
+    width: 11%;
     height: 20%;
 }
 
-.recommendation
+#userpic
 {
-    margin-top: 70px;
-}
-.comments
-{
-    margin-top: ;
+    border-radius: 50%;
+    width:70px;
+    margin-left: 45%;
+    margin-top: 5%;
+
 }
 
+#question
+{
+    font-family:'DecoType Naskh';
+    display: flex;
+    justify-content: center;
+    font-style: italic;
+    font-size: 3em;
+}
+.writereview
+{
+    margin-left: 7px;
+    color: whitesmoke;
+    font-size: 17px;
+    width: 9em;
+    padding: 7px 7px 7px 7px;
+    border: 0px;
+    border-radius: 40px;
+    background-color: #312403;
+}
+.writereview:hover
+{
+    background-color: #422f08;
+}

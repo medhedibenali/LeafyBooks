@@ -10,7 +10,31 @@
   <link rel="stylesheet" href="../css/BookTemplate.css">
 </head>
 <body>
-<!--nav bar -->
+<!--  NAVBAR   -->
+<nav class="navbar navbar-expand-lg navbar-light ">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">LeafyBooks</a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">browse</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">My Books</a>
+        </li>
+      </ul>
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+
 
 <div class="container">
   <!--BOOK COVER & BUTTON TO ADD  -->
@@ -54,30 +78,46 @@
     <img >
     <h5 style="font-weight: bold"> About the author</h5>
     <img id="authorpic" src="../pictures/authorpic.jpg"> Harlan Coben
-    <br>
+    <br><br>
     Harlan Coben is a #1 New York Times bestselling author and one of the world's leading storytellers. His suspense novels are published in forty-five languages and have been number one bestsellers in more than a dozen countries with seventy-five million books in print worldwide.
 
     His books have earned the Edgar, Shamus, and Anthony Awards, and many have been developed into Netflix Original Drama series, including his adaptations of The Stranger, The Innocent, Gone for Good and The Woods. His most recent adaptation for Netflix, Stay Close, premiered on December 31, 2021 and stars Cush Jumbo, James Nesbitt, and Richard Armitage.
   </div>
 
   <!--RECOMMENDING LIST OF BOOKS CAROUSEL MAYBE  -->
-    <div class="recommendation">
+    <div style="margin-top: 70px;">
   <h2 style="font-family:'DecoType Naskh';font-style:italic "> Readers also enjoy</h2>
     </div>
 <div>
   BOOKSSSS
 </div>
+
+<hr style="margin-top: 7em">
+
+
+  <!--WRITTEN REVIEWS  -->
+  <div>
+
+    <h2 style="font-family:'DecoType Naskh';">Ratings & Reviews</h2>
+    <img src="../pictures/catuser.jpg" id="userpic">
+    <br>
+    <p id="question">
+      What do you think ?
+    </p>
+    <p style=" display: flex;justify-content: center;">
+    Review stars
+    <button onclick="scrollTobottom()" class="writereview">Write a review</button>
+    </p>
+
+  </div>
+
+
 </div>
 </div>
 
 
-<!--WRITTEN REVIEWS  -->
-<div class="comments">
-  Reviews
-  <button class="btn btn-success"> Write a review</button>
-</div>
-<br>
 
-<script src="BookTemplate.js"></script>
+
+<script src="../BookTemplate.js"></script>
 </body>
 </html>
