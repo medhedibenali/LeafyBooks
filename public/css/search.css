@@ -1,0 +1,11 @@
+.book{
+    display: flex;
+
+}
+.book_cover{
+    width: 120px;
+
+}
+.book_info{
+    padding: 10px;
+}
