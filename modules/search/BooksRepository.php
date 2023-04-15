@@ -53,7 +53,7 @@ class BookRepository extends Repository
 
     public function findOne($input)
     {
-        if (!$this->isValidAttribute($input)) {
+        if (!$this->areValidAttributes($input)) {
             return array();
         }
         $conditions = implode(
