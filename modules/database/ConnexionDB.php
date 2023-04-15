@@ -2,17 +2,14 @@
 
 class ConnexionDB
 {
-    private static $_dbname = "web_project_db";
-    private static $_user = "web_project_user";
-    private static $_pwd = "password";
-    private static $_host = "localhost";
-
     private static $_bdd = null;
-
     private function __construct()
     {
+        require_once dirname(__FILE__, 3) . '/config/config.php';
         try {
-            self::$_bdd = new PDO("mysql:host=" . self::$_host . ";dbname=" . self::$_dbname . ";charset=utf8", self::$_user, self::$_pwd);
+            $dbconfig = $config['db']['db1'];
+       self::$_bdd = new PDO("mysql:host=" . $dbconfig['host'] . ";dbname=" . $dbconfig['dbname'] . ";charset=utf8", $dbconfig['username'], $dbconfig['password']);
+
         } catch (PDOException $e) {
             die('Erreur : ' . $e->getMessage());
         }

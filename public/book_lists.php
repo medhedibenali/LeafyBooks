@@ -6,14 +6,14 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>BooksList</title>
-    <link rel="stylesheet" href="CSS/BookList.css">
+    <link rel="stylesheet" href="./css/book_identity.css">
 </head>
 <body>
 <?php
 
 require_once dirname(__FILE__, 2) . '/modules/book_identification/BookRepository.php';
 $bookRepo=new BookRepository();
-$books=$bookRepo->find(["rating"=>0]);
+$books=$bookRepo->find();
 
 
 $direction= dirname(__FILE__, 2) . '/public/book_identity.php';
