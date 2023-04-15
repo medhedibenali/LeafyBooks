@@ -6,7 +6,7 @@ $config = array(
             "dbname" => "web_project_db",
             "username" => "web_project_user",
             "password" => "password",
-            "host" => "localhost"
+            "host" => "localhost",
         )
     ),
     // "urls" => array(
