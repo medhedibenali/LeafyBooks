@@ -20,4 +20,11 @@ class UserRepository extends Repository
         );
         parent::insert($params);
     }
+    public function findByUsernameOrFullName($search){
+        $request='select * from '.$this->tableName.'
+         where title like concat("%",?,"%") or author like concat("%",?,"%")';
+        $response = $this->db->prepare($request);
+        $response->execute([$search,$search]);
+        return $response->fetchAll(PDO::FETCH_OBJ);
+    }
 }

@@ -18,7 +18,6 @@ class BookRepository extends Repository
          where title like concat("%",?,"%") or author like concat("%",?,"%")';
         $response = $this->db->prepare($request);
         $response->execute([$search,$search]);
-
         return $response->fetchAll(PDO::FETCH_OBJ);
     }
     public function findByTitleOrAuthorLimit($search="",$offset,$numberMAX){
