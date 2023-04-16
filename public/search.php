@@ -19,8 +19,8 @@ require_once 'php/SearchManager.php'; ?>
         </div>
         <div class="pages">
             <?php
-            for ($booksPage = 1; $booksPage <= $booksNumber_of_page; $booksPage++) { ?>
-                <a href=<?= "search.php?page=$booksPage&search=$search" ?>><?= $booksPage ?></a>
+            for ($page = 1; $page <= $booksNumber_of_page; $page++) { ?>
+                <a href=<?= "search.php?booksPage=$page&usersPage=$usersPage&search=$search" ?>><?= $page ?></a>
             <?php } ?>
         </div>
 
@@ -40,8 +40,8 @@ require_once 'php/SearchManager.php'; ?>
     </div>
     <div class="pages">
         <?php
-        for ($booksPage = 1; $booksPage <= $booksNumber_of_page; $booksPage++) { ?>
-            <a href=<?= "search.php?page=$booksPage&search=$search" ?>><?= $booksPage ?></a>
+        for ($page = 1; $page <= $usersNumber_of_page; $page++) { ?>
+            <a href=<?= "search.php?booksPage=$booksPage&usersPage=$page&search=$search" ?>><?= $page ?></a>
         <?php } ?>
     </div>
 </div>

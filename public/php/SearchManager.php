@@ -12,7 +12,7 @@ if (!isset($_GET['booksPage'])) {
 } else {
     $booksPage = $_GET['booksPage'];
 }
-$booksResults_per_page = 6;
+$booksResults_per_page = 4;
 $booksPage_first_result = ($booksPage - 1) * $booksResults_per_page;
 
 $search = htmlspecialchars($_GET['search']);
