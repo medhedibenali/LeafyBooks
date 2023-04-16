@@ -1,10 +1,25 @@
 .navbar-light {
-    background-color: #eed8a3;
+    background-color: #fae3a9;
 }
-
-
-
-
+.navbar-nav {
+    float:none;
+    margin-left: auto ;
+    display: flex;
+    justify-content: center;
+}
+.glass
+{
+    width: 1.5rem;
+    height: 1.5rem;
+    align-self: center;
+    filter: invert(60%)  ;
+    transform: translateX(-150%);
+}
+.d-flex{
+    justify-content: center;
+    display: flex;
+    margin-right: auto;
+}
 .container
 {
     display: flex;
@@ -94,6 +109,7 @@
     border-radius: 70%;
     width: 11%;
     height: 20%;
+    object-fit: cover;
 }
 
 #userpic

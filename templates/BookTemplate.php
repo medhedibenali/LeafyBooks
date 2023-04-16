@@ -6,13 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!--page title should be the title of the book-->
   <title>Book Title </title>
-  <link rel="stylesheet" href="../../../node_modules/bootstrap/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../css/BookTemplate.css">
+  <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../public/css/BookTemplate.css">
 </head>
+
 <body>
 <!--  NAVBAR   -->
-<nav class="navbar navbar-expand-lg navbar-light ">
-  <div class="container-fluid">
+<nav class="navbar sticky-top navbar-expand-lg navbar-light ">
+  <div class="container-fluid ">
     <a class="navbar-brand" href="#">LeafyBooks</a>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -28,8 +29,11 @@
       </ul>
       <form class="d-flex">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
+        <img src="magnifying-glass-solid.svg" class="glass" >
       </form>
+      <div class="nav-item">
+        <img src="../public/pictures/catuser.jpg" id="userpic" style="width: 40px">
+      </div>
     </div>
   </div>
 </nav>
@@ -39,7 +43,7 @@
 <div class="container">
   <!--BOOK COVER & BUTTON TO ADD  -->
 <div class="ImagePos">
-  <img id="cover" src="../pictures/playdead.jpg" alt="Book pic">
+  <img id="cover" src="../public/pictures/playdead.jpg" alt="Book pic">
   <button id="addtolist">Add to list</button>
 </div>
 
@@ -77,7 +81,7 @@
   <div class="author">
     <img >
     <h5 style="font-weight: bold"> About the author</h5>
-    <img id="authorpic" src="../pictures/authorpic.jpg"> Harlan Coben
+    <img id="authorpic" src="../public/pictures/authorpic.jpg"> Harlan Coben
     <br><br>
     Harlan Coben is a #1 New York Times bestselling author and one of the world's leading storytellers. His suspense novels are published in forty-five languages and have been number one bestsellers in more than a dozen countries with seventy-five million books in print worldwide.
 
@@ -99,7 +103,7 @@
   <div>
 
     <h2 style="font-family:'DecoType Naskh';">Ratings & Reviews</h2>
-    <img src="../pictures/catuser.jpg" id="userpic">
+    <img src="../public/pictures/catuser.jpg" id="userpic">
     <br>
     <p id="question">
       What do you think ?
@@ -117,7 +121,6 @@
 
 
 
-
-<script src="../BookTemplate.js"></script>
+<script src="../public/BookTemplate.js"></script>
 </body>
 </html>
