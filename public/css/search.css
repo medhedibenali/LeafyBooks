@@ -1,11 +1,32 @@
-.book{
+*{
+    margin: 0;
+}
+.grid-container{
+    display: grid;
+    margin: auto;
+    width: 90%;
+    gap:10px;
+    border: black solid;
+    grid-template-columns: 50% 50% ;
+}
+.book,.profile{
     display: flex;
-
+    border: aquamarine solid;
+    height: 200px;
+}
+.profile{
+    height: 100px;
 }
 .book_cover{
-    width: 120px;
+    height: auto;
 
 }
 .book_info{
     padding: 10px;
+}
+.content{
+    display: flex;
+}
+.pages{
+    align-items: center;
 }

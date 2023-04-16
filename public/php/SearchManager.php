@@ -6,19 +6,33 @@ $userRepo= new UserRepository();
 if (!isset($_GET['search'])) {
     return;
 }
-
-if (!isset($_GET['page'])) {
-    $page = 1;
+//logic for books
+if (!isset($_GET['booksPage'])) {
+    $booksPage = 1;
 } else {
-    $page = $_GET['page'];
+    $booksPage = $_GET['booksPage'];
 }
-$results_per_page = 1;
-$page_first_result = ($page - 1) * $results_per_page;
+$booksResults_per_page = 6;
+$booksPage_first_result = ($booksPage - 1) * $booksResults_per_page;
 
 $search = htmlspecialchars($_GET['search']);
 $books = $bookRepo->findByTitleOrAuthor($search);
-$number_of_result = sizeof($books);
-$number_of_page = ceil($number_of_result / $results_per_page);
-$books = $bookRepo->findByTitleOrAuthorLimit($search, $page_first_result, $results_per_page);
+$booksNumber_of_result = sizeof($books);
+$booksNumber_of_page = ceil($booksNumber_of_result / $booksResults_per_page);
+$books = $bookRepo->findByTitleOrAuthorLimit($search, $booksPage_first_result, $booksResults_per_page);
+
+//logic for users
+if (!isset($_GET['usersPage'])) {
+    $usersPage = 1;
+} else {
+    $usersPage = $_GET['usersPage'];
+}
+$usersResults_per_page = 6;
+$usersPage_first_result = ($usersPage - 1) * $usersResults_per_page;
+$users = $userRepo->findByUsernameOrFullName($search);
+$usersNumber_of_result = sizeof($users);
+$usersNumber_of_page = ceil($usersNumber_of_result / $usersResults_per_page);
+$users = $userRepo->findByUsernameOrFullNameLimit($search, $usersPage_first_result, $usersResults_per_page);
+
 
 ?>

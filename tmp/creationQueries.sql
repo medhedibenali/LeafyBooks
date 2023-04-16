@@ -9,7 +9,7 @@ GRANT INSERT, SELECT, UPDATE, DELETE ON `web_project_db`.* TO `web_project_user`
 CREATE TABLE `web_project_db`.`users` (
   `username` VARCHAR(255) NOT NULL,
   `password` VARCHAR(255) NOT NULL,
-  `first_name` VARCHAR(255) NOT NULL,
-  `last_name` VARCHAR(255) NOT NULL,
+  `firstName` VARCHAR(255) NOT NULL,
+  `lastName` VARCHAR(255) NOT NULL,
   `birthday` DATE NOT NULL,
   PRIMARY KEY (`username`));
