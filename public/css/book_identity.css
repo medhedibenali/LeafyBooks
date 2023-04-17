@@ -1,0 +1,110 @@
+img
+{
+    max-width: 10cm;
+    max-height: 10cm;
+}
+.result
+{
+    padding-left:10cm;
+}
+
+.pdp
+{
+    max-height: 3cm;
+    max-width: 3cm;
+    border: 1px solid transparent;
+    border-radius: 50%;
+}
+
+
+/*css for the rating part*/
+.rating
+{
+    position: relative;
+    transform: translate(-50%, -50%);
+    margin-right: 70%;
+}
+.stars input{
+    display: none;
+}
+
+.stars label{
+    float: right; /*make the element float to the right of the container div= .stars*/
+    font-size: 40px;
+    color: lightgrey;
+    margin: 0 5px;
+    text-shadow: 1px 1px #bbb;
+}
+.stars label:before{
+    content: '★'; /*a star is displayed*/
+}
+/*if a star's input =radio option  is checked , its direct sibling label is colored in gold */
+.stars input:checked ~ label
+{
+    color: gold;
+    text-shadow: 1px 1px #c60;
+}
+/*if a star is not checked but its label is hovered upon , it and its direct label are coloured gold */
+.stars:not(:checked) > label:hover,
+.stars:not(:checked) > label:hover ~ label{
+    color: gold;
+}
+
+/*if a star's input =radio  is  checked  its label and its direct label are coloured gold with some text shadow */
+
+.stars input:checked > label:hover,
+.stars input:checked > label:hover ~ label
+{
+    color: gold;
+    text-shadow: 1px 1px goldenrod;
+}
+
+/*css for the result div ; that contains nothing when no stars have been selected yet*/
+.stars .result:before{
+    position: absolute;
+    content: "";
+    width: 100%;
+    left: 50%;
+    transform: translateX(-47%);
+    bottom: -30px;
+    font-size: 20px;
+    font-weight: 500;
+    color: gold;
+    font-family: 'Poppins', sans-serif;
+    display: none;
+}
+/* when the star's input= radio is checked the initially hidden resuly div will be visible*/
+.stars input:checked ~ .result:before{
+    display: block;
+}
+/* result will contain "i love it" if the full 5 stars (radios) were selected*/
+.stars #five:checked ~ .result:before{
+    content: "I love it ";
+}
+/* result will contain "i like it" if 4 stars (radios) were selected*/
+
+.stars #four:checked ~ .result:before{
+    content: "I like it ";
+}
+/* result will contain "it's good" if 3 stars (radios) were selected*/
+
+.stars #three:checked ~ .result:before{
+    content: "It's good ";
+}
+/* result will contain "i don't like it" if 2 stars (radios) were selected*/
+
+.stars #two:checked ~ .result:before{
+    content: "I don't like it ";
+}/* result will contain "i like it" if  only 1 star (radios) was selected*/
+
+.stars #one:checked ~ .result:before{
+    content: "I hate it ";
+}
+
+iframe
+{
+    border: 1px transparent solid;
+    width: 120%
+}
+
+
