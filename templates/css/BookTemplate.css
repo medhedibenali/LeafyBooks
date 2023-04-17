@@ -1,19 +1,34 @@
-.navbar-light {
-    background-color: #fae3a9;
-}
-.navbar-nav {
-    float:none;
-    margin-left: auto ;
-    display: flex;
-    justify-content: center;
-}
-.glass
+.navbar
 {
-    width: 1.5rem;
-    height: 1.5rem;
+    background-color: #efddb3;
+}
+.navbar-brand
+{
+    font-family: "Script MT Bold";
+}
+.nav-item:not(:last-child) .nav-link:hover
+{
+    background-color: #422f08;
+    color: whitesmoke;
+
+}
+.fa-magnifying-glass
+{
+    color: #b4b4b4;
     align-self: center;
-    filter: invert(60%)  ;
-    transform: translateX(-150%);
+    transform: translateX(-180%);
+}
+.profilePic
+{
+    border-radius: 50%;
+    width: 12%;
+    height: 15%;
+    object-fit: cover;
+    margin-left: 80%;
+}
+.profilePic:hover
+{
+    background-color: #422f08;
 }
 .d-flex{
     justify-content: center;
@@ -38,7 +53,7 @@
 }
 #cover
 {
-    box-shadow: 0 0 10px #99ffff;
+    box-shadow: 0 0 10px #141515;
 }
 #addtolist
 {
@@ -88,7 +103,7 @@
     text-decoration:underline;
     text-decoration-color: darkgreen;
     text-decoration-thickness: 2.5px;
-    animation: underline 2s infinite;
+    animation: underline 1s ease-in-out;
 }
 @keyframes underline {
     from {
@@ -106,7 +121,7 @@
 }
 #authorpic
 {
-    border-radius: 70%;
+    border-radius: 50%;
     width: 11%;
     height: 20%;
     object-fit: cover;

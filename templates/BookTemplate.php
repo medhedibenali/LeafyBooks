@@ -1,49 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!--page title should be the title of the book-->
-  <title>Book Title </title>
-  <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../public/css/BookTemplate.css">
-</head>
-
-<body>
-<!--  NAVBAR   -->
-<nav class="navbar sticky-top navbar-expand-lg navbar-light ">
-  <div class="container-fluid ">
-    <a class="navbar-brand" href="#">LeafyBooks</a>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">browse</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">My Books</a>
-        </li>
-      </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <img src="magnifying-glass-solid.svg" class="glass" >
-      </form>
-      <div class="nav-item">
-        <img src="../public/pictures/catuser.jpg" id="userpic" style="width: 40px">
-      </div>
-    </div>
-  </div>
-</nav>
-
-
+<?php
+require_once 'header.php'
+?>
 
 <div class="container">
   <!--BOOK COVER & BUTTON TO ADD  -->
 <div class="ImagePos">
-  <img id="cover" src="../public/pictures/playdead.jpg" alt="Book pic">
+  <img id="cover" src="pictures/playdead.jpg" alt="Book pic">
   <button id="addtolist">Add to list</button>
 </div>
 
@@ -81,7 +43,7 @@
   <div class="author">
     <img >
     <h5 style="font-weight: bold"> About the author</h5>
-    <img id="authorpic" src="../public/pictures/authorpic.jpg"> Harlan Coben
+    <img id="authorpic" src="pictures/authorpic.jpg"> Harlan Coben
     <br><br>
     Harlan Coben is a #1 New York Times bestselling author and one of the world's leading storytellers. His suspense novels are published in forty-five languages and have been number one bestsellers in more than a dozen countries with seventy-five million books in print worldwide.
 
@@ -103,7 +65,7 @@
   <div>
 
     <h2 style="font-family:'DecoType Naskh';">Ratings & Reviews</h2>
-    <img src="../public/pictures/catuser.jpg" id="userpic">
+    <img src="pictures/catuser.jpg" id="userpic">
     <br>
     <p id="question">
       What do you think ?
@@ -114,13 +76,11 @@
     </p>
 
   </div>
-
-
 </div>
 </div>
 
 
 
-<script src="../public/BookTemplate.js"></script>
+<script src="js/BookTemplate.js"></script>
 </body>
 </html>
