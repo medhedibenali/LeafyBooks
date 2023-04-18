@@ -1,9 +1,7 @@
 <?php
 include_once "../modules/database/ConnexionDB.php";
 include_once "../modules/database/Repository.php";
-include_once "../modules/book-activity/ToReadRepository.php";
-include_once "../modules/book-activity/CurrentReadRepository.php";
-include_once "../modules/book-activity/FinishReadRepository.php";
+include_once "../modules/book-activity/ReadActRepository.php";
 include_once "../modules/book_identification/BookRepository.php";
 include_once "../modules/auth/UserRepository.php";
 $userRepo = new UserRepository();
@@ -14,16 +12,10 @@ $user = $userRepo->find(array("username"=>$_GET['username']));
 $bookRepo = new BookRepository();
 
 
-$toreadRepo = new toreadRepository();
-$toreadActs = $toreadRepo->find(array("username"=>$_GET['username']));
-
-
-$currentreadRepo = new currentreadRepository();
-$currentreadActs = $currentreadRepo->find(array("username"=>$_GET['username']));
-
-
-$finishreadRepo = new finishreadRepository();
-$finishreadActs = $finishreadRepo->find(array("username"=>$_GET['username']));
+$readActRepo = new ReadActRepository();
+$toreadActs = $readActRepo->find(array("username"=>$_GET['username'],'status'=>'toread'));
+$currentreadActs = $readActRepo->find(array("username"=>$_GET['username'],'status'=>'currentlyreading'));
+$finishreadActs = $readActRepo->find(array("username"=>$_GET['username'],'status'=>'finishedreading'));
 
 
 ?>
