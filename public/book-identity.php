@@ -28,40 +28,33 @@ $book=findBook($ISBN);
     <div class="alert alert-warning">
         <h3>Book Info</h3>
     </div>
-    <table>
-        <tr>
+        <div>
             <img src="<?=$book->picture?>"/>
-        </tr>
-        <tr>
+        </div>
+        <div>
             <div>
                 title :<?=$book->title;?>
             </div>
-        </tr>
-        <tr>
+        </div>
+        <div>
             <div>
                 author: <?=$book->author;?>
             </div>
-        </tr>
-        <tr>
+        </div>
+        <div>
             <div>
                 Publisher :<?=$book->publisher;?>
             </div>
-        </tr>
+        </div>
+        <div>
+            User rating: <?=getrating($book->ISBN)[0] .'('.getrating($book->ISBN)[1] .'review(s) )';?>
+        </div>
 
-        <tr>
+        <div>
             <div>
                 Synopsis :<?=$book->synopsis;?>
             </div>
-        </tr>
-
-        <tr>
-                <div>
-                   User rating: <?=getRating($book->ISBN)[0] .'('.getRating($book->ISBN)[1] .'review(s) )';?>
-                </div>
-
-        </tr>
-
-    </table>
+        </div>
 
     <form id="addToList" action="php/add-to-list-process.php" method="post">
         <select id="actionOnBook" name="answer">
@@ -71,12 +64,23 @@ $book=findBook($ISBN);
             <option value="toread">want to read</option>
         </select>
         <input type="hidden" name="ISBN" value="<?=$ISBN?>">
-
-
     </form>
+    <br>
+    <br>
 
-    <br>
-    <br>
+    <div class="AboutAuthor">
+
+    </div>
+
+    <?php
+    require_once("../tmp/rating.php");
+    ?>
+
+    <form  class="OnLoad" action="../public/php/process-rating-statistics.php?">
+        <input type="hidden" name="ISBN" value="<?=$ISBN?>">
+    </form>
+    <!--rating stats-->
+    <?php require_once "../tmp/rating-statistics.php" ?>
 
     <!-- reviews-->
     <?php
@@ -90,10 +94,6 @@ $book=findBook($ISBN);
 <div class="alert alert-warning">
     <?= 'share your thoughts about this book'?>;
 </div>
-    <?php
-    require_once("../tmp/rating.php");
-    ?>
-
 
 <!--    review form-->
 <textarea name = "review" rows="10" cols="50"></textarea>
