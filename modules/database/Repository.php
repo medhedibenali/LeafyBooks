@@ -157,7 +157,7 @@ abstract class Repository
         $keys = implode(',', array_keys($input));
         $params = $this->formatInput($input);
         $values = implode(',', array_keys($params));
-        $request = "INSERT INTO $this->tableName ($keys) VALUES ($values)";
+        $request = "INSERT IGNORE INTO $this->tableName ($keys) VALUES ($values)";
         $reponse = $this->db->prepare($request);
         $reponse->execute($params);
         return true;

@@ -1,13 +1,20 @@
 <?php
 
+
 class ConnexionDB
 {
     private static $_bdd = null;
     private function __construct()
     {
-        require_once dirname(__FILE__, 3) . '/config/config.php';
+
         try {
-            $dbconfig = $config['db']['db1'];
+
+            $dbconfig = array(
+                'host'=>'localhost',
+                'dbname'=>'web-project',
+                'username'=>'root',
+                'password'=>''
+            );
        self::$_bdd = new PDO("mysql:host=" . $dbconfig['host'] . ";dbname=" . $dbconfig['dbname'] . ";charset=utf8", $dbconfig['username'], $dbconfig['password']);
 
         } catch (PDOException $e) {
@@ -22,4 +29,6 @@ class ConnexionDB
         }
         return (self::$_bdd);
     }
+
+
 }
