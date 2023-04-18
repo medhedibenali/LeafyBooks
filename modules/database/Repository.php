@@ -332,7 +332,7 @@ abstract class Repository
             );
         $condition =
             implode(
-                ',',
+                ' and ',
                 array_map(
                     fn ($name) => "$name = :" . $this->aliases[$name],
                     array_keys($conditions)
