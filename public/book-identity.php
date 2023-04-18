@@ -19,7 +19,8 @@ session_start();
 <body>
 <?php
 require "../public/php/process-book-identity.php";
-
+$ISBN = htmlspecialchars($_GET['ISBN']);
+$book=findBook($ISBN);
 
 ?>
 <!--   info about the book-->
@@ -65,9 +66,9 @@ require "../public/php/process-book-identity.php";
     <form id="addToList" action="php/add-to-list-process.php" method="post">
         <select id="actionOnBook" name="answer">
             <option value="default"></option>
-            <option value="CurrentReadRepository">currently reading</option>
-            <option value="FinishReadRepository">read</option>
-            <option value="ToReadRepository">want to read</option>
+            <option value="currentlyreading">currently reading</option>
+            <option value="finishedreading">read</option>
+            <option value="toread">want to read</option>
         </select>
         <input type="hidden" name="ISBN" value="<?=$ISBN?>">
 
@@ -104,7 +105,7 @@ require "../public/php/process-book-identity.php";
 
 </form>
 </div>
-<script></script>
+<script src="book-identity.js"></script>
 </body>
 </html>
 

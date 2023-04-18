@@ -1,10 +1,26 @@
 <?php
 require_once 'ConnexionDB.php';
 
+/**
+ * Abstract class for a repository.
+ *
+ * This class represents a repository for a specific type of data. It
+ * provides methods for adding, removing, updating and retrieving data
+ * from the database.
+ */
+
 abstract class Repository
 {
     protected PDO $db;
     protected $aliases;
+
+    /**
+     * Creates a new instance of the Repository with the specified arguments.
+     *
+     * @param string $tableName The name of the table in the database.
+     * @param array $attributes All the column names of the table.
+     * @param array $id The id column names of the table.
+     */
 
     public function __construct(protected $tableName, protected $attributes, protected $id)
     {
@@ -30,6 +46,15 @@ abstract class Repository
         }
     }
 
+    /**
+     * Checks that the keys of the input array are all in the array of
+     * valid attributes.
+     *
+     * @param array $input Key-Value pairs where the keys are going to be
+     * checked against the attributes.
+     * @return bool
+     */
+
     final protected function areValidAttributes($input)
     {
         return empty(array_diff(
@@ -37,6 +62,14 @@ abstract class Repository
             $this->attributes
         ));
     }
+
+    /**
+     * Checks that the keys of the input array are the same as the id.
+     * 
+     * @param array $input Key-Value pairs where the keys are going to be
+     * checked against the id.
+     * @return boolean
+     */
 
     final protected function isValidId($input)
     {
@@ -52,6 +85,14 @@ abstract class Repository
             ));
     }
 
+    /**
+     * Formats input for PDO.
+     *
+     * @param array $input Key-Value pairs where the keys are the column
+     * names to be formated.
+     * @return array
+     */
+
     final protected function formatInput($input)
     {
         $output = [];
@@ -61,9 +102,20 @@ abstract class Repository
         return $output;
     }
 
-    protected function whereClause($input)
+    /**
+     * Returns a string from the given options array to be used as the
+     * where clause in find.
+     * Override to change the behavior of find.
+     * Consider overriding limitClause if you override whereClause so
+     * the output of find has the expected type.
+     * 
+     * @param array $options The options passed to find.
+     * @return string
+     */
+
+    protected function whereClause($options)
     {
-        if (empty($input)) {
+        if (empty($options)) {
             return '';
         }
         return ' WHERE ' .
@@ -71,53 +123,80 @@ abstract class Repository
                 ' AND ',
                 array_map(
                     fn ($name) => "$name = :$name",
-                    array_keys($input)
+                    array_keys($options)
                 )
             );
     }
 
-    protected function orderByClause($input)
+    /**
+     * Returns a string from the given options array to be used as the
+     * order by clause in find.
+     * Override to change the behavior of find.
+     *
+     * @param array $options The options passed to find.
+     * @return string
+     */
+
+    protected function orderByClause($options)
     {
-        $input = $input['order_by'] ?? [];
+        $options = $options['order_by'] ?? [];
         if (
-            empty($input) ||
-            !$this->areValidAttributes($input)
+            empty($options) ||
+            !$this->areValidAttributes($options)
         ) {
             return '';
         }
         array_walk(
-            $input,
+            $options,
             fn (&$value, $key) => $value = strtoupper($value)
         );
         $directions = ['ASC', 'DESC'];
-        if (!empty(array_diff(array_values($input), $directions))) {
+        if (!empty(array_diff(array_values($options), $directions))) {
             return '';
         }
         array_walk(
-            $input,
+            $options,
             fn (&$value, $key) => $value = "$key $value"
         );
         return ' ORDER BY ' .
             implode(
                 " , ",
-                array_values($input)
+                array_values($options)
             );
     }
 
-    protected function limitClause($input)
+    /**
+     * Returns a string from the given options array to be used as the
+     * limit clause in find.
+     * Override to change the behavior of find.
+     *
+     * @param array $options The options passed to find.
+     * @return string
+     */
+
+    protected function limitClause($options)
     {
         if (
-            !isset($input['limit'])
+            !isset($options['limit'])
         ) {
             return '';
         }
-        $limit = ' LIMIT ' . intval($input['limit']);
-        if (!isset($input['offset'])) {
+        $limit = ' LIMIT ' . intval($options['limit']);
+        if (!isset($options['offset'])) {
             return $limit;
         }
         return $limit .
-            ' OFFSET ' . intval($input['offset']);
+            ' OFFSET ' . intval($options['offset']);
     }
+
+    /**
+     * Checks if the output will be unique.
+     * Override to change the behavior of find.
+     *
+     * @param string $input The input passed to find.
+     * @param array $options The options passed to find.
+     * @return bool
+     */
 
     protected function isUnique($input, $options)
     {
@@ -125,6 +204,27 @@ abstract class Repository
             $this->isValidId($input) ||
             (intval($options['limit'] ?? '0') == 1);
     }
+
+    /**
+     * Finds records in the database.
+     *
+     * @param array $input Key-Value pairs where the keys are the
+     * column names and the values are the values to search for.
+     * [optional] if not supplied, find will output all records.
+     * @param array $options Key-Value pairs to modifie the output.
+     * [optional] If supplied, the output of find will change depending
+     * on the keys set.
+     * $options['order-by'] is an array of key-value pairs where the keys
+     * are the column names to order by and the values are either 'ASC'
+     * or 'DESC' for ascending or descending respectively.
+     * $options['limit'] is an int indication the number of records
+     * to return.
+     * $options['offset'] is an int indication the number of records
+     * to skip (limit must be set for the offset to change the output).
+     * @return mixed Returns an array if isUnique returns false,
+     * returns an object if isUnique returns true and a record exists
+     * and returns false otherwise.
+     */
 
     public function find($input = array(), $options = array())
     {
@@ -149,6 +249,15 @@ abstract class Repository
         return $reponse->fetchALL(PDO::FETCH_OBJ);
     }
 
+    /**
+     * Inserts the given input into the database.
+     * Returns true if the insert was successful, and false otherwise.
+     * 
+     * @param array $input Key-Value pairs where the keys are the column
+     * names and the values are the values to insert.
+     * @return bool
+     */
+
     public function insert($input)
     {
         if (!$this->areValidAttributes($input)) {
@@ -163,9 +272,18 @@ abstract class Repository
         return true;
     }
 
-    public function delete($id)
+    /**
+     * Deletes a record from the database.
+     * Returns true if the record was deleted, false otherwise.
+     * 
+     * @param array $conditions Key-Value pairs where the keys are the id
+     * column names and the values are the values to search for.
+     * @return bool
+     */
+
+    public function delete($conditions)
     {
-        if (!$this->isValidId($id)) {
+        if (!$this->isValidId($conditions)) {
             return false;
         }
         $conditions = implode(
@@ -179,16 +297,28 @@ abstract class Repository
             "DELETE FROM $this->tableName
             WHERE $conditions";
         $reponse = $this->db->prepare($request);
-        $params = $this->formatInput($id);
+        $params = $this->formatInput($conditions);
         $reponse->execute($params);
         return true;
     }
 
-    public function update($inputConditions, $inputValues)
+    /**
+     * Updates a record in a database based on the given conditions and
+     * input values.
+     * Returns true if the update was successful and false otherwise.
+     * 
+     * @param array $conditions Key-Value pairs where the keys are the id
+     * column names and the values are the values to search for.
+     * @param array $input Key-Value pairs where the keys are the column
+     * names and the values are the new values to set.
+     * @return bool
+     */
+
+    public function update($conditions, $input)
     {
         if (
-            !$this->isValidId($inputConditions) ||
-            !$this->areValidAttributes($inputValues)
+            !$this->isValidId($conditions) ||
+            !$this->areValidAttributes($input)
         ) {
             return false;
         }
@@ -197,27 +327,27 @@ abstract class Repository
                 ',',
                 array_map(
                     fn ($name) => "$name = :$name",
-                    array_keys($inputValues)
+                    array_keys($input)
                 )
             );
-        $conditions =
+        $condition =
             implode(
-                ',',
+                ' and ',
                 array_map(
                     fn ($name) => "$name = :" . $this->aliases[$name],
-                    array_keys($inputConditions)
+                    array_keys($conditions)
                 )
             );
         $request =
             "UPDATE $this->tableName 
             SET $values
-            WHERE $conditions";
+            WHERE $condition";
         $reponse = $this->db->prepare($request);
         $id = [];
-        foreach ($inputConditions as $key => $value) {
+        foreach ($conditions as $key => $value) {
             $id[':' . $this->aliases[$key]] = $value;
         }
-        $params = $this->formatInput($inputValues) + $id;
+        $params = $this->formatInput($input) + $id;
         $reponse->execute($params);
         return true;
     }

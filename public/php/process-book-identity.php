@@ -3,10 +3,6 @@ require_once dirname(__FILE__, 3) . '/modules/book_identification/BookRepository
 require_once dirname(__FILE__, 3) .'/modules/book_identification/UserReviewsRepository.php';
 require_once dirname(__FILE__, 3) . '/modules/auth/UserRepository.php';
 
-/*for book-identity*/
-$ISBN = htmlspecialchars($_GET['ISBN']);
-$book=findBook($ISBN);
-
 function findBook($ISBN)
 {
     $bookRepo = new BookRepository();

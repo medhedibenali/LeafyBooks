@@ -17,13 +17,14 @@ $bookRepo=new BookRepository();
 $books=$bookRepo->find();
 
 
+
  foreach ($books as $book)
      {
          ?>
 
 
         <div class="bookImage">
-            <a href="../public/php/process-book-identity.php"=<?=$book->ISBN?>">
+            <a href="book-identity.php?ISBN=<?=$book->ISBN?>">
                 <img src="<?=$book->picture?>">
             </a>
         </div>
