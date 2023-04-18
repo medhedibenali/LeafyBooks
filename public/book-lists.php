@@ -27,6 +27,8 @@ $books=$bookRepo->find();
             <a href="book-identity.php?ISBN=<?=$book->ISBN?>">
                 <img src="<?=$book->picture?>">
             </a>
+
+
         </div>
         <div class="bookTitle&Author">
             <p><?=$book->title?></p>
@@ -35,5 +37,7 @@ $books=$bookRepo->find();
 
     <?php
      }
+
+
 ?>
 

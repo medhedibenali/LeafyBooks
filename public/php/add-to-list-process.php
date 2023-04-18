@@ -7,17 +7,6 @@ $_SESSION['user']['username']='amal';/*temporary*/
 $username=$_SESSION['user']['username'];
 $state=$_POST['answer'];
 $ISBN=$_POST['ISBN'];
-$StartingDate=0;
-$FinishDate=0;
-
-if($state=="finishedreading")
-{
-    $FinishDate=date('Y-m-d');
-}
-if($state=="currentlyreading")
-{
-    $StartingDate=date('Y-m-d');
-}
 
 
 
@@ -25,15 +14,40 @@ $path=dirname(__FILE__, 3) . '/public/book-identity';
 
 if(!$ReadActRepository->find(["ISBN"=>$ISBN,"username"=>$username]))
 {
+    $StartingDate=date('Y-m-d');
+    $FinishDate=date('Y-m-d');
     $ReadActRepository->insert(["ISBN"=>$ISBN,"username"=>$username,"status"=>$state,"start_date"=>$StartingDate,"finish_date"=>$FinishDate]);
+    header('location:');
 }
 
 else
 {
-    $ReadActRepository->update(["ISBN"=>$ISBN, "username"=>$username],["status"=>$state,"start_date"=>$StartingDate,"finish_date"=>$FinishDate]);
-    echo "updated successfully";
-}
+    if($state=='finishedreading')
+    {
+        $FinishDate=date('Y-m-d');
+        $ReadActRepository->update(["ISBN"=>$ISBN, "username"=>$username],["status"=>$state,"finish_date"=>$FinishDate]);
 
-//$path= dirname(__FILE__, 3).'/public/book-identity.php';
-//echo $path;
+    }
+
+    else if ($state=="currentlyreading")
+    {
+        $FinishDate=0;
+        $StartingDate=date('Y-m-d');
+        $ReadActRepository->update(["ISBN"=>$ISBN, "username"=>$username],["status"=>$state,"start_date"=>$StartingDate,"finish_date"=>$FinishDate]);
+
+    }
+    else
+    {   $FinishDate=0;
+        $StartingDate=0;
+        $ReadActRepository->update(["ISBN"=>$ISBN, "username"=>$username],["status"=>$state,"start_date"=>$StartingDate,"finish_date"=>$FinishDate]);
+
+    }
+
+}
+$last_page = $_SERVER['HTTP_REFERER'];
+header("Location: $last_page");
+
+
+
+
 
