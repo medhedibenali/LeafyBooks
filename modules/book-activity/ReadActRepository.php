@@ -8,7 +8,7 @@ class ReadActRepository extends Repository
     {
         $tableName = 'readact';
         // status can be 'toread','currentlyreading' or 'finishedreading'
-        $attributes = ['username','ISBN','status','start_date','finish_date'];
+        $attributes = ['username','ISBN','status','library','start_date','finish_date'];
         $ids = ['username','ISBN'];
         parent::__construct($tableName, $attributes, $ids);
 
@@ -17,8 +17,9 @@ class ReadActRepository extends Repository
                     $attributes[0] VARCHAR(20) NOT NULL,
                     $attributes[1] VARCHAR(20) NOT NULL,
                     $attributes[2] VARCHAR(20) NOT NULL,
-                    `$attributes[3]` DATE DEFAULT NULL,
-                    `$attributes[4]` DATE DEFAULT NULL,
+                    $attributes[3] VARCHAR(20) NOT NULL,
+                    $attributes[4] DATE DEFAULT NULL,
+                    $attributes[5] DATE DEFAULT NULL,
                     PRIMARY KEY ($attributes[0], $attributes[1])
                     );";
         $this->db->exec($query);
@@ -30,6 +31,7 @@ class ReadActRepository extends Repository
             "username"=>'Tom',
             "ISBN" => '978-3-16-148410-0',
             "status"=>"toread",
+            "library"=>"Action",
             "start_date"=>"2023-04-18"
         );
 
@@ -37,6 +39,7 @@ class ReadActRepository extends Repository
             "username"=>'Tom',
             "ISBN" => '978-3-16-143240-0',
             "status"=>"currentlyreading",
+            "library"=>"Philosophy",
             "start_date"=>"2023-04-10"
         );
 
@@ -44,6 +47,7 @@ class ReadActRepository extends Repository
             "username"=>'Tom',
             "ISBN" => '978-3-16-154410-0',
             "status"=>"finishedreading",
+            "library"=>"toread",
             "start_date"=>"2023-04-19"
         );
 

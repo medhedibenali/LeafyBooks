@@ -11,7 +11,7 @@ class ConnexionDB
 
             $dbconfig = array(
                 'host'=>'localhost',
-                'dbname'=>'web-project',
+                'dbname'=>'web_project_db',
                 'username'=>'root',
                 'password'=>''
             );
