@@ -178,6 +178,7 @@
 */
 #addtolist::before,#addtolist::after
 {
+    overflow: hidden;
     content: "";
     position: absolute;
     height: 100%;
