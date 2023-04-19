@@ -1,3 +1,5 @@
+@import url(https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+
 img
 {
     max-width: 10cm;
@@ -17,94 +19,46 @@ img
 }
 
 
-/*css for the rating part*/
-.rating
-{
-    position: relative;
-    transform: translate(-50%, -50%);
-    margin-right: 70%;
+
+
+
+.rate {
+    display: inline-block;
+    border: 0;
 }
-.stars input{
+/* make widget invisible */
+.rate > input {
     display: none;
 }
-
-.stars label{
-    float: right; /*make the element float to the right of the container div= .stars*/
-    font-size: 40px;
-    color: lightgrey;
-    margin: 0 5px;
-    text-shadow: 1px 1px #bbb;
+/* make the widget float to the right */
+.rate > label {
+    float: right;
 }
-.stars label:before{
-    content: '★'; /*a star is displayed*/
-}
-/*if a star's input =radio option  is checked , its direct sibling label is colored in gold */
-.stars input:checked ~ label
-{
-    color: gold;
-    text-shadow: 1px 1px #c60;
-}
-/*if a star is not checked but its label is hovered upon , it and its direct label are coloured gold */
-.stars:not(:checked) > label:hover,
-.stars:not(:checked) > label:hover ~ label{
-    color: gold;
+/* the star when it's un-hovered and un-checked */
+.rate > label:before {
+    display: inline-block;
+    font-size: 2rem;
+    padding: .3rem .2rem;
+    margin: 0;
+    cursor: pointer;
+    font-family: FontAwesome;
+    content: "\f005 "; /* full  black star from font awesome */
 }
 
-/*if a star's input =radio  is  checked  its label and its direct label are coloured gold with some text shadow */
-
-.stars input:checked > label:hover,
-.stars input:checked > label:hover ~ label
-{
-    color: gold;
-    text-shadow: 1px 1px goldenrod;
-}
-
-/*css for the result div ; that contains nothing when no stars have been selected yet*/
-.stars .result:before{
+/* Half star when it's not checked or hovered upon  */
+.rate .half:before {
+    content: "\f089 "; /* half star from font awesome  */
     position: absolute;
-    content: "";
-    width: 100%;
-    left: 50%;
-    transform: translateX(-47%);
-    bottom: -30px;
-    font-size: 20px;
-    font-weight: 500;
-    color: gold;
-    font-family: 'Poppins', sans-serif;
-    display: none;
-}
-/* when the star's input= radio is checked the initially hidden resuly div will be visible*/
-.stars input:checked ~ .result:before{
-    display: block;
-}
-/* result will contain "i love it" if the full 5 stars (radios) were selected*/
-.stars #five:checked ~ .result:before{
-    content: "I love it ";
-}
-/* result will contain "i like it" if 4 stars (radios) were selected*/
-
-.stars #four:checked ~ .result:before{
-    content: "I like it ";
-}
-/* result will contain "it's good" if 3 stars (radios) were selected*/
-
-.stars #three:checked ~ .result:before{
-    content: "It's good ";
-}
-/* result will contain "i don't like it" if 2 stars (radios) were selected*/
-
-.stars #two:checked ~ .result:before{
-    content: "I don't like it ";
-}/* result will contain "i like it" if  only 1 star (radios) was selected*/
-
-.stars #one:checked ~ .result:before{
-    content: "I hate it ";
+    padding-right: 0;
 }
 
-iframe
-{
-    border: 1px transparent solid;
-    width: 120%
-}
+/* Click + hover color */
+input:checked ~ label, /* color every label that comes  directly after a checked star*/
+label:hover, label:hover ~ label { color: #73B100;  } /*color every hovered label and every label that comes directly after a hovered labem */
+
+/* Hover highlights */
+input:checked + label:hover, input:checked ~ label:hover, /* highlight selected stars when hovered upon */
+input:checked ~ label:hover ~ label, /*highlight every star directly after a selected star when hovered upon */
+label:hover ~ input:checked ~ label /* highlight hovered star and every selected star that comes after a hovered star (i.e : highlight previously selected stars)*/ { color: #A6E72D;  }
 
 

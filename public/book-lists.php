@@ -9,14 +9,12 @@
     <link rel="stylesheet" href="./css/book_identity.css">
 </head>
 <body>
+<!--zeineb's page-->
 <?php
-
+/*export to another file*/
 require_once dirname(__FILE__, 2) . '/modules/book_identification/BookRepository.php';
 $bookRepo=new BookRepository();
 $books=$bookRepo->find();
-
-
-$direction= dirname(__FILE__, 2) . '/public/book_identity.php';
 
 
  foreach ($books as $book)
@@ -25,7 +23,7 @@ $direction= dirname(__FILE__, 2) . '/public/book_identity.php';
 
 
         <div class="bookImage">
-            <a href="book_identity.php?ISBN=<?=$book->ISBN?>">
+            <a href="../public/php/process-book-identity.php"=<?=$book->ISBN?>">
                 <img src="<?=$book->picture?>">
             </a>
         </div>
