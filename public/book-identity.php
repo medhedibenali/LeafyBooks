@@ -11,7 +11,7 @@ session_start();
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../node_modules/bootswatch/dist/lux/bootstrap.min.css"/>
-    <link rel="stylesheet" href="css/book_identity.css"/>
+    <link rel="stylesheet" href="css/book-identity.css"/>
 
 
     <title>Book identity</title>
@@ -76,16 +76,35 @@ $book=findBook($ISBN);
     require_once("../tmp/rating.php");
     ?>
 
+    <!--rating stats-->
     <form  class="OnLoad" action="../public/php/process-rating-statistics.php?">
         <input type="hidden" name="ISBN" value="<?=$ISBN?>">
     </form>
-    <!--rating stats-->
+
     <?php require_once "../tmp/rating-statistics.php" ?>
 
+
+    <!--similiar books-->
+    <form  class="OnLoad2" action="../public/php/process-similar-books.php">
+        <input type="hidden" name="ISBN" value="<?=$ISBN?>">
+    </form>
+    <h4 class=you-might-also-like>
+        You might also like
+    </h4>
+    <div class="flex-box">
+    <?php
+        require_once dirname(__FILE__, 2) . '/public/similar-books.php';
+    ?>
+    </div>
+
+    <br>
+    <br>
     <!-- reviews-->
     <?php
     require_once dirname(__FILE__, 2) . '/public/php/reviews.php';
     ?>
+
+
 
 
 
