@@ -38,7 +38,7 @@ $book=findBook($ISBN);
         </div>
         <div>
             <div>
-                author: <?=$book->author;?>
+                author: <?=getAuthorPenName($ISBN);?>
             </div>
         </div>
         <div>
@@ -69,7 +69,7 @@ $book=findBook($ISBN);
     <br>
 
     <div class="AboutAuthor">
-
+        <?=getAuthorBio($ISBN)?>
     </div>
 
     <?php
