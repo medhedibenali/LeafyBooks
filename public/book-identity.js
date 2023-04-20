@@ -1,6 +1,8 @@
 list=document.querySelector("#actionOnBook");
 form=document.querySelector("#addToList");
 form2=document.querySelector(".OnLoad");
+form3=document.querySelector(".OnLoad2");
+
     list.addEventListener("change", () => {
             if (!list.value == "") {
                 form.submit();
@@ -21,5 +23,6 @@ form2=document.querySelector(".OnLoad");
 
 window.onload = function(){
     form2.submit();
+    form3.submit();
 }
 
