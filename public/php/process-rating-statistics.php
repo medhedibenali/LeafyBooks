@@ -1,5 +1,7 @@
 <?php
 require_once dirname(__FILE__, 3) . '/modules/book_identification/UserReviewsRepository.php';
+require_once dirname(__FILE__, 3) . '/modules/book_identification/BookRepository.php';
+
 
 function GetPercentage()
 {  $UserReviewsRepository=new UserReviewsRepository();
@@ -29,6 +31,26 @@ function GetPercentage()
     }
 
     return $percentages;
+}
+
+
+function getAverageRating()
+{   $BookRepository=new BookRepository();
+    $ISBN=$_GET['ISBN'];
+    $book=$BookRepository->find(['ISBN'=>$ISBN]);
+    return $book->rating;
+
+
+}
+
+
+function getUserRating($username)
+{
+    $UserReviewsRepository=new UserReviewsRepository();
+    $ISBN=$_GET['ISBN'];
+    $user=$UserReviewsRepository->find(['ISBN'=>trim($ISBN),'username'=>trim($username)]);
+    return $user->rating;
+
 }
 
 ?>

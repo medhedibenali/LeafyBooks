@@ -69,18 +69,28 @@ $book=findBook($ISBN);
     <br>
 
     <div class="AboutAuthor">
+        <h4>
+            About the author
+        </h4>
         <?=getAuthorBio($ISBN)?>
     </div>
 
-    <?php
-    require_once("../tmp/rating.php");
-    ?>
+    <div class="rating-portion"
+        <h5>
+            what do you think?
+        </h5>
+        <!--    Rating Stars-->
+        <?php
+        require_once("../tmp/rating-user-input.php");
+        ?>
+    </div>
+
 
     <!--rating stats-->
+
     <form  class="OnLoad" action="../public/php/process-rating-statistics.php?">
         <input type="hidden" name="ISBN" value="<?=$ISBN?>">
     </form>
-
     <?php require_once "../tmp/rating-statistics.php" ?>
 
 
@@ -99,6 +109,10 @@ $book=findBook($ISBN);
 
     <br>
     <br>
+
+    <h4>
+        Ratings & Reviews
+    </h4>
     <!-- reviews-->
     <?php
     require_once dirname(__FILE__, 2) . '/public/php/reviews.php';
@@ -107,14 +121,12 @@ $book=findBook($ISBN);
 
 
 
-
-<!--rating a book-->
 <!--    I need to add the condition that there's a connected user to post a review!!-->
-<div class="alert alert-warning">
-    <?= 'share your thoughts about this book'?>;
-</div>
 
 <!--    review form-->
+<h4>
+    Write a review
+</h4>
 <textarea name = "review" rows="10" cols="50"></textarea>
 <input type="hidden" name="ISBN" value="<?=$ISBN?>">
 <br>

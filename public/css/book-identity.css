@@ -24,12 +24,19 @@ img
     flex-direction: row;
     justify-content:space-between;
 
+
+}
+.you-might-also-like
+{
+    margin-top: 70%;
 }
 
 .SimilarBook
 {
     margin-left: 10%;
 }
+
+
 
 
 

@@ -1,5 +1,4 @@
 <?php
-//include_once  dirname(__FILE__, 3) .'/modules/isAuthentificated.php';
 /*temporary until @mohamedHedi pushes the login page*/
 $_SESSION['user']['username']='amal';
 include_once dirname(__FILE__, 3) . '/modules/book_identification/BookRepository.php';

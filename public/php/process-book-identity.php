@@ -56,7 +56,7 @@ function getAuthorBio($ISBN)
     $BookRepository=new BookRepository();
     $AuthorRepository=new AuthorRepository();
     $book=$BookRepository->find(["ISBN"=>$ISBN]);
-    $author=$AuthorRepository->find(["id"=>$book->author]);
+    $author=$AuthorRepository->find(["id"=>trim($book->author)]);
     return($author->bio);
 
 
@@ -68,7 +68,7 @@ function getAuthorPenName($ISBN)
     $AuthorRepository=new AuthorRepository();
     $book=$BookRepository->find(["ISBN"=>$ISBN]);
     $id=$book->author;
-    $author=$AuthorRepository->find(["id"=>$id]);
+    $author=$AuthorRepository->find(["id"=>trim($id)]);
     return($author->pen_name);
 
 }
