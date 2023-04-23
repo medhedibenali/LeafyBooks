@@ -1,6 +1,4 @@
-<?php
-require_once dirname(__FILE__,2).'/public/php/reviews.php';
-?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -30,4 +28,6 @@ require_once dirname(__FILE__,2).'/public/php/reviews.php';
     </div>
 </div>
 </body>
+<?php
+?>
 </html>

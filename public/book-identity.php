@@ -18,9 +18,7 @@ session_start();
 </head>
 <body>
 <?php
-require "../public/php/process-book-identity.php";
 $ISBN = htmlspecialchars($_GET['ISBN']);
-$book=findBook($ISBN);
 
 ?>
 <!--   info about the book-->
@@ -28,12 +26,14 @@ $book=findBook($ISBN);
     <div class="alert alert-warning">
         <h3>Book Info</h3>
     </div>
+    <?=require '../public/php/book-info-dump.php'?>
+
         <div>
-            <img src="<?=$book->picture?>"/>
+            <img src="<?=$picture?>"/>
         </div>
         <div>
             <div>
-                title :<?=$book->title;?>
+                title :<?=$title;?>
             </div>
         </div>
         <div>
@@ -43,18 +43,20 @@ $book=findBook($ISBN);
         </div>
         <div>
             <div>
-                Publisher :<?=$book->publisher;?>
+                Publisher :<?=$publisher;?>
             </div>
         </div>
-        <div>
-            User rating: <?=getrating($book->ISBN)[0] .'('.getrating($book->ISBN)[1] .'review(s) )';?>
-        </div>
+    <!--    book average rating-->
 
-        <div>
+    <?php
+        $percentage=($rating)*20;
+       require_once dirname(__FILE__,2).'/tmp/rating-static-percentage.php';
+    ?>
+
             <div>
                 Synopsis :<?=$book->synopsis;?>
             </div>
-        </div>
+
 
     <form id="addToList" action="php/add-to-list-process.php" method="post">
         <select id="actionOnBook" name="answer">
@@ -75,15 +77,6 @@ $book=findBook($ISBN);
         <?=getAuthorBio($ISBN)?>
     </div>
 
-    <div class="rating-portion"
-        <h5>
-            what do you think?
-        </h5>
-        <!--    Rating Stars-->
-        <?php
-        require_once("../tmp/rating-user-input.php");
-        ?>
-    </div>
 
 
     <!--rating stats-->
@@ -107,16 +100,17 @@ $book=findBook($ISBN);
     ?>
     </div>
 
-    <br>
-    <br>
 
+<div class="Ratings-reviews"
     <h4>
         Ratings & Reviews
     </h4>
+    <br>
     <!-- reviews-->
     <?php
     require_once dirname(__FILE__, 2) . '/public/php/reviews.php';
     ?>
+</div>
 
 
 
@@ -124,17 +118,20 @@ $book=findBook($ISBN);
 <!--    I need to add the condition that there's a connected user to post a review!!-->
 
 <!--    review form-->
-<h4>
-    Write a review
-</h4>
-<textarea name = "review" rows="10" cols="50"></textarea>
-<input type="hidden" name="ISBN" value="<?=$ISBN?>">
-<br>
-<button type = "submit" >
-        Submit
-</button >
 
-</form>
+<div class="rating-portion"
+    <h5>
+        what do you think?
+    </h5>
+    <!--    Rating Stars-->
+
+    <?php
+    require_once("../tmp/rating-user-input.php");
+    ?>
+
+
+</div>
+</div>
 </div>
 <script src="book-identity.js"></script>
 </body>

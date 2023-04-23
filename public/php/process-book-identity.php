@@ -28,17 +28,17 @@ function getRating($ISBN)
     $nb=0;
     $UserReviewRepo=new UserReviewsRepository();
     $BookRepository=new BookRepository();
-    $books=$UserReviewRepo->find(["ISBN"=>$ISBN]);
-   foreach ($books as $book)
+    $reviews=$UserReviewRepo->find(["ISBN"=>$ISBN]);
+   foreach ($reviews as $review)
    {
-       $sum+=$book->rating;
+       $sum+=$review->rating;
        $nb++;
    }
 
    $rating= number_format($sum/$nb, 1, '.', '');
 
    $BookRepository->update(["ISBN"=>$ISBN],["rating"=>$rating]);
-   return([$rating,$nb]);
+   return($rating);
 
 }
 

@@ -36,9 +36,15 @@ img
     margin-left: 10%;
 }
 
+.Ratings-reviews
+{
+    margin-top: 10%;
+}
 
-
-
+.body
+{
+    margin-left: 40%;
+}
 
 .rate {
     display: inline-block;

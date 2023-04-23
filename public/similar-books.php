@@ -1,6 +1,5 @@
 
 
-
 <?php
 require  dirname(__FILE__, 2) . '/public/php/process-similar-books.php';
 $nb=0;
