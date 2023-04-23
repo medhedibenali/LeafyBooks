@@ -1,3 +1,4 @@
+/* ------------------------NAV BAR ------------------*/
 .navbar
 {
     background-color: #efddb3;
@@ -30,6 +31,7 @@
 {
     background-color: #422f08;
 }
+/*------------------------------*/
 .d-flex{
     justify-content: center;
     display: flex;

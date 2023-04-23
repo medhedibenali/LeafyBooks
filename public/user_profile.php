@@ -13,9 +13,9 @@ $bookRepo = new BookRepository();
 
 
 $readActRepo = new ReadActRepository();
-$toreadActs = $readActRepo->find(array("username"=>$_GET['username'],'status'=>'toread'));
-$currentreadActs = $readActRepo->find(array("username"=>$_GET['username'],'status'=>'currentlyreading'));
-$finishreadActs = $readActRepo->find(array("username"=>$_GET['username'],'status'=>'finishedreading'));
+$toreadActs = $readActRepo->find(array("username"=>$_GET['username'],'status'=>'to_read'));
+$currentreadActs = $readActRepo->find(array("username"=>$_GET['username'],'status'=>'currently_reading'));
+$finishreadActs = $readActRepo->find(array("username"=>$_GET['username'],'status'=>'finished_reading'));
 
 
 ?>

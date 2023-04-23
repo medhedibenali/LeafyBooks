@@ -12,16 +12,10 @@ class ConnexionDB
         $dbconfig = $config['db']['db1'];
 
 
-
         try {
 
-            $dbconfig = array(
-                'host'=>'localhost',
-                'dbname'=>'web_project_db',
-                'username'=>'root',
-                'password'=>''
-            );
-       self::$_bdd = new PDO("mysql:host=" . $dbconfig['host'] . ";dbname=" . $dbconfig['dbname'] . ";charset=utf8", $dbconfig['username'], $dbconfig['password']);
+
+       self::$_bdd = new PDO("mysql:host=" . $dbconfig['host']  . ";dbname=" . $dbconfig['dbname']  . ";charset=utf8", $dbconfig['username'], $dbconfig['password']);
 
             self::$_bdd = new PDO("mysql:host=" . $dbconfig['host'] . ";dbname=" . $dbconfig['dbname'] . ";charset=utf8", $dbconfig['username'], $dbconfig['password']);
 
