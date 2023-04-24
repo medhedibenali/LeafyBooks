@@ -7,7 +7,7 @@ include_once  dirname(__FILE__, 3) .'/modules/book_identification/UserReviewsRep
 $ISBN=$_POST['ISBN'];
 $review = $_POST['review'];
 $rating = $_POST['rate'];
-$username=$_SESSION['username']; //currently connected user
+$username=$_POST['ConnectedUser']; //currently connected user
 $BookRepo=new BookRepository();
 $BookISBN=($BookRepo->find(["ISBN"=>$ISBN]))->ISBN;
 $UserReviewsRepo=new UserReviewsRepository();

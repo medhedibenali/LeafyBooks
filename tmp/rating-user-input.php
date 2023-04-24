@@ -16,8 +16,11 @@ if(!isset($_SESSION['username']))
 //        Rating Stars
 else
 {
-   ?>
 
+   ?>
+    <h5>
+        what do you think ,<?=$_SESSION['username']?> ?
+    </h5>
 
 <form action="../public/php/add-review-&-rating-process.php" method="post">
     <!--    rating template-->
@@ -45,6 +48,7 @@ else
     <textarea name = "review" rows="10" cols="50"></textarea>
     <br>
     <input type="hidden" value="<?=$ISBN?>" name="ISBN">
+    <input type="hidden" value="<?= $_SESSION['username']?>" name="ConnectedUser">
     <button type = "submit" >Submit
     </button >
 

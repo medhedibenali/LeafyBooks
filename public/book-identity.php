@@ -116,9 +116,7 @@ require '../public/php/book-info-dump.php'
 <!--    review form-->
 
 <div class="rating-portion"
-    <h5>
-        what do you think?
-    </h5>
+
 
 <?php
     require_once("../tmp/rating-user-input.php");
