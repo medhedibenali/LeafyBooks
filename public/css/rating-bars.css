@@ -1,0 +1,69 @@
+.ratings{
+    width: 100%;
+    max-width: 600px;
+    padding: 0 20px;
+    margin-top: -10px;
+}
+
+.number-of-stars{
+    font-size: 18px;
+    font-weight: 700;
+    color: #100000;
+    margin: 20px 0;
+}
+
+.rating-bar{
+    height: 0.5cm;
+    width: 7cm;
+    background: #282828;
+    border-radius: 12px;
+    margin-top: 4%;
+    margin-left: 3%;
+    z-index: 999;
+}
+
+.ratingper{
+    height: 0.5cm;
+    width: 7cm;
+    background: #E87400;
+    border-radius: 12px;
+    position: relative;
+    animation: fillBars 2.5s ;
+} 
+@media{
+    .ratingper-animation
+    {    background: #E87400;
+        animation: fillBars 2.5s;
+    }
+}
+
+
+.ratingper::before{
+    content: attr(per);
+    position: absolute;
+    padding: 4px 6px;
+    text-align: right;
+    background: #f1f1f1;
+    border-radius: 12px;
+    font-size: 12px;
+    top: -35px;
+    right: 0;
+    z-index: 0;
+
+}
+
+@keyframes fillBars{
+    from{
+        width: 0;
+    }
+    to{
+        width: 100%;
+    }
+}
+
+.flex-box
+{
+    display: flex;
+    flex-direction: row;
+
+}

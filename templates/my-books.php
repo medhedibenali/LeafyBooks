@@ -6,7 +6,7 @@ require_once 'header.php'
 <link rel="stylesheet" href="my-books.css">
 <!--this part is for sorting the books either by book title or by start date-->
 <div class="row">
-    <div class="col-md-5">
+    <div class="col-md-3">
 <!--this is the drop-down menu to select the column to order by-->
         <form method="post" action="my-books.php">
             <div class="form-group d-flex align-items-center">
@@ -19,7 +19,7 @@ require_once 'header.php'
 
     </div>
 
-    <div class="col-md-5">
+    <div class="col-md-4">
 <!--this part is for selecting if it is ascending order or descending-->
         <div class="form-group d-flex align-items-center">
             <label>Order by:</label>
@@ -37,7 +37,7 @@ require_once 'header.php'
             </div>
         </div>
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-success">Apply</button>
     </form>
 
 </div>
@@ -45,7 +45,7 @@ require_once 'header.php'
 <!--this is the table that contains the books added by the user-->
 
 <table >
-    <tr>
+    <tr style="font-family: 'DecoType Naskh';font-size: 20px;">
         <th>Cover</th>
         <th>Title</th>
         <th>Author</th>

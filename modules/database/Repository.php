@@ -247,7 +247,6 @@ abstract class Repository
         if ($this->isUnique($input, $options)) {
             return $reponse->fetch(PDO::FETCH_OBJ);
         }
-        echo $request;
         return $reponse->fetchALL(PDO::FETCH_OBJ);
     }
 
@@ -334,7 +333,7 @@ abstract class Repository
             );
         $condition =
             implode(
-                ',',
+                ' and ',
                 array_map(
                     fn ($name) => "$name = :" . $this->aliases[$name],
                     array_keys($conditions)

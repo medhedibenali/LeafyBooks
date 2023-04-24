@@ -8,19 +8,12 @@ class BookRepository extends Repository
     public function __construct()
     {
         $tableName = 'books';
-        $attributes = ['ISBN', 'title', 'author', 'publisher', 'picture','publishing_year','rating'];
+        $attributes = ['ISBN', 'title', 'author', 'publisher', 'picture','publishing_year','rating','genre'];
         $ids = ['ISBN'];
         parent::__construct($tableName, $attributes, $ids);
     }
 
 
-
-
-
-
-
-
-
-
-
 }
+
+

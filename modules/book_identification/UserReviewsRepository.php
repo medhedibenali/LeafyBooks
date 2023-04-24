@@ -15,11 +15,4 @@ class UserReviewsRepository extends Repository
 
 
 
-
-
-
-
-
-
-
 }

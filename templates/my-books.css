@@ -1,3 +1,4 @@
+
 table
 {
     display:flex;
@@ -11,6 +12,10 @@ table
     margin-top: 5%;
     display: flex;
     justify-content: center;
+
+}
+.form-check-input:checked {
+    background-color: #106b10;
 }
 .form-group
 {
@@ -25,7 +30,48 @@ table
 {
     margin-left: 5%;
 }
-.btn-primary
+.btn-success
 {
     width: 5%;
+}
+
+/*FIXING THE HEIGHT/WIDTH OF EACH COLUMN*/
+/*  width for each table column (table header & table data) 1,2... and used text-align to center */
+th:nth-child(1),
+td:nth-child(1) {
+    width: 10rem;
+}
+
+th:nth-child(2),
+td:nth-child(2) {
+    width: 10rem;
+    text-align: center;
+}
+
+th:nth-child(3),
+td:nth-child(3) {
+    width: 10rem;
+    text-align: center;
+}
+
+th:nth-child(4),
+td:nth-child(4) {
+    width: 10rem;
+    text-align: center;
+}
+
+th:nth-child(5),
+td:nth-child(5) {
+    width: 10rem;
+    text-align: center;
+}
+
+th:nth-child(6),
+td:nth-child(6) {
+    width: 10rem;
+    text-align: center;
+}
+table img {
+    width: 100%;
+    height: 100%;
 }

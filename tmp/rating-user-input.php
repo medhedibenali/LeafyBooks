@@ -1,16 +1,27 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
+<?php
+require_once "../public/book-identity.php";
+
+?>
+
+<?php
+if(!isset($_SESSION['username']))
+{
+?>
+    <div class="no-user-error">
+        Please <a href="../sign-in.php">login</a> or <a href="../sign-up.php">signup</a> to post review
+    </div>
+<?php
+}
+
+//        Rating Stars
+else
+{
+   ?>
+
+
 <form action="../public/php/add-review-&-rating-process.php" method="post">
     <!--    rating template-->
-    <fieldset class="rate">
+    <fieldset class="rate" >
         <input type="radio" id="rating10"name="rate" value="5" /><label for="rating10" title="5 stars"></label>
         <input type="radio" id="rating9" name="rate" value="4.5" /><label class="half" for="rating9" title="4 1/2 stars"></label>
         <input type="radio" id="rating8" name="rate" value="4" /><label for="rating8" title="4 stars"></label>
@@ -27,6 +38,18 @@
     <br>
     <br>
     <br>
+    <h4>
+        write a review!
+    </h4>
 
-</body>
-</html>
+    <textarea name = "review" rows="10" cols="50"></textarea>
+    <br>
+    <input type="hidden" value="<?=$ISBN?>" name="ISBN">
+    <button type = "submit" >Submit
+    </button >
+
+</form>
+
+<?php
+}
+?>

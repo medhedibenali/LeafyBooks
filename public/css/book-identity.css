@@ -18,9 +18,41 @@ img
     border-radius: 50%;
 }
 
+.flex-box
+{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
 
 
+}
+.you-might-also-like
+{
+    margin-top: 70%;
+}
 
+.SimilarBook
+{
+    margin-left: 10%;
+}
+
+.Ratings-reviews
+{
+    margin-top: 10%;
+}
+
+.body
+{
+    margin-left: 40%;
+}
+.no-user-error
+{
+    margin-top:1%;
+    margin-bottom: 4%;
+    border: saddlebrown 1px solid;
+    width:7cm;
+    text-align: center;
+}
 
 .rate {
     display: inline-block;
