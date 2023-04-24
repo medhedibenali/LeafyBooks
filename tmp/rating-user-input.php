@@ -8,7 +8,8 @@ if(!isset($_SESSION['username']))
 {
 ?>
     <div class="no-user-error">
-        Please <a href="../sign-in.php">login</a> or <a href="../sign-up.php">signup</a> to post review
+        Please <a href="<?= dirname(__FILE__,2).'/public/sign-in.php'?>">login</a>
+        or <a href="<?= dirname(__FILE__,2).'/public/sign-up.php'?>">signup</a> to post review
     </div>
 <?php
 }
