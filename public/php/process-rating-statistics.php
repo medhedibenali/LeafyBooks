@@ -1,8 +1,13 @@
 <?php
 require_once dirname(__FILE__, 3) . '/modules/book_identification/UserReviewsRepository.php';
 require_once dirname(__FILE__, 3) . '/modules/book_identification/BookRepository.php';
+require_once dirname(__FILE__, 3) . '/public/book-identity.php';
 
 
+/***
+ * returns the percentage of ratings for every mark
+ * @return array
+ */
 function GetPercentage()
 {  $UserReviewsRepository=new UserReviewsRepository();
     $ISBN=$_GET['ISBN'];
@@ -23,10 +28,9 @@ function GetPercentage()
     }
     else
     {
-        for ($i = 1; $i < 6; $i++)
+        for ($i = 0; $i < 6; $i++)
         {
-            global $$var;
-            $var = '$per' . $i;
+
             $percentages[$i] = 0;
         }
 
@@ -36,14 +40,7 @@ function GetPercentage()
 }
 
 
-function getAverageRating()
-{   $BookRepository=new BookRepository();
-    $ISBN=$_GET['ISBN'];
-    $book=$BookRepository->find(['ISBN'=>$ISBN]);
-    return $book->rating;
 
-
-}
 
 
 function getUserRating($username)

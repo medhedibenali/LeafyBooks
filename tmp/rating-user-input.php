@@ -1,6 +1,24 @@
 <?php
 require_once "../public/book-identity.php";
+
 ?>
+
+<?php
+if(!isset($_SESSION['username']))
+{
+?>
+    <div class="no-user-error">
+        Please <a href="../sign-in.php">login</a> or <a href="../sign-up.php">signup</a> to post review
+    </div>
+<?php
+}
+
+//        Rating Stars
+else
+{
+   ?>
+
+
 <form action="../public/php/add-review-&-rating-process.php" method="post">
     <!--    rating template-->
     <fieldset class="rate" >
@@ -32,3 +50,6 @@ require_once "../public/book-identity.php";
 
 </form>
 
+<?php
+}
+?>

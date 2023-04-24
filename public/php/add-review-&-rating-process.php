@@ -1,16 +1,18 @@
 <?php
+
 /*temporary until @mohamedHedi pushes the login page*/
-$_SESSION['user']['username']='hdida';
 include_once dirname(__FILE__, 3) . '/modules/book_identification/BookRepository.php';
 include_once dirname(__FILE__, 3) . '/modules/book_identification/BookRepository.php';
 include_once  dirname(__FILE__, 3) .'/modules/book_identification/UserReviewsRepository.php';
 $ISBN=$_POST['ISBN'];
 $review = $_POST['review'];
 $rating = $_POST['rate'];
-$username=$_SESSION['user']['username']; //currently connected user
+$username=$_SESSION['username']; //currently connected user
 $BookRepo=new BookRepository();
 $BookISBN=($BookRepo->find(["ISBN"=>$ISBN]))->ISBN;
 $UserReviewsRepo=new UserReviewsRepository();
+
+
 
 
 if(!($UserReviewsRepo->find(["ISBN"=>$ISBN,"username"=>$username])))

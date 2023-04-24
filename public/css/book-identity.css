@@ -45,6 +45,14 @@ img
 {
     margin-left: 40%;
 }
+.no-user-error
+{
+    margin-top:1%;
+    margin-bottom: 4%;
+    border: saddlebrown 1px solid;
+    width:7cm;
+    text-align: center;
+}
 
 .rate {
     display: inline-block;

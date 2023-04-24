@@ -1,6 +1,8 @@
 <?php
 //we need this for the reviews later
 session_start();
+//$_SESSION['username']='hdida';
+
 ?>
 
 <!doctype html>
@@ -19,14 +21,13 @@ session_start();
 <body>
 <?php
 $ISBN = htmlspecialchars($_GET['ISBN']);
-
+require '../public/php/book-info-dump.php'
 ?>
 <!--   info about the book-->
 <div class="container">
     <div class="alert alert-warning">
         <h3>Book Info</h3>
     </div>
-    <?=require '../public/php/book-info-dump.php'?>
 
         <div>
             <img src="<?=$picture?>"/>
@@ -38,7 +39,7 @@ $ISBN = htmlspecialchars($_GET['ISBN']);
         </div>
         <div>
             <div>
-                author: <?=getAuthorPenName($ISBN);?>
+                author: <?=$author;?>
             </div>
         </div>
         <div>
@@ -46,45 +47,40 @@ $ISBN = htmlspecialchars($_GET['ISBN']);
                 Publisher :<?=$publisher;?>
             </div>
         </div>
-    <!--    book average rating-->
 
+    <!--    book average rating-->
     <?php
         $percentage=($rating)*20;
        require_once dirname(__FILE__,2).'/tmp/rating-static-percentage.php';
     ?>
-
+            <div>
+                (<?=$NbRatings?> )
+            </div>
             <div>
                 Synopsis :<?=$book->synopsis;?>
             </div>
 
 
-    <form id="addToList" action="php/add-to-list-process.php" method="post">
-        <select id="actionOnBook" name="answer">
-            <option value="default"></option>
-            <option value="currentlyreading">currently reading</option>
-            <option value="finishedreading">read</option>
-            <option value="toread">want to read</option>
-        </select>
-        <input type="hidden" name="ISBN" value="<?=$ISBN?>">
-    </form>
-    <br>
-    <br>
+    <?php
+        require_once '../public/add-to-list.php';
+    ?>
 
     <div class="AboutAuthor">
         <h4>
             About the author
         </h4>
-        <?=getAuthorBio($ISBN)?>
+        <?=$bio?>
     </div>
 
 
 
     <!--rating stats-->
 
-    <form  class="OnLoad" action="../public/php/process-rating-statistics.php?">
-        <input type="hidden" name="ISBN" value="<?=$ISBN?>">
-    </form>
+<!--    <form  class="OnLoad" action="../public/php/process-rating-statistics.php?">-->
+<!--        <input type="hidden" name="ISBN" value="--><?php //=$ISBN?><!--">-->
+<!--    </form>-->
     <?php require_once "../tmp/rating-statistics.php" ?>
+
 
 
     <!--similiar books-->
@@ -123,13 +119,10 @@ $ISBN = htmlspecialchars($_GET['ISBN']);
     <h5>
         what do you think?
     </h5>
-    <!--    Rating Stars-->
 
-    <?php
+<?php
     require_once("../tmp/rating-user-input.php");
-    ?>
-
-
+?>
 </div>
 </div>
 </div>
