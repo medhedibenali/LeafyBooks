@@ -44,17 +44,15 @@ require_once 'header.php'
 
 <!--this is the table that contains the books added by the user-->
 
-<table >
-    <tr style="font-family: 'DecoType Naskh';font-size: 20px;">
-        <th>Cover</th>
-        <th>Title</th>
-        <th>Author</th>
-        <th>Rating</th>
-        <th>Status</th>
-        <th>Starting Date</th>
-    </tr>
+<div class="grid" >
+    <div class="text">Cover</div>
+    <div class="text">Title</div>
+    <div class="text">Author</div>
+    <div class="text">Rating</div>
+    <div class="text">Status</div>
+    <div class="text">Starting Date</div>
 
-<?php
+    <?php
     $readActRepository = new ReadActRepository();
     $bookRepository = new BookRepository();
     //change user1 with the user connecting
@@ -62,22 +60,20 @@ require_once 'header.php'
         $sort = $_POST["sort"];
         $orderBy = $_POST["exampleRadios"];
 
-    $list = $readActRepository->find(['username' => 'user1'],['order_by'=>[$sort=>$orderBy]]);
+        $list = $readActRepository->find(['username' => 'user1'], ['order_by' => [$sort => $orderBy]]);
 
-    foreach ($list as $element) {
-        $book = $bookRepository->find(['ISBN' => $element->ISBN]);
-        echo "<tr>";
-        echo "<td><img src='" . $book->picture . "' alt='Book Cover'></td>";
-        echo "<td>" . $book->title . "</td>";
-        echo "<td>" . $book->author . "</td>";
-        echo "<td>" . $book->rating . "</td>";
-        echo "<td>" . $element->status . "</td>";
-        echo "<td>" . $element->start_date . "</td>";
-        echo "</tr>";
-    }
+        foreach ($list as $element) {
+            $book = $bookRepository->find(['ISBN' => $element->ISBN]);
+            echo "<div><img src='" . $book->picture . "' alt='Book Cover'></div>";
+            echo "<div>" . $book->title . "</div>";
+            echo "<div>" . $book->author . "</div>";
+            echo "<div>" . $book->rating . "</div>";
+            echo "<div>" . $element->status . "</div>";
+            echo "<div>" . $element->start_date . "</div>";
+        }
     }
     ?>
-</table>
+</div>
 
 
 
