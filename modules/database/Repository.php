@@ -233,6 +233,7 @@ abstract class Repository
         }
         $conditions = $this->whereClause($input);
         $orderBy = $this->orderByClause($options);
+
         $limit = $this->limitClause($options);
         $request =
             "SELECT *
@@ -246,6 +247,7 @@ abstract class Repository
         if ($this->isUnique($input, $options)) {
             return $reponse->fetch(PDO::FETCH_OBJ);
         }
+        echo $request;
         return $reponse->fetchALL(PDO::FETCH_OBJ);
     }
 

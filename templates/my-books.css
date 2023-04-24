@@ -1,8 +1,31 @@
-.table
+table
 {
     display:flex;
     justify-content: center;
     align-items: center;
     margin-top: 5%;
 
+}
+.row
+{
+    margin-top: 5%;
+    display: flex;
+    justify-content: center;
+}
+.form-group
+{
+    width: 70%;
+}
+#sort
+{
+    margin-right: 5%;
+}
+
+.form-check
+{
+    margin-left: 5%;
+}
+.btn-primary
+{
+    width: 5%;
 }

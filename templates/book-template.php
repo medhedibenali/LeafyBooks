@@ -2,6 +2,10 @@
 require_once 'header.php'
 ?>
 
+
+<link rel="stylesheet" href="css/book-template.css">
+
+
 <div class="container">
   <!--BOOK COVER & BUTTON TO ADD  -->
 <div class="ImagePos">
