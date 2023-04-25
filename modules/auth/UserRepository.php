@@ -6,7 +6,7 @@ class UserRepository extends Repository
     public function __construct()
     {
         $tableName = 'users';
-        $attributes = ['username', 'password', 'first_name', 'last_name', 'birthday','bio','joinDate','location'];
+        $attributes = ['username', 'password', 'first_name', 'last_name', 'birthday','bio','joinDate','location','picture'];
         $ids = ['username'];
         parent::__construct($tableName, $attributes, $ids);
     }
