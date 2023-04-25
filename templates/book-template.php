@@ -2,8 +2,7 @@
 require_once 'header.php'
 ?>
 
-
-<link rel="stylesheet" href="css/book-template.css">
+<link rel="stylesheet" href="../public/css/book-template.css">
 
 
 <div class="container">
@@ -45,9 +44,9 @@ require_once 'header.php'
 
   <!--AUTHOR INFO -->
   <div class="author">
-    <img >
+
     <h5 style="font-weight: bold"> About the author</h5>
-    <img id="authorpic" src="pictures/authorpic.jpg"> Harlan Coben
+    <img id="authorpic" src="../public/pictures/authorpic.jpg"> Harlan Coben
     <br><br>
     Harlan Coben is a #1 New York Times bestselling author and one of the world's leading storytellers. His suspense novels are published in forty-five languages and have been number one bestsellers in more than a dozen countries with seventy-five million books in print worldwide.
 
@@ -69,7 +68,7 @@ require_once 'header.php'
   <div>
 
     <h2 style="font-family:'DecoType Naskh';">Ratings & Reviews</h2>
-    <img src="pictures/catuser.jpg" id="userpic">
+    <img src="../public/pictures/catuser.jpg" id="userpic">
     <br>
     <p id="question">
       What do you think ?

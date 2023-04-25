@@ -56,9 +56,8 @@ require_once 'header.php'
     $readActRepository = new ReadActRepository();
     $bookRepository = new BookRepository();
     //change user1 with the user connecting
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $sort = $_POST["sort"];
-        $orderBy = $_POST["exampleRadios"];
+        $sort = $_POST["sort"] ?? 'start_date';
+        $orderBy = $_POST["exampleRadios"] ?? 'DESC';
 
         $list = $readActRepository->find(['username' => 'user1'], ['order_by' => [$sort => $orderBy]]);
 
@@ -70,7 +69,6 @@ require_once 'header.php'
             echo "<div>" . $book->rating . "</div>";
             echo "<div>" . $element->status . "</div>";
             echo "<div>" . $element->start_date . "</div>";
-        }
     }
     ?>
 </div>

@@ -31,10 +31,9 @@ $books=$bookRepo->find();
                 <img src="<?=$book->picture?>">
             </a>
 
-
         </div>
         <div class="bookTitle&Author">
-            <p><?=$book->title?></p>
+            <p><?= $book->title ?></p>
             <p>by <?=getAuthorPenName($book->ISBN)?></p>
         </div>
 
