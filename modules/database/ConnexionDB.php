@@ -4,6 +4,7 @@ require_once dirname(__FILE__, 3) . '/config/config.php';
 class ConnexionDB
 {
     private static $_bdd = null;
+
     private function __construct()
     {
         global $config;

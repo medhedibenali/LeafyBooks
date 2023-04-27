@@ -5,6 +5,7 @@ $_SESSION['username']='hdida';
 require_once '../templates/header.php';
 ?>
 <link rel="stylesheet" href="css/book-template.css">
+<link rel="stylesheet" href="css/static-rating.css"/>
 <body>
 
 <?php

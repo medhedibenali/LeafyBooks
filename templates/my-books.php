@@ -3,6 +3,7 @@ require_once '../modules/book-activity/ReadActRepository.php';
 require_once '../modules/book_identification/BookRepository.php';
 require_once 'header.php'
 ?>
+<title>hi</title>
 <link rel="stylesheet" href="my-books.css">
 <!--this part is for sorting the books either by book title or by start date-->
 <div class="row">
