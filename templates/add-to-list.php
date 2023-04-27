@@ -9,7 +9,7 @@ if (!isset($_SESSION['username'])) {
 } //        Rating Stars
 else {
     ?>
-    <form id="addToList" action="php/AddToListAction.php" method="post">
+    <form id="addToList" action="../public/php/AddToListAction.php" method="post">
         <select id="actionOnBook" name="answer">
             <option value="default"></option>
             <option value="currently_reading">currently reading</option>

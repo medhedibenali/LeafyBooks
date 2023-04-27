@@ -48,7 +48,7 @@ require '../public/php/BookInfoDump.php'
         synopsis :<?= $book->synopsis ?>
     </div>
     <?php
-    require_once '../public/add-to-list.php';
+    require_once '../templates/add-to-list.php';
     ?>
     <div class="AboutAuthor">
         <h4>
