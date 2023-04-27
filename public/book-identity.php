@@ -16,10 +16,12 @@ require '../public/php/book-info-dump.php'
     <!--BOOK COVER & BUTTON TO ADD  -->
         <div class="ImagePos">
             <img id="cover" src="<?=$picture?>"/>
-            <button id="addtolist">Add to list</button>
-            <?php
-            require_once '../public/add-to-list.php';
-            ?>
+            <div >
+                <?php
+                require_once '../public/add-to-list.php';
+                ?>
+            </div>
+
         </div>
     <!--INFO ABOUT THE BOOK   -->
         <div class="box1">
@@ -90,13 +92,12 @@ require '../public/php/book-info-dump.php'
     ?>
     </div>
 
-
-
      <!--REVIEWS STATS  -->
 
-<div class="stats">
-    <br>
+<div >
+
             HELLO
+    <br>
     <?php
     require_once dirname(__FILE__, 2) . '/public/php/reviews.php';
     ?>
