@@ -30,4 +30,3 @@ if (!$readActRepository->find(["isbn" => $isbn, "username" => $username])) {
 }
 $last_page = $_SERVER['HTTP_REFERER'];
 header("Location: $last_page");
-

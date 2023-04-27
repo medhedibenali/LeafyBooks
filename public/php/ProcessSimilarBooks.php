@@ -10,5 +10,3 @@ function getSimilarBooks()
     $books = $bookRepository->find(["genre" => trim($genre)]);
     return $books;
 }
-
-

@@ -16,18 +16,3 @@ if (!($userReviewsRepo->find(["isbn" => $isbn, "username" => $username]))) {
     $userReviewsRepo->update(["isbn" => $isbn, "username" => $username], ["review" => $review, "rating" => $rating]);
 }
 header("Location: " . $_SERVER['HTTP_REFERER']);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

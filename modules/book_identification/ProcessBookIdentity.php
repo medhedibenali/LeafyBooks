@@ -14,7 +14,6 @@ function findBook($isbn)
     $book = $bookRepo->find(["isbn" => $isbn]);
     return $book;
 }
-
 /***
  * @param $isbn
  * get all review rows for a specific book
@@ -25,7 +24,6 @@ function getReviews($isbn)
     $userReviewRepo = new UserReviewsRepository();
     return ($userReviewRepo->find(["isbn" => $isbn]));
 }
-
 /***
  * @param $isbn
  * this method calculates the average rating of a book and UPDATES it in the database
@@ -50,7 +48,6 @@ function getRating($isbn)
     $bookRepository->update(["isbn" => $isbn], ["rating" => $rating]);
     return ([$rating, $nb]);
 }
-
 /***
  * @param $username
  * function that returns the picrure of a given user's username
@@ -62,7 +59,6 @@ function getUserPicture($username)
     $user = $userRepo->find(["username" => $username]);
     return ($user->picture);
 }
-
 /***
  * @param $isbn
  * get the bio of a book's author

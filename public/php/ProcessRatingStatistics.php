@@ -40,9 +40,5 @@ function getUserRating($username)
     $isbn = $_GET['isbn'];
     $user = $UserReviewsRepository->find(['isbn' => trim($isbn), 'username' => trim($username)]);
     return $user->rating;
-
 }
-
 ?>
-
-

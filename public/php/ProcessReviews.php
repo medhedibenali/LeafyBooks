@@ -19,5 +19,3 @@ foreach (getReviews($isbn) as $reviewLine) {
     <?php
 }
 ?>
-
-
