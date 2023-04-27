@@ -23,18 +23,3 @@ class AuthorRepository extends Repository
 }
 
 
-/*sql code to create table
-CREATE TABLE `authors` (
-  `id` varchar(255) NOT NULL,
-  `pen_name` varchar(255) NOT NULL,
-  `first_name` varchar(255) NOT NULL,
-  `last_name` varchar(255) NOT NULL,
-  `birthday` date NOT NULL,
-  `deathday` date NOT NULL,
-  `bio` mediumtext NOT NULL,
-  `nationality` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `picture` mediumtext NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci
-*/

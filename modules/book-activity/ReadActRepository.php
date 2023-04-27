@@ -8,8 +8,8 @@ class ReadActRepository extends Repository
     {
         $tableName = 'readact';
         // status can be 'toread','currentlyreading' or 'finishedreading'
-        $attributes = ['username','ISBN','status','start_date','finish_date'];
-        $ids = ['username','ISBN'];
+        $attributes = ['username','isbn','status','start_date','finish_date'];
+        $ids = ['username','isbn'];
         parent::__construct($tableName, $attributes, $ids);
     }
 }

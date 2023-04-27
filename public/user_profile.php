@@ -76,7 +76,7 @@ $finishreadActs = $readActRepo->find(array("username"=>$_GET['username'],'status
         </thead>
         <tbody>
         <?php foreach($toreadActs as $toreadAct){
-                $book = $bookRepo->find(array("ISBN"=>$toreadAct->ISBN))
+                $book = $bookRepo->find(array("isbn"=>$toreadAct->isbn))
             ?>
             <tr>
                 <td><?= ++$i ?></td>
@@ -113,7 +113,7 @@ $finishreadActs = $readActRepo->find(array("username"=>$_GET['username'],'status
         </thead>
         <tbody>
         <?php foreach($currentreadActs as $currentreadAct){
-            $book = $bookRepo->find(array("ISBN"=>$currentreadAct->ISBN))
+            $book = $bookRepo->find(array("isbn"=>$currentreadAct->isbn))
             ?>
             <tr>
                 <td><?= ++$i ?></td>
@@ -153,7 +153,7 @@ $finishreadActs = $readActRepo->find(array("username"=>$_GET['username'],'status
         </thead>
         <tbody>
         <?php foreach($finishreadActs as $finishreadAct){
-            $book = $bookRepo->find(array("ISBN"=>$finishreadAct->ISBN))
+            $book = $bookRepo->find(array("isbn"=>$finishreadAct->isbn))
             ?>
             <tr>
                 <td><?= ++$i ?></td>

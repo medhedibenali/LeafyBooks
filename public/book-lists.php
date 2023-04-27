@@ -13,21 +13,16 @@
 <?php
 /*export to another file*/
 require_once dirname(__FILE__, 2) . '/modules/book_identification/BookRepository.php';
-require_once"../public/php/process-book-identity.php";
-
-
+require_once "../modules/book_identification/process-book-identity.php";
 $bookRepo=new BookRepository();
 $books=$bookRepo->find();
-
-
-
  foreach ($books as $book)
      {
          ?>
 
 
         <div class="bookImage">
-            <a href="book-identity.php?ISBN=<?=$book->ISBN?>">
+            <a href="book-identity.php?isbn=<?=$book->isbn?>">
                 <img src="<?=$book->picture?>">
             </a>
 
@@ -35,7 +30,7 @@ $books=$bookRepo->find();
         </div>
         <div class="bookTitle&Author">
             <p><?=$book->title?></p>
-            <p>by <?=getAuthorPenName($book->ISBN)?></p>
+            <p>by <?=getAuthorPenName($book->isbn)?></p>
         </div>
 
     <?php

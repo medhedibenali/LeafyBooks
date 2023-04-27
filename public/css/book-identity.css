@@ -1,59 +1,43 @@
 @import url(https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
-
-img
-{
+img {
     max-width: 10cm;
     max-height: 10cm;
 }
-.result
-{
-    padding-left:10cm;
+
+.result {
+    padding-left: 10cm;
 }
 
-.pdp
-{
+.pdp {
     max-height: 3cm;
     max-width: 3cm;
     border: 1px solid transparent;
     border-radius: 50%;
 }
-
-.flex-box
-{
+.flex-box {
     display: flex;
     flex-direction: row;
-    justify-content:space-between;
-
-
+    justify-content: space-between;
 }
-.you-might-also-like
-{
-    margin-top: 70%;
+.you-might-also-like {
+    margin-top: 40%;
 }
-
-.SimilarBook
-{
+.SimilarBook {
     margin-left: 10%;
 }
-
-.Ratings-reviews
-{
+.Ratings-reviews {
     margin-top: 10%;
 }
-
-.body
-{
+.body {
     margin-left: 40%;
 }
-.no-user-error
-{
-    margin-top:1%;
+.no-user-error {
+    margin-top: 1%;
     margin-bottom: 4%;
     border: saddlebrown 1px solid;
-    width:7cm;
+    width: 7cm;
     text-align: center;
 }
-
 .rate {
     display: inline-block;
     border: 0;
@@ -76,21 +60,24 @@ img
     font-family: FontAwesome;
     content: "\f005 "; /* full  black star from font awesome */
 }
-
 /* Half star when it's not checked or hovered upon  */
 .rate .half:before {
     content: "\f089 "; /* half star from font awesome  */
     position: absolute;
     padding-right: 0;
 }
-
 /* Click + hover color */
 input:checked ~ label, /* color every label that comes  directly after a checked star*/
-label:hover, label:hover ~ label { color: #73B100;  } /*color every hovered label and every label that comes directly after a hovered labem */
-
+label:hover, label:hover ~ label {
+    color: #73B100;
+}
+/*color every hovered label and every label that comes directly after a hovered labem */
 /* Hover highlights */
 input:checked + label:hover, input:checked ~ label:hover, /* highlight selected stars when hovered upon */
 input:checked ~ label:hover ~ label, /*highlight every star directly after a selected star when hovered upon */
-label:hover ~ input:checked ~ label /* highlight hovered star and every selected star that comes after a hovered star (i.e : highlight previously selected stars)*/ { color: #A6E72D;  }
+label:hover ~ input:checked ~ label /* highlight hovered star and every selected star that comes after a hovered star (i.e : highlight previously selected stars)*/
+{
+    color: #A6E72D;
+}
 
 

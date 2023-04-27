@@ -1,5 +1,5 @@
 <?php
-foreach (getReviews($ISBN) as $reviewLine)
+foreach (getReviews($isbn) as $reviewLine)
 {   $percentage=($reviewLine->rating)*20;
     ?>
     <img class="pdp" src="<?=getUserPicture($reviewLine->username)?>" alt="userPicture"/>
@@ -12,7 +12,7 @@ foreach (getReviews($ISBN) as $reviewLine)
     </div>
     <div>
         <?php
-        require dirname(__FILE__,3)."/tmp/rating-static-percentage.php";
+        require dirname(__FILE__, 3) . "/templates/rating-static-percentage.php";
         ?>
     </div>
 <br>
