@@ -12,7 +12,7 @@ foreach ($books as $book) {
     if ($similarisbn != $isbn) {
         ?>
         <div class="SimilarBook">
-            <a href="book-identity.php?isbn=<?= $similarisbn ?>">
+            <a href="book-page.php?isbn=<?= $similarisbn ?>">
                 <img src="<?= $book->picture ?>">
             </a>
         </div>

@@ -22,7 +22,7 @@ $books = $bookRepo->find();
 foreach ($books as $book) {
     ?>
     <div class="bookImage">
-        <a href="book-identity.php?isbn=<?= $book->isbn ?>">
+        <a href="book-page.php?isbn=<?= $book->isbn ?>">
             <img src="<?= $book->picture ?>">
         </a>
 

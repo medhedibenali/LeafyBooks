@@ -1,5 +1,5 @@
 <?php
-require_once '../public/book-identity.php';
+require_once '../public/book-page.php';
 if (!isset($_SESSION['username'])) {
     ?>
     <div class="no-user-error">
