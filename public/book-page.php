@@ -4,7 +4,7 @@ session_start();
 <!doctype html>
 <html lang="en">
 <?php
-require_once "/"
+require_once "../templates/header.php";
 ?>
 <body>
 <?php
