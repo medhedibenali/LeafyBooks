@@ -5,10 +5,10 @@
 require dirname(__FILE__, 3) . '/modules/book_identification/ProcessBookIdentity.php';
 require_once dirname(__FILE__, 3) . '/public/book-page.php';
 $book = findBook($isbn);
-$authorRepo=new AuthorRepository();
+$authorRepo = new AuthorRepository();
 $picture = $book->picture;
 $title = $book->title;
-$author= ($authorRepo->find(['id'=>trim($book->author)]))->pen_name ;
+$author = ($authorRepo->find(['id' => trim($book->author)]))->pen_name;
 $bio = getAuthorBio($isbn);
 $publisher = $book->publisher;
 if (getRating($isbn) !== null) {

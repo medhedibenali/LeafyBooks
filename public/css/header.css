@@ -1,3 +1,4 @@
+
 .navbar
 {
     background-color: #efddb3;
@@ -6,27 +7,33 @@
 {
     font-family: "Script MT Bold";
 }
-.nav-item:not(:last-child) .nav-link:hover
-{
+
+
+.nav-item:not(:last-child) .nav-link:hover {
+
     background-color: #422f08;
     color: whitesmoke;
-
 }
-.fa-magnifying-glass
-{
+
+.fa-magnifying-glass {
+
     color: #b4b4b4;
     align-self: center;
     transform: translateX(-180%);
 }
-.profilePic
-{
+
+
+
+.profilePic {
+
     border-radius: 50%;
     width: 12%;
     height: 15%;
     object-fit: cover;
     margin-left: 80%;
 }
-.profilePic:hover
-{
+
+.profilePic:hover {
+
     background-color: #422f08;
 }

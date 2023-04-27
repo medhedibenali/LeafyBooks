@@ -3,17 +3,16 @@ session_start();
 ?>
 <!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="../node_modules/bootswatch/dist/lux/bootstrap.min.css"/>
-    <link rel="stylesheet" href="css/static-rating.css"/>
-    <link rel="stylesheet" href="css/book-template.css"/>
 
-    <title>Book identity</title>
-</head>
+<?php
+require_once "../templates/header.php";
+?>
+<link rel="stylesheet" href="node_modules/bootswatch/dist/lux/bootstrap.min.css">
+<link rel="stylesheet" href="public/css/header.css">
+<link rel="stylesheet" href="css/book-identity.css">
+<link rel="stylesheet" href="css/static-rating.css">
+<title> book-page</title>
+
 <body>
 <?php
 $isbn = htmlspecialchars($_GET['isbn']);
