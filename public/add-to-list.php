@@ -3,7 +3,7 @@ require_once '../public/book-identity.php';
 if (!isset($_SESSION['username'])) {
     ?>
     <div class="no-user-error">
-        Please <a href="../sign-in.php">login</a> or <a href="../sign-up.php">signup</a> to post review
+        Please <a href="../public/sign-in.php">login</a> or <a href="../public/sign-in.php">signup</a> to post review
     </div>
     <?php
 } //        Rating Stars

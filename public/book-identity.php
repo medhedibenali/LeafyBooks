@@ -56,7 +56,7 @@ require '../public/php/BookInfoDump.php'
         </h4>
         <?= $bio ?>
     </div>
-<!--    rating statistics-->
+    <!--    rating statistics-->
     <?php require_once "../templates/rating-statistics.php" ?>
     <!--similiar books-->
     <form class="OnLoad2" action="php/ProcessSimilarBooks.php">
@@ -81,10 +81,10 @@ require '../public/php/BookInfoDump.php'
     ?>
 </div>
 <!--    review form-->
-<div class="rating-portion"
-<?php
-require_once("../templates/rating-user-input.php");
-?>
+<div class="rating-portion">
+    <?php
+    require_once("../templates/rating-user-input.php");
+    ?>
 </div>
 </div>
 </div>

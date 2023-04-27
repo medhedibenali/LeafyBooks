@@ -5,8 +5,7 @@ require_once "../public/book-identity.php";
 if (!isset($_SESSION['username'])) {
     ?>
     <div class="no-user-error">
-        Please <a href="<?= dirname(__FILE__, 2) . '/public/sign-in.php' ?>">login</a>
-        or <a href="<?= dirname(__FILE__, 2) . '/public/sign-up.php' ?>">signup</a> to post review
+        Please <a href="../public/sign-in.php">login</a> or <a href="../public/sign-in.php">signup</a> to post review
     </div>
     <?php
 } //        Rating Stars
@@ -42,11 +41,11 @@ else {
         </h4>
         <textarea name="review" rows="10" cols="50"></textarea>
         <br>
-        <input type="hidden" value="<?=$ISBN?>" name="ISBN">
+        <input type="hidden" value="<?= $isbn ?>" name="isbn">
         <input type="hidden" value="<?= $_SESSION['username'] ?>" name="ConnectedUser">
         <button type="submit">Submit
         </button>
     </form>
-<?php
+    <?php
 }
 ?>

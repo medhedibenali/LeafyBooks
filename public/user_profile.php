@@ -6,16 +6,16 @@ include_once "../modules/book_identification/BookRepository.php";
 include_once "../modules/auth/UserRepository.php";
 $userRepo = new UserRepository();
 // USED GET METHOD
-$user = $userRepo->find(array("username"=>$_GET['username']));
+$user = $userRepo->find(array("username" => $_GET['username']));
 
 
 $bookRepo = new BookRepository();
 
 
 $readActRepo = new ReadActRepository();
-$toreadActs = $readActRepo->find(array("username"=>$_GET['username'],'status'=>'toread'));
-$currentreadActs = $readActRepo->find(array("username"=>$_GET['username'],'status'=>'currentlyreading'));
-$finishreadActs = $readActRepo->find(array("username"=>$_GET['username'],'status'=>'finishedreading'));
+$toreadActs = $readActRepo->find(array("username" => $_GET['username'], 'status' => 'toread'));
+$currentreadActs = $readActRepo->find(array("username" => $_GET['username'], 'status' => 'currentlyreading'));
+$finishreadActs = $readActRepo->find(array("username" => $_GET['username'], 'status' => 'finishedreading'));
 
 
 ?>
@@ -27,7 +27,7 @@ $finishreadActs = $readActRepo->find(array("username"=>$_GET['username'],'status
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title><?=$user->username?></title>
+    <title><?= $user->username ?></title>
 </head>
 <body>
 <h1><?= $user->username ?> INFO</h1>
@@ -48,8 +48,8 @@ $finishreadActs = $readActRepo->find(array("username"=>$_GET['username'],'status
     <tr>
         <td><img src="<?= $user->pic ?>" alt="image not found" width="100px" height="100px"></td>
         <td><?= $user->username ?></td>
-        <td><?= $user->first_name?></td>
-        <td><?= $user->last_name?></td>
+        <td><?= $user->first_name ?></td>
+        <td><?= $user->last_name ?></td>
         <td><?= $user->bio ?></td>
         <td><?= $user->joinDate ?></td>
         <td><?= $user->birthday ?></td>
@@ -59,7 +59,7 @@ $finishreadActs = $readActRepo->find(array("username"=>$_GET['username'],'status
 </table>
 
 
-<?php if (!empty($toreadActs)){?>
+<?php if (!empty($toreadActs)) { ?>
     <?php $i = 0; ?>
     <h4> <?= $user->username ?> wants to read</h4>
     <table>
@@ -75,8 +75,8 @@ $finishreadActs = $readActRepo->find(array("username"=>$_GET['username'],'status
         </tr>
         </thead>
         <tbody>
-        <?php foreach($toreadActs as $toreadAct){
-                $book = $bookRepo->find(array("isbn"=>$toreadAct->isbn))
+        <?php foreach ($toreadActs as $toreadAct) {
+            $book = $bookRepo->find(array("isbn" => $toreadAct->isbn))
             ?>
             <tr>
                 <td><?= ++$i ?></td>
@@ -88,15 +88,15 @@ $finishreadActs = $readActRepo->find(array("username"=>$_GET['username'],'status
                 <td><?= $book->rating ?></td>
                 <td><?= $toreadAct->addDate ?></td>
             </tr>
-        <?php }?>
+        <?php } ?>
         </tbody>
     </table>
-<?php }else{?>
-    <h1><?= $user->username?> has not added any books</h1>
-<?php }?>
+<?php } else { ?>
+    <h1><?= $user->username ?> has not added any books</h1>
+<?php } ?>
 
 
-<?php if (!empty($currentreadActs)){?>
+<?php if (!empty($currentreadActs)) { ?>
     <?php $i = 0; ?>
     <h4> <?= $user->username ?> is currently reading</h4>
     <table>
@@ -112,8 +112,8 @@ $finishreadActs = $readActRepo->find(array("username"=>$_GET['username'],'status
         </tr>
         </thead>
         <tbody>
-        <?php foreach($currentreadActs as $currentreadAct){
-            $book = $bookRepo->find(array("isbn"=>$currentreadAct->isbn))
+        <?php foreach ($currentreadActs as $currentreadAct) {
+            $book = $bookRepo->find(array("isbn" => $currentreadAct->isbn))
             ?>
             <tr>
                 <td><?= ++$i ?></td>
@@ -125,18 +125,18 @@ $finishreadActs = $readActRepo->find(array("username"=>$_GET['username'],'status
                 <td><?= $book->rating ?></td>
                 <td><?= $currentreadAct->addDate ?></td>
             </tr>
-        <?php }?>
+        <?php } ?>
         </tbody>
     </table>
-<?php }else{?>
-    <h1><?= $user->username?> is not currently reading any books</h1>
-<?php }?>
+<?php } else { ?>
+    <h1><?= $user->username ?> is not currently reading any books</h1>
+<?php } ?>
 
 
 
 
 
-<?php if (!empty($finishreadActs)){?>
+<?php if (!empty($finishreadActs)) { ?>
     <?php $i = 0; ?>
     <h4> <?= $user->username ?> finished reading</h4>
     <table>
@@ -152,8 +152,8 @@ $finishreadActs = $readActRepo->find(array("username"=>$_GET['username'],'status
         </tr>
         </thead>
         <tbody>
-        <?php foreach($finishreadActs as $finishreadAct){
-            $book = $bookRepo->find(array("isbn"=>$finishreadAct->isbn))
+        <?php foreach ($finishreadActs as $finishreadAct) {
+            $book = $bookRepo->find(array("isbn" => $finishreadAct->isbn))
             ?>
             <tr>
                 <td><?= ++$i ?></td>
@@ -165,13 +165,12 @@ $finishreadActs = $readActRepo->find(array("username"=>$_GET['username'],'status
                 <td><?= $book->rating ?></td>
                 <td><?= $finishreadAct->addDate ?></td>
             </tr>
-        <?php }?>
+        <?php } ?>
         </tbody>
     </table>
-<?php }else{?>
-    <h1><?= $user->username?> has not finished any books</h1>
-<?php }?>
-
+<?php } else { ?>
+    <h1><?= $user->username ?> has not finished any books</h1>
+<?php } ?>
 
 
 </body>

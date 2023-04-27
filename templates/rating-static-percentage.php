@@ -6,7 +6,7 @@
         <span>★</span>
         <span>★</span>
     </div>
-    <div class="rating-upper" style="width:<?=$percentage?>%">
+    <div class="rating-upper" style="width:<?= $percentage ?>%">
         <span>★</span>
         <span>★</span>
         <span>★</span>

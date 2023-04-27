@@ -1,4 +1,5 @@
 @import url(https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+
 img {
     max-width: 10cm;
     max-height: 10cm;
@@ -14,42 +15,52 @@ img {
     border: 1px solid transparent;
     border-radius: 50%;
 }
+
 .flex-box {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
+
 .you-might-also-like {
     margin-top: 40%;
 }
+
 .SimilarBook {
     margin-left: 10%;
 }
+
 .Ratings-reviews {
     margin-top: 10%;
 }
+
 .body {
     margin-left: 40%;
 }
+
 .no-user-error {
     margin-top: 1%;
-    margin-bottom: 4%;
+    margin-bottom: 2%;
     border: saddlebrown 1px solid;
     width: 7cm;
     text-align: center;
 }
+
 .rate {
     display: inline-block;
     border: 0;
 }
+
 /* make widget invisible */
 .rate > input {
     display: none;
 }
+
 /* make the widget float to the right */
 .rate > label {
     float: right;
 }
+
 /* the star when it's un-hovered and un-checked */
 .rate > label:before {
     display: inline-block;
@@ -60,17 +71,20 @@ img {
     font-family: FontAwesome;
     content: "\f005 "; /* full  black star from font awesome */
 }
+
 /* Half star when it's not checked or hovered upon  */
 .rate .half:before {
     content: "\f089 "; /* half star from font awesome  */
     position: absolute;
     padding-right: 0;
 }
+
 /* Click + hover color */
 input:checked ~ label, /* color every label that comes  directly after a checked star*/
 label:hover, label:hover ~ label {
     color: #73B100;
 }
+
 /*color every hovered label and every label that comes directly after a hovered labem */
 /* Hover highlights */
 input:checked + label:hover, input:checked ~ label:hover, /* highlight selected stars when hovered upon */

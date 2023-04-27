@@ -6,7 +6,7 @@ class AuthorRepository extends Repository
     public function __construct()
     {
         $tableName = 'authors';
-        $attributes = ['id','pen_name', 'password', 'first_name', 'last_name', 'birthday','death_day','bio','nationality','picture'];
+        $attributes = ['id', 'pen_name', 'password', 'first_name', 'last_name', 'birthday', 'death_day', 'bio', 'nationality', 'picture'];
         $ids = ['id'];
         parent::__construct($tableName, $attributes, $ids);
     }
