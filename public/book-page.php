@@ -6,6 +6,11 @@ session_start();
 <?php
 require_once "../templates/header.php";
 ?>
+<link rel="stylesheet" href="node_modules/bootswatch/dist/lux/bootstrap.min.css">
+<link rel="stylesheet" href="public/css/header.css">
+<link rel="stylesheet" href="css/book-identity.css">
+<link rel="stylesheet" href="css/static-rating.css">
+<title> book-page</title>
 <body>
 <?php
 $isbn = htmlspecialchars($_GET['isbn']);

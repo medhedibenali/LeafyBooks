@@ -42,7 +42,6 @@ else {
         <textarea name="review" rows="10" cols="50"></textarea>
         <br>
         <input type="hidden" value="<?= $isbn ?>" name="isbn">
-        <input type="hidden" value="<?= $_SESSION['username'] ?>" name="ConnectedUser">
         <button type="submit">Submit
         </button>
     </form>
