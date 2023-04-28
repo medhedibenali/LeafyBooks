@@ -1,4 +1,10 @@
-
+<?php
+session_start();
+if(isset($_SESSION['user']))
+{
+    $user=$_SESSION['user'];
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,10 +50,46 @@
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><img src="../public/pictures/user.png" class="profilePic"></a>
+                    <a class="nav-link" href="#">
+                        <?php
+                        if(!isset($_SESSION['user'])) {
+                            ?>
+                            <img src="../public/pictures/user.png" class="profilePic">
+                        <?php } else { ?>
+                            <img src="<?php echo $user->picture; ?>" class="profilePic">
+                        <?php } ?>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
+
+<script>
+    const navbarBrandIcon = document.querySelector(".fa-leaf");
+    // variable initialized to track if the leaf was clicked once or not
+    let clickedOnce = false;
+    // the icon is clicked, it first checks whether clickedOnce is false
+    navbarBrandIcon.addEventListener("click", event => {
+        event.preventDefault();
+
+        if (!clickedOnce) {
+            // it is, it adds the class active to the icon and scales it up to twice its size using the transform property.
+            navbarBrandIcon.classList.add("active");
+            navbarBrandIcon.style.transform = "scale(2)";
+            setTimeout(() => {
+                navbarBrandIcon.classList.remove("active");
+            }, 300);
+            clickedOnce = true;
+            // after a delay of 300 it removes the active class and sets clickedOnce to true.
+        } else {
+            // sets the animation property of the icon to "rotateFall 2s forwards" triggers a CSS animation called rotateFall
+                navbarBrandIcon.style.animation = "rotateFall 1s forwards";
+            setTimeout(() => {
+                navbarBrandIcon.remove();
+            }, 2000);
+            // after 2 sec the setTimeout function is called  which removes the icon from the DOM using the remove method.
+        }
+    });
+
+</script>
 
