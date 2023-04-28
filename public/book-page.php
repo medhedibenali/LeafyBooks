@@ -68,9 +68,9 @@ require '../public/php/BookInfoDump.php'
     </ul>
 
     <div class="AboutAuthor">
-        <h5 style="font-weight: bold">
+        <h2>
             About the author
-        </h5>
+        </h2>
         <img id="authorpic" src="<?=$author->picture?>"> <?=$author->pen_name?>
         <br><br>
         <?= $bio ?>

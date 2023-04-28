@@ -16,13 +16,13 @@ else
 
 ?>
 <form id="addToList" action="php/add-to-list-process.php" method="post">
-        <select id="addtolist" name="answer">
+        <select id="dropdown" name="answer">
             <option value="default"></option>
             <option value="currentlyreading">currently reading</option>
             <option value="finishedreading">read</option>
             <option value="toread">want to read</option>
         </select>
-        <input type="hidden" name="ISBN" value="<?=$ISBN?>">
+        <input type="hidden" name="ISBN" value="<?=$isbn?>">
     </form>
     <br>
     <br>

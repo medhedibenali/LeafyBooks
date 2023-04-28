@@ -33,10 +33,7 @@
     width: 50%;
 
 }
-.AVGrating
-{
-    margin-top: -3%;
-}
+
 #synopsis
 {
     font-family: " Times New Roman, serif";
@@ -73,7 +70,7 @@
 .AboutAuthor
 {
     margin-top: 20px;
-    font-family:  'Times New Roman, serif';
+    font-family:'DecoType Naskh';
     font-size: 18px;
 }
 #authorpic
@@ -119,12 +116,21 @@
     background-color: #422f08;
 }
 
-
-/*BUTTON ANIMATION */
-#addtolist
+#addToList
 {
-    margin-left: 20px;
-    margin-top: 2.2rem;
+    margin-top: 15%;
+    display: flex;
+    justify-content: center;
+    color: white;
+    font-size: 22px;
+    border: 0px;
+    border-radius: 0.5rem;
+    background-color: #296730;
+    transition: transform 0.3s ease;
+}
+/*BUTTON ANIMATION */
+#dropdown
+{
     color: white;
     font-size: 22px;
     width: 9em;
@@ -134,13 +140,13 @@
     background-color: #296730;
     transition: transform 0.3s ease;
 }
-#addtolist:hover
+#addToList:hover
 {
     background-color: #317539;
 }
 
 /* when i click on the button it goes down */
-#addtolist:active
+#dropdown:active
 {
     transform: scale(0.96);
 }
@@ -149,7 +155,7 @@
     z-index determines stacking order of elements in the z axis to control how elements are visually layered on top of
     each other
 */
-#addtolist::before,#addtolist::after
+#dropdown::before,#dropdown::after
 {
     overflow: hidden;
     content: "";
@@ -166,7 +172,7 @@
     we are adding the circle shapes with background-image the shapes are in different colors and sizes
     and we add an animation
  */
-#addtolist.animate::before
+#dropdown.animate::before
 {
     top: -70%;
     background-image:radial-gradient(circle,#296730 20%,transparent 20%),
@@ -192,7 +198,7 @@
         background-size: 0% 0%,0% 0%,0% 0%,0% 0%,0% 0%,0% 0%;
     }
 }
-#addtolist.animate::after
+#dropdown.animate::after
 {
     bottom: -70%;
     background-image: radial-gradient(circle,#296730 20%,transparent 20%),
