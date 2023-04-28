@@ -46,7 +46,7 @@ require_once 'header.php';
         </div>
     </div>
     <button type="submit" class="btn btn-success">Apply</button>
-    </form>
+
 
 </div>
 
