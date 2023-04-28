@@ -1,4 +1,4 @@
-isbn
+
 <?php
 require "../public/php/ProcessRatingStatistics.php";
 $per = GetPercentage();
