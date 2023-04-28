@@ -18,18 +18,16 @@ function GetPercentage()
 
             $var = '$per' . $i;
             $complete = count($userReviewsRepository->find(["isbn" => $isbn, "rating" => $i])); // integer ratings
-            $halves = count($userReviewsRepository->find(["isbn" => $isbn, "rating" => $i + 0.5]));// integer and 1/2 ratings
+            $halves = count($userReviewsRepository->find(["isbn" => $isbn, "rating" => $i + 0.5])); // integer and 1/2 ratings
             $a = ($complete + $halves) / $total;
             $b = $a * 100;
             $percentages[$i] = round($b, 1);
-
         }
     } else {
         for ($i = 0; $i < 6; $i++) {
 
             $percentages[$i] = 0;
         }
-
     }
     return $percentages;
 }
@@ -41,5 +39,3 @@ function getUserRating($username)
     $user = $userReviewsRepository->find(['isbn' => trim($isbn), 'username' => trim($username)]);
     return $user->rating;
 }
-
-?>

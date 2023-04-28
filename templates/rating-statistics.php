@@ -70,5 +70,3 @@ $per = GetPercentage();
         </tr>
     </table>
 </div>
-
-

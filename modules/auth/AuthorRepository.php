@@ -21,5 +21,3 @@ class AuthorRepository extends Repository
         parent::insert($params);
     }
 }
-
-

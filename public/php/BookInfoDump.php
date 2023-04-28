@@ -1,4 +1,5 @@
 <?php
+
 /***
  * Contains all useful information about the book you're exploring
  */
@@ -13,9 +14,9 @@ $bio = getAuthorBio($isbn);
 $publisher = $book->publisher;
 if (getRating($isbn) !== null) {
     $rating = getRating($isbn)[0];
-    $NbRatings = getRating($isbn)[1] . ' reviews';
+    $nbRatings = getRating($isbn)[1] . ' reviews';
 } else {
     $rating = 0;
-    $NbRatings = 'no reviews yet';
+    $nbRatings = 'no reviews yet';
 }
 $synopsis = $book->synopsis;

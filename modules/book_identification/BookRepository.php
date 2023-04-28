@@ -1,5 +1,4 @@
 <?php
-
 require_once dirname(__FILE__, 2) . '/database/Repository.php';
 
 class BookRepository extends Repository
@@ -12,6 +11,4 @@ class BookRepository extends Repository
         $ids = ['isbn'];
         parent::__construct($tableName, $attributes, $ids);
     }
-
-
 }

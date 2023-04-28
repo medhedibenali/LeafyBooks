@@ -26,14 +26,14 @@ $config = array(
  */
 
 defined("MODULES_PATH")
-or define("MODULES_PATH", realpath(dirname(__FILE__, 2) . '/modules'));
+    or define("MODULES_PATH", realpath(dirname(__FILE__, 2) . '/modules'));
 
 /**
  * Constant for the templates directory.
  */
 
 defined("TEMPLATES_PATH")
-or define("TEMPLATES_PATH", realpath(dirname(__FILE__, 2) . '/templates'));
+    or define("TEMPLATES_PATH", realpath(dirname(__FILE__, 2) . '/templates'));
 
 /**
  * Error reporting.

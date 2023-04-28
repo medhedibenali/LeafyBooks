@@ -8,16 +8,20 @@
     position: relative;
     padding: 0;
 }
+
 .rating-upper {
     color: #c52b2f;
     padding: 0;
-    position: absolute; /*to put these stars on top of the unhighlighted ones*/
+    position: absolute;
+    /*to put these stars on top of the unhighlighted ones*/
     z-index: 1;
     display: flex;
     top: 0;
     left: 0;
-    overflow: hidden;/*to crop down the  combined width of the spans if it's > width of the rating-upper div*/
+    overflow: hidden;
+    /*to crop down the  combined width of the spans if it's > width of the rating-upper div*/
 }
+
 .rating-lower {
     padding: 0;
     display: flex;

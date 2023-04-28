@@ -3,6 +3,7 @@ require_once dirname(__FILE__, 3) . '/modules/book_identification/BookRepository
 require_once dirname(__FILE__, 3) . '/modules/book_identification/UserReviewsRepository.php';
 require_once dirname(__FILE__, 3) . '/modules/auth/UserRepository.php';
 require_once dirname(__FILE__, 3) . '/modules/auth/AuthorRepository.php';
+
 /***
  * @param $isbn
  * find a book by its isbn
