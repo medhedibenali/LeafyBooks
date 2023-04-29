@@ -5,13 +5,11 @@ if (!isset($_SESSION['username'])) {
         Please <a href="../public/sign-in.php">login</a> or <a href="../public/sign-in.php">signup</a> to post review
     </div>
 <?php
-} //        Rating Stars
+}
 else {
 ?>
-    <h5>
-        what do you think ,<?= $_SESSION['username'] ?> ?
-    </h5>
-    <form action="../public/php/AddReviewAndRatingAction.php" method="post">
+
+    <form action="../public/php/AddReview.php" method="post">
         <!--    rating template-->
         <div class="rate">
             <input type="radio" id="rating10" name="rate" value="5" /><label for="rating10" title="5 stars"></label>

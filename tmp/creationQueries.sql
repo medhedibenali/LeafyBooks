@@ -66,3 +66,11 @@ CREATE TABLE `users` (
     `birthday` date DEFAULT NULL,
     PRIMARY KEY (`username`)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci;
+
+--tags--
+CREATE TABLE `tags` (
+                        `isbn` varchar(255) NOT NULL,
+                        `tag` varchar(255) NOT NULL,
+                        PRIMARY KEY (`isbn`,`tag`),
+                        CONSTRAINT `fk_1` FOREIGN KEY (`isbn`) REFERENCES `books` (`isbn`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci

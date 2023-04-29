@@ -1,6 +1,5 @@
 <?php
 session_start();
-$_SESSION['username']='hdida';
 ?>
 <!doctype html>
 <html lang="en">
@@ -18,11 +17,13 @@ require_once "../templates/header.php";
 <div>
 <?php
 $isbn = htmlspecialchars($_GET['isbn']);
-require '../public/php/BookInfoDump.php'
+require '../public/php/BookInfoDump.php' ;
+require dirname(__FILE__,2).'/modules/autoloader.php';
+$tagRepository=new TagsRepository();
+$bookByTags=$tagRepository->find(['isbn'=>$isbn]);
 ?>
 <!--   info about the book-->
 <div class="container">
-
     <div class="ImagePos">
         <img id="cover" src="<?= $picture ?>"/>
         <div>
@@ -34,8 +35,8 @@ require '../public/php/BookInfoDump.php'
     <div class="box1">
         <h1 style="font-family: 'Britannic Bold';font-size: 50px"><?=$title;?></h1>
         <!--NUMBER OF PAGES AND PUBLISHING DATE  -->
-<!--        <p style="font-family:  'Times New Roman, serif'">-->
-<!--            --><?php //=$book->page_number?>
+        <p style="font-family:  'Times New Roman, serif'">
+            <?=$book->page_number.' pages'?>
             <br>
             First published <?=$book->publishing_year?>
         </p>
@@ -56,15 +57,16 @@ require '../public/php/BookInfoDump.php'
     <div id="synopsis">
         <?= $book->synopsis ?>
     </div>
-    <p style="color: grey;margin-right: 10px;font-family: 'DecoType Naskh';font-size: 20px">Genres </p>
+    <p style="color: grey;margin-right: 10px;font-family: 'DecoType Naskh';font-size: 20px">Tags </p>
     <ul id="liste" style="list-style: none;">
-
-       <li id="lii" >Mystery</li>
-       <li id="lii">Thriller</li>
-       <li id="lii">Fiction</li>
-       <li id="lii">Crime</li>
-       <li id="lii">Suspense</li>
-       <li id="lii">Murder</li>
+        <?php
+        foreach ($bookByTags as $bookByTag)
+        {
+            ?>
+        <li id="lii"><?=$bookByTag->tag?></li>
+        <?php
+        }
+        ?>
     </ul>
 
     <div class="AboutAuthor">
@@ -102,7 +104,7 @@ require '../public/php/BookInfoDump.php'
          <img src="../public/pictures/catuser.jpg" id="userpic">
         <br>
         <p id="question">
-            What do you think ?
+            what do you think ,<?= $_SESSION['username'] ?> ?
         </p>
         <!-- reviews-->
         <p style=" display: flex;justify-content: center;">
@@ -115,7 +117,7 @@ require '../public/php/BookInfoDump.php'
 <!--    review form-->
 <div class="rating-portion">
     <?php
-    require_once("../templates/rating-user-input.php");
+    require_once("../templates/reviewing-template.php");
     ?>
 </div>
 </div>
