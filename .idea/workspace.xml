@@ -5,17 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3ac7364e-bbf9-402b-af99-82c6ecd127c9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/modules/book_identification/TagsRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/php/AddRating.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/rating-template.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/book_activity/ReadActRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/modules/book-activity/ReadActRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/book-page.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/book-page.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/php/AddReviewAndRatingAction.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/php/AddReview.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/php/ProcessSimilarBooks.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/php/ProcessSimilarBooks.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/rating-static-percentage.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/rating-static-percentage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/rating-user-input.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/reviewing-template.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp/creationQueries.sql" beforeDir="false" afterPath="$PROJECT_DIR$/tmp/creationQueries.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/rating-template.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/rating-template.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/reviewing-template.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/reviewing-template.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
