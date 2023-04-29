@@ -13,7 +13,8 @@
       <change beforePath="$PROJECT_DIR$/public/book-page.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/book-page.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/php/AddReviewAndRatingAction.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/php/AddReview.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/php/ProcessSimilarBooks.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/php/ProcessSimilarBooks.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/rating-user-input.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/rating-user-input.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/rating-static-percentage.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/rating-static-percentage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/rating-user-input.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/reviewing-template.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tmp/creationQueries.sql" beforeDir="false" afterPath="$PROJECT_DIR$/tmp/creationQueries.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

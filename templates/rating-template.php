@@ -9,7 +9,7 @@ if (!isset($_SESSION['username'])) {
 else {
 ?>
 
-<form name ="rating-form" action="../public/php/AddReview.php" onload="document.forms['rating-form'].submit()" method="post">
+<form name ="rating-form" action="../public/php/AddRating.php" onclick="document.forms['rating-form'].submit()" method="post">
     <!--    rating template-->
     <div class="rate">
         <input type="radio" id="rating10" name="rate" value="5" /><label for="rating10" title="5 stars"></label>

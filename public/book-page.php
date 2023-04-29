@@ -21,6 +21,8 @@ require '../public/php/BookInfoDump.php' ;
 require dirname(__FILE__,2).'/modules/autoloader.php';
 $tagRepository=new TagsRepository();
 $bookByTags=$tagRepository->find(['isbn'=>$isbn]);
+$userRepository=new UserRepository();
+$user=$userRepository->find(['username'=>$_SESSION['username']])
 ?>
 <!--   info about the book-->
 <div class="container">
@@ -48,7 +50,7 @@ $bookByTags=$tagRepository->find(['isbn'=>$isbn]);
     </div>
     <!--    book average rating-->
     <?php
-    $percentage = ($rating) * 20;
+    $percentage = ($book->rating)*10;
     require_once dirname(__FILE__, 2) . '/templates/rating-static-percentage.php';
     ?>
     <div>
@@ -101,21 +103,28 @@ $bookByTags=$tagRepository->find(['isbn'=>$isbn]);
         <h2 style="font-family:'DecoType Naskh';">
             Ratings & Reviews
         </h2>
-         <img src="../public/pictures/catuser.jpg" id="userpic">
+         <img src="<?=$user->picture?>" id="userpic">
         <br>
         <p id="question">
             what do you think ,<?= $_SESSION['username'] ?> ?
         </p>
+
+        <div class="rating-portion">
+            <?php
+                require_once dirname(__FILE__,2).'/templates/rating-template.php';
+            ?>
+            <button onclick="scrollTobottom()" class="writereview">Write a review</button>
+        </div>
         <!-- reviews-->
         <p style=" display: flex;justify-content: center;">
         </p>
         <?php
         require_once dirname(__FILE__, 2) . '/public/php/ProcessReviews.php';
         ?>
-        <button onclick="scrollTobottom()" class="writereview">Write a review</button>
+
     </div>
 <!--    review form-->
-<div class="rating-portion">
+<div class="reviewing-portion">
     <?php
     require_once("../templates/reviewing-template.php");
     ?>
