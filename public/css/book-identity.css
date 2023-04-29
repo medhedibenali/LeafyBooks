@@ -15,11 +15,26 @@ img {
     border: 1px solid transparent;
     border-radius: 50%;
 }
+#actionOnBook
+{
+    background-color: #296730;
+}
+select option
+{
+    background-color: white;
+    font-size: medium;
+}
+
 
 .flex-box {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+}
+.flex-box-no-space
+{
+    display: flex;
+    flex-direction: row;
 }
 
 .you-might-also-like {

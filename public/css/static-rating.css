@@ -5,10 +5,11 @@
     height: 25px;
     width: 120px;
     position: relative;
+    font-size:30px
 }
 
 .rating-upper {
-    color: #c52b2f;
+    color: #E87400;
     padding: 0;
     position: absolute; /*to put these stars on top of the un-highlighted ones*/
     position: absolute;

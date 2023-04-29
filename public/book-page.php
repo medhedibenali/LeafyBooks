@@ -8,11 +8,14 @@ session_start();
 require_once "../templates/header.php";
 ?>
 <link rel="stylesheet" href="node_modules/bootswatch/dist/lux/bootstrap.min.css">
+<link rel="stylesheet" href="node_modules/bootstrap/dist/js/bootstrap.bundle.js">
+<link rel="stylesheet" href="node_modules/bootstrap/dist/js/bootstrap.min.js">
 <link rel="stylesheet" href="public/css/header.css">
 <link rel="stylesheet" href="css/book-identity.css">
 <link rel="stylesheet" href="css/static-rating.css">
 <link rel="stylesheet" href="css/book-template.css">
 <title> Book Page</title>
+
 
 <div>
 <?php
@@ -55,11 +58,26 @@ $user=$userRepository->find(['username'=>$_SESSION['username']])
         <!--        book average rating-->
         <?php
         $percentage = ($book->rating)*10;
-        require dirname(__FILE__, 2) . '/templates/rating-static-percentage.php';
-        ?>
-        <div>
-            (<?= $nbRatings ?> )
+         ?>
+        <div class="flex-box-no-space">
+
+            <div class="rating-in-stars">
+                <?php
+                require dirname(__FILE__, 2) . '/templates/rating-static-percentage.php';
+                ?>
+            </div>
+            <div class="rating-in-digits" style="font-size:30px ; font-weight: bold; padding-left: 4%">
+                <?php
+                echo "  ".$book->rating;
+                ?>
+            </div>
+            <div class="number-of-ratinsgs" style="font-size:15px ; padding:2% 0 0 4%;color: gray">
+                <?php
+                echo "(".$nbRatings.')';
+                ?>
+            </div>
         </div>
+
         <br>
 
     <p style="color: grey;margin-right: 10px;font-family: 'DecoType Naskh';font-size: 20px">Tags </p>
@@ -85,6 +103,11 @@ $user=$userRepository->find(['username'=>$_SESSION['username']])
      <br>
     <!--    rating statistics-->
      <?php require_once dirname(__FILE__,2).'/templates/rating-statistics.php'?>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
     <!--similiar books-->
     <div style="display: flex;margin-top: 70%">
         <form class="OnLoad2" action="php/ProcessSimilarBooks.php">
@@ -134,6 +157,6 @@ $user=$userRepository->find(['username'=>$_SESSION['username']])
 
 </div>
 </div>
-<script src="javascript/book-identity.js"></script>
+<script src="js/book-identity.js"></script>
 </body>
 </html>

@@ -18,7 +18,6 @@ else {
         </select>
         <input type="hidden" name="isbn" value="<?= $isbn ?>">
     </form>
-    <br>
-    <br>
+
 <?php
 }
