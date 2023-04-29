@@ -13,6 +13,7 @@ $title = $book->title;
 $author = ($authorRepo->find(['id' => trim($book->author)]))->pen_name;
 $bio = getAuthorBio($isbn);
 $publisher = $book->publisher;
+$authorPic=($authorRepo->find(['id' => trim($book->author)]))->picture;
 if (getRating($isbn) !== null) {
     $rating = getRating($isbn)[0];
     $nbRatings = getRating($isbn)[1] . ' reviews';

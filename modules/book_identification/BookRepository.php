@@ -12,3 +12,4 @@ class BookRepository extends Repository
         parent::__construct($tableName, $attributes, $ids);
     }
 }
+

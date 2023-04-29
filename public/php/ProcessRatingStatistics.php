@@ -29,11 +29,3 @@ function GetPercentage()
     }
     return $percentages;
 }
-
-function getUserRating($username)
-{
-    $userReviewsRepository = new UserReviewsRepository();
-    $isbn = $_GET['isbn'];
-    $user = $userReviewsRepository->find(['isbn' => trim($isbn), 'username' => trim($username)]);
-    return $user->rating;
-}
