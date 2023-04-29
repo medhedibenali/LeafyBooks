@@ -3,15 +3,13 @@
     color: #888888;
     font-size: 25px;
     height: 25px;
-    width: auto;
-    margin: 0;
+    width: auto;/* so the container adjusts to the size of the upper+lower stars*/
     position: relative;
-    padding: 0;
 }
 .rating-upper {
     color: #c52b2f;
     padding: 0;
-    position: absolute; /*to put these stars on top of the unhighlighted ones*/
+    position: absolute; /*to put these stars on top of the un-highlighted ones*/
     z-index: 1;
     display: flex;
     top: 0;

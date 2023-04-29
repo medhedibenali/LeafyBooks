@@ -46,7 +46,7 @@
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><img src="../public/pictures/user.png" class="profilePic"></a>
+                    <a class="nav-link" href="#"><img src="" class="profilePic"></a>
                 </li>
             </ul>
         </div>
