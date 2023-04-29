@@ -3,8 +3,9 @@
 /***
  * Contains all useful information about the book you're exploring
  */
-require dirname(__FILE__, 3) . '/modules/book_identification/ProcessBookIdentity.php';
-require_once dirname(__FILE__, 3) . '/public/book-page.php';
+
+require_once dirname(__FILE__, 3) . '/modules/autoloader.php';
+
 $book = findBook($isbn);
 $authorRepo = new AuthorRepository();
 $picture = $book->picture;

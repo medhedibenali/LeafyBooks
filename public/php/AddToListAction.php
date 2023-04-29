@@ -1,6 +1,8 @@
 <?php
 session_start();
-include_once dirname(__FILE__, 3) . '/modules/book_activity/ReadActRepository.php';
+
+require_once dirname(__FILE__, 3) . '/modules/autoloader.php';
+
 $readActRepository = new ReadActRepository();
 $username = $_SESSION['username'];
 $state = $_POST['answer'];

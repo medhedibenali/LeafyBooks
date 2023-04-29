@@ -1,5 +1,6 @@
 <?php
-require_once dirname(__FILE__, 3) . '/modules/book_identification/BookRepository.php';
+require_once dirname(__FILE__, 3) . '/modules/autoloader.php';
+
 $isbn = htmlspecialchars($_GET['isbn']);
 function getSimilarBooks()
 {

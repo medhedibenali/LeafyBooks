@@ -1,7 +1,4 @@
 <?php
-require_once "../public/book-page.php";
-?>
-<?php
 if (!isset($_SESSION['username'])) {
 ?>
     <div class="no-user-error">

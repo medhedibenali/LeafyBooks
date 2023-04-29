@@ -1,7 +1,5 @@
 <?php
-require_once dirname(__FILE__, 3) . '/modules/book_identification/UserReviewsRepository.php';
-require_once dirname(__FILE__, 3) . '/modules/book_identification/BookRepository.php';
-require_once dirname(__FILE__, 3) . '/public/book-page.php';
+require_once dirname(__FILE__, 3) . '/modules/autoloader.php';
 /***
  * returns the percentage of ratings for every mark
  * @return array

@@ -1,5 +1,5 @@
 <?php
-require_once 'ConnexionDB.php';
+require_once dirname(__FILE__, 2) . '/autoloader.php';
 
 /**
  * Abstract class for a repository.
