@@ -3,7 +3,7 @@
     color: #888888;
     font-size: 25px;
     height: 25px;
-    width: auto;/* so the container adjusts to the size of the upper+lower stars*/
+    width: 120px;
     position: relative;
 }
 

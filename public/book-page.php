@@ -34,6 +34,7 @@ $user=$userRepository->find(['username'=>$_SESSION['username']])
         ?>
         </div>
     </div>
+
     <div class="box1">
         <h1 style="font-family: 'Britannic Bold';font-size: 50px"><?=$title;?></h1>
         <!--NUMBER OF PAGES AND PUBLISHING DATE  -->
@@ -48,17 +49,19 @@ $user=$userRepository->find(['username'=>$_SESSION['username']])
     <div style="font-size: 20px;font-family: 'DecoType Naskh';">
         <?= $publisher ?>
     </div>
-    <!--    book average rating-->
-    <?php
-    $percentage = ($book->rating)*10;
-    require_once dirname(__FILE__, 2) . '/templates/rating-static-percentage.php';
-    ?>
-    <div>
-        (<?= $nbRatings ?> )
-    </div>
     <div id="synopsis">
         <?= $book->synopsis ?>
     </div>
+        <!--        book average rating-->
+        <?php
+        $percentage = ($book->rating)*10;
+        require dirname(__FILE__, 2) . '/templates/rating-static-percentage.php';
+        ?>
+        <div>
+            (<?= $nbRatings ?> )
+        </div>
+        <br>
+
     <p style="color: grey;margin-right: 10px;font-family: 'DecoType Naskh';font-size: 20px">Tags </p>
     <ul id="liste" style="list-style: none;">
         <?php
@@ -81,9 +84,7 @@ $user=$userRepository->find(['username'=>$_SESSION['username']])
     </div>
      <br>
     <!--    rating statistics-->
-    <div>
-       <?php require_once "../templates/rating-statistics.php" ?>
-    </div>
+     <?php require_once dirname(__FILE__,2).'/templates/rating-statistics.php'?>
     <!--similiar books-->
     <div style="display: flex;margin-top: 70%">
         <form class="OnLoad2" action="php/ProcessSimilarBooks.php">
@@ -130,6 +131,7 @@ $user=$userRepository->find(['username'=>$_SESSION['username']])
     ?>
 </div>
 </div>
+
 </div>
 </div>
 <script src="javascript/book-identity.js"></script>
