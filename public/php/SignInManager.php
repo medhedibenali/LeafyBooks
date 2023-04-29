@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-require_once dirname(__FILE__, 3) . '/modules/auth/UserRepository.php';
+require_once dirname(__FILE__, 3) . '/modules/autoloader.php';
 
 $userRepository = new UserRepository();
 $user = $userRepository->find(['username' => $_POST['username']]);

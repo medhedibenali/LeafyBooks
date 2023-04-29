@@ -1,6 +1,5 @@
 <?php
-
-require_once dirname(__FILE__, 2) . '/database/Repository.php';
+require_once dirname(__FILE__, 2) . '/autoloader.php';
 
 class UserReviewsRepository extends Repository
 {
@@ -12,6 +11,4 @@ class UserReviewsRepository extends Repository
         $ids = ['isbn', 'username'];
         parent::__construct($tableName, $attributes, $ids);
     }
-
-
 }

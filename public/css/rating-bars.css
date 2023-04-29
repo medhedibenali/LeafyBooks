@@ -30,11 +30,9 @@
     animation: fillBars 2.5s;
 }
 
-@media {
-    .ratingper-animation {
-        background: #E87400;
-        animation: fillBars 2.5s;
-    }
+.ratingper-animation {
+    background: #E87400;
+    animation: fillBars 2.5s;
 }
 
 .ratingper::before {
@@ -53,6 +51,7 @@
     from {
         width: 0;
     }
+
     to {
         width: 100%;
     }

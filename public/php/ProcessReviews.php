@@ -1,8 +1,8 @@
 <?php
 foreach (getReviews($isbn) as $reviewLine) {
     $percentage = ($reviewLine->rating) * 20;
-    ?>
-    <img class="pdp" src="<?= getUserPicture($reviewLine->username) ?>" alt="userPicture"/>
+?>
+    <img class="pdp" src="<?= getUserPicture($reviewLine->username) ?>" alt="userPicture" />
     <div>
         review by <?= $reviewLine->username ?>
     </div>
@@ -16,6 +16,5 @@ foreach (getReviews($isbn) as $reviewLine) {
         ?>
     </div>
     <br>
-    <?php
+<?php
 }
-?>

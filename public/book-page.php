@@ -1,20 +1,19 @@
 <?php
 session_start();
+
+require_once dirname(__FILE__, 2) . '/templates/header.php';
 ?>
-<!doctype html>
-<html lang="en">
-<?php
-require_once "../templates/header.php";
-?>
+
 <link rel="stylesheet" href="node_modules/bootswatch/dist/lux/bootstrap.min.css">
 <link rel="stylesheet" href="public/css/header.css">
 <link rel="stylesheet" href="css/book-identity.css">
 <link rel="stylesheet" href="css/static-rating.css">
-<title> book-page</title>
-<body>
+<title> book-page </title>
+
+
 <?php
 $isbn = htmlspecialchars($_GET['isbn']);
-require '../public/php/BookInfoDump.php'
+require 'php/BookInfoDump.php'
 ?>
 <!--   info about the book-->
 <div class="container">
@@ -22,7 +21,7 @@ require '../public/php/BookInfoDump.php'
         <h3>Book Info</h3>
     </div>
     <div>
-        <img src="<?= $picture ?>"/>
+        <img src="<?= $picture ?>" />
     </div>
     <div>
         title:<?= $title ?>
@@ -39,13 +38,13 @@ require '../public/php/BookInfoDump.php'
     require_once dirname(__FILE__, 2) . '/templates/rating-static-percentage.php';
     ?>
     <div>
-        (<?= $NbRatings ?> )
+        (<?= $nbRatings ?> )
     </div>
     <div>
         synopsis :<?= $book->synopsis ?>
     </div>
     <?php
-    require_once '../templates/add-to-list.php';
+    require_once dirname(__FILE__, 2) . '/templates/add-to-list.php';
     ?>
     <div class="AboutAuthor">
         <h4>
@@ -54,7 +53,9 @@ require '../public/php/BookInfoDump.php'
         <?= $bio ?>
     </div>
     <!--    rating statistics-->
-    <?php require_once "../templates/rating-statistics.php" ?>
+    <?php
+    require_once dirname(__FILE__, 2) . '/templates/rating-statistics.php'
+    ?>
     <!--similiar books-->
     <form class="OnLoad2" action="php/ProcessSimilarBooks.php">
         <input type="hidden" name="isbn" value="<?= $isbn ?>">
@@ -67,24 +68,25 @@ require '../public/php/BookInfoDump.php'
         require_once dirname(__FILE__, 2) . '/public/similar-books.php';
         ?>
     </div>
-    <div class="Ratings-reviews"
-    <h4>
-        Ratings & Reviews
-    </h4>
-    <br>
-    <!-- reviews-->
-    <?php
-    require_once dirname(__FILE__, 2) . '/public/php/ProcessReviews.php';
-    ?>
+    <div class="Ratings-reviews">
+        <h4>
+            Ratings & Reviews
+        </h4>
+        <br>
+        <!-- reviews-->
+        <?php
+        require_once dirname(__FILE__, 2) . '/public/php/ProcessReviews.php';
+        ?>
+    </div>
+    <!--    review form-->
+    <div class="rating-portion">
+        <?php
+        require_once dirname(__FILE__, 2) . '/templates/rating-user-input.php';
+        ?>
+    </div>
 </div>
-<!--    review form-->
-<div class="rating-portion">
-    <?php
-    require_once("../templates/rating-user-input.php");
-    ?>
 </div>
-</div>
-</div>
-<script src="javascript/book-identity.js"></script>
+<script src="js/book-identity.js"></script>
 </body>
+
 </html>

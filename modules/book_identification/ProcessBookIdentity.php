@@ -1,8 +1,6 @@
 <?php
-require_once dirname(__FILE__, 3) . '/modules/book_identification/BookRepository.php';
-require_once dirname(__FILE__, 3) . '/modules/book_identification/UserReviewsRepository.php';
-require_once dirname(__FILE__, 3) . '/modules/auth/UserRepository.php';
-require_once dirname(__FILE__, 3) . '/modules/auth/AuthorRepository.php';
+require_once dirname(__FILE__, 2) . '/autoloader.php';
+
 /***
  * @param $isbn
  * find a book by its isbn
