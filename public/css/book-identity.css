@@ -18,6 +18,8 @@ img {
 #actionOnBook
 {
     background-color: #296730;
+    border: 1px solid transparent;
+
 }
 select option
 {

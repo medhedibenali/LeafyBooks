@@ -6,13 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="3ac7364e-bbf9-402b-af99-82c6ecd127c9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/book-activity/ReadActRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/modules/book-activity/ReadActRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/book-page.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/book-page.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/book-identity.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/book-identity.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/static-rating.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/static-rating.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/book-identity.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/book-identity.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/add-to-list.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/add-to-list.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/rating-static-percentage.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/rating-static-percentage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/rating-bars.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/rating-bars.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
