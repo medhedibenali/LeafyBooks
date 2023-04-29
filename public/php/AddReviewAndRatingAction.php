@@ -1,9 +1,8 @@
 <?php
 session_start();
-/*temporary until @mohamedHedi pushes the login page*/
-include_once dirname(__FILE__, 3) . '/modules/book_identification/BookRepository.php';
-include_once dirname(__FILE__, 3) . '/modules/book_identification/BookRepository.php';
-include_once dirname(__FILE__, 3) . '/modules/book_identification/UserReviewsRepository.php';
+
+require_once dirname(__FILE__, 3) . '/modules/autoloader.php';
+
 $isbn = $_POST['isbn'];
 $review = $_POST['review'];
 $rating = $_POST['rate'];

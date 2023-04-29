@@ -1,5 +1,4 @@
 <?php
-require_once '../public/book-page.php';
 
 if (!isset($_SESSION['username'])) {
 ?>

@@ -1,9 +1,6 @@
 <?php
-include_once "../modules/database/ConnexionDB.php";
-include_once "../modules/database/Repository.php";
-include_once "../modules/book_activity/ReadActRepository.php";
-include_once "../modules/book_identification/BookRepository.php";
-include_once "../modules/auth/UserRepository.php";
+require_once dirname(__FILE__, 2) . '/modules/autoloader.php';
+
 $userRepo = new UserRepository();
 // USED GET METHOD
 $user = $userRepo->find(array("username" => $_GET['username']));

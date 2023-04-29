@@ -1,25 +1,33 @@
 <?php
 
-/**
- * $config is an array of configurations.
- * $config['db'] is an array of database configurations.
- * $config['db']['db1'] is the database configuration for db1.
- * $config['db']['db1']['dbname'] is the database name.
- * $config['db']['db1']['username'] is the database username.
- * $config['db']['db1']['password'] is the database password.
- * $config['db']['db1']['host'] is the database host.
- */
+final class Config
+{
 
-$config = array(
-    "db" => array(
-        "db1" => array(
-            "dbname" => "web_project_db",
-            "username" => "web_project_user",
-            "password" => "password",
-            "host" => "localhost"
+    /**
+     * $config is an array of configurations.
+     * $config['db'] is an array of database configurations.
+     * $config['db']['db1'] is the database configuration for db1.
+     * $config['db']['db1']['dbname'] is the database name.
+     * $config['db']['db1']['username'] is the database username.
+     * $config['db']['db1']['password'] is the database password.
+     * $config['db']['db1']['host'] is the database host.
+     */
+
+    public static $config = array(
+        "db" => array(
+            "db1" => array(
+                "dbname" => "web_project_db",
+                "username" => "web_project_user",
+                "password" => "password",
+                "host" => "localhost"
+            )
         )
-    )
-);
+    );
+
+    private function __construct()
+    {
+    }
+}
 
 /**
  * Constant for the modules directory.
