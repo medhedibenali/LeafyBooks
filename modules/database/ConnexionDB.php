@@ -7,8 +7,7 @@ class ConnexionDB
 
     private function __construct()
     {
-        global $config;
-        $dbconfig = $config['db']['db1'];
+        $dbconfig = Config::$config['db']['db1'];
         try {
             self::$_bdd = new PDO("mysql:host=" . $dbconfig['host'] . ";dbname=" . $dbconfig['dbname'] . ";charset=utf8", $dbconfig['username'], $dbconfig['password']);
         } catch (PDOException $e) {

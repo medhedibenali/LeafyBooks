@@ -1,9 +1,9 @@
 <?php
-
+$stylesheets= ["css/search.css"];
 require_once 'header.php';
  ?>
-    <h1>Search Results For "<?=$search ?>"</h1>
-    <h2>All Books</h2>
+    <h1 style="margin-top: 70px; margin-left: 30px; ">Search Results For "<?=$search ?>"</h1>
+    <h2 >All Books</h2>
     <div class="content books-content">
         <div class="grid-container">
             <?php
@@ -63,7 +63,7 @@ require_once 'header.php';
             <ul class="pagination pagination-sm justify-content-center">
                 <li class="page-item">
                     <?php $previousUserPage=$usersPage-1; ?>
-                    <a class="page-link" href=<?= "search.php?booksPage=$booksPage&usersPage=$previousUserPage&search=$search"?> aria-label="Previous">
+                    <a class="page-link page" href=<?= "search.php?booksPage=$booksPage&usersPage=$previousUserPage&search=$search"?> aria-label="Previous">
                         <span aria-hidden="true">&laquo;</span>
                         <span class="sr-only">Previous</span>
                     </a>
@@ -71,12 +71,12 @@ require_once 'header.php';
                 <?php
                 for ($page = 1; $page <= $usersNumber_of_page; $page++) { ?>
                     <li class="page-item">
-                        <a class="page-link" href=<?= "search.php?booksPage=$booksPage&usersPage=$page&search=$search" ?>><?= $page ?></a>
+                        <a class="page-link page" href=<?= "search.php?booksPage=$booksPage&usersPage=$page&search=$search" ?>><?= $page ?></a>
                     </li>
                 <?php } ?>
                 <li class="page-item">
                     <?php $nextUserPage=$usersPage+1; ?>
-                    <a class="page-link" href=<?= "search.php?booksPage=$booksPage&usersPage=$nextUserPage&search=$search"?> aria-label="Next">
+                    <a class="page-link page" href=<?= "search.php?booksPage=$booksPage&usersPage=$nextUserPage&search=$search"?> aria-label="Next">
                         <span aria-hidden="true">&raquo;</span>
                         <span class="sr-only">Next</span>
                     </a>
