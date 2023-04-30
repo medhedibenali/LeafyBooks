@@ -1,6 +1,8 @@
 <?php
 session_start();
-include_once dirname(__FILE__, 3) . '/modules/book-activity/ReadActRepository.php';
+
+require_once dirname(__FILE__, 3) . '/modules/autoloader.php';
+
 $readActRepository = new ReadActRepository();
 $username = $_SESSION['username'];
 $state = $_POST['answer'];
@@ -16,12 +18,10 @@ if (!$readActRepository->find(["isbn" => $isbn, "username" => $username])) {
     if ($state == 'finished_reading') {
         $finishDate = date('Y-m-d');
         $readActRepository->update(["isbn" => $isbn, "username" => $username], ["status" => $state, "finish_date" => $finishDate]);
-
     } else if ($state == "currently_reading") {
         $finishDate = 0;
         $startingDate = date('Y-m-d');
         $readActRepository->update(["isbn" => $isbn, "username" => $username], ["status" => $state, "start_date" => $startingDate, "finish_date" => $finishDate]);
-
     } else {
         $finishDate = 0;
         $startingDate = 0;

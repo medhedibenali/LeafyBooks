@@ -12,6 +12,7 @@
     font-weight: 400;
     color: #100000;
     margin: 20px 0;
+    margin-left: 3%;
 }
 
 .rating-bar {
@@ -22,6 +23,7 @@
     margin-top: 4%;
     margin-left: 3%;
     z-index: 999;
+    margin-left: 12%;
 }
 
 .ratingper {
@@ -31,14 +33,15 @@
     border-radius: 12px;
     position: relative;
     animation: fillBars 2.5s;
+
 }
 
-@media {
-    .ratingper-animation {
-        background: #296730;
+    .ratingper-animation
+    {
+        background: #E87400;
         animation: fillBars 2.5s;
     }
-}
+
 
 .ratingper::before {
     content: attr(per);
@@ -56,6 +59,7 @@
     from {
         width: 0;
     }
+
     to {
         width: 100%;
     }

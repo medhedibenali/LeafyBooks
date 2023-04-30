@@ -1,5 +1,5 @@
 <?php
-require_once 'ConnexionDB.php';
+require_once dirname(__FILE__, 2) . '/autoloader.php';
 
 /**
  * Abstract class for a repository.
@@ -8,6 +8,7 @@ require_once 'ConnexionDB.php';
  * provides methods for adding, removing, updating and retrieving data
  * from the database.
  */
+
 abstract class Repository
 {
     protected PDO $db;
@@ -35,7 +36,7 @@ abstract class Repository
         $this->aliases = [];
         $max = max(
             array_map(
-                fn($val) => strlen($val),
+                fn ($val) => strlen($val),
                 $this->attributes
             )
         );
@@ -64,7 +65,7 @@ abstract class Repository
 
     /**
      * Checks that the keys of the input array are the same as the id.
-     *
+     * 
      * @param array $input Key-Value pairs where the keys are going to be
      * checked against the id.
      * @return boolean
@@ -107,7 +108,7 @@ abstract class Repository
      * Override to change the behavior of find.
      * Consider overriding limitClause if you override whereClause so
      * the output of find has the expected type.
-     *
+     * 
      * @param array $options The options passed to find.
      * @return string
      */
@@ -121,7 +122,7 @@ abstract class Repository
             implode(
                 ' AND ',
                 array_map(
-                    fn($name) => "$name = :$name",
+                    fn ($name) => "$name = :$name",
                     array_keys($options)
                 )
             );
@@ -147,7 +148,7 @@ abstract class Repository
         }
         array_walk(
             $options,
-            fn(&$value, $key) => $value = strtoupper($value)
+            fn (&$value, $key) => $value = strtoupper($value)
         );
         $directions = ['ASC', 'DESC'];
         if (!empty(array_diff(array_values($options), $directions))) {
@@ -155,7 +156,7 @@ abstract class Repository
         }
         array_walk(
             $options,
-            fn(&$value, $key) => $value = "$key $value"
+            fn (&$value, $key) => $value = "$key $value"
         );
         return ' ORDER BY ' .
             implode(
@@ -213,7 +214,7 @@ abstract class Repository
      * @param array $options Key-Value pairs to modifie the output.
      * [optional] If supplied, the output of find will change depending
      * on the keys set.
-     * $options['order-by'] is an array of key-value pairs where the keys
+     * $options['order_by'] is an array of key-value pairs where the keys
      * are the column names to order by and the values are either 'ASC'
      * or 'DESC' for ascending or descending respectively.
      * $options['limit'] is an int indication the number of records
@@ -252,7 +253,7 @@ abstract class Repository
     /**
      * Inserts the given input into the database.
      * Returns true if the insert was successful, and false otherwise.
-     *
+     * 
      * @param array $input Key-Value pairs where the keys are the column
      * names and the values are the values to insert.
      * @return bool
@@ -275,7 +276,7 @@ abstract class Repository
     /**
      * Deletes a record from the database.
      * Returns true if the record was deleted, false otherwise.
-     *
+     * 
      * @param array $conditions Key-Value pairs where the keys are the id
      * column names and the values are the values to search for.
      * @return bool
@@ -289,7 +290,7 @@ abstract class Repository
         $conditions = implode(
             " and ",
             array_map(
-                fn($name) => "$name = :$name",
+                fn ($name) => "$name = :$name",
                 $this->id
             )
         );
@@ -306,7 +307,7 @@ abstract class Repository
      * Updates a record in a database based on the given conditions and
      * input values.
      * Returns true if the update was successful and false otherwise.
-     *
+     * 
      * @param array $conditions Key-Value pairs where the keys are the id
      * column names and the values are the values to search for.
      * @param array $input Key-Value pairs where the keys are the column
@@ -326,7 +327,7 @@ abstract class Repository
             implode(
                 ',',
                 array_map(
-                    fn($name) => "$name = :$name",
+                    fn ($name) => "$name = :$name",
                     array_keys($input)
                 )
             );
@@ -334,7 +335,7 @@ abstract class Repository
             implode(
                 ' and ',
                 array_map(
-                    fn($name) => "$name = :" . $this->aliases[$name],
+                    fn ($name) => "$name = :" . $this->aliases[$name],
                     array_keys($conditions)
                 )
             );

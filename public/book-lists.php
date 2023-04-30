@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <?php
 require_once "../templates/header.php";
 ?>
@@ -7,11 +8,13 @@ require_once "../templates/header.php";
 <link rel="stylesheet" href="node_modules/bootswatch/dist/lux/bootstrap.min.css">
 <title> book-list</title>
 
+
 <body>
 <!--zeineb's page-->
-
 <?php
-require_once dirname(__FILE__, 2) . '/modules/auth/AuthorRepository.php';
+/*export to another file*/
+require_once dirname(__FILE__, 2) . '/modules/book_identification/BookRepository.php';
+require_once dirname(__FILE__, 2) . '/modules/author/AuthorRepository.php';
 require_once "../modules/book_identification/ProcessBookIdentity.php";
 $bookRepo = new BookRepository();
 $authorRepo = new AuthorRepository();
@@ -32,3 +35,4 @@ foreach ($books as $book) {
     <?php
 }
 ?>
+

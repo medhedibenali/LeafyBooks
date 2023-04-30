@@ -1,20 +1,17 @@
-<?php
-session_start();
-if(isset($_SESSION['user']))
-{
-    $user=$_SESSION['user'];
-}
-?>
 <!DOCTYPE html>
 <html lang="en" >
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../public/css/header.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--page title should be the title of the book-->
+    <title>Book Title </title>
+    <!--<div class="BookTitle">INSERT CODE PHP </div> -->
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../public/css/header.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+          integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
 </head>
 
 <body>
@@ -38,9 +35,10 @@ if(isset($_SESSION['user']))
                     <a class="nav-link" href="#" style="margin-left: 20px; margin-right: 20px;">My Books</a>
                 </li>
                 <li class="nav-item">
-                    <form class="d-flex" role="search" action="../public/search.php" method="get">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search" style="width: 20rem;margin-left: 3rem">
-                        <button class="btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    <form class="d-flex">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+                               style="width: 20rem;margin-left: 3rem">
+                        <i class="fa-solid fa-magnifying-glass"></i>
                     </form>
                 </li>
             </ul>
@@ -48,14 +46,7 @@ if(isset($_SESSION['user']))
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <?php
-                        if(!isset($_SESSION['user'])) {
-                            ?>
-                            <img src="../public/pictures/user.png" class="profilePic">
-                        <?php } else { ?>
-                            <img src="<?php echo $user->picture; ?>" class="profilePic">
-                        <?php } ?>
+                    <a class="nav-link" href="#"><img src="../public/pictures/user.png" class="profilePic"></a>
                 </li>
             </ul>
         </div>

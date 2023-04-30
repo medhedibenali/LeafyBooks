@@ -15,11 +15,28 @@ img {
     border: 1px solid transparent;
     border-radius: 50%;
 }
+#actionOnBook
+{
+    background-color: #296730;
+    border: 1px solid transparent;
+
+}
+select option
+{
+    background-color: white;
+    font-size: medium;
+}
+
 
 .flex-box {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+}
+.flex-box-no-space
+{
+    display: flex;
+    flex-direction: row;
 }
 
 .you-might-also-like {
@@ -50,46 +67,53 @@ img {
 }
 
 /* make widget invisible */
-.rate > input {
+.rate>input {
     display: none;
 }
 
 /* make the widget float to the right */
-.rate > label {
+.rate>label {
     float: right;
 }
 
 /* the star when it's un-hovered and un-checked */
-.rate > label:before {
+.rate>label:before {
     display: inline-block;
     font-size: 2rem;
     padding: .3rem .2rem;
     margin: 0;
     cursor: pointer;
     font-family: FontAwesome;
-    content: "\f005 "; /* full  black star from font awesome */
+    content: "\f005 ";
+    /* full  black star from font awesome */
 }
 
 /* Half star when it's not checked or hovered upon  */
 .rate .half:before {
-    content: "\f089 "; /* half star from font awesome  */
+    content: "\f089 ";
+    /* half star from font awesome  */
     position: absolute;
     padding-right: 0;
 }
 
 /* Click + hover color */
-input:checked ~ label, /* color every label that comes  directly after a checked star*/
-label:hover, label:hover ~ label {
+input:checked~label,
+/* color every label that comes  directly after a checked star*/
+label:hover,
+label:hover~label {
     color: #73B100;
 }
 
 /*color every hovered label and every label that comes directly after a hovered labem */
 /* Hover highlights */
-input:checked + label:hover, input:checked ~ label:hover, /* highlight selected stars when hovered upon */
-input:checked ~ label:hover ~ label, /*highlight every star directly after a selected star when hovered upon */
-label:hover ~ input:checked ~ label /* highlight hovered star and every selected star that comes after a hovered star (i.e : highlight previously selected stars)*/
-{
+input:checked+label:hover,
+input:checked~label:hover,
+/* highlight selected stars when hovered upon */
+input:checked~label:hover~label,
+/*highlight every star directly after a selected star when hovered upon */
+label:hover~input:checked~label
+
+/* highlight hovered star and every selected star that comes after a hovered star (i.e : highlight previously selected stars)*/
+    {
     color: #A6E72D;
 }
-
-

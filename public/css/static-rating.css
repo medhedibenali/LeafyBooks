@@ -1,31 +1,29 @@
 .rating {
     display: inline-block;
-    unicode-bidi: bidi-override;
     color: #888888;
     font-size: 25px;
     height: 25px;
-    width: auto;
-    margin: 0;
+    width: 120px;
     position: relative;
-    padding: 0;
+    font-size:30px
 }
 
 .rating-upper {
-    color: #c52b2f;
+    color: #E87400;
     padding: 0;
+    position: absolute; /*to put these stars on top of the un-highlighted ones*/
     position: absolute;
+    /*to put these stars on top of the unhighlighted ones*/
     z-index: 1;
     display: flex;
-    /*flex-direction: row;*/
     top: 0;
     left: 0;
     overflow: hidden;
-
+    /*to crop down the  combined width of the spans if it's > width of the rating-upper div*/
 }
 
 .rating-lower {
     padding: 0;
     display: flex;
-    /*flex-direction: row;*/
     z-index: 0;
 }
