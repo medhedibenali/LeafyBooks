@@ -1,3 +1,7 @@
 <?php
+require_once dirname(__FILE__, 2) . '/config/config.php';
+require TEMPLATES_PATH . '/header.php';
 
-echo "Hello, World!";
+echo "<div>Hello, World!</div>";
+
+require TEMPLATES_PATH . '/footer.php';

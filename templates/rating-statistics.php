@@ -1,9 +1,9 @@
-isbn
 <?php
 require_once dirname(__FILE__, 2) . '/public/php/ProcessRatingStatistics.php';
-$per = GetPercentage();
 
+$per = GetPercentage();
 ?>
+
 <link rel="stylesheet" href="../public/css/rating-bars.css">
 <div class="rating">
     <table>
