@@ -2,92 +2,164 @@
 session_start();
 
 require_once dirname(__FILE__, 2) . '/config/config.php';
+require_once MODULES_PATH . '/autoloader.php';
 
-$pageTitle = "Book Page";
+$isbn = htmlspecialchars($_GET['isbn']);
+
+require_once MODULES_PATH . '/book_identification/BookInfoDump.php';
+
+$pageTitle = $title;
 
 $stylesheets = array(
     'css/book-identity.css',
-    'css/static-rating.css'
+    'css/static-rating.css',
+    'css/book-template.css'
 );
 
 require TEMPLATES_PATH . '/header.php';
 
-$isbn = htmlspecialchars($_GET['isbn']);
-
-require_once MODULES_PATH . '/book_identification/BookInfoDump.php'
+$tagRepository=new TagsRepository();
+$bookByTags=$tagRepository->find(['isbn'=>$isbn]);
+$userRepository=new UserRepository();
+$user=$userRepository->find(['username'=>$_SESSION['username']])
 ?>
 <!--   info about the book-->
 <div class="container">
-    <div class="alert alert-warning">
-        <h3>Book Info</h3>
+    <div class="ImagePos">
+        <img id="cover" src="<?= $picture ?>"/>
+        <div>
+        <?php
+        require TEMPLATES_PATH . '/add-to-list.php';
+        ?>
+        </div>
     </div>
-    <div>
-        <img src="<?= $picture ?>" />
+
+    <div class="box1">
+        <h1 style="font-family: 'Britannic Bold';font-size: 50px;"><?=$title;?></h1>
+        <!--NUMBER OF PAGES AND PUBLISHING DATE  -->
+        <p style="font-family:  'Times New Roman, serif'">
+            <?=$book->page_number.' pages'?>
+            <br>
+            First published <?=$book->publishing_year?>
+        </p>
+    <div style="font-size: 20px;font-family: 'DecoType Naskh';">
+         <?= $author ?>
     </div>
-    <div>
-        title:<?= $title ?>
+    <div style="font-size: 20px;font-family: 'DecoType Naskh';">
+        <?= $publisher ?>
     </div>
-    <div>
-        author: <?= $author ?>
+    <div id="synopsis">
+        <?= $book->synopsis ?>
     </div>
-    <div>
-        publisher:<?= $publisher ?>
-    </div>
-    <!--    book average rating-->
-    <?php
-    $percentage = ($rating) * 20;
-    require TEMPLATES_PATH . '/rating-static-percentage.php';
-    ?>
-    <div>
-        (<?= $nbRatings ?> )
-    </div>
-    <div>
-        synopsis :<?= $book->synopsis ?>
-    </div>
-    <?php
-    require TEMPLATES_PATH . '/add-to-list.php';
-    ?>
+        <!--        book average rating-->
+        <?php
+        $percentage = ($book->rating)*10;
+         ?>
+        <div class="flex-box-no-space">
+
+            <div class="rating-in-stars">
+                <?php
+                require TEMPLATES_PATH . '/rating-static-percentage.php';
+                ?>
+            </div>
+            <div class="rating-in-digits" style="font-size:30px ; font-weight: bold; padding-left: 4%">
+                <?php
+                echo "  ".$book->rating;
+                ?>
+            </div>
+            <div class="number-of-ratinsgs" style="font-size:15px ; padding:2% 0 0 4%;color: gray">
+                <?php
+                echo "(".$nbRatings.')';
+                ?>
+            </div>
+        </div>
+
+        <br>
+
+    <p style="color: grey;margin-right: 10px;font-family: 'DecoType Naskh';font-size: 20px">Tags </p>
+    <ul id="liste" style="list-style: none;">
+        <?php
+        foreach ($bookByTags as $bookByTag)
+        {
+            ?>
+        <li id="lii"><?=$bookByTag->tag?></li>
+        <?php
+        }
+        ?>
+    </ul>
+
     <div class="AboutAuthor">
-        <h4>
+        <h2>
             About the author
-        </h4>
+        </h2>
+        <img id="authorpic" src="img/<?=$authorPic?>"> <?=$author?>
+        <br><br>
         <?= $bio ?>
     </div>
+     <br>
     <!--    rating statistics-->
-    <?php
-    require TEMPLATES_PATH . '/rating-statistics.php'
-    ?>
-    <!--similiar books-->
-    <h4 class=you-might-also-like>
-        You might also like
-    </h4>
-    <div class="flex-box">
-        <?php
-        require TEMPLATES_PATH . '/similar-books.php';
-        ?>
-    </div>
-    <div class="Ratings-reviews">
-        <h4>
-            Ratings & Reviews
-        </h4>
+     <?php
+     require TEMPLATES_PATH .'/rating-statistics.php';
+     ?>
         <br>
+        <br>
+        <br>
+        <br>
+        <br>
+    <!--similiar books-->
+    <div style="display: flex;margin-top: 70%">
+        <h2 style="font-family:'DecoType Naskh';font-style:italic ">
+            Readers also enjoy
+        </h2>
+        <div class="flex-box">
+            <?php
+            require TEMPLATES_PATH . '/similar-books.php';
+            ?>
+        </div>
+    </div>
+     <hr >
+    <div class="Ratings-reviews">
+        <h2 style="font-family:'DecoType Naskh';">
+            Ratings & Reviews
+        </h2>
+         <img src="img/<?= $user->picture ?>" id="userpic">
+        <br>
+        <p id="question">
+            what do you think, <?= $user->username ?>?
+        </p>
+
+        <div class="rating-portion">
+            <?php
+                require TEMPLATES_PATH . '/rating-template.php';
+            ?>
+            <button onclick="scrollTobottom()" class="writereview">Write a review</button>
+        </div>
         <!-- reviews-->
+        <p style=" display: flex;justify-content: center;">
+        </p>
         <?php
         require TEMPLATES_PATH . '/reviews.php';
         ?>
+
     </div>
-    <!--    review form-->
-    <div class="rating-portion">
-        <?php
-        require TEMPLATES_PATH . '/rating-user-input.php';
-        ?>
-    </div>
+<!--    review form-->
+<div class="reviewing-portion">
+    <?php
+    require TEMPLATES_PATH . '/reviewing-template.php';
+    ?>
+</div>
+</div>
+
+</div>
 </div>
 
 <?php
 
 $scripts = array(
-    'js/book-identity.js'
+    'js/book-identity.js',
+    'node_modules/bootstrap/dist/js/bootstrap.bundle.js',
+    'node_modules/bootstrap/dist/js/bootstrap.min.js',
+    '../templates/js/book-template.js'
 );
 
 require TEMPLATES_PATH . '/footer.php';

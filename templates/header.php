@@ -62,7 +62,7 @@ require dirname(__FILE__) . '/base-header.php';
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="#"></a>
                         <?php
                         if(!$user) {
                             ?>

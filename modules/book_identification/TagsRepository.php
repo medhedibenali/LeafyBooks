@@ -10,3 +10,4 @@ class TagsRepository extends  Repository
         parent::__construct($tableName, $attributes, $ids);
     }
 }
+

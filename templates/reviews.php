@@ -1,4 +1,6 @@
 <?php
+require_once dirname(__FILE__, 2) . '/modules/book_identification/ProcessBookIdentity.php';
+
 foreach (getReviews($isbn) as $reviewLine) {
     $percentage = ($reviewLine->rating) * 20;
 ?>
@@ -12,7 +14,7 @@ foreach (getReviews($isbn) as $reviewLine) {
     </div>
     <div>
         <?php
-        require dirname(__FILE__, 3) . "/templates/rating-static-percentage.php";
+        require dirname(__FILE__) . '/rating-static-percentage.php';
         ?>
     </div>
     <br>

@@ -30,7 +30,7 @@
     display: flex;
     margin-top: 2%;
     flex-direction: column;
-    width: 50%;
+    width: 70%;
 
 }
 
@@ -127,6 +127,7 @@
     border-radius: 0.5rem;
     background-color: #296730;
     transition: transform 0.3s ease;
+    overflow: hidden;
 }
 /*BUTTON ANIMATION */
 #dropdown
