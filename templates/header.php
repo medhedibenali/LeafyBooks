@@ -1,26 +1,36 @@
 <?php
 session_start();
-$_SESSION['username']='salma';
+require_once dirname(__FILE__,2).'/config/config.php';
+require_once MODULES_PATH . '/autoloader.php';
 
-if(isset($_SESSION['username']))
-{
-    $user=$_SESSION['username'];
+$userRepository = new UserRepository();
+$user = false;
+
+if(isset($_SESSION['username'])){
+    $user = $userRepository->find(['username'=>$_SESSION['username']]);
 }
+
+$stylesheets = array_merge(
+    $stylesheets ?? [],
+    array(
+        'css/header.css',
+        array(
+            'href' => 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css',
+            'integrity' => 'sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ',
+            'crossorigin' => 'anonymous'
+        ),
+        array(
+            'href' => 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css',
+            'integrity' => 'sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==',
+            'crossorigin' => 'anonymous',
+            'referrerpolicy' => 'no-referrer'
+        )
+    )
+);
+
+require dirname(__FILE__) . '/base-header.php';
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../public/css/header.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-</head>
-
-<body>
 <!--  NAVBAR   -->
 <nav class="navbar navbar-expand-lg t d-flex justify-content-center sticky-lg-top">
     <div class="container-fluid">
@@ -41,7 +51,7 @@ if(isset($_SESSION['username']))
                     <a class="nav-link" href="#" style="margin-left: 20px; margin-right: 20px;">My Books</a>
                 </li>
                 <li class="nav-item">
-                    <form class="d-flex" role="search" action="../public/search.php" method="get">
+                    <form class="d-flex" role="search" action="search.php" method="get">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search"
                                style="width: 20rem;margin-left: 3rem">
                         <i class="fa-solid fa-magnifying-glass"></i>
@@ -54,18 +64,18 @@ if(isset($_SESSION['username']))
                 <li class="nav-item">
                     <a class="nav-link" href="#">
                         <?php
-                        if(!isset($_SESSION['username'])) {
+                        if(!$user) {
                             ?>
-                         <div class="btn-group">
-                            <form action="SignUpManager.php" method="post">
-                                <button type="submit" class="navButton">Sign up</button>
-                            </form>
-                            <form action="SignInManager.php" method="post">
-                                <button type="submit" class="navButton">Log in</button>
-                            </form>
-                         </div>
+                            <div class="btn-group">
+                                <a href="sign-up.php">
+                                    <button type="button" class="navButton">Sign up</button>
+                                </a>
+                                <a href="sign-in.php">
+                                    <button type="button" class="navButton">Log in</button>
+                                </a>
+                            </div>
                         <?php } else { ?>
-                           <img src="<?php echo $user->picture; ?>" class="profilePic">
+                            <img src="img/<?= $user->picture ?>" class="profilePic">
                         <?php } ?>
                 </li>
             </ul>
@@ -92,7 +102,7 @@ if(isset($_SESSION['username']))
             // after a delay of 300 it removes the active class and sets clickedOnce to true.
         } else {
             // sets the animation property of the icon to "rotateFall 2s forwards" triggers a CSS animation called rotateFall
-                navbarBrandIcon.style.animation = "rotateFall 1s forwards";
+            navbarBrandIcon.style.animation = "rotateFall 1s forwards";
             setTimeout(() => {
                 navbarBrandIcon.remove();
             }, 2000);
@@ -101,4 +111,3 @@ if(isset($_SESSION['username']))
     });
 
 </script>
-

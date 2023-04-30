@@ -1,10 +1,12 @@
 
 <?php
-require_once dirname(__FILE__, 2) . '/public/php/ProcessRatingStatistics.php';
+require_once dirname(__FILE__, 2) . '/config/config.php';
+require_once MODULES_PATH . '/book_identification/ProcessRatingStatistics.php';
+
 $per = GetPercentage();
 
 ?>
-<link rel="stylesheet" href="../public/css/rating-bars.css">
+<link rel="stylesheet" href="css/rating-bars.css">
 <div class="rating">
     <table>
         <tr>

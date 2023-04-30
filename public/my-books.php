@@ -1,13 +1,16 @@
 <?php
-require_once '../modules/book-activity/ReadActRepository.php';
-require_once '../modules/book_identification/BookRepository.php';
-require_once '../templates/header.php';
+require_once dirname(__FILE__, 2) . '/config/config.php';
+require_once MODULES_PATH . '/autoloader.php';
 
+$pageTitle = 'My Books';
+
+$stylesheets = array(
+    'css/my-books.css'
+);
+
+require_once TEMPLATES_PATH . '/header.php';
 ?>
 
-<title> My Books </title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<link rel="stylesheet" href="css/my-books.css">
 <!--this part is for sorting the books either by book title or by start date-->
 <div class="row">
     <div class="col-md-3">

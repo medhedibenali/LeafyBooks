@@ -1,5 +1,10 @@
 <?php
-include_once "../modules/database/ConnexionDB.php";
-include_once "../modules/book-activity/ReadActRepository.php";
-$readActRepo = new ReadActRepository();
-echo "Hello,World";
+require_once dirname(__FILE__, 2) . '/config/config.php';
+
+$pageTitle = 'Home';
+
+require TEMPLATES_PATH . '/header.php';
+
+echo "<div>Hello, World!</div>";
+
+require TEMPLATES_PATH . '/footer.php';

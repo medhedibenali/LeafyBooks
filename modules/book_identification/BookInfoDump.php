@@ -1,11 +1,12 @@
 <?php
+require_once dirname(__FILE__,3).'/config/config.php';
+require_once MODULES_PATH . '/autoloader.php';
+require_once dirname(__FILE__).'/ProcessBookIdentity.php';
 
-/***
+/**
  * Contains all useful information about the book you're exploring
  */
 
-require_once dirname(__FILE__, 3) . '/modules/autoloader.php';
-require_once dirname(__FILE__, 3).'/modules/book_identification/ProcessBookIdentity.php';
 $book = findBook($isbn);
 $authorRepo = new AuthorRepository();
 $picture = $book->picture;
@@ -21,4 +22,5 @@ if (getRating($isbn) !== null) {
     $rating = 0;
     $nbRatings = 'no reviews yet';
 }
+
 $synopsis = $book->synopsis;
