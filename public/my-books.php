@@ -1,15 +1,11 @@
 <?php
 require_once '../modules/book-activity/ReadActRepository.php';
 require_once '../modules/book_identification/BookRepository.php';
-require_once 'header.php';
-
-
-?>
-
-<!-- Your HTML code for the my-books.php page goes here -->
+require_once '../templates/header.php';
 
 ?>
-<title><i class="fa-solid fa-leaf"></i> My Books </title>
+
+<title> My Books </title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="stylesheet" href="css/my-books.css">
 <!--this part is for sorting the books either by book title or by start date-->

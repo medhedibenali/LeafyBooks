@@ -6,7 +6,7 @@ if(isset($_SESSION['user']))
 }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -61,7 +61,7 @@ if(isset($_SESSION['user']))
         </div>
     </div>
 </nav>
-
+<!--ANIMATION HIDDEN THINGY WOOOO-->
 <script>
     const navbarBrandIcon = document.querySelector(".fa-leaf");
     // variable initialized to track if the leaf was clicked once or not
