@@ -1,12 +1,12 @@
 <?php
-require_once dirname(__FILE__, 2) . '/database/Repository.php';
+require_once dirname(__FILE__, 2) . '/autoloader.php';
 
 class UserRepository extends Repository
 {
     public function __construct()
     {
         $tableName = 'users';
-        $attributes = ['username', 'password', 'first_name', 'last_name', 'birthday'];
+        $attributes = ['username', 'password', 'first_name', 'last_name', 'birthday', 'picture'];
         $ids = ['username'];
         parent::__construct($tableName, $attributes, $ids);
     }
