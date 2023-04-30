@@ -3,13 +3,13 @@
 if (!isset($_SESSION['username'])) {
 ?>
     <div class="no-user-error">
-        Please <a href="../public/sign-in.php">login</a> or <a href="../public/sign-in.php">signup</a> to post review
+        Please <a href="sign-in.php">sign-in</a> or <a href="sign-up.php">sign-up</a> to post a review
     </div>
 <?php
 } //        Rating Stars
 else {
 ?>
-    <form id="addToList" action="../public/php/AddToListAction.php" method="post">
+    <form id="addToList" action="php/AddToListAction.php" method="post">
         <select id="actionOnBook" name="answer">
             <option value="default"></option>
             <option value="currently_reading">currently reading</option>
@@ -18,7 +18,5 @@ else {
         </select>
         <input type="hidden" name="isbn" value="<?= $isbn ?>">
     </form>
-    <br>
-    <br>
 <?php
 }

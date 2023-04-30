@@ -14,6 +14,15 @@ require TEMPLATES_PATH . '/header.php';
 
 $isbn = htmlspecialchars($_GET['isbn']);
 
+$bookRepository = new BookRepository();
+$book = $bookRepository->find(['isbn' => $isbn]);
+
+$authorRepository = new AuthorRepository();
+$author = $authorRepository->find(['id' => $book->author]);
+
+$userReviewsRepository = new UserReviewsRepository();
+$reviewsCount = count($userReviewsRepository->find(['isbn' => $isbn]));
+
 require_once MODULES_PATH . '/book_identification/BookInfoDump.php'
 ?>
 <!--   info about the book-->
@@ -22,27 +31,27 @@ require_once MODULES_PATH . '/book_identification/BookInfoDump.php'
         <h3>Book Info</h3>
     </div>
     <div>
-        <img src="<?= $picture ?>" />
+        <img src="<?= $book->picture ?>" />
     </div>
     <div>
-        title:<?= $title ?>
+        title: <?= $book->title ?>
     </div>
     <div>
-        author: <?= $author ?>
+        author: <?= $author->pen_name ?>
     </div>
     <div>
-        publisher:<?= $publisher ?>
+        publisher: <?= $book->publisher ?>
     </div>
     <!--    book average rating-->
     <?php
-    $percentage = ($rating) * 20;
+    $percentage = ($book->rating ?? 0) * 20;
     require TEMPLATES_PATH . '/rating-static-percentage.php';
     ?>
     <div>
-        (<?= $nbRatings ?> )
+        (<?= $reviewsCount ?> review<?= ($reviewsCount != 1) ? 's' : '' ?>)
     </div>
     <div>
-        synopsis :<?= $book->synopsis ?>
+        synopsis: <?= $book->synopsis ?>
     </div>
     <?php
     require TEMPLATES_PATH . '/add-to-list.php';
@@ -51,7 +60,7 @@ require_once MODULES_PATH . '/book_identification/BookInfoDump.php'
         <h4>
             About the author
         </h4>
-        <?= $bio ?>
+        <?= $author->bio ?>
     </div>
     <!--    rating statistics-->
     <?php
@@ -70,7 +79,6 @@ require_once MODULES_PATH . '/book_identification/BookInfoDump.php'
         <h4>
             Ratings & Reviews
         </h4>
-        <br>
         <!-- reviews-->
         <?php
         require TEMPLATES_PATH . '/reviews.php';

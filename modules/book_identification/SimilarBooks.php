@@ -1,9 +1,8 @@
 <?php
 require_once dirname(__FILE__, 2) . '/autoloader.php';
 
-function getSimilarBooks()
+function getSimilarBooks($isbn)
 {
-    $isbn = htmlspecialchars($_GET['isbn']);
     $bookRepository = new BookRepository();
     $actualBook = $bookRepository->find(["isbn" => $isbn]);
     $genre = $actualBook->genre;

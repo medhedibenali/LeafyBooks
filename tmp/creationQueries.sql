@@ -37,6 +37,7 @@ CREATE TABLE `web_project_db`.`books` (
     `picture` VARCHAR(255) NOT NULL,
     `synopsis` TEXT NOT NULL,
     `publishing_year` YEAR NOT NULL,
+    `rating` FLOAT,
     `genre` VARCHAR(255) NOT NULL,
     PRIMARY KEY (`isbn`),
     FOREIGN KEY (`author`) REFERENCES `authors` (`id`)

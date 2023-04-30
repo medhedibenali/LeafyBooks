@@ -1,8 +1,9 @@
 <?php
-require dirname(__FILE__, 2) . '/modules/book_identification/ProcessSimilarBooks.php';
+require dirname(__FILE__, 2) . '/modules/book_identification/SimilarBooks.php';
 
 $nb = 0;
-$books = getSimilarBooks();
+$books = getSimilarBooks($isbn);
+
 foreach ($books as $book) {
     if ($nb >= 3) { {
             break;
