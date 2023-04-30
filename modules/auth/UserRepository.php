@@ -22,14 +22,14 @@ class UserRepository extends Repository
     }
     public function findByUsernameOrFullName($search=""){
         $request='select * from '.$this->tableName.'
-         where username like concat("%",?,"%") or concat(firstName," ",lastName) like concat("%",?,"%")';
+         where username like concat("%",?,"%") or concat(first_name," ",last_name) like concat("%",?,"%")';
         $response = $this->db->prepare($request);
         $response->execute([$search,$search]);
         return $response->fetchAll(PDO::FETCH_OBJ);
     }
     public function findByUsernameOrFullNameLimit($search="",$offset=0,$numberMAX=0){
         $request='select * from '.$this->tableName.'
-         where (username like concat("%",?,"%") or concat(firstName," ",lastName) like concat("%",?,"%") )
+         where (username like concat("%",?,"%") or concat(first_name," ",last_name) like concat("%",?,"%") )
          limit '.intval($offset). ' , '.intval($numberMAX) ;
         $response = $this->db->prepare($request);
         $response->execute([$search,$search]);

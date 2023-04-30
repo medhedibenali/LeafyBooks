@@ -11,9 +11,10 @@
 
     </a>
 
-    <div class="book_info center">
+
         <a class="book_title center" href=<?="book-page.php?isbn=$book->isbn"?>><?= $book->title ?></a>
-        <div class="book_author center"> <span>By: </span> <?= $book->author ?></div>
+  <!--      add a link to the authors page-->
+        <div class="book_author center"> <span>By: </span><a href="#"><?= $book->author ?> </a> </div>
         <div class="book_rating center">
             <div class="rating">
                 <div class="rating-lower">
@@ -31,6 +32,8 @@
                     <span>★</span>
                 </div>
             </div>
-            (<?= $book->rating ?>)</div>
+            <div>
+                (<?= $book->rating ?>)
+            </div>
+            </div>
     </div>
-</div>
