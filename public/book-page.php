@@ -13,7 +13,8 @@ $stylesheets = array(
 require TEMPLATES_PATH . '/header.php';
 
 $isbn = htmlspecialchars($_GET['isbn']);
-require_once dirname(__FILE__) . '/php/BookInfoDump.php'
+
+require_once MODULES_PATH . '/book_identification/BookInfoDump.php'
 ?>
 <!--   info about the book-->
 <div class="container">
@@ -72,7 +73,7 @@ require_once dirname(__FILE__) . '/php/BookInfoDump.php'
         <br>
         <!-- reviews-->
         <?php
-        require_once dirname(__FILE__) . '/php/ProcessReviews.php';
+        require TEMPLATES_PATH . '/reviews.php';
         ?>
     </div>
     <!--    review form-->
