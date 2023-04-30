@@ -42,7 +42,7 @@ require_once '../templates/header.php';
         </div>
     </div>
     <button type="submit" class="btn btn-success">Apply</button>
-
+    </form>
 
 </div>
 
