@@ -1,8 +1,8 @@
 <?php
 session_start();
-if(isset($_SESSION['user']))
+if(isset($_SESSION['username']))
 {
-    $user=$_SESSION['user'];
+    $user=$_SESSION['username'];
 }
 ?>
 <!DOCTYPE html>
@@ -39,8 +39,8 @@ if(isset($_SESSION['user']))
                     <a class="nav-link" href="#" style="margin-left: 20px; margin-right: 20px;">My Books</a>
                 </li>
                 <li class="nav-item">
-                    <form class="d-flex">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+                    <form class="d-flex" role="search" action="../public/search.php" method="get">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search"
                                style="width: 20rem;margin-left: 3rem">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </form>
@@ -52,9 +52,16 @@ if(isset($_SESSION['user']))
                 <li class="nav-item">
                     <a class="nav-link" href="#">
                         <?php
-                        if(!isset($_SESSION['user'])) {
+                        if(!isset($_SESSION['username'])) {
                             ?>
-                            <img src="../public/pictures/user.png" class="profilePic">
+                         <div class="btn-group">
+                            <form action="SignUpManager.php" method="post">
+                                <button type="submit" class="navButton">Sign up</button>
+                            </form>
+                            <form action="SignInManager.php" method="post">
+                                <button type="submit" class="navButton">Log in</button>
+                            </form>
+                         </div>
                         <?php } else { ?>
                             <img src="<?php echo $user->picture; ?>" class="profilePic">
                         <?php } ?>
