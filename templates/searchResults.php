@@ -18,8 +18,8 @@ require_once 'header.php';
                 }
             }?>
         </div>
-        <nav class="pages">
-            <ul class="pagination pagination-sm justify-content-center">
+        <nav class="pages ">
+            <ul class="pagination pagination-sm">
                 <li class="page-item">
                     <?php $previousBookPage=$booksPage-1; ?>
                     <a  class="page-link" href=<?= "search.php?booksPage=$previousBookPage&usersPage=$usersPage&search=$search"?> aria-label="Previous">

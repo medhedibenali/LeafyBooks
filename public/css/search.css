@@ -14,6 +14,8 @@ h2{
 
 .content{
     margin-top: 20px;
+    height: 800px;
+    position: relative;
 }
 .grid-container{
     display: grid;
@@ -21,7 +23,7 @@ h2{
     width: 90%;
     grid-template-columns: 25% 25% 25% 25%;
 }
-.book,.profile{
+.book,.user{
     height: 400px;
 
 }
@@ -38,6 +40,12 @@ h2{
 }
 .book_title{
     color: #422f08;
+}
+.pages{
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    transform: translateX(-50%);
 }
 .page-link{
     text-align: center;
@@ -147,7 +155,7 @@ color: #888888;
     word-break:break-all;
     white-space:normal;
 }
-.profile_picture{
+.user_picture{
     border-radius: 50%;
     width: 150px;
 }
