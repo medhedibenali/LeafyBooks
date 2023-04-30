@@ -27,7 +27,7 @@ class UserRepository extends Repository
         $response->execute([$search,$search]);
         return $response->fetchAll(PDO::FETCH_OBJ);
     }
-    public function findByUsernameOrFullNameLimit($search="",$offset,$numberMAX){
+    public function findByUsernameOrFullNameLimit($search="",$offset=0,$numberMAX=0){
         $request='select * from '.$this->tableName.'
          where (username like concat("%",?,"%") or concat(firstName," ",lastName) like concat("%",?,"%") )
          limit '.intval($offset). ' , '.intval($numberMAX) ;

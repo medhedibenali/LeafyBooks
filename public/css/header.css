@@ -1,0 +1,79 @@
+
+.navbar
+{
+    background-color: #efddb3;
+}
+.navbar-brand
+{
+    font-family: "Script MT Bold";
+}
+
+/*this applies the hover effect on the divs except the last one*/
+.nav-item:not(:last-child) .nav-link:not(:last-child):hover {
+    background-color: #422f08;
+    color: whitesmoke;
+}
+
+.fa-magnifying-glass {
+
+    color: #b4b4b4;
+    align-self: center;
+    transform: translateX(-250%);
+}
+
+
+.profilePic {
+
+    border-radius: 50%;
+    width: 12%;
+    height: 15%;
+    object-fit: cover;
+    margin-left: 80%;
+}
+/*this has a different hover effect so it only works on the picture and not the whole div */
+.profilePic:hover {
+
+    background-color: #422f08;
+}
+
+/*LEAF ANIMATION THINGY */
+a.navbar-brand {
+
+    font-size: 20px;
+}
+
+.fa-leaf {
+    transition: all 0.3s ease;
+}
+
+a.navbar-brand.active{
+    transform: scale(2);
+    opacity: 0;
+}
+
+
+@keyframes rotateFall {
+    /*animations starts with*/
+    0% {
+        transform: rotate(0deg);
+        opacity: 1;
+    }
+    /*animations ends with*/
+    100% {
+        transform: rotate(90deg) translate(50vw, 100vh);
+        opacity: 0;
+    }
+}
+
+.navButton
+{
+    border-radius: 5%;
+    background-color: #efddb3;
+    border: 0;
+
+}
+.navButton:hover
+{
+    background-color: #422f08;
+    color: whitesmoke;
+}

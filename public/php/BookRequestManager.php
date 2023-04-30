@@ -16,7 +16,7 @@ if(isset($_POST['btn-send']))
         $msg="Book: $bookTitle\n Author: $author ";
         /*
          for mail to work in a normal way, the project needs to be hosted on a server
-        but ours is deployed locally so for this to work we need to follow the steps in this blog:
+        but ours is deployed locally so for this to work we need to follow the steps in this blog if we're using XAMPP:
         https://www.codingnepalweb.com/configure-xampp-to-send-mail-from-localhost/
          */
         if(mail($to,$subject,$msg,"From: ".$email))
