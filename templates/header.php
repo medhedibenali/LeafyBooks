@@ -1,5 +1,7 @@
 <?php
 session_start();
+$_SESSION['username']='salma';
+
 if(isset($_SESSION['username']))
 {
     $user=$_SESSION['username'];
@@ -63,7 +65,7 @@ if(isset($_SESSION['username']))
                             </form>
                          </div>
                         <?php } else { ?>
-                            <img src="<?php echo $user->picture; ?>" class="profilePic">
+                           <img src="<?php echo $user->picture; ?>" class="profilePic">
                         <?php } ?>
                 </li>
             </ul>

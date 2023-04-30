@@ -1,16 +1,14 @@
 <?php
 session_start();
 
+require_once dirname(__FILE__,2).'/config/config.php';
+
 ?>
-<!doctype html>
-<html lang="en">
 
 <?php
-require_once "../templates/header.php";
+require "../templates/header.php";
 ?>
 <link rel="stylesheet" href="node_modules/bootswatch/dist/lux/bootstrap.min.css">
-<link rel="stylesheet" href="node_modules/bootstrap/dist/js/bootstrap.bundle.js">
-<link rel="stylesheet" href="node_modules/bootstrap/dist/js/bootstrap.min.js">
 <link rel="stylesheet" href="css/book-identity.css">
 <link rel="stylesheet" href="css/static-rating.css">
 <link rel="stylesheet" href="css/book-template.css">
@@ -158,7 +156,8 @@ $user=$userRepository->find(['username'=>$_SESSION['username']])
 </div>
 </div>
 <script src="js/book-identity.js"></script>
-
+<script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+<script  src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 </body>
 </html>
 
