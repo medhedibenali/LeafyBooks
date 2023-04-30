@@ -1,5 +1,5 @@
 <?php
-
+$scripts=["js/scrollTop.js"];
 $scripts = array_merge(
     $scripts ?? [],
     array()

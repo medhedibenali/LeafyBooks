@@ -1,3 +1,6 @@
+<botton id="back-to-top-btn">
+    <i class="fa fa-angle-double-up"></i>
+</botton>
 <?php
 foreach ($scripts ?? [] as $script) {
     if (is_array($script)) {
@@ -17,9 +20,7 @@ foreach ($scripts ?? [] as $script) {
     }
 }
 ?>
-<div>
-    <i class="fa-duotone fa-arrow-up fa-bounce" style="--fa-primary-color: #51411f; --fa-secondary-color: #d99a12;"></i>
-</div>
+
 </body>
 
 </html>

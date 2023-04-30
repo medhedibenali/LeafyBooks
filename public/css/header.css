@@ -1,4 +1,6 @@
-
+html{
+    scroll-behavior: smooth;
+}
 .navbar
 {
     background-color: #efddb3;
@@ -75,4 +77,84 @@ a.navbar-brand.active{
 {
     background-color: #422f08;
     color: whitesmoke;
+}
+#back-to-top-btn{
+
+    position: fixed;
+    box-sizing: border-box;
+    bottom: 20px;
+    right: 20px;
+    font-size: 23px;
+    display: none;
+    text-align: center;
+    width: 40px;
+    height: 40px;
+    background-color: azure;
+    color: darkred;
+    cursor: pointer;
+    outline: none;
+    border: 3px solid darkred;
+    border-radius: 50% ;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in-out;
+    transition-property: background-color,color;
+}
+#back-to-top-btn:hover, #back-to-top-btn:focus {
+    background-color: darkred;
+    color: #fff;
+}
+/* Animations */
+.btnEntrance {
+    animation-duration: 0.5s;
+    animation-fill-mode: both;
+    animation-name: btnEntrance;
+}
+/* zoomIn */
+/* @keyframes btnEntrance {
+  from {
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+  to {
+    opacity: 1;
+  }
+} */
+
+/* fadeInUp */
+@keyframes btnEntrance {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 100%, 0);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+.btnExit {
+    animation-duration: 0.25s;
+    animation-fill-mode: both;
+    animation-name: btnExit;
+}
+/* zoomOut */
+/* @keyframes btnExit {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+} */
+
+/* fadeOutDown */
+@keyframes btnExit {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+        transform: translate3d(0, 100%, 0);
+    }
 }
