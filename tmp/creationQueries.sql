@@ -5,64 +5,60 @@ GRANT INSERT,
     SELECT,
     UPDATE,
     DELETE ON `web_project_db`.* TO `web_project_user` @`localhost`;
+-- users
 CREATE TABLE `web_project_db`.`users` (
     `username` VARCHAR(255) NOT NULL,
     `password` VARCHAR(255) NOT NULL,
     `first_name` VARCHAR(255) NOT NULL,
     `last_name` VARCHAR(255) NOT NULL,
     `birthday` DATE NOT NULL,
+    `picture` VARCHAR(255) NOT NULL,
     PRIMARY KEY (`username`)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci;
---author table--
-CREATE TABLE `authors` (
-    `id` varchar(255) NOT NULL,
-    `pen_name` varchar(255) NOT NULL,
-    `first_name` varchar(255) NOT NULL,
-    `last_name` varchar(255) NOT NULL,
-    `birthday` date NOT NULL,
-    `deathday` date NOT NULL,
-    `bio` mediumtext NOT NULL,
-    `nationality` varchar(255) NOT NULL,
-    `picture` mediumtext NOT NULL,
+-- authors
+CREATE TABLE `web_project_db`.`authors` (
+    `id` INT NOT NULL AUTO_INCREMENT,
+    `pen_name` VARCHAR(255) NOT NULL,
+    `first_name` VARCHAR(255) NOT NULL,
+    `last_name` VARCHAR(255) NOT NULL,
+    `birthday` DATE NOT NULL,
+    `death_day` DATE NOT NULL,
+    `bio` TEXT NOT NULL,
+    `nationality` VARCHAR(255) NOT NULL,
+    `picture` VARCHAR(255) NOT NULL,
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci;
---readact table--
-CREATE TABLE `readact` (
-    `username` varchar(255) NOT NULL,
-    `isbn` varchar(255) NOT NULL,
-    `status` varchar(255) NOT NULL,
-    `start_date` date NOT NULL,
-    `finish_date` date NOT NULL,
-    PRIMARY KEY (`username`, `isbn`)
+-- books
+CREATE TABLE `web_project_db`.`books` (
+    `isbn` VARCHAR(255) NOT NULL,
+    `title` VARCHAR(255) NOT NULL,
+    `author` INT NOT NULL,
+    `publisher` VARCHAR(255) NOT NULL,
+    `picture` VARCHAR(255) NOT NULL,
+    `synopsis` TEXT NOT NULL,
+    `publishing_year` YEAR NOT NULL,
+    `genre` VARCHAR(255) NOT NULL,
+    PRIMARY KEY (`isbn`),
+    FOREIGN KEY (`author`) REFERENCES `authors` (`id`)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci;
---user_reviews table--
-CREATE TABLE `user_reviews` (
-    `isbn` varchar(255) NOT NULL,
-    `username` varchar(255) NOT NULL,
-    `review` varchar(10000) NOT NULL,
-    `rating` float NOT NULL,
-    PRIMARY KEY (`isbn`, `username`)
+-- read_act
+CREATE TABLE `web_project_db`.`read_act` (
+    `isbn` VARCHAR(255) NOT NULL,
+    `username` VARCHAR(255) NOT NULL,
+    `status` VARCHAR(255) NOT NULL,
+    `start_date` DATETIME NOT NULL,
+    `finish_date` DATETIME NOT NULL,
+    PRIMARY KEY (`isbn`, `username`),
+    FOREIGN KEY (`isbn`) REFERENCES `books` (`isbn`),
+    FOREIGN KEY (`username`) REFERENCES `users` (`username`)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci;
---books table--
-CREATE TABLE `books` (
-    `isbn` varchar(255) NOT NULL,
-    `title` varchar(255) NOT NULL,
-    `author` varchar(255) NOT NULL,
-    `publisher` varchar(255) NOT NULL,
-    `picture` varchar(10000) NOT NULL,
-    `synopsis` mediumtext NOT NULL,
-    `publishing_year` year(4) NOT NULL,
-    `rating` float NOT NULL,
-    `genre` varchar(255) NOT NULL,
-    PRIMARY KEY (`isbn`)
-) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci;
---users--
-CREATE TABLE `users` (
-    `username` varchar(255) NOT NULL,
-    `password` varchar(255) NOT NULL,
-    `first_name` varchar(255) NOT NULL,
-    `last_name` varchar(255) NOT NULL,
-    `picture` varchar(10000) NOT NULL,
-    `birthday` date DEFAULT NULL,
-    PRIMARY KEY (`username`)
+-- user_reviews
+CREATE TABLE `web_project_db`.`user_reviews` (
+    `isbn` VARCHAR(255) NOT NULL,
+    `username` VARCHAR(255) NOT NULL,
+    `review` TEXT NOT NULL,
+    `rating` FLOAT NOT NULL,
+    PRIMARY KEY (`isbn`, `username`),
+    FOREIGN KEY (`isbn`) REFERENCES `books` (`isbn`),
+    FOREIGN KEY (`username`) REFERENCES `users` (`username`)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci;

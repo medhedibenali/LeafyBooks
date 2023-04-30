@@ -1,5 +1,5 @@
 <?php
-require 'php/ProcessSimilarBooks.php';
+require dirname(__FILE__, 2) . '/modules/book_identification/ProcessSimilarBooks.php';
 
 $nb = 0;
 $books = getSimilarBooks();

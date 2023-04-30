@@ -8,8 +8,6 @@ $username = $_SESSION['username'];
 $state = $_POST['answer'];
 $isbn = $_POST['isbn'];
 
-$path = dirname(__FILE__, 3) . '/public/book-identity';
-
 if (!$readActRepository->find(["isbn" => $isbn, "username" => $username])) {
     $startingDate = date('Y-m-d');
     $finishDate = date('Y-m-d');

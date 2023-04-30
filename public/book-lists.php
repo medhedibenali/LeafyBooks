@@ -1,14 +1,14 @@
 <?php
-require_once dirname(__FILE__, 2) . '/modules/autoloader.php';
-require_once dirname(__FILE__, 2) . '/templates/header.php';
-?>
+require_once dirname(__FILE__, 2) . '/config/config.php';
+require_once MODULES_PATH . '/autoloader.php';
 
-<link rel="stylesheet" href="css/book-identity.css">
-<link rel="stylesheet" href="node_modules/bootswatch/dist/lux/bootstrap.min.css">
-<title> book-list </title>
+$pageTitle = 'Book List';
 
+$stylesheets = array(
+    'css/book-identity.css'
+);
 
-<?php
+require TEMPLATES_PATH . '/header.php';
 
 $bookRepo = new BookRepository();
 $authorRepo = new AuthorRepository();
@@ -28,7 +28,4 @@ foreach ($books as $book) {
 <?php
 }
 
-?>
-</body>
-
-</html>
+require TEMPLATES_PATH . '/footer.php';
