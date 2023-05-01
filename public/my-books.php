@@ -56,10 +56,12 @@ $user=$userRepository->find(['username'=>$_SESSION['username']])
 <div class="grid" >
     <div class="text">Cover</div>
     <div class="text">Title</div>
+    <div class="text">Genre</div>
     <div class="text">Author</div>
     <div class="text">Rating</div>
     <div class="text">Status</div>
     <div class="text">Starting Date</div>
+
 
     <?php
     $readActRepository = new ReadActRepository();
@@ -72,17 +74,18 @@ $user=$userRepository->find(['username'=>$_SESSION['username']])
 
         foreach ($list as $element) {
             $book = $bookRepository->find(['isbn' => $element->isbn]);
-            echo "<a href='book-page.php?isbn=' . $book->isbn . <img src='" . $book->picture . "' alt='Book Cover'></a>";
-            echo "<div>" . $book->title . "</div>";
-            echo "<div>" . $book->author . "</div>";
-            echo "<div>" . $book->rating . "</div>";
-            echo "<div>" . $element->status . "</div>";
-            echo "<div>" . $element->start_date . "</div>";
+//            echo "<div class='grid-item'>";
+            echo "<a href='book-page.php?isbn=" . $book->isbn . "'><img src='" . $book->picture . "' alt='Book Cover'></a>";
+            echo "<div class='content'>" . $book->title . "</div>";
+            echo "<div class='content'>" . $book->genre . "</div>";
+            echo "<div class='content'>" . $book->author . "</div>";
+            echo "<div class='content'>" . $book->rating . "</div>";
+            echo "<div class='content'>" . $element->status . "</div>";
+            echo "<div class='content'>" . $element->start_date . "</div>";
+//            echo "</div>";
     }
     ?>
 </div>
-
-
 
 </body>
 </html>
