@@ -94,8 +94,52 @@
 }
 .SimilarBook {
     margin-left: 5%;
+    transition: transform 0.3s ease-in-out;
+}
+.SimilarBook:hover
+{
+    transform: scale(1.09);
+}
+.book_img{
+    transition: filter 0.5s;
+}
+.book-container:hover img {
+    filter: blur(4px);
 }
 
+.SimilarBook::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+.SimilarBook:hover::before {
+    opacity:1;
+}
+
+.book-title {
+    position: absolute;
+    top: 30%;
+    font-family:'DecoType Naskh';
+    font-size:1.5rem;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    background-color:transparent;
+    padding: 10px;
+    color:whitesmoke;
+
+}
+
+.SimilarBook:hover .book-title {
+    opacity: 1;
+}
 #userpic
 {
     border-radius: 50%;

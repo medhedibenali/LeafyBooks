@@ -158,8 +158,8 @@ $user=$userRepository->find(['username'=>$_SESSION['username']])
 $scripts = array(
     'js/book-identity.js',
     'node_modules/bootstrap/dist/js/bootstrap.bundle.js',
-    'node_modules/bootstrap/dist/js/bootstrap.min.js',
-    '../templates/js/book-template.js'
+    'node_modules/bootstrap/dist/js/bootstrap.min.js'
+
 );
 
 require TEMPLATES_PATH . '/footer.php';

@@ -14,3 +14,4 @@ list.addEventListener('change', function() {
     list.text = 'select an option';
   }
 });
+

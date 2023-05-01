@@ -13,7 +13,10 @@ foreach ($books as $book) {
 ?>
         <div class="SimilarBook">
             <a href="book-page.php?isbn=<?= $similarisbn ?>">
-                <img src="<?= $book->picture ?>">
+                <img src="<?= $book->picture ?>" class="book_img">
+                <div class="book-title">
+                    <p><?= $book->title ?></p>
+                </div>
             </a>
         </div>
 <?php
