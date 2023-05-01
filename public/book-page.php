@@ -2,6 +2,7 @@
 session_start();
 
 require_once dirname(__FILE__, 2) . '/config/config.php';
+require_once MODULES_PATH . '/autoloader.php';
 
 $pageTitle = "Book Page";
 
@@ -23,7 +24,6 @@ $author = $authorRepository->find(['id' => $book->author]);
 $userReviewsRepository = new UserReviewsRepository();
 $reviewsCount = count($userReviewsRepository->find(['isbn' => $isbn]));
 
-require_once MODULES_PATH . '/book_identification/BookInfoDump.php'
 ?>
 <!--   info about the book-->
 <div class="container">
