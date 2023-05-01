@@ -18,7 +18,7 @@
         <?php
         } else {
         ?>
-            <link rel="stylesheet" href=<?= $stylesheet ?>>
+            <link rel="stylesheet" href="<?= $stylesheet ?>">
     <?php
         }
     }

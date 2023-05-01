@@ -1,5 +1,5 @@
 <?php
-require_once 'ConnexionDB.php';
+require_once dirname(__FILE__, 2) . '/autoloader.php';
 
 /**
  * Abstract class for a repository.
@@ -214,7 +214,7 @@ abstract class Repository
      * @param array $options Key-Value pairs to modifie the output.
      * [optional] If supplied, the output of find will change depending
      * on the keys set.
-     * $options['order-by'] is an array of key-value pairs where the keys
+     * $options['order_by'] is an array of key-value pairs where the keys
      * are the column names to order by and the values are either 'ASC'
      * or 'DESC' for ascending or descending respectively.
      * $options['limit'] is an int indication the number of records
@@ -332,7 +332,7 @@ abstract class Repository
             );
         $condition =
             implode(
-                ',',
+                ' and ',
                 array_map(
                     fn ($name) => "$name = :" . $this->aliases[$name],
                     array_keys($conditions)

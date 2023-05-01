@@ -48,13 +48,16 @@ h2{
     font-style: italic;
     text-decoration: none;
 }
-.page-item{
+.page-link{
     text-align: center;
     color:#422f08;
     font-weight: bold;
 }
-.page-item:hover{
+.page-link:hover{
     color:#eb6114;
+}
+.disabled{
+    pointer-events: none;
 }
 
 

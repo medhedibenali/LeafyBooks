@@ -20,7 +20,7 @@ class BookRepository extends Repository
         $response->execute([$search,$search]);
         return $response->fetchAll(PDO::FETCH_OBJ);
     }
-    public function findByTitleOrAuthorLimit($search="",$offset,$numberMAX){
+    public function findByTitleOrAuthorLimit($search="",$offset=0,$numberMAX=0){
         $request='select * from '.$this->tableName.'
          where (title like concat("%",?,"%") or author like concat("%",?,"%") )
          limit '.intval($offset). ' , '.intval($numberMAX) ;

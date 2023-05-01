@@ -1,7 +1,12 @@
 <?php
-$stylesheets= ["css/search.css"];
+$stylesheets= array("css/search.css");
 require_once 'header.php';
- ?>
+$previousUserPage=$usersPage-1;
+$nextUserPage = $usersPage + 1;
+$previousBookPage = $booksPage - 1;
+$nextBookPage = $booksPage + 1;
+
+?>
     <h1 style="margin-top: 70px; margin-left: 30px; ">Search Results For "<?=$search ?>"</h1>
     <h2 >All Books</h2>
     <div class="content books-content">
@@ -21,8 +26,8 @@ require_once 'header.php';
         <nav class="pages ">
             <ul class="pagination pagination-sm">
                 <li class="page-item">
-                    <?php $previousBookPage=$booksPage-1; ?>
-                    <a  class=<?="page-link previous-book".($booksPage==1??"disabled")?> href=<?= "search.php?booksPage=$previousBookPage&usersPage=$usersPage&search=$search"?> aria-label="Previous">
+
+                    <a  class="<?='page-link previous-book '.($booksPage==1? "disabled":'')?> " href=<?= "search.php?booksPage=$previousBookPage&usersPage=$usersPage&search=$search"?> aria-label="Previous">
                         <span aria-hidden="true">&laquo;</span>
                         <span class="sr-only">Previous</span>
                     </a>
@@ -34,8 +39,8 @@ require_once 'header.php';
                         </li>
                     <?php } ?>
                 <li class="page-item">
-                    <?php $nextBookPage=$booksPage+1; ?>
-                    <a class=<?="page-link next-book".($booksPage==$booksNumber_of_page??"disabled")?> href=<?= "search.php?booksPage=$nextBookPage&usersPage=$usersPage&search=$search"?> aria-label="Next">
+
+                    <a class="<?='page-link next-book '.($booksPage==$booksNumber_of_page?'disabled':'')?> " href=<?= "search.php?booksPage=$nextBookPage&usersPage=$usersPage&search=$search"?> aria-label="Next">
                         <span aria-hidden="true">&raquo;</span>
                         <span class="sr-only">Next</span>
                     </a>
@@ -62,8 +67,7 @@ require_once 'header.php';
         <nav class="pages">
             <ul class="pagination pagination-sm justify-content-center">
                 <li class="page-item">
-                    <?php $previousUserPage=$usersPage-1; ?>
-                    <a class=<?="page-link previous-user".($usersPage==1??"disabled")?> href=<?= "search.php?booksPage=$booksPage&usersPage=$previousUserPage&search=$search"?> aria-label="Previous">
+                    <a class="<?='page-link previous-user '.($usersPage==1?'disabled':'')?>" href=<?= "search.php?booksPage=$booksPage&usersPage=$previousUserPage&search=$search"?> aria-label="Previous">
                         <span aria-hidden="true">&laquo;</span>
                         <span class="sr-only">Previous</span>
                     </a>
@@ -75,8 +79,8 @@ require_once 'header.php';
                     </li>
                 <?php } ?>
                 <li class="page-item">
-                    <?php $nextUserPage=$usersPage+1; ?>
-                    <a class=<?="page-link page next-user".($usersPage==$usersNumber_of_page??"disabled")?> href=<?= "search.php?booksPage=$booksPage&usersPage=$nextUserPage&search=$search"?> aria-label="Next">
+
+                    <a class="<?='page-link page next-user '.($usersPage==$usersNumber_of_page?'disabled':'')?>" href=<?= "search.php?booksPage=$booksPage&usersPage=$nextUserPage&search=$search"?> aria-label="Next">
                         <span aria-hidden="true">&raquo;</span>
                         <span class="sr-only">Next</span>
                     </a>

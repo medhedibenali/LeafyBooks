@@ -20,7 +20,6 @@ foreach ($scripts ?? [] as $script) {
     }
 }
 ?>
-
 </body>
 
 </html>
