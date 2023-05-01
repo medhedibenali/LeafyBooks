@@ -9,16 +9,17 @@ if (!isset($_SESSION['username'])) {
 else {
 ?>
 
-    <form action="../public/php/AddReview.php" method="post">
+    <form action="/php/AddReview.php" method="post">
         <!--    rating template-->
-        <h4>
-            write a review!
-        </h4>
-        <textarea name="review" rows="10" cols="50"></textarea>
+        <h3 style="font-family: 'Britannic Bold';font-style:italic;">
+            write a review !
+        </h3>
+        <div style="position:relative;">
+        <textarea name="review" rows="5" cols="100" class="textarea"></textarea>
         <br>
         <input type="hidden" value="<?= $isbn ?>" name="isbn">
-        <button type="submit">Submit
-        </button>
+        <button type="submit" class="writereview" style="position: relative; bottom: 0; right: 0;left: 90%; margin-top: 10px;">Submit</button>
+        </div>
     </form>
 <?php
 }

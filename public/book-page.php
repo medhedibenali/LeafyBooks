@@ -96,18 +96,15 @@ $user=$userRepository->find(['username'=>$_SESSION['username']])
         <br><br>
         <?= $bio ?>
     </div>
+    <hr >
      <br>
     <!--    rating statistics-->
      <?php
      require TEMPLATES_PATH .'/rating-statistics.php';
      ?>
         <br>
-        <br>
-        <br>
-        <br>
-        <br>
     <!--similiar books-->
-    <div style="display: flex;margin-top: 70%">
+    <div style="display: flex;margin-top: 60%;flex-direction:column;">
         <h2 style="font-family:'DecoType Naskh';font-style:italic ">
             Readers also enjoy
         </h2>
@@ -117,6 +114,7 @@ $user=$userRepository->find(['username'=>$_SESSION['username']])
             ?>
         </div>
     </div>
+        <br>
      <hr >
     <div class="Ratings-reviews">
         <h2 style="font-family:'DecoType Naskh';">
@@ -132,18 +130,20 @@ $user=$userRepository->find(['username'=>$_SESSION['username']])
             <?php
                 require TEMPLATES_PATH . '/rating-template.php';
             ?>
-            <button onclick="scrollTobottom()" class="writereview">Write a review</button>
+            <button  class="writereview">
+                <a href="#reviewing" style="text-decoration: none;color:whitesmoke;">Write a review</a>
+            </button>
         </div>
+        <br>
         <!-- reviews-->
-        <p style=" display: flex;justify-content: center;">
-        </p>
+
         <?php
         require TEMPLATES_PATH . '/reviews.php';
         ?>
-
     </div>
+
 <!--    review form-->
-<div class="reviewing-portion">
+<div class="reviewing-portion" id="reviewing">
     <?php
     require TEMPLATES_PATH . '/reviewing-template.php';
     ?>

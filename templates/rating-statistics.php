@@ -11,7 +11,7 @@ $per = GetPercentage();
     <table>
         <tr>
             <td>
-                <div class="number-of-stars">5 stars</div>
+                <div class="number-of-stars">5★</div>
             </td>
             <td>
                 <div class="rating-bar">
@@ -22,7 +22,7 @@ $per = GetPercentage();
 
         <tr>
             <td>
-                <div class="number-of-stars">4/4.5 stars</div>
+                <div class="number-of-stars">4/4.5★</div>
             </td>
             <td>
                 <div class="rating-bar">
@@ -32,7 +32,7 @@ $per = GetPercentage();
         </tr>
         <tr>
             <td>
-                <div class="number-of-stars">3/3.5 stars</div>
+                <div class="number-of-stars">3/3.5★</div>
             </td>
             <td>
                 <div class="rating-bar">
@@ -42,7 +42,7 @@ $per = GetPercentage();
         </tr>
         <tr>
             <td>
-                <div class="number-of-stars">2/2.5 stars</div>
+                <div class="number-of-stars">2/2.5★</div>
             </td>
             <td>
                 <div class="rating-bar">
@@ -52,7 +52,7 @@ $per = GetPercentage();
         </tr>
         <tr>
             <td>
-                <div class="number-of-stars">1.5/1 stars</div>
+                <div class="number-of-stars">1.5/1★</div>
             </td>
             <td>
                 <div class="rating-bar">
@@ -62,7 +62,7 @@ $per = GetPercentage();
         </tr>
         <tr>
             <td>
-                <div class="number-of-stars">0.5 stars</div>
+                <div class="number-of-stars">0.5★</div>
             </td>
             <td>
                 <div class="rating-bar">

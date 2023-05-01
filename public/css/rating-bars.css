@@ -17,18 +17,17 @@
 
 .rating-bar {
     height: 0.5cm;
-    width: 7cm;
-    background: #282828;
+    width: 25rem;
+    background: #d3d3d3;
     border-radius: 12px;
     margin-top: 4%;
-    margin-left: 3%;
     z-index: 999;
     margin-left: 12%;
 }
 
 .ratingper {
     height: 0.5cm;
-    width: 7cm;
+    width: 25rem;
     background: #296730;
     border-radius: 12px;
     position: relative;
@@ -36,11 +35,11 @@
 
 }
 
-    .ratingper-animation
-    {
+.ratingper-animation
+{
         background: #E87400;
         animation: fillBars 2.5s;
-    }
+}
 
 
 .ratingper::before {
