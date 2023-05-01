@@ -57,16 +57,7 @@ h2{
     color:#eb6114;
 }
 
-.rating {
-    display: inline-block;
-    color: #888888;
-    font-size: 25px;
-    height: 25px;
-    width: auto;
-    margin: 0;
-    position: relative;
-    padding: 0;
-}
+
 
 .rating-upper {
     color: #c52b2f;
