@@ -7,10 +7,13 @@ table
     margin-top: 5%;
 
 }
-.row
+.sorting_row
 {
-    margin-top: 5%;
     display: flex;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+    margin-right: calc(-.5 * var(--bs-gutter-x));
+    margin-left: calc(-.5 * var(--bs-gutter-x));
     justify-content: center;
 
 }

@@ -1,18 +1,21 @@
 <?php
+//require_once TEMPLATES_PATH . '/verification.php';
 require_once dirname(__FILE__, 2) . '/config/config.php';
 require_once MODULES_PATH . '/autoloader.php';
+session_start();
 
 $pageTitle = 'My Books';
-
 $stylesheets = array(
     'css/my-books.css'
 );
 
 require_once TEMPLATES_PATH . '/header.php';
+$userRepository=new UserRepository();
+$user=$userRepository->find(['username'=>$_SESSION['username']])
 ?>
 
 <!--this part is for sorting the books either by book title or by start date-->
-<div class="row">
+<div class="sorting_row">
     <div class="col-md-3">
 <!--this is the drop-down menu to select the column to order by-->
         <form method="post" action="my-books.php">
@@ -46,7 +49,6 @@ require_once TEMPLATES_PATH . '/header.php';
     </div>
     <button type="submit" class="btn btn-success">Apply</button>
     </form>
-
 </div>
 
 <!--this css grid that contains the books added by the user-->

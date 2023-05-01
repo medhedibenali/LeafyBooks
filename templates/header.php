@@ -1,4 +1,4 @@
-p<?php
+<?php
 session_start();
 require_once dirname(__FILE__,2).'/config/config.php';
 require_once MODULES_PATH . '/autoloader.php';
@@ -48,7 +48,12 @@ require dirname(__FILE__) . '/base-header.php';
                     <a class="nav-link" href="#" style="margin-left: 20px; margin-right: 20px;">Browse</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" style="margin-left: 20px; margin-right: 20px;">My Books</a>
+                    <?php if($user) { ?>
+                        <a class="nav-link" href="my-books.php" style="margin-left: 20px; margin-right: 20px;">My Books</a>
+                    <?php } else { ?>
+<!--                        when clicked on if user is connected it will take him to my books if not the login page-->
+                        <a class="nav-link" href="sign-in.php" style="margin-left: 20px; margin-right: 20px;">My Books</a>
+                    <?php } ?>
                 </li>
                 <li class="nav-item">
                     <form class="d-flex" role="search" action="search.php" method="get">
@@ -75,7 +80,7 @@ require dirname(__FILE__) . '/base-header.php';
                                 </a>
                             </div>
                         <?php } else { ?>
-                            <img src="img/<?= $user->picture ?>" class="profilePic">
+                                    <img src="img/<?= $user->picture ?>" class="profilePic">
                         <?php } ?>
                 </li>
             </ul>
@@ -83,31 +88,9 @@ require dirname(__FILE__) . '/base-header.php';
     </div>
 </nav>
 
-<script>
-    const navbarBrandIcon = document.querySelector(".fa-leaf");
-    // variable initialized to track if the leaf was clicked once or not
-    let clickedOnce = false;
-    // the icon is clicked, it first checks whether clickedOnce is false
-    navbarBrandIcon.addEventListener("click", event => {
-        event.preventDefault();
-
-        if (!clickedOnce) {
-            // it is, it adds the class active to the icon and scales it up to twice its size using the transform property.
-            navbarBrandIcon.classList.add("active");
-            navbarBrandIcon.style.transform = "scale(2)";
-            setTimeout(() => {
-                navbarBrandIcon.classList.remove("active");
-            }, 300);
-            clickedOnce = true;
-            // after a delay of 300 it removes the active class and sets clickedOnce to true.
-        } else {
-            // sets the animation property of the icon to "rotateFall 2s forwards" triggers a CSS animation called rotateFall
-            navbarBrandIcon.style.animation = "rotateFall 1s forwards";
-            setTimeout(() => {
-                navbarBrandIcon.remove();
-            }, 2000);
-            // after 2 sec the setTimeout function is called  which removes the icon from the DOM using the remove method.
-        }
-    });
-
-</script>
+<?php
+$scripts = array(
+    'js/header.js'
+);
+require TEMPLATES_PATH . '/footer.php';
+?>

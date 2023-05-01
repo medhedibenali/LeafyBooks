@@ -2,14 +2,14 @@
 .navbar
 {
     background-color: #efddb3;
+
 }
 .navbar-brand
 {
     font-family: "Script MT Bold";
 }
 
-/*this applies the hover effect on the divs except the last one*/
-.nav-item:not(:last-child) .nav-link:not(:last-child):hover {
+.nav-item:not(:last-child) .nav-link:hover  {
     background-color: #422f08;
     color: whitesmoke;
 }
@@ -21,7 +21,6 @@
     transform: translateX(-250%);
 }
 
-
 .profilePic {
     border-radius: 50%;
     height: 2.1rem;
@@ -31,7 +30,6 @@
 }
 /*this has a different hover effect so it only works on the picture and not the whole div */
 .profilePic:hover {
-
     background-color: #422f08;
 }
 
