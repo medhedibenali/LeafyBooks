@@ -1,7 +1,5 @@
 <?php
 $pageTitle="Request Book";
-$styleSheets="";
-$scripts="";
 include_once dirname(__FILE__,2).'/templates/header.php';
 ?>
 <div class="container">

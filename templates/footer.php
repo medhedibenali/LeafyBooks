@@ -1,8 +1,8 @@
 <?php
-$scripts=["js/scrollTop.js"];
+
 $scripts = array_merge(
     $scripts ?? [],
-    array()
+    array("js/scrollTop.js")
 );
 
 require dirname(__FILE__) . '/base-footer.php';

@@ -22,7 +22,7 @@ require_once 'header.php';
             <ul class="pagination pagination-sm">
                 <li class="page-item">
                     <?php $previousBookPage=$booksPage-1; ?>
-                    <a  class="page-link" href=<?= "search.php?booksPage=$previousBookPage&usersPage=$usersPage&search=$search"?> aria-label="Previous">
+                    <a  class=<?="page-link previous-book".($booksPage==1??"disabled")?> href=<?= "search.php?booksPage=$previousBookPage&usersPage=$usersPage&search=$search"?> aria-label="Previous">
                         <span aria-hidden="true">&laquo;</span>
                         <span class="sr-only">Previous</span>
                     </a>
@@ -35,7 +35,7 @@ require_once 'header.php';
                     <?php } ?>
                 <li class="page-item">
                     <?php $nextBookPage=$booksPage+1; ?>
-                    <a class="page-link" href=<?= "search.php?booksPage=$nextBookPage&usersPage=$usersPage&search=$search"?> aria-label="Next">
+                    <a class=<?="page-link next-book".($booksPage==$booksNumber_of_page??"disabled")?> href=<?= "search.php?booksPage=$nextBookPage&usersPage=$usersPage&search=$search"?> aria-label="Next">
                         <span aria-hidden="true">&raquo;</span>
                         <span class="sr-only">Next</span>
                     </a>
@@ -63,7 +63,7 @@ require_once 'header.php';
             <ul class="pagination pagination-sm justify-content-center">
                 <li class="page-item">
                     <?php $previousUserPage=$usersPage-1; ?>
-                    <a class="page-link page" href=<?= "search.php?booksPage=$booksPage&usersPage=$previousUserPage&search=$search"?> aria-label="Previous">
+                    <a class=<?="page-link previous-user".($usersPage==1??"disabled")?> href=<?= "search.php?booksPage=$booksPage&usersPage=$previousUserPage&search=$search"?> aria-label="Previous">
                         <span aria-hidden="true">&laquo;</span>
                         <span class="sr-only">Previous</span>
                     </a>
@@ -76,7 +76,7 @@ require_once 'header.php';
                 <?php } ?>
                 <li class="page-item">
                     <?php $nextUserPage=$usersPage+1; ?>
-                    <a class="page-link page" href=<?= "search.php?booksPage=$booksPage&usersPage=$nextUserPage&search=$search"?> aria-label="Next">
+                    <a class=<?="page-link page next-user".($usersPage==$usersNumber_of_page??"disabled")?> href=<?= "search.php?booksPage=$booksPage&usersPage=$nextUserPage&search=$search"?> aria-label="Next">
                         <span aria-hidden="true">&raquo;</span>
                         <span class="sr-only">Next</span>
                     </a>
@@ -85,6 +85,5 @@ require_once 'header.php';
         </nav>
 
     </div>
-<?php
-require_once'footer.php';
+
 

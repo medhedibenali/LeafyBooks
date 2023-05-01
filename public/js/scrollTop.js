@@ -1,6 +1,5 @@
 const button=document.querySelector("#back-to-top-btn");
 window.addEventListener("scroll",scrollFunction);
-console.log(button);
 function scrollFunction(){
     if(window.scrollY>250){
         if(!button.classList.contains("btnEntrance")) {
