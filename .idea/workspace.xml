@@ -4,7 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3ac7364e-bbf9-402b-af99-82c6ecd127c9" name="Changes" comment="" />
+    <list default="true" id="3ac7364e-bbf9-402b-af99-82c6ecd127c9" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/public/css/categories.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/mini-caroussel.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/homepage.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/banner.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/royal.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/book-carrousel.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/categories.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/mini-book-carro.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/HP1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/HP1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/header.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -39,23 +51,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/chadha/OneDrive/Bureau/web-project/public/php&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/chadha/OneDrive/Bureau/web-project/public/img",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\chadha\OneDrive\Bureau\web-project\public\img" />
       <recent name="C:\Users\chadha\OneDrive\Bureau\web-project\public\php" />
       <recent name="C:\Users\chadha\OneDrive\Bureau\web-project\templates" />
       <recent name="C:\Users\chadha\OneDrive\Bureau\web-project\public\assets\css" />
@@ -101,6 +114,10 @@
       <workItem from="1682623255304" duration="13738000" />
       <workItem from="1682663217770" duration="1722000" />
       <workItem from="1682767216364" duration="1022000" />
+      <workItem from="1683008339396" duration="67000" />
+      <workItem from="1683008422738" duration="246000" />
+      <workItem from="1683008697953" duration="2175000" />
+      <workItem from="1683017948708" duration="12301000" />
     </task>
     <servers />
   </component>

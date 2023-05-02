@@ -1,0 +1,24 @@
+#carouselExampleIndicators2
+{
+    margin-top:5%;
+    margin-left: 15%;
+    max-width: 10%;
+    max-height: 20%;
+}
+
+.carousel-item,.carousel-inner
+{
+    max-height:100%;
+    max-width:100%;
+}
+.carousel-item img
+{
+    max-width: 100%;
+    max-height: 100%;
+
+}
+.carousel-control-next-icon,.carousel-control-prev-icon {
+    background-color: rgb(16, 0, 0); /* change the color of the next button */
+    position: absolute;
+}
+
