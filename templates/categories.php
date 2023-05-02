@@ -15,13 +15,13 @@
                 </ol>
                 <div class="carousel-inner2">
                     <div class="carousel-item active" >
-                        <img class="d-block w-100" src="<?=$pictures['picture1']?>" alt="First slide">
+                        <img class="d-block w-100" src="<?=$pictures['picture1']?>" alt="First slide" id="f1">
                     </div>
                     <div class="carousel-item" >
-                        <img class="d-block w-100" src="<?=$pictures['picture2']?>" alt="Second slide"  >
+                        <img class="d-block w-100" src="<?=$pictures['picture2']?>" alt="Second slide" id="f2" >
                     </div>
                     <div class="carousel-item" >
-                        <img class="d-block w-100" src="<?=$pictures['picture3']?>" alt="Third slide" >
+                        <img class="d-block w-100" src="<?=$pictures['picture3']?>" alt="Third slide" id="f3">
                     </div>
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleIndicators2"  role="button" data-slide="prev">
