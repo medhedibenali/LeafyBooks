@@ -56,10 +56,6 @@ h2{
 .page-link:hover{
     color:#eb6114;
 }
-.disabled{
-    pointer-events: none;
-}
-
 
 
 .rating-upper {

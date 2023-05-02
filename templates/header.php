@@ -33,6 +33,7 @@ require dirname(__FILE__) . '/base-header.php';
 ?>
 
 <!--  NAVBAR   -->
+
 <nav class="navbar navbar-expand-lg t d-flex justify-content-center sticky-lg-top">
     <div class="container-fluid">
         <a class="navbar-brand" href="#"><i class="fa-solid fa-leaf"></i> LeafyBooks</a>
@@ -43,10 +44,17 @@ require dirname(__FILE__) . '/base-header.php';
         <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
             <ul class="navbar-nav" style="margin-left: 15rem;">
                 <li class="nav-item">
-                    <a class="nav-link" href="#" style="margin-right: 20px;">Home</a>
+                    <a class="nav-link" href="index.php" style="margin-right: 20px;">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" style="margin-left: 20px; margin-right: 20px;">Browse</a>
+                    <div class="dropdown">
+                        <a class=" nav-link dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-left: 20px; margin-right: 20px;">Browse</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </div>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#" style="margin-left: 20px; margin-right: 20px;">My Books</a>
