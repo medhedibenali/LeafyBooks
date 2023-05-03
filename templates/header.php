@@ -11,9 +11,7 @@ if(isset($_SESSION['username'])){
 }
 
 $stylesheets = array_merge(
-    $stylesheets ?? [],
     array(
-        'css/header.css',
         array(
             'href' => 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css',
             'integrity' => 'sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ',
@@ -24,8 +22,10 @@ $stylesheets = array_merge(
             'integrity' => 'sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==',
             'crossorigin' => 'anonymous',
             'referrerpolicy' => 'no-referrer'
-        )
-    )
+        ),
+        'css/header.css'
+    ),
+    $stylesheets ?? []
 );
 
 require dirname(__FILE__) . '/base-header.php';
@@ -35,8 +35,7 @@ require dirname(__FILE__) . '/base-header.php';
 <nav class="navbar navbar-expand-lg t d-flex justify-content-center sticky-lg-top">
     <div class="container-fluid">
         <a class="navbar-brand" href="#"><i class="fa-solid fa-leaf"></i> LeafyBooks</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
@@ -45,7 +44,14 @@ require dirname(__FILE__) . '/base-header.php';
                     <a class="nav-link" href="#" style="margin-right: 20px;">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" style="margin-left: 20px; margin-right: 20px;">Browse</a>
+                    <div class="dropdown">
+                        <a class=" nav-link dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-left: 20px; margin-right: 20px;">Browse</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </div>
                 </li>
                 <li class="nav-item">
                     <?php if($user) { ?>
@@ -57,10 +63,8 @@ require dirname(__FILE__) . '/base-header.php';
                 </li>
                 <li class="nav-item">
                     <form class="d-flex" role="search" action="search.php" method="get">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search"
-                               style="width: 20rem;margin-left: 3rem">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search" style="width: 20rem;margin-left: 3rem">
                         <i class="fa-solid fa-magnifying-glass"></i>
-                    </form>
                 </li>
             </ul>
         </div>
@@ -80,7 +84,16 @@ require dirname(__FILE__) . '/base-header.php';
                                 </a>
                             </div>
                         <?php } else { ?>
-                                    <img src="img/<?= $user->picture ?>" class="profilePic">
+                            <div class="dropdown">
+                                <a class=" nav-link dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+
+                                    <img src="img/<?php echo $user->picture ?>" class="profilePic">
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="profileDropdown">
+                                    <a class="dropdown-item" href="user_profile.php"><i class="fa-solid fa-book-open-reader"></i>  View Profile</a>
+                                    <a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt me-2"></i></i>Disconnect</a>
+                                </div>
+                            </div>
                         <?php } ?>
                 </li>
             </ul>
@@ -94,3 +107,4 @@ $scripts = array(
 );
 require TEMPLATES_PATH . '/footer.php';
 ?>
+

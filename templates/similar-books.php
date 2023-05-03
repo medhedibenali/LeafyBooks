@@ -1,8 +1,9 @@
 <?php
-require dirname(__FILE__, 2) . '/modules/book_identification/ProcessSimilarBooks.php';
+require dirname(__FILE__, 2) . '/modules/book_identification/SimilarBooks.php';
 
 $nb = 0;
-$books = getSimilarBooks();
+$books = getSimilarBooks($isbn);
+
 foreach ($books as $book) {
     if ($nb >= 3) { {
             break;
@@ -13,10 +14,7 @@ foreach ($books as $book) {
 ?>
         <div class="SimilarBook">
             <a href="book-page.php?isbn=<?= $similarisbn ?>">
-                <img src="<?= $book->picture ?>" class="book_img">
-                <div class="book-title">
-                    <p><?= $book->title ?></p>
-                </div>
+                <img src="<?= $book->picture ?>">
             </a>
         </div>
 <?php

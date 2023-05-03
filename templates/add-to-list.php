@@ -3,7 +3,7 @@
 if (!isset($_SESSION['username'])) {
 ?>
     <div class="no-user-error">
-        Please <a href="sign-in.php">log in</a> or <a href="sign-in.php">sign up</a> to post review
+        Please <a href="sign-in.php">sign-in</a> or <a href="sign-up.php">sign-up</a> to post a review
     </div>
 <?php
 } //        Rating Stars
@@ -18,6 +18,5 @@ else {
         </select>
         <input type="hidden" name="isbn" value="<?= $isbn ?>">
     </form>
-
 <?php
 }

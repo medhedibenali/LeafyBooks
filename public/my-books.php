@@ -3,10 +3,11 @@
 require_once dirname(__FILE__, 2) . '/config/config.php';
 require_once MODULES_PATH . '/autoloader.php';
 session_start();
-
+$_SESSION['username']='salma';
 $pageTitle = 'My Books';
 $stylesheets = array(
-    'css/my-books.css'
+    'css/my-books.css',
+    'css/static-rating.css',
 );
 
 require_once TEMPLATES_PATH . '/header.php';
@@ -58,7 +59,8 @@ $user=$userRepository->find(['username'=>$_SESSION['username']])
     <div class="text">Title</div>
     <div class="text">Genre</div>
     <div class="text">Author</div>
-    <div class="text">Rating</div>
+    <div class="text">AVG Rating</div>
+    <div class="text">My Rating</div>
     <div class="text">Status</div>
     <div class="text">Starting Date</div>
 
@@ -71,18 +73,22 @@ $user=$userRepository->find(['username'=>$_SESSION['username']])
         $orderBy = $_POST["exampleRadios"] ?? 'DESC';
 
         $list = $readActRepository->find(['username' => 'user1'], ['order_by' => [$sort => $orderBy]]);
-
         foreach ($list as $element) {
             $book = $bookRepository->find(['isbn' => $element->isbn]);
-//            echo "<div class='grid-item'>";
-            echo "<a href='book-page.php?isbn=" . $book->isbn . "'><img src='" . $book->picture . "' alt='Book Cover'></a>";
+            $percentage=($book->rating)*20;
+            echo "<a href='book-page.php?isbn=" . $book->isbn . "'> <img src='" . $book->picture . "' alt='Book Cover'></a>";
             echo "<div class='content'>" . $book->title . "</div>";
             echo "<div class='content'>" . $book->genre . "</div>";
             echo "<div class='content'>" . $book->author . "</div>";
             echo "<div class='content'>" . $book->rating . "</div>";
+            ?>
+                <div class="content"><?php
+                        require_once TEMPLATES_PATH . '/rating-static-percentage.php';
+                        ?>
+                </div>
+            <?php
             echo "<div class='content'>" . $element->status . "</div>";
             echo "<div class='content'>" . $element->start_date . "</div>";
-//            echo "</div>";
     }
     ?>
 </div>

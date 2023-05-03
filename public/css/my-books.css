@@ -3,7 +3,7 @@
 {
     display: flex;
     flex-wrap: wrap;
-    margin-top: 2rem;
+    margin-top: 5rem;
     margin-right: calc(-.5 * var(--bs-gutter-x));
     margin-left: calc(-.5 * var(--bs-gutter-x));
     justify-content: center;
@@ -66,10 +66,8 @@
     margin-top: 5%;
     display: grid;
     justify-content: center;
-    grid-template-columns: repeat(7, 7rem);
+    grid-template-columns: repeat(8, 7rem);
     gap: 5%;
-
-
 }
 
 .grid  img
@@ -85,7 +83,7 @@
 {
     display:flex;
     justify-content:center;
+    align-items:center;
     font-family:"Apple Color Emoji";
     font-size:20px;
 }
-
