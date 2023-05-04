@@ -5,7 +5,6 @@ require_once MODULES_PATH . '/autoloader.php';
 
 $userRepository = new UserRepository();
 $user = false;
-
 if(isset($_SESSION['username'])){
     $user = $userRepository->find(['username'=>$_SESSION['username']]);
 }
@@ -65,6 +64,7 @@ require dirname(__FILE__) . '/base-header.php';
                     <form class="d-flex" role="search" action="search.php" method="get">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search" style="width: 20rem;margin-left: 3rem">
                         <i class="fa-solid fa-magnifying-glass"></i>
+                    </form>
                 </li>
             </ul>
         </div>

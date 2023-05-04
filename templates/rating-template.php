@@ -1,8 +1,8 @@
 <?php
 if (!isset($_SESSION['username'])) {
     ?>
-    <div class="no-user-error">
-        Please <a href="/sign-in.php">login</a> or <a href="./sign-in.php">signup</a> to post review
+    <div class="no-user-error" id="2">
+        Please <a href="/sign-in.php">login</a> or <a href="./sign-up.php">signup</a> to post review
     </div>
     <?php
 }

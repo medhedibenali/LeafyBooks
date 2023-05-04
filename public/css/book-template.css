@@ -136,7 +136,10 @@
     color:whitesmoke;
 
 }
-
+.ReadersEnjoy
+{
+    display: flex;flex-direction:column; margin-top: 75%;
+}
 .SimilarBook:hover .book-title {
     opacity: 1;
 }

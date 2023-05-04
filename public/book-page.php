@@ -6,9 +6,9 @@ require_once MODULES_PATH . '/autoloader.php';
 
 $isbn = htmlspecialchars($_GET['isbn']);
 
-require_once MODULES_PATH . '/book_identification/BookInfoDump.php';
-
-$pageTitle = $title;
+$bookRepository = new BookRepository();
+$book = $bookRepository->find(['isbn' => $isbn]);
+$pageTitle = $book->title;
 
 $stylesheets = array(
     'css/book-identity.css',
@@ -18,15 +18,19 @@ $stylesheets = array(
 
 require TEMPLATES_PATH . '/header.php';
 
+$authorRepository = new AuthorRepository();
+$author = $authorRepository->find(['id' => $book->author]);
 $tagRepository=new TagsRepository();
 $bookByTags=$tagRepository->find(['isbn'=>$isbn]);
+$userReviewsRepository = new UserReviewsRepository();
 $userRepository=new UserRepository();
-$user=$userRepository->find(['username'=>$_SESSION['username']])
+$user=$userRepository->find(['username'=>$_SESSION['username']]);
+$reviewsCount = count($userReviewsRepository->find(['isbn' => $isbn]));
 ?>
     <!--   info about the book-->
     <div class="container">
         <div class="ImagePos">
-            <img id="cover" src="<?= $picture ?>"/>
+            <img id="cover" src="<?= $book->picture ?>"/>
             <div>
                 <?php
                 require TEMPLATES_PATH . '/add-to-list.php';
@@ -35,7 +39,7 @@ $user=$userRepository->find(['username'=>$_SESSION['username']])
         </div>
 
         <div class="box1">
-            <h1 style="font-family: 'Britannic Bold';font-size: 50px;"><?=$title;?></h1>
+            <h1 style="font-family: 'Britannic Bold';font-size: 50px;"><?=$book->title;?></h1>
             <!--NUMBER OF PAGES AND PUBLISHING DATE  -->
             <p style="font-family:  'Times New Roman, serif'">
                 <?=$book->page_number.' pages'?>
@@ -46,14 +50,14 @@ $user=$userRepository->find(['username'=>$_SESSION['username']])
                 <?= $author ?>
             </div>
             <div style="font-size: 20px;font-family: 'DecoType Naskh';">
-                <?= $publisher ?>
+                <?= $book->publisher ?>
             </div>
             <div id="synopsis">
                 <?= $book->synopsis ?>
             </div>
             <!--        book average rating-->
             <?php
-            $percentage = ($book->rating)*10;
+            $percentage = ($book->rating ?? 0) * 20;
             ?>
             <div class="flex-box-no-space">
 
@@ -62,20 +66,16 @@ $user=$userRepository->find(['username'=>$_SESSION['username']])
                     require TEMPLATES_PATH . '/rating-static-percentage.php';
                     ?>
                 </div>
-                <div class="rating-in-digits" style="font-size:30px ; font-weight: bold; padding-left: 4%">
+                <div class="rating-in-digits" style="font-size:30px ;  padding-left: 4%">
+
+                   (<?= $reviewsCount ?>  review<?= ($reviewsCount != 1) ? 's' : '' ;?>)
                     <?php
                     echo "  ".$book->rating;
                     ?>
                 </div>
-                <div class="number-of-ratinsgs" style="font-size:15px ; padding:2% 0 0 4%;color: gray">
-                    <?php
-                    echo "(".$nbRatings.')';
-                    ?>
-                </div>
+
             </div>
-
             <br>
-
             <p style="color: grey;margin-right: 10px;font-family: 'DecoType Naskh';font-size: 20px">Tags </p>
             <ul id="liste" style="list-style: none;">
                 <?php
@@ -87,14 +87,13 @@ $user=$userRepository->find(['username'=>$_SESSION['username']])
                 }
                 ?>
             </ul>
-
             <div class="AboutAuthor">
                 <h2>
                     About the author
                 </h2>
-                <img id="authorpic" src="img/<?=$authorPic?>"> <?=$author?>
+                <img id="authorpic" src="img/<?=$author->picture?>"> <?=$author?>
                 <br><br>
-                <?= $bio ?>
+                <?= $author->bio ?>
             </div>
             <hr >
             <br>
@@ -103,8 +102,8 @@ $user=$userRepository->find(['username'=>$_SESSION['username']])
             require TEMPLATES_PATH .'/rating-statistics.php';
             ?>
             <br>
-            <!--similiar books-->
-            <div style="display: flex;margin-top: 60%;flex-direction:column;">
+            <!--similar books-->
+            <div class="ReadersEnjoy">
                 <h2 style="font-family:'DecoType Naskh';font-style:italic ">
                     Readers also enjoy
                 </h2>
@@ -129,10 +128,16 @@ $user=$userRepository->find(['username'=>$_SESSION['username']])
                 <div class="rating-portion">
                     <?php
                     require TEMPLATES_PATH . '/rating-template.php';
+                    if(isset($_SESSION['username']))
+                    {
                     ?>
                     <button  class="writereview">
-                        <a href="#reviewing" style="text-decoration: none;color:whitesmoke;">Write a review</a>
+                        <a href="#reviewing" style="text-decoration: none;color:whitesmoke">Write a review</a>
                     </button>
+                        <?php
+                    }
+                    ?>
+
                 </div>
                 <br>
                 <!-- reviews-->
@@ -147,6 +152,7 @@ $user=$userRepository->find(['username'=>$_SESSION['username']])
                 <?php
                 require TEMPLATES_PATH . '/reviewing-template.php';
                 ?>
+            </div>
             </div>
         </div>
 

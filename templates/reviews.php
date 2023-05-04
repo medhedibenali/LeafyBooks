@@ -1,6 +1,4 @@
 <?php
-require_once dirname(__FILE__, 2) . '/modules/book_identification/ProcessBookIdentity.php';
-
 $userReviewRepository = new UserReviewsRepository();
 $reviews = $userReviewRepository->find(['isbn' => $isbn]);
 

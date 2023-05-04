@@ -21,8 +21,8 @@ if (!$readActRepository->find(["isbn" => $isbn, "username" => $username])) {
         $startingDate = date('Y-m-d');
         $readActRepository->update(["isbn" => $isbn, "username" => $username], ["status" => $state, "start_date" => $startingDate, "finish_date" => $finishDate]);
     } else {
-        $finishDate = 0;
-        $startingDate = 0;
+        $finishDate = "0000-00-00";
+        $startingDate = "0000-00-00";
         $readActRepository->update(["isbn" => $isbn, "username" => $username], ["status" => $state, "start_date" => $startingDate, "finish_date" => $finishDate]);
     }
 }
