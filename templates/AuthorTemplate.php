@@ -7,35 +7,33 @@
     <div class="row" style="width:100%;">
         <div class="col-4" style="display:flex;align-items:flex-start;justify-content: sapce-between;">
 
-            <img id="UserImagePos" src="pictures/jerry.png" alt="image not found" style="margin-left:50px;margin-right:30px;width:200px;height:200px;">
-            <a href="#" style="margin-top:260px;margin-left:-200px;font-size:15px;color:#034694">10 ratings</a>
-            <a href="#" style="margin-top:260px;margin-left:5px;font-size:15px;color:#034694">(3,78 avg)</a>
-            <a href="#" style="margin-top:280px;margin-left:-100px;font-size:15px;color:#034694">71 reviews</a>
+            <img src="pictures/schopenhauer.jpg" alt="image not found" style="margin-top:18%;margin-left:50px;margin-right:30px;width:270px;height:330px;">
+            
+            <button class="btn" style="margin-top:125%;margin-left:-70%;font-size:15px;border: 1px solid black;">Follow Author</button>
 
         </div>
 
         <div class="col-4">
-            <h1 class="username" style="margin-top: 50px;margin-left:-78px;color:#490206; font-family: Script MT Bold; ">Jerry</h1>
-            <hr style="margin-top:105px;margin-left:-80px;opacity:10;">
+            <h1 class="username" style="margin-top: 50px;margin-left:-20px;color:#490206; font-family: Script MT Bold; ">Arthur Schopenhauer</h1>
+            <hr style="margin-top:105px;margin-left:-18px;opacity:10;">
 
-            <h6 style="margin-left:-85px;color:#490206;">Full name</h1>
-            <p style="margin-top:-31px">Jerry</p>
+            <h6 style="margin-left:-18px;color:#490206;">Born</h1>
+            <p style="margin-top:-8.75%;margin-left:70px;">February 22nd, 1788 in Crown of the Kingdom of Poland</p>
 
-            <h6 style="margin-left:-85px;color:#490206;margin-top:-13px;">Details</h1>
-            <p style="margin-top:-31px">Tunis, Tunisia</p>
+            <h6 style="margin-left:-18px;color:#490206;margin-top:-13px;">Died</h1>
+            <p style="margin-top:-8.75%;margin-left:70px;">September 21st, 1860 (aged 72) in German Confederation</p>
 
-            <h6 style="margin-left:-85px;color:#490206;margin-top:-13px;">Activity</h1>
-            <p style="margin-top:-31px">Joined on December 27th, 2018</p>
+            <h6 style="margin-left:-18px;color:#490206;margin-top:-13px;">Genre</h1>
+            <a href="#"><p style="margin-top:-8.75%;margin-left:70px;color:#034694;">Philosophy</p></a>
 
-            <h6 style="margin-left:-85px;color:#490206;margin-top:-13px;">Birthday</h1>
-            <p style="margin-top:-31px">April 20th, 2000</p>
-
-            <h6 style="margin-left:-85px;color:#490206;margin-top:-10px;">About Me</h1>
-            <div class="bio-container" style="margin-top:-30px;">
+            
+            <div class="bio-container" style="margin-top:5%;margin-left:-5%;">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae velit, et ab aperiam minima harum eligendi saepe in tenetur eius, soluta non sit sequi expedita facilis nisi neque rerum distinctio?</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae velit, et ab aperiam minima harum eligendi saepe in tenetur eius, soluta non sit sequi expedita facilis nisi neque rerum distinctio?</p>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae velit, et ab aperiam minima harum eligendi saepe in tenetur eius, soluta non sit sequi expedita facilis nisi neque rerum distinctio?</p>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit laboriosam necessitatibus corporis ipsa, autem architecto doloremque quaerat? Mollitia asperiores eos exercitationem qui! Enim possimus quaerat aliquid provident eveniet cupiditate beatae.</p>
             </div>
-            <a href="#" class="more-link" style="display:block;color:#034694;">..more</a>
+            <a href="#" class="more-link" style="display:block;color:#034694;margin-left:-5%;">..more</a>
 
 
             <!-- Script to make the more button show more of the bio -->
@@ -63,7 +61,7 @@
 
             <style>
                 .hide{
-                    height: 70px;
+                    height: 300px;
                     overflow: hidden;
                 }
             </style>
@@ -96,7 +94,7 @@
     <div class="row" style="width:100%;">
         <div style="width:65%;word-wrap: break-word;">
             <div class="main-border" style="text-align:center;">
-                <h5 style="margin-top: 5%;margin-bottom:5%;font-family: Script MT Bold;">Currently Reading(1)</h5>
+                <h5 style="margin-top: 5%;margin-bottom:5%;font-family: Script MT Bold;">Books(17)</h5>
 
 
 
@@ -144,62 +142,9 @@
 
 
                     <div class="carousel-item active">
-                        <h5 style="margin-top:10%;font-family: Script MT Bold;">Read</h5>
-
-                        <script type="text/javascript">
-                            google.charts.load('current', {'packages':['corechart']});
-                            google.charts.setOnLoadCallback(drawChart);
-                            
-
-                            function drawChart() {
-
-                                var data = google.visualization.arrayToDataTable([
-                                ['Genre', 'Number of books'],
-                                ['Action',     11],
-                                ['Adventure',      2],
-                                ['Drama',  2],
-                                ['Mystery', 2],
-                                ['Comedy',    7]
-                                ]);
-
-                                var options = {
-                                chartArea:  {
-                                    width: '100%',
-                                    height: '60%'
-                                }
-                                };
-                                
-                                var options1 = {
-                                chartArea:  {
-                                    width: '100%',
-                                    height: '60%'
-                                }
-                                };
-                                
-                                var options2 = {
-                                chartArea:  {
-                                    width: '100%',
-                                    height: '60%'
-                                }
-                                };
-
-                                
-                                var chart1 = new google.visualization.PieChart(document.getElementById('piechart1'));
-                                
-
-                                
-                                chart1.draw(data, options1);
-                                
-                            }
-                        </script>    
-
-
-
-
-                        <div class="chart-container">
-                            <div id="piechart1" style="height:300px;"></div>
+                        <h5 style="margin-top:10%;font-family: Script MT Bold;">Quotes</h5>
                             <div style="display: flex; justify-content: center;margin-top: 23%;">
-                                <button id='view-all' class="writereview" style="font-family: Script MT Bold;">Stats</button>
+                                <button id='view-all' class="writereview" style="font-family: Script MT Bold;">View All</button>
                             </div>
                         </div>
                         
