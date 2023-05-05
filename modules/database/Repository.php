@@ -30,7 +30,7 @@ abstract class Repository
                 $this->attributes
             ))
         ) {
-            throw new Exception("the fields of the id must be valid attributes");
+            throw new Exception('the fields of the id must be valid attributes');
         }
         $this->db = ConnexionDB::getInstance();
         $this->aliases = [];
@@ -40,7 +40,7 @@ abstract class Repository
                 $this->attributes
             )
         );
-        $base = str_repeat("x", $max);
+        $base = str_repeat('x', $max);
         foreach ($this->id as $index => $id) {
             $this->aliases[$id] = $base . $index;
         }
@@ -160,7 +160,7 @@ abstract class Repository
         );
         return ' ORDER BY ' .
             implode(
-                " , ",
+                ' , ',
                 array_values($options)
             );
     }
@@ -266,7 +266,9 @@ abstract class Repository
         $keys = implode(',', array_keys($input));
         $params = $this->formatInput($input);
         $values = implode(',', array_keys($params));
-        $request = "INSERT INTO $this->tableName ($keys) VALUES ($values)";
+        $request =
+            "INSERT INTO $this->tableName ($keys)
+            VALUES ($values)";
         $reponse = $this->db->prepare($request);
         $reponse->execute($params);
         return true;
@@ -287,7 +289,7 @@ abstract class Repository
             return false;
         }
         $conditions = implode(
-            " and ",
+            ' and ',
             array_map(
                 fn ($name) => "$name = :$name",
                 $this->id

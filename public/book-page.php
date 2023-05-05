@@ -2,6 +2,7 @@
 session_start();
 
 require_once dirname(__FILE__, 2) . '/config/config.php';
+require_once MODULES_PATH . '/autoloader.php';
 
 $pageTitle = "Book Page";
 
@@ -12,18 +13,26 @@ $stylesheets = array(
 
 require TEMPLATES_PATH . '/header.php';
 
-$isbn = htmlspecialchars($_GET['isbn']);
+$isbn = htmlspecialchars($_GET['isbn'] ?? '');
+
+if ($isbn === '') {
+    header('Location: index.php');
+    die();
+}
 
 $bookRepository = new BookRepository();
 $book = $bookRepository->find(['isbn' => $isbn]);
+
+if ($book === false) {
+    header('Location: index.php');
+    die();
+}
 
 $authorRepository = new AuthorRepository();
 $author = $authorRepository->find(['id' => $book->author]);
 
 $userReviewsRepository = new UserReviewsRepository();
 $reviewsCount = count($userReviewsRepository->find(['isbn' => $isbn]));
-
-require_once MODULES_PATH . '/book_identification/BookInfoDump.php'
 ?>
 <!--   info about the book-->
 <div class="container">

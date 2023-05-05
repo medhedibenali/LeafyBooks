@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+$_SESSION['HTTP_REFERER'] = $_SERVER['HTTP_REFERER'] ?? '../index.php';
+
 require_once dirname(__FILE__, 2) . '/config/config.php';
 
 $pageTitle = 'Sign in';
