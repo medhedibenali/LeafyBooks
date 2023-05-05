@@ -11,8 +11,9 @@
 
 .ImagePos
 {
+    position:fixed;
     display: flex;
-    margin-top: 10%;
+    margin-top: 5%;
     margin-left: 5%;
     flex-direction: column;
     width: 16em;
@@ -33,7 +34,7 @@
 }
 .box1
 {
-    margin-left: 4em;
+    margin-left: 30%;
     display: flex;
     margin-top: 2rem;
     flex-direction: column;
