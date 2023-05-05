@@ -10,20 +10,21 @@ $stylesheets = array(
 
 require TEMPLATES_PATH . '/header.php';
 
-$bookRepo = new BookRepository();
-$authorRepo = new AuthorRepository();
-$books = $bookRepo->find();
+$bookRepository = new BookRepository();
+$authorRepository = new AuthorRepository();
+$books = $bookRepository->find();
 foreach ($books as $book) {
+    $author = $authorRepository->find(['id' => trim($book->author)]);
 ?>
     <div class="bookImage">
         <a href="book-page.php?isbn=<?= $book->isbn ?>">
-            <img src="<?= $book->picture ?>">
+            <img src="img/books/<?= $book->image ?>">
         </a>
 
     </div>
     <div class="bookTitle&Author">
         <p><?= $book->title ?></p>
-        <p>by <?= ($authorRepo->find(['id' => trim($book->author)]))->pen_name ?></p>
+        <p>by <?= $author->pen_name ?></p>
     </div>
 <?php
 }

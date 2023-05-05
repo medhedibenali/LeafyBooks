@@ -40,7 +40,7 @@ $reviewsCount = count($userReviewsRepository->find(['isbn' => $isbn]));
         <h3>Book Info</h3>
     </div>
     <div>
-        <img src="<?= $book->picture ?>" />
+        <img src="img/books/<?= $book->image ?>" />
     </div>
     <div>
         title: <?= $book->title ?>
