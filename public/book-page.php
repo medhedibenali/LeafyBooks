@@ -142,7 +142,6 @@ $reviewsCount = count($userReviewsRepository->find(['isbn' => $isbn]));
                 </div>
                 <br>
                 <!-- reviews-->
-
                 <?php
                 require TEMPLATES_PATH . '/reviews.php';
                 ?>

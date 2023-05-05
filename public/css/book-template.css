@@ -267,6 +267,13 @@ label:hover ~ input:checked ~ label /* highlight hovered star and every selected
     height: 4rem;
     object-fit: cover;
 }
+.Name_Review
+{
+    display: flex;
+    align-items: center;
+    font-family:'DecoType Naskh';
+    font-size:1.1rem;
+}
 
 /* TEXT AREA THING*/
 .textarea
