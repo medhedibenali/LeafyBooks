@@ -24,7 +24,13 @@
 {
     box-shadow: 0 0 10px black;
 }
-
+.btn-group, .btn-group-vertical {
+    position: relative;
+    display: inline-flex;
+    vertical-align: middle;
+    margin-top: 2rem;
+    width: 100%;
+}
 .box1
 {
     margin-left: 4em;
@@ -190,17 +196,18 @@
 
 #addToList
 {
-    margin-top: 15%;
-    display: flex;
-    justify-content: center;
-    color: white;
-    font-size: 22px;
-    border: 0px;
-    border-radius: 0.5rem;
-    background-color: #296730;
-    overflow: hidden;
+    width:100%;
 }
-
+.dropdown-item:hover {
+    font-weight: bold;
+}
+.dropdown-item:focus {
+    background-color:transparent;
+}
+.AvgReviews
+{
+    font-family:Apple Color Emoji;
+}
 /*THE STARS CSS */
 .rate {
     display: inline-block;
@@ -236,7 +243,6 @@
     position: absolute;
     padding-right: 0;
 }
-
 /* Click + hover color */
 input:checked ~ label, /* color every label that comes  directly after a checked star*/
 label:hover, label:hover ~ label {

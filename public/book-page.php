@@ -17,6 +17,7 @@ $stylesheets = array(
 );
 
 require TEMPLATES_PATH . '/header.php';
+require TEMPLATES_PATH . '/footer.php';
 
 $authorRepository = new AuthorRepository();
 $author = $authorRepository->find(['id' => $book->author]);
@@ -47,7 +48,7 @@ $reviewsCount = count($userReviewsRepository->find(['isbn' => $isbn]));
                 First published <?=$book->publishing_year?>
             </p>
             <div style="font-size: 20px;font-family: 'DecoType Naskh';">
-                <?= $author ?>
+                <?= $author->pen_name ?>
             </div>
             <div style="font-size: 20px;font-family: 'DecoType Naskh';">
                 <?= $book->publisher ?>
@@ -66,7 +67,7 @@ $reviewsCount = count($userReviewsRepository->find(['isbn' => $isbn]));
                     require TEMPLATES_PATH . '/rating-static-percentage.php';
                     ?>
                 </div>
-                <div class="rating-in-digits" style="font-size:30px ;  padding-left: 4%">
+                <div class="rating-in-digits" class="AvgReviews">
 
                    (<?= $reviewsCount ?>  review<?= ($reviewsCount != 1) ? 's' : '' ;?>)
                     <?php
@@ -91,7 +92,7 @@ $reviewsCount = count($userReviewsRepository->find(['isbn' => $isbn]));
                 <h2>
                     About the author
                 </h2>
-                <img id="authorpic" src="img/<?=$author->picture?>"> <?=$author?>
+                <img id="authorpic" src="img/<?=$author->picture?>"> <?=$author->pen_name?>
                 <br><br>
                 <?= $author->bio ?>
             </div>
@@ -146,9 +147,10 @@ $reviewsCount = count($userReviewsRepository->find(['isbn' => $isbn]));
                 require TEMPLATES_PATH . '/reviews.php';
                 ?>
             </div>
-
+            <br>
+            <br>
             <!--    review form-->
-            <div class="reviewing-portion" id="reviewing">
+            <div>
                 <?php
                 require TEMPLATES_PATH . '/reviewing-template.php';
                 ?>
