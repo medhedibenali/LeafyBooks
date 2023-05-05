@@ -2,7 +2,7 @@
 
 require_once dirname(__FILE__) . '/ImageGenerator.php';
 
-function presentProblem($image)
+function presentProblem(array $image): string|false
 {
     // Check file size
     if ($image['size'] > 500000) {
@@ -28,7 +28,7 @@ function presentProblem($image)
     return false;
 }
 
-function loadImage($source)
+function loadImage(string $source): GdImage|false
 {
     // Get image info 
     $imageInfo = getimagesize($source);
@@ -55,7 +55,7 @@ function loadImage($source)
     return $image;
 }
 
-function newPath($image, $ext = 'webp')
+function newPath(string $image, string $ext = 'webp'): string
 {
     $sha1 = sha1_file($image);
     $path = substr($sha1, 0, 2)
@@ -67,7 +67,7 @@ function newPath($image, $ext = 'webp')
     return $path;
 }
 
-function compressImage($source, $destination, $quality = 80)
+function compressImage(string $source, string $destination, int $quality = 80): string
 {
     $image = loadImage($source);
 
@@ -82,30 +82,39 @@ function compressImage($source, $destination, $quality = 80)
     return $destination;
 }
 
-function saveImage($image, $basePath)
+function saveImage(?array $image, string $basePath, ?string $seed = null): array|false
 {
-    $seed = generateSeed();
+    $seed = $seed ?? generateSeed();
 
-    if (!empty($image['name'])) {
+    if (!empty($image['name'] ?? array())) {
         $result = presentProblem($image);
+
         if ($result !== false) {
             $_SESSION['error'] = $result;
             return false;
         }
+
         $image = $image['tmp_name'];
     } else {
         $image = generateImage($seed);
     }
 
+    $seperator = '/';
+    $separators = array('/', '\\');
+    if (in_array(substr($basePath, -1), $separators)) {
+        $seperator = '';
+    }
+
     $imagePath = newPath($image);
 
     $folder = explode('/', $imagePath, 2)[0];
-    $folderPath = $basePath . $folder;
+    $folderPath = $basePath . $seperator . $folder;
+
     if (!is_dir($folderPath)) {
         mkdir($folderPath);
     }
 
-    $path = $basePath . $imagePath;
+    $path = $basePath . $seperator . $imagePath;
     $tempPath = $image;
 
     $image = compressImage($image, $path);
@@ -115,6 +124,7 @@ function saveImage($image, $basePath)
         $_SESSION['error'] = 'Image upload failed.';
         return false;
     }
+
     return array(
         'image' => $imagePath,
         'image_seed' => $seed

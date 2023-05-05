@@ -13,8 +13,8 @@ if (empty($_POST) || !isset($_POST['submit'])) {
 unset($_POST['submit']);
 
 $imageInfo = saveImage(
-    $_FILES['image'] ?? array('name' => ''),
-    '../img/users/'
+    $_FILES['image'] ?? null,
+    '../img/users'
 );
 
 if ($imageInfo === false) {
