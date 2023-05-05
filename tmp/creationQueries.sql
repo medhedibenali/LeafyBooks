@@ -1,4 +1,5 @@
 -- work in progress
+-- web_project_user
 CREATE USER 'web_project_user' @'localhost' IDENTIFIED BY 'password';
 CREATE DATABASE `web_project_db`;
 GRANT INSERT,
@@ -12,7 +13,11 @@ CREATE TABLE `web_project_db`.`users` (
     `first_name` VARCHAR(255) NOT NULL,
     `last_name` VARCHAR(255) NOT NULL,
     `birthday` DATE NOT NULL,
-    `picture` VARCHAR(255) NOT NULL,
+    `bio` TEXT,
+    `join_date` DATE DEFAULT (CURRENT_DATE),
+    `location` VARCHAR(255),
+    `image` VARCHAR(255) NOT NULL,
+    `image_seed` VARCHAR(255) NOT NULL,
     PRIMARY KEY (`username`)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci;
 -- authors
@@ -25,7 +30,7 @@ CREATE TABLE `web_project_db`.`authors` (
     `death_day` DATE NOT NULL,
     `bio` TEXT NOT NULL,
     `nationality` VARCHAR(255) NOT NULL,
-    `picture` VARCHAR(255) NOT NULL,
+    `image` VARCHAR(255) NOT NULL,
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci;
 -- books
@@ -34,7 +39,7 @@ CREATE TABLE `web_project_db`.`books` (
     `title` VARCHAR(255) NOT NULL,
     `author` INT NOT NULL,
     `publisher` VARCHAR(255) NOT NULL,
-    `picture` VARCHAR(255) NOT NULL,
+    `image` VARCHAR(255) NOT NULL,
     `synopsis` TEXT NOT NULL,
     `publishing_year` YEAR NOT NULL,
     `rating` FLOAT,
