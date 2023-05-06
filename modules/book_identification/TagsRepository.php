@@ -9,4 +9,10 @@ class TagsRepository extends  Repository
         $ids = ['isbn','tag'];
         parent::__construct($tableName, $attributes, $ids);
     }
+    public function getAllTags(){
+        $request='select distinct tag from '.$this->tableName;
+        $response = $this->db->prepare($request);
+        $response->execute();
+        return $response->fetchAll(PDO::FETCH_OBJ);
+    }
 }

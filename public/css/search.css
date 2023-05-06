@@ -6,8 +6,11 @@ h2 {
   margin-left: 60px;
   font-style: oblique;
   margin-top: 20px;
+  font-family: "DecoType Naskh";
 }
-
+h1 {
+  font-family: "DecoType Naskh";
+}
 .content {
   margin-top: 20px;
   height: 800px;

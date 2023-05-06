@@ -7,7 +7,8 @@ include_once dirname(__FILE__,2).'/templates/header.php';
         <div class="col-lg-6 m-auto">
             <div class="card mt-5">
                 <div class="card-title">
-                    <h2 class="text-center py-2"> <small style=" font-size: 16px;font-family: "Lucida Console", "Courier New", monospace; "> psst we want your help!</small><br> Request To Add A Book To Our Amazing Collection!
+                    <h2 class="text-center py-2"> <small style=" font-size: 16px;
+                    font-family:'Lucida Console', 'Courier New', monospace; "> psst we want your help!</small><br> Request To Add A Book To Our Amazing Collection!
                     </h2>
                     <hr>
                     <?php
