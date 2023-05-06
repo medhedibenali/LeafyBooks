@@ -46,13 +46,20 @@ require dirname(__FILE__) . '/base-header.php';
                 <li class="nav-item">
                     <a class="nav-link" href="index.php" style="margin-right: 20px;">Home</a>
                 </li>
+                <!-- TODO link to browse -->
                 <li class="nav-item">
                     <div class="dropdown">
                         <a class=" nav-link dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-left: 20px; margin-right: 20px;">Browse</a>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
+                            <a class="dropdown-item" href="browse.php?tag=action"">Action</a>
+                            <a class="dropdown-item" href="browse.php?tag=fantasy">Fantasy</a>
+                            <a class="dropdown-item" href="browse.php?tag=adventure">Adventure</a>
+                            <a class="dropdown-item" href="browse.php?tag=horror">Horror</a>
+                            <a class="dropdown-item" href="browse.php?tag=thriller">Thriller</a>
+                            <a class="dropdown-item" href="browse.php?tag=sci-fi">Sci-fi</a>
+                            <a class="dropdown-item" href="browse.php?tag=mystery">Mystery</a>
+                            <a class="dropdown-item" href="browse.php?tag=contemporary">Contempopary</a>
+                            <a class="dropdown-item" href="browse.php?tag=young">Young Adult</a>
                         </div>
                     </div>
                 </li>

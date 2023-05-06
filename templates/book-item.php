@@ -1,7 +1,7 @@
 <div class="book">
     <a href=<?="book-page.php?isbn=$book->isbn"?>>
         <div class="image book_cover center">
-            <img src=<?= $book->cover ?> class="image__img book_cover center"  />
+            <img src=<?= $book->image ?> class="image__img book_cover center"  />
             <div class="image__overlay image__overlay--blur book_cover">
                 <p class="image__description">
                     <?= $book->synopsis?>
