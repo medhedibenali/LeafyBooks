@@ -64,6 +64,7 @@ $isbn=$tagsRepository->find(['tag'=>$tag]);
                 <td> <?= $book->rating?>
                 <div>
                     <?php 
+                    $percentage= $book->rating *20;
                     require dirname(__FILE__,2).'/templates/rating-static-percentage.php';
                     ?>
                 </div>
