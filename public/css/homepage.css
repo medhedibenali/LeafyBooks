@@ -1,50 +1,80 @@
-#carouselExampleIndicators
+@import url(https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+/*animation that changes the color of the text in sliding gradient*/
+@keyframes background-pan {
+    from {
+        background-position: 0% center;
+    }
+
+    to {
+        background-position: -200% center;
+    }
+}
+h1 {
+    color: black;
+    font-family: DecoType Naskh;
+    font-size: clamp(2em, 2vw, 4em);
+    font-weight: bold;
+    margin: 0px;
+    padding: 20px;
+    text-align: center;
+}
+/*text that the animation will be applied to*/
+h1 > .magic {
+    display: inline-block;
+    position: relative;
+}
+
+h1 > .magic > .magic-text ,.genre{
+    animation: background-pan 3s linear infinite;
+    animation-iteration-count: infinite;
+    background: linear-gradient(
+        to right,
+        #09250e 0%,
+        #FDB931 8%,
+        #ffce6f 30%,
+        #d9b673 40%,
+        transparent 80%),
+    linear-gradient(
+            to right,
+        #FFFFAC 8%,
+            #FEDB37 0%
+    );
+    background-size: 200%;
+    -webkit-background-clip: text; /*clip the linear gradient backgtound to the text only */
+    -webkit-text-fill-color: transparent;
+    white-space: nowrap;
+}
+
+.hp-anniversary-text
 {
-margin-top:5%;
-margin-left: 15%;
-max-width: 75%;
-max-height: 10%;
+    text-align: center;
+    margin-top: 5%;
+    margin-left: 4%;
+    font-weight: bold;
 }
-
-/*#carouselExampleIndicators2*/
-/*{*/
-/*    margin-top:5%;*/
-/*    margin-left: 15%;*/
-/*    max-width: 60%;*/
-/*    max-height:100%;*/
-/*}*/
-.carousel-item
+.carousel-footer
 {
-    max-height:272px;
-    max-width:100%;
+    text-align: center;
+    font-weight: bold;
+margin-left: 4%;
+    font-size: larger;
 }
-.carousel-item img
+
+.discover-more
 {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: cover;
+    margin-top: 10%;
+    text-align: center;
+    font-weight: bold;
+    font-family:DecoType Naskh;
+    font-size: 35px;
+   margin-left: 4%;
+    color: #73B100;
 }
 
 
-.carousel-control-next-icon,.carousel-control-prev-icon {
-    background-color: rgb(16, 0, 0); /* change the color of the next button */
-    position: absolute;
-}
 
 
-.carousel-indicators li {
-    background-color: #ccbebe; !important;
-    height: 10px;
-    width: 10px;
-    border-radius: 50%;
-}
-.carousel-indicators  .active{
-    background-color: #7ef639; !important;
-}
-.carousel-indicators {
-    bottom: -9px ; !important;
 
-}
 
 
 

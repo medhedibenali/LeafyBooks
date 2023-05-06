@@ -2,31 +2,30 @@
 {
     display: flex;
     flex-direction: row;
+    width: 100%;
     margin-top: 6rem;
-    margin-left: 20%;
+    margin-left: 25%;
     border: 1px solid transparent;
     height: 100%;
 }
 
-.flex-box
-{
+.flex-box {
     display: flex;
     flex-direction: column;
     height: 100%;
+    margin-right: 5%;
 }
 
-.picture
-{
-    margin-top: 5%;
+#my-icons{
+    animation: float 3s ease-in-out infinite;
+    background-color: transparent;
+    padding-left: 43%;
+    padding-top: 3%;
 }
+
 
 .carousel-books
-{
-    margin-left: 20%;
-}
-
-
-.carousel-books {
+{   margin-left: 5%;
     width: 11.8rem;
     overflow: hidden;
 }
@@ -45,4 +44,45 @@
     max-width: 313px;
     max-height: 475px;
     object-fit: fill;
+}
+
+@keyframes float {
+    0% {
+        /*box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);*/
+        transform: translatey(0px);
+    }
+    50% {
+        /*box-shadow: 0 25px 15px 0px rgba(0,0,0,0.2);*/
+        transform: translatey(-20px);
+    }
+    100% {
+        /*box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);*/
+        transform: translatey(0px);
+    }
+}
+
+.genre
+{
+    font-family: "Times New Roman";
+    color:black;
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+    margin-left: 4%;
+
+}
+
+.category-box
+{
+    width: 100%;
+}
+
+.carouselExampleIndicators3
+{
+    margin-left: 10%;
+}
+
+.picture
+{
+    width: 30%;
 }

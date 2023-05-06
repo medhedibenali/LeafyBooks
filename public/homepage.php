@@ -7,7 +7,9 @@ $stylesheets = array(
     'css/static-rating.css',
     'css/homepage.css',
     'css/header.css',
-    'css/categories.css'
+    'css/categories.css',
+    'css/carousel-principal.css',
+    'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css'
 );
 
 $pic1="img/royal.jpg";
@@ -20,7 +22,28 @@ $pictures=array(
 
 );
 require TEMPLATES_PATH . '/header.php';
+?>
+<div class="ad">
+<div class="hp-anniversary-text">
+    <h1>
+         <span class="magic">
+             <span style="color:#73B100;">Join us in celebrating 25 years of magic</span>
+         </span>
+    </h1>
+</div>
+<?php
 require TEMPLATES_PATH.'/book-carrousel.php';
+?>
+    <h1 class="carousel-footer">
+        <span class="magic">
+            <span style="color:#73B100;">with the brand-new illustrated collection by Jim Kay</span>
+         </span>
+    </h1>
+    <i class="fa-regular fa-ufo"></i>
+
+
+</div>
+<?php
 require TEMPLATES_PATH .'/categories.php';
 $scripts=array(
     "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js",

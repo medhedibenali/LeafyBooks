@@ -1,0 +1,62 @@
+
+table
+{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
+
+}
+.row
+{
+    margin-top: 5%;
+    display: flex;
+    justify-content: center;
+
+}
+.form-check-input:checked {
+    background-color: #106b10;
+}
+.form-group
+{
+    width: 70%;
+}
+#sort
+{
+    margin-right: 5%;
+}
+
+.form-check
+{
+    margin-left: 5%;
+}
+.btn-success
+{
+    width: 5%;
+}
+.text
+{
+    font-weight: bold;
+    font-family: 'DecoType Naskh';
+    font-size: 20px;
+}
+/*
+    CSS GRID
+    grid-template-columns sets number of columns and their width by using the repeat function
+    gap : gap between the columns
+ */
+.grid
+{
+    margin-top: 5%;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(6, 7rem);
+    gap: 5%;
+
+}
+
+.grid img
+{
+    width:100%;
+    height:100%;
+}
