@@ -1,10 +1,11 @@
 <?php
-include_once dirname(__FILE__, 3) . '/modules/book_identification/BookRepository.php';
+require_once dirname(__FILE__, 3) . '/modules/book_identification/BookRepository.php';
 require_once dirname(__FILE__,3) . '/modules/authentification/UserRepository.php';
 $bookRepo = new BookRepository();
 $userRepo= new UserRepository();
 if (!isset($_GET['search'])) {
     header('location: index.php');
+    die();
 }
 //logic for books
 if (!isset($_GET['booksPage'])) {
