@@ -1,4 +1,4 @@
-.flex-item
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&family=Work+Sans&display=swap');.flex-item
 {
     display: flex;
     flex-direction: row;
@@ -28,6 +28,7 @@
 {   margin-left: 5%;
     width: 11.8rem;
     overflow: hidden;
+
 }
 .carousel-inner2 {
     width: 100%;
@@ -63,12 +64,19 @@
 
 .genre
 {
-    font-family: "Times New Roman";
-    color:black;
-    font-size: 40px;
+    font-family: 'Playfair Display', serif;
+    color:white;
     font-weight: bold;
-    text-align: center;
-    margin-left: 4%;
+    text-align: left;
+    z-index: 12;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding-top: 5%;
+    padding-left: 5%;
+    line-height: 30px;
+    letter-spacing: .18em;
+    font-size: 29px;
 
 }
 
@@ -84,5 +92,26 @@
 
 .picture
 {
-    width: 30%;
+    width: 40%;
+    position: relative;
 }
+
+.genre-description
+{
+    color:white;
+    font-weight: 400;
+    padding-top: 5%;
+    font-family: 'Work Sans', sans-serif;
+}
+
+.category-box
+{
+    background-color: #323232;
+    margin-top: 35%;
+}
+.category-head
+{
+    display: flex;
+    flex-direction: row;
+}
+

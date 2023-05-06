@@ -24,7 +24,7 @@ h1 > .magic {
     position: relative;
 }
 
-h1 > .magic > .magic-text ,.genre{
+h1 > .magic > .magic-text{
     animation: background-pan 3s linear infinite;
     animation-iteration-count: infinite;
     background: linear-gradient(
@@ -62,13 +62,18 @@ margin-left: 4%;
 
 .discover-more
 {
-    margin-top: 10%;
+    padding-top: 15%;
     text-align: center;
     font-weight: bold;
-    font-family:DecoType Naskh;
+    font-family: 'Playfair Display', serif;
     font-size: 35px;
    margin-left: 4%;
-    color: #73B100;
+    color: white;
+}
+
+.picture img
+{
+    border: 1px solid  transparent;
 }
 
 

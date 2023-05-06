@@ -1,10 +1,10 @@
 <?php
 $icons=array(
-'fantasy'=>"fas fa-wand-sparkles fa-6x",
-'sc-fi'=>"fa-solid fa-user-astronaut fa-6x",
-'thriller'=>"fa-solid fa-user-secret fa-6x",
-'romance'=>"fa-regular fa-heart fa-6x",
-'young adult'=>"fas fa-transporter fa-4x",
+'fantasy'=>"fas fa-wand-sparkles",
+'sc-fi'=>"fa-solid fa-user-astronaut",
+'thriller'=>"fa-solid fa-user-secret",
+'romance'=>"fa-regular fa-heart",
+'young adult'=>"fas fa-transporter",
 );
 ?>
 <div class="category-box">
@@ -20,8 +20,14 @@ $icons=array(
     ?>
     <div class="flex-item" >
         <div class="picture">
+            <div class="category-head">
             <p class="genre"><?=$key?></p>
-            <i class="<?=$value?>" style="color:black;" id="my-icons"></i>
+                <i class="<?=$value?>"></i>
+            </div>
+            <img src="img/fantasy.png">
+            <p class="genre-description">
+                This award recognizes the worldbuilders; the writers who take us on fantastical adventures, heroic battles, and epic journeys to save people, kingdoms, or dynasties. In a world of your own imagination, fantasy explores the magical and mythical unknown, ancient folklore, and mythical creatures. Is your character a soon-to-be queen living in a magical kingdom, or a dragon riding the winds of an ancient land? Writers penning the next Descendants of the Crane, The Witcher, or Lord of the Rings entered their stories in this category.
+            </p>
         </div>
         <div class="carousel-books">
             <div id="<?='carouselExampleIndicators'.$indice?>" class="carousel slide" data-ride="carousel">
