@@ -5,22 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3ac7364e-bbf9-402b-af99-82c6ecd127c9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/public/css/carousel-principal.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/HP-ann1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/HP-ann2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/HP-ann3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/HP-ann4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/HP-ann5.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/HP-magic.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/trio.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/book-identity.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/book-identity.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/categories.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/categories.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/homepage.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/homepage.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/homepage.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/homepage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/book-carrousel.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/book-carrousel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/categories.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/categories.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/mini-book-carro.php" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,7 +111,7 @@
       <workItem from="1683096003726" duration="271000" />
       <workItem from="1683238879151" duration="6038000" />
       <workItem from="1683320010601" duration="13732000" />
-      <workItem from="1683363496400" duration="1404000" />
+      <workItem from="1683363496400" duration="2647000" />
     </task>
     <servers />
   </component>
