@@ -407,24 +407,148 @@
         </div>
 
 
-        <div style="word-wrap: break-word;width:32%;">
+        <div  style="width:32%;word-wrap: break-word;">
             <div class="side-border" style="text-align:center;">
+               
+                <!-- Carousel -->
+                <div id="myCarousel" class="carousel slide " data-ride="carousel" data-interval="1500">
+
+                <!-- Indicators -->
+                <ul class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0"></li>
+                    <li data-target="#myCarousel" data-slide-to="1" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                </ul>
+
+
+                <!-- Slideshow -->
+                <div class="carousel-inner">
+
+
+
+
+
+
+
+
+
+
+
+                    <h5 style="margin-top:10%;margin-bottom:10%;font-family: Script MT Bold;">Following</h5>
+                    <div class="carousel-item active">
+                        <div style="word-wrap: break-word;width:101%;margin-top:5%;margin-left:-0.5%;height:447px;">
+                            <div style="text-align:center;">
+                                <ul id="no-bulletpoints" style="text-align:left;margin-left: 10%;margin-bottom:10px;">
+                                    <li style="font-size:17px;"><strong>Harry Potter</strong></li>
+                                    <li>J.K.Rowling</li>
+                                </ul>
                 
+                                <hr style="margin-left: auto;margin-right:auto;width:90%;opacity:10;">   
+
+
+                                <ul id="no-bulletpoints" style="text-align:left;margin-left: 10%;margin-bottom:10px;">
+                                    <li style="font-size:17px;"><strong> Broken Half</strong></li>
+                                    <li>Jessie Cave</li>
+                                </ul>
+
+                                <hr style="margin-left: auto;margin-right:auto;width:90%;opacity:10;">   
+
+
+                                <ul id="no-bulletpoints" style="text-align:left;margin-left: 10%;margin-bottom:10%;">
+                                    <li style="font-size:17px;"><strong> Sea Of Tranquility</strong></li>
+                                    <li>Emily St.John Mandel</li>
+                                </ul>
                 
+                                
+                            </div>
+                        </div>    
+                    </div>
+
+
+
+
+
+                    <div class="carousel-item ">
+                    <div style="word-wrap: break-word;width:101%;margin-top:5%;margin-left:-0.5%;height:447px;">
+                            <div style="text-align:center;">
+                                <ul id="no-bulletpoints" style="text-align:left;margin-left: 10%;margin-bottom:10px;">
+                                    <li style="font-size:17px;"><strong>Harry Potter</strong></li>
+                                    <li>J.K.Rowling</li>
+                                </ul>
+                
+                                <hr style="margin-left: auto;margin-right:auto;width:90%;opacity:10;">   
+
+
+                                <ul id="no-bulletpoints" style="text-align:left;margin-left: 10%;margin-bottom:10px;">
+                                    <li style="font-size:17px;"><strong> Broken Half</strong></li>
+                                    <li>Jessie Cave</li>
+                                </ul>
+
+                                <hr style="margin-left: auto;margin-right:auto;width:90%;opacity:10;">   
+
+
+                                <ul id="no-bulletpoints" style="text-align:left;margin-left: 10%;margin-bottom:10%;">
+                                    <li style="font-size:17px;"><strong> Sea Of Tranquility</strong></li>
+                                    <li>Emily St.John Mandel</li>
+                                </ul>
+                
+                                
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+                    <div class="carousel-item ">
+                    <div style="word-wrap: break-word;width:101%;margin-top:5%;margin-left:-0.5%;height:447px;">
+                            <div style="text-align:center;">
+                                <ul id="no-bulletpoints" style="text-align:left;margin-left: 10%;margin-bottom:10px;">
+                                    <li style="font-size:17px;"><strong>Harry Potter</strong></li>
+                                    <li>J.K.Rowling</li>
+                                </ul>
+                
+                                <hr style="margin-left: auto;margin-right:auto;width:90%;opacity:10;">   
+
+
+                                <ul id="no-bulletpoints" style="text-align:left;margin-left: 10%;margin-bottom:10px;">
+                                    <li style="font-size:17px;"><strong> Broken Half</strong></li>
+                                    <li>Jessie Cave</li>
+                                </ul>
+
+                                <hr style="margin-left: auto;margin-right:auto;width:90%;opacity:10;">   
+
+
+                                <ul id="no-bulletpoints" style="text-align:left;margin-left: 10%;margin-bottom:10%;">
+                                    <li style="font-size:17px;"><strong> Sea Of Tranquility</strong></li>
+                                    <li>Emily St.John Mandel</li>
+                                </ul>
+                
+                                
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+                    <!-- end Carousel -->
+
+                <div style="display: flex; justify-content: center;margin-top:116%;">
+                    <button id='view-all' class="writereview" style="font-family: Script MT Bold;">View All</button>
+                </div>
+
+            </div>
             
 
 
 
-
-
-
-
-
-
-
-
-                
-            </div>
-        </div>
     </div>
 </div>

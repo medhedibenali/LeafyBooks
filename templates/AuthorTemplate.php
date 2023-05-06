@@ -93,16 +93,56 @@
 <div class="container" style="margin-bottom: 20px;">
     <div class="row" style="width:100%;">
         <div style="width:65%;word-wrap: break-word;">
-            <div class="main-border" style="text-align:center;">
+            <div class="main-border" style="text-align:center;height:1054px;margin-bottom:10%;">
                 <h5 style="margin-top: 5%;margin-bottom:5%;font-family: Script MT Bold;">Books(17)</h5>
 
 
+                <!-- first image row -->
+                <div style="display:flex;">
+                    <figure style="width:33%;box-sizing:border-box;">
+                        <img class="current-read" id="cover" src="pictures/playdead.jpg" alt="not found" style="margin-left:5%;margin-top:5%;margin-right:5%;">
+                        <figcaption>This is the caption for the image.</figcaption>
+                    </figure>
 
-                <img class="current-read" id="cover" src="pictures/playdead.jpg" alt="not found">
+                    <figure style="width:33%;box-sizing:border-box;">
+                        <img class="current-read" id="cover" src="pictures/playdead.jpg" alt="not found" style="margin-top:5%;margin-right:5%;">
+                        <figcaption>This is the caption for the image.</figcaption>
+                    </figure>
+
+                    <figure style="width:33%;box-sizing:border-box;">
+                        <img class="current-read" id="cover" src="pictures/playdead.jpg" alt="not found" style="margin-top:5%;margin-right:5%;">
+                        <figcaption>This is the caption for the image.</figcaption>
+                    </figure>
+                            
+                </div>
+
+
+                
+                <!-- second image row -->
+                <div style="display:flex;margin-top:5%;">
+                    <figure style="width:33%;box-sizing:border-box;">
+                        <img class="current-read" id="cover" src="pictures/playdead.jpg" alt="not found" style="margin-left:5%;margin-top:5%;margin-right:5%;">
+                        <figcaption>This is the caption for the image.</figcaption>
+                    </figure>
+
+                    <figure style="width:33%;box-sizing:border-box;">
+                        <img class="current-read" id="cover" src="pictures/playdead.jpg" alt="not found" style="margin-top:5%;margin-right:5%;">
+                        <figcaption>This is the caption for the image.</figcaption>
+                    </figure style="width:33%;box-sizing:border-box;">
+
+                    <figure style="width:33%;box-sizing:border-box;">
+                        <img class="current-read" id="cover" src="pictures/playdead.jpg" alt="not found" style="margin-top:5%;margin-right:5%;">
+                        <figcaption>This is the caption for the image.</figcaption>
+                    </figure>
+                            
+                </div>
+
+
+                
 
 
 
-                <div style="display: flex; justify-content: center;margin-bottom: 10%;">
+                <div style="display: flex; justify-content: center;margin-top: 8%;">
                     <button id='view-all' class="writereview" style="font-family: Script MT Bold;">View All</button>
                 </div>
             </div>
@@ -116,8 +156,8 @@
         <div  style="width:32%;word-wrap: break-word;">
             <div class="side-border" style="text-align:center;">
                
-                <!-- code -->
-                <div id="myCarousel" class="carousel slide " data-ride="carousel" data-interval="6000">
+                <!-- Carousel -->
+                <div id="myCarousel" class="carousel slide " data-ride="carousel" data-interval="1500">
 
                 <!-- Indicators -->
                 <ul class="carousel-indicators">
@@ -140,14 +180,34 @@
 
 
 
-
+                    <h5 style="margin-top:10%;margin-bottom:10%;font-family: Script MT Bold;">Quotes</h5>
                     <div class="carousel-item active">
-                        <h5 style="margin-top:10%;font-family: Script MT Bold;">Quotes</h5>
-                            <div style="display: flex; justify-content: center;margin-top: 23%;">
-                                <button id='view-all' class="writereview" style="font-family: Script MT Bold;">View All</button>
+                        <div style="word-wrap: break-word;width:101%;margin-top:5%;margin-left:-0.5%;height:447px;">
+                            <div style="text-align:center;">
+                                <ul id="no-bulletpoints" style="text-align:left;margin-left: 10%;margin-bottom:10px;">
+                                    <li style="font-size:17px;"><strong>Harry Potter</strong></li>
+                                    <li>J.K.Rowling</li>
+                                </ul>
+                
+                                <hr style="margin-left: auto;margin-right:auto;width:90%;opacity:10;">   
+
+
+                                <ul id="no-bulletpoints" style="text-align:left;margin-left: 10%;margin-bottom:10px;">
+                                    <li style="font-size:17px;"><strong> Broken Half</strong></li>
+                                    <li>Jessie Cave</li>
+                                </ul>
+
+                                <hr style="margin-left: auto;margin-right:auto;width:90%;opacity:10;">   
+
+
+                                <ul id="no-bulletpoints" style="text-align:left;margin-left: 10%;margin-bottom:10%;">
+                                    <li style="font-size:17px;"><strong> Sea Of Tranquility</strong></li>
+                                    <li>Emily St.John Mandel</li>
+                                </ul>
+                
+                                
                             </div>
-                        </div>
-                        
+                        </div>    
                     </div>
 
 
@@ -155,55 +215,32 @@
 
 
                     <div class="carousel-item ">
-                        <h5 style="margin-top:10%;margin-bottom:20%;font-family: Script MT Bold;">to-read</h5>
+                    <div style="word-wrap: break-word;width:101%;margin-top:5%;margin-left:-0.5%;height:447px;">
+                            <div style="text-align:center;">
+                                <ul id="no-bulletpoints" style="text-align:left;margin-left: 10%;margin-bottom:10px;">
+                                    <li style="font-size:17px;"><strong>Harry Potter</strong></li>
+                                    <li>J.K.Rowling</li>
+                                </ul>
+                
+                                <hr style="margin-left: auto;margin-right:auto;width:90%;opacity:10;">   
 
-                        <script type="text/javascript">
-                            google.charts.load('current', {'packages':['corechart']});
-                            google.charts.setOnLoadCallback(drawChart);
-                            
 
-                            function drawChart() {
+                                <ul id="no-bulletpoints" style="text-align:left;margin-left: 10%;margin-bottom:10px;">
+                                    <li style="font-size:17px;"><strong> Broken Half</strong></li>
+                                    <li>Jessie Cave</li>
+                                </ul>
 
-                                var data = google.visualization.arrayToDataTable([
-                                ['Genre', 'Number of books'],
-                                ['Action',     11],
-                                ['Adventure',      2],
-                                ['Drama',  2],
-                                ['Mystery', 2],
-                                ['Comedy',    7]
-                                ]);
+                                <hr style="margin-left: auto;margin-right:auto;width:90%;opacity:10;">   
 
-                                var options = {
-                                chartArea:  {
-                                    width: '100%',
-                                    height: '100%'
-                                }
-                                };
+
+                                <ul id="no-bulletpoints" style="text-align:left;margin-left: 10%;margin-bottom:10%;">
+                                    <li style="font-size:17px;"><strong> Sea Of Tranquility</strong></li>
+                                    <li>Emily St.John Mandel</li>
+                                </ul>
+                
                                 
-                                
-                                
-                                
-
-                                
-                                var chart1 = new google.visualization.PieChart(document.getElementById('piechart2'));
-                                
-
-                                
-                                chart1.draw(data, options);
-                                
-                            }
-                        </script>    
-
-
-
-
-                        <div class="chart-container">
-                            <div id="piechart2" style="height:300px;"></div>
-                            <div style="display: flex; justify-content: center;margin-top: 5%;">
-                                <button id='view-all' class="writereview" style="font-family: Script MT Bold;">Stats</button>
                             </div>
                         </div>
-                        
                     </div>
 
 
@@ -214,52 +251,32 @@
 
 
                     <div class="carousel-item ">
-                        <h5 style="margin-top:10%;margin-bottom:20%;font-family: Script MT Bold;">current-read</h5>
+                    <div style="word-wrap: break-word;width:101%;margin-top:5%;margin-left:-0.5%;height:447px;">
+                            <div style="text-align:center;">
+                                <ul id="no-bulletpoints" style="text-align:left;margin-left: 10%;margin-bottom:10px;">
+                                    <li style="font-size:17px;"><strong>Harry Potter</strong></li>
+                                    <li>J.K.Rowling</li>
+                                </ul>
+                
+                                <hr style="margin-left: auto;margin-right:auto;width:90%;opacity:10;">   
 
-                        <script type="text/javascript">
-                            google.charts.load('current', {'packages':['corechart']});
-                            google.charts.setOnLoadCallback(drawChart);
-                            
 
-                            function drawChart() {
+                                <ul id="no-bulletpoints" style="text-align:left;margin-left: 10%;margin-bottom:10px;">
+                                    <li style="font-size:17px;"><strong> Broken Half</strong></li>
+                                    <li>Jessie Cave</li>
+                                </ul>
 
-                                var data = google.visualization.arrayToDataTable([
-                                ['Genre', 'Number of books'],
-                                ['Action',     11],
-                                ['Adventure',      2],
-                                ['Drama',  2],
-                                ['Mystery', 2],
-                                ['Comedy',    7]
-                                ]);
+                                <hr style="margin-left: auto;margin-right:auto;width:90%;opacity:10;">   
 
-                                var options = {
-                                chartArea:  {
-                                    width: '100%',
-                                    height: '100%'
-                                }
-                                };
+
+                                <ul id="no-bulletpoints" style="text-align:left;margin-left: 10%;margin-bottom:10%;">
+                                    <li style="font-size:17px;"><strong> Sea Of Tranquility</strong></li>
+                                    <li>Emily St.John Mandel</li>
+                                </ul>
+                
                                 
-
-                                
-                                var chart1 = new google.visualization.PieChart(document.getElementById('piechart3'));
-                                
-
-                                
-                                chart1.draw(data, options);
-                                
-                            }
-                        </script>    
-
-
-
-
-                        <div class="chart-container">
-                            <div id="piechart3" style="height:300px;"></div>
-                            <div style="display: flex; justify-content: center;margin-top: 5%;">
-                                <button id='view-all' class="writereview" style="font-family: Script MT Bold;">Stats</button>
                             </div>
                         </div>
-                        
                     </div>
 
 
@@ -268,94 +285,159 @@
 
 
 
-                    <!-- end code -->
+                    <!-- end Carousel -->
 
-
-
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-<!-- SECOND ROW -->
-
-<div class="container" style="margin-bottom: 20px;margin-top:5%;">
-    <div class="row" style="width:110%">
-        <div  style="word-wrap: break-word;width:65%">
-            <div class="main-border" style="text-align:center;">
-                <h5 style="margin-top: 5%;margin-bottom:5%;font-family: Script MT Bold;">Read Recently</h5>
-                <img class="recent-read" id="cover" src="pictures/playdead.jpg" alt="not found">
-                <div style="display: flex; justify-content: center;margin-bottom: 10%;">
+                <div style="display: flex; justify-content: center;margin-top:115%;">
                     <button id='view-all' class="writereview" style="font-family: Script MT Bold;">View All</button>
-                    <button id='reviews' style="margin-left:5px;font-family: Script MT Bold;" class="writereview">Reviews</button>
-                    
                 </div>
+
             </div>
-        </div>
+            
 
 
-        <div  style="word-wrap: break-word;width:1%;">
-        </div>
 
 
-        <div  style="word-wrap: break-word;width:32%;">
+
+            <!-- second carousel -->
+            <div  style="width:100%;word-wrap: break-word;">
             <div class="side-border" style="text-align:center;">
-                <h5 style="margin:10%;font-family: Script MT Bold;">To-Read Pile</h5>
-                <ul id="no-bulletpoints" style="text-align:left;margin-left: 10%;margin-bottom:10px;">
-                    <li style="font-size:17px;"><strong>Harry Potter</strong></li>
-                    <li>J.K.Rowling</li>
+               
+                <!-- Carousel -->
+                <div id="myCarousel" class="carousel slide " data-ride="carousel" data-interval="1500">
+
+                <!-- Indicators -->
+                <ul class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0"></li>
+                    <li data-target="#myCarousel" data-slide-to="1" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="2"></li>
                 </ul>
+
+
+                <!-- Slideshow -->
+                <div class="carousel-inner">
+
+
+
+
+
+
+
+
+
+
+
+                    <h5 style="margin-top:10%;margin-bottom:10%;font-family: Script MT Bold;">Followers</h5>
+                    <div class="carousel-item active">
+                        <div style="word-wrap: break-word;width:101%;margin-top:5%;margin-left:-0.5%;height:447px;">
+                            <div style="text-align:center;">
+                                <ul id="no-bulletpoints" style="text-align:left;margin-left: 10%;margin-bottom:10px;">
+                                    <li style="font-size:17px;"><strong>Harry Potter</strong></li>
+                                    <li>J.K.Rowling</li>
+                                </ul>
                 
-                <hr style="margin-left: auto;margin-right:auto;width:90%;opacity:10;">   
+                                <hr style="margin-left: auto;margin-right:auto;width:90%;opacity:10;">   
 
 
-                <ul id="no-bulletpoints" style="text-align:left;margin-left: 10%;margin-bottom:10px;">
-                    <li style="font-size:17px;"><strong> Broken Half</strong></li>
-                    <li>Jessie Cave</li>
-                </ul>
+                                <ul id="no-bulletpoints" style="text-align:left;margin-left: 10%;margin-bottom:10px;">
+                                    <li style="font-size:17px;"><strong> Broken Half</strong></li>
+                                    <li>Jessie Cave</li>
+                                </ul>
 
-                <hr style="margin-left: auto;margin-right:auto;width:90%;opacity:10;">   
+                                <hr style="margin-left: auto;margin-right:auto;width:90%;opacity:10;">   
 
 
-                <ul id="no-bulletpoints" style="text-align:left;margin-left: 10%;margin-bottom:10%;">
-                    <li style="font-size:17px;"><strong> Sea Of Tranquility</strong></li>
-                    <li>Emily St.John Mandel</li>
-                </ul>
+                                <ul id="no-bulletpoints" style="text-align:left;margin-left: 10%;margin-bottom:10%;">
+                                    <li style="font-size:17px;"><strong> Sea Of Tranquility</strong></li>
+                                    <li>Emily St.John Mandel</li>
+                                </ul>
                 
-                <div style="display: flex; justify-content: left;margin-bottom: 10%;margin-left:10%;">
+                                
+                            </div>
+                        </div>    
+                    </div>
+
+
+
+
+
+                    <div class="carousel-item ">
+                    <div style="word-wrap: break-word;width:101%;margin-top:5%;margin-left:-0.5%;height:447px;">
+                            <div style="text-align:center;">
+                                <ul id="no-bulletpoints" style="text-align:left;margin-left: 10%;margin-bottom:10px;">
+                                    <li style="font-size:17px;"><strong>Harry Potter</strong></li>
+                                    <li>J.K.Rowling</li>
+                                </ul>
+                
+                                <hr style="margin-left: auto;margin-right:auto;width:90%;opacity:10;">   
+
+
+                                <ul id="no-bulletpoints" style="text-align:left;margin-left: 10%;margin-bottom:10px;">
+                                    <li style="font-size:17px;"><strong> Broken Half</strong></li>
+                                    <li>Jessie Cave</li>
+                                </ul>
+
+                                <hr style="margin-left: auto;margin-right:auto;width:90%;opacity:10;">   
+
+
+                                <ul id="no-bulletpoints" style="text-align:left;margin-left: 10%;margin-bottom:10%;">
+                                    <li style="font-size:17px;"><strong> Sea Of Tranquility</strong></li>
+                                    <li>Emily St.John Mandel</li>
+                                </ul>
+                
+                                
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+                    <div class="carousel-item ">
+                    <div style="word-wrap: break-word;width:101%;margin-top:5%;margin-left:-0.5%;height:447px;">
+                            <div style="text-align:center;">
+                                <ul id="no-bulletpoints" style="text-align:left;margin-left: 10%;margin-bottom:10px;">
+                                    <li style="font-size:17px;"><strong>Harry Potter</strong></li>
+                                    <li>J.K.Rowling</li>
+                                </ul>
+                
+                                <hr style="margin-left: auto;margin-right:auto;width:90%;opacity:10;">   
+
+
+                                <ul id="no-bulletpoints" style="text-align:left;margin-left: 10%;margin-bottom:10px;">
+                                    <li style="font-size:17px;"><strong> Broken Half</strong></li>
+                                    <li>Jessie Cave</li>
+                                </ul>
+
+                                <hr style="margin-left: auto;margin-right:auto;width:90%;opacity:10;">   
+
+
+                                <ul id="no-bulletpoints" style="text-align:left;margin-left: 10%;margin-bottom:10%;">
+                                    <li style="font-size:17px;"><strong> Sea Of Tranquility</strong></li>
+                                    <li>Emily St.John Mandel</li>
+                                </ul>
+                
+                                
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+                    <!-- end Carousel -->
+
+                <div style="display: flex; justify-content: center;margin-top:115%;">
                     <button id='view-all' class="writereview" style="font-family: Script MT Bold;">View All</button>
                 </div>
+
             </div>
-        </div>
-    </div>
-</div>
-
-
-
-<!-- THIRD ROW -->
-<div class="container" style="margin-bottom: 20px;margin-top:5%;">
-    <div class="row" style="width:110%">
-        <div  style="word-wrap: break-word;width:65%;">
-            <div class="main-border" style="text-align:center;">
-                <h5 style="margin-top: 5%;margin-bottom:5%;font-family: Script MT Bold;">Favorites</h5>
-                <img class="favorites" id="cover" src="pictures/playdead.jpg" alt="not found">
-                <div style="display: flex; justify-content: center;margin-bottom: 10%;">
-                    <button id='view-all' class="writereview" style="font-family: Script MT Bold;">View All</button>
-                </div>
-            </div>
-        </div>
-
-
-        <div  style="word-wrap: break-word;width:1%">
-        </div>
-
-
-        <div style="word-wrap: break-word;width:32%;">
-            <div class="side-border" style="text-align:center;">
-                
-                
             
 
 
@@ -368,8 +450,8 @@
 
 
 
-                
-            </div>
+
+
         </div>
     </div>
 </div>

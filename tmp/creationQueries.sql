@@ -12,7 +12,10 @@ CREATE TABLE `web_project_db`.`users` (
     `first_name` VARCHAR(255) NOT NULL,
     `last_name` VARCHAR(255) NOT NULL,
     `birthday` DATE NOT NULL,
-    `picture` VARCHAR(255) NOT NULL,
+    `bio` text DEFAULT NULL,
+    `picture` VARCHAR(255) DEFAULT NULL,
+    'join_date' DATE NOT NULL,
+    'location' VARCHAR(255) NOT NULL,
     PRIMARY KEY (`username`)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci;
 -- authors
@@ -48,7 +51,7 @@ CREATE TABLE `web_project_db`.`read_act` (
     `username` VARCHAR(255) NOT NULL,
     `status` VARCHAR(255) NOT NULL,
     `start_date` DATETIME NOT NULL,
-    `finish_date` DATETIME NOT NULL,
+    `finish_date` DATETIME DEFAULT NULL,
     PRIMARY KEY (`isbn`, `username`),
     FOREIGN KEY (`isbn`) REFERENCES `books` (`isbn`),
     FOREIGN KEY (`username`) REFERENCES `users` (`username`)

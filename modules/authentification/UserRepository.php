@@ -18,6 +18,6 @@ class UserRepository extends Repository
             PASSWORD_ARGON2ID,
             ['memory_cost' => 2048, 'time_cost' => 4, 'threads' => 4]
         );
-        parent::insert($params);
+        return parent::insert($params);
     }
 }
