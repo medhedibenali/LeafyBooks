@@ -2,14 +2,14 @@
 .center {
   width: 80%;
   display: block;
+  position: relative;
   margin: 0 auto;
   margin-top: 10px;
 }
 .btn-search {
   background-color: #422f08;
   color: antiquewhite;
-  display: block;
-  float: right;
+
   transition: transform 330ms ease-in-out;
   -webkit-transition: transform 330ms ease-in-out;
   -moz-transition: transform 330ms ease-in-out;
@@ -28,4 +28,8 @@
 .row {
   margin-top: 10px;
   margin-bottom: 10px;
+}
+.right {
+  display: flex;
+  justify-content: end;
 }

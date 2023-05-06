@@ -69,7 +69,9 @@
             </div>
         </div>
         </div> 
-    <button class="btn btn-search" type="submit">Search</button>
+        <div class="right">
+            <button class="btn btn-search" type="submit">Search</button>
+        </div>
     </form>
 </div>
 <div class="results">
