@@ -37,6 +37,7 @@ CREATE TABLE `web_project_db`.`books` (
     `title` VARCHAR(255) NOT NULL,
     `author` INT NOT NULL,
     `publisher` VARCHAR(255) NOT NULL,
+    `page_number` INT NOT NULL,
     `picture` VARCHAR(255) NOT NULL,
     `synopsis` TEXT NOT NULL,
     `publishing_year` YEAR NOT NULL,
