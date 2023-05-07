@@ -25,15 +25,15 @@
         <div class="row">
             <div class="col input-group">
                 <label class ="input-group-text" for="title">title</label>
-               <input class="form-control" type="text" name="title" id="">
+               <input class="form-control" type="text" name="title" >
             </div>
             <div class="col input-group">
                <label class ="input-group-text" for="author">author</label>
-                <input class="form-control" type="text" name="author" id=""> 
+                <input class="form-control" type="text" name="author" > 
             </div>
             <div class="col input-group">
                <label class ="input-group-text" for="author">publisher</label>
-                <input class="form-control" type="text" name="publisher" id=""> 
+                <input class="form-control" type="text" name="publisher" > 
             </div>
         </div>
         <div class="row">
@@ -93,8 +93,5 @@
     ?>
 
 </div>
-<?php 
-    
-?>
 <?php 
     require_once dirname(__FILE__,2).'/templates/footer.php';
