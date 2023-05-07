@@ -25,13 +25,14 @@
 {
     box-shadow: 0 0 10px black;
 }
-.btn-group, .btn-group-vertical {
+.btn-group-1{
     position: relative;
     display: inline-flex;
     vertical-align: middle;
     margin-top: 2rem;
     width: 100%;
 }
+
 .box1
 {
     margin-left: 30%;

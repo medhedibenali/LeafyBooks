@@ -9,7 +9,7 @@ if (!isset($_SESSION['username'])) {
 } //        Rating Stars
 else {
 ?>
-<div class="btn-group">
+<div class="btn-group btn-group-1" >
         <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color:darkgreen;border:none;">
             Add to List
         </button>

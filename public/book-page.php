@@ -156,7 +156,6 @@ $reviewsCount = count($userReviewsRepository->find(['isbn' => $isbn]));
             </div>
             </div>
         </div>
-
     </div>
     </div>
 

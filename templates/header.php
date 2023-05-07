@@ -75,7 +75,7 @@ require dirname(__FILE__) . '/base-header.php';
                         <?php
                         if(!$user) {
                             ?>
-                            <div class="btn-group">
+                            <div class="btn-group btn-group-2" >
                                 <a href="sign-up.php">
                                     <button type="button" class="navButton">Sign up</button>
                                 </a>

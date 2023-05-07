@@ -17,6 +17,8 @@ else {
         <div style="position:relative;">
         <textarea name="review" rows="5" cols="100" class="textarea"></textarea>
         <br>
+<!--         the timezone is set tp africa tunis so it can show the time correctly when submit button is clicked -->
+        <input type="hidden" name="time_submitted" value="<?php date_default_timezone_set('Africa/Tunis');echo date('Y-m-d H:i:s'); ?>">
         <input type="hidden" value="<?= $isbn ?>" name="isbn">
         <button type="submit" class="writereview" style="position: relative; bottom: 0; right: 0;left: 90%; margin-top: 10px;">Submit</button>
         </div>
