@@ -34,13 +34,13 @@ The Science Fiction genre recognizes stories that center around science and tech
 Fahrenheit 451, or The Fifth Season—and challenge us to think big and differently about the world we live in. 
 Space operas set in a galaxy far away, near-future dystopias, alternate histories..you get the picture.";
 
-$romanceString="This award celebrates the swoon-worthy storytellers who tug on our heartstrings 
+$romanceString="This genre celebrates the swoon-worthy storytellers who tug on our heartstrings 
 and demand our emotional investment. From passionate cowboys to billionaire rendezvous and 
 squee-worthy soulmates, these stories focus on adult characters and themes within modern, real-world settings. 
 The Romance genre is all about stories that depict a central love story that compels us to hope for a happy ending. 
 This category includes stories like The Kiss Quotient, The Hating Game, or The Wedding Date.";
 
-$youngAdultString="This award champions stories that explore the teen experience, from coping with loss to exploring gender, 
+$youngAdultString="This genre champions stories that explore the teen experience, from coping with loss to exploring gender, 
 and navigating high-school crushes and first romantic experiences. The Young Adult genre recognizes modern, 
 real-world stories that capture an authentic teen voice and the emotional stakes of growing up. 
 Be prepared for coming-of-age stories from all walks of life, 
