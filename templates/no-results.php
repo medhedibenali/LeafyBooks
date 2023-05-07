@@ -5,6 +5,6 @@
     <br>
     <h1 class="" style="font-family: 'DecoType Naskh';"> Oops! No results found! </h1>
     <br>
-    <a class="center back--btn"style="width:100px;" href=<?= $_SERVER['HTTP_REFERER'] ?>> go back </a>
+    <a class="center back--btn"style="width:100px;" href=<?= isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] :"index.php"?>> go back </a>
 </div>
 
