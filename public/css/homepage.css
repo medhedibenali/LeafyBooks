@@ -1,14 +1,5 @@
 @import url(https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
-/*animation that changes the color of the text in sliding gradient*/
-@keyframes background-pan {
-    from {
-        background-position: 0% center;
-    }
 
-    to {
-        background-position: -200% center;
-    }
-}
 h1 {
     color: black;
     font-family: DecoType Naskh;
@@ -18,32 +9,7 @@ h1 {
     padding: 20px;
     text-align: center;
 }
-/*text that the animation will be applied to*/
-h1 > .magic {
-    display: inline-block;
-    position: relative;
-}
 
-h1 > .magic > .magic-text{
-    animation: background-pan 3s linear infinite;
-    animation-iteration-count: infinite;
-    background: linear-gradient(
-        to right,
-        #09250e 0%,
-        #FDB931 8%,
-        #ffce6f 30%,
-        #d9b673 40%,
-        transparent 80%),
-    linear-gradient(
-            to right,
-        #FFFFAC 8%,
-            #FEDB37 0%
-    );
-    background-size: 200%;
-    -webkit-background-clip: text; /*clip the linear gradient backgtound to the text only */
-    -webkit-text-fill-color: transparent;
-    white-space: nowrap;
-}
 
 .hp-anniversary-text
 {
@@ -67,13 +33,115 @@ margin-left: 4%;
     font-weight: bold;
     font-family: 'Playfair Display', serif;
     font-size: 35px;
-   margin-left: 4%;
+    margin-left: 4%;
     color: white;
 }
 
 .picture img
 {
     border: 1px solid  transparent;
+}
+
+
+
+:root {
+    /* defining some variables to use later*/
+    --purple: rgb(123, 31, 162);
+    --violet: rgb(103, 58, 183);
+    --pink: rgb(244, 143, 177);
+}
+
+/*colour sliding in text effect*/
+@keyframes background-pan {
+    from {
+        background-position: 0% center;
+    }
+
+    to {
+        background-position: -200% center;
+        /*gradually shift the background image to the left by 200% of its original size*/
+    }
+}
+/*animation we'll use to  zoom in on the stars*/
+@keyframes scale
+{
+    from, to {
+        transform: scale(0);
+    }
+
+    50% {
+        transform: scale(1);
+    }
+}
+/*animation we'll use to make the stars rotate*/
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(180deg);
+    }
+}
+
+
+
+h1 {
+    color: plum;
+    font-family:DecoType Naskh;
+    font-size: clamp(2em, 2vw, 4em);
+    font-weight: 400;
+    margin: 0px;
+    padding: 20px;
+    text-align: center;
+    margin-right: 10%;
+}
+
+h1 > .magic
+{
+    display: inline-block;
+    position: relative;
+}
+
+h1 > .magic > .magic-star {
+    /*set the minimum width, the preferred one and the maximum one*/
+    --size: clamp(20px, 1.5vw, 30px);
+    animation: scale 700ms ease forwards; /*return to the last state of the animation , not original state*/
+    display: block;
+    height: var(--size);
+    left: var(--star-left); /*will be set randomly using js later*/
+    position: absolute;
+    top: var(--star-top);/*will be set randomly using js later*/
+    width: var(--size);
+}
+
+h1 > .magic > .magic-star > svg {
+    animation: rotate 1000ms linear infinite;
+    display: block;
+    opacity: 0.7;
+}
+
+h1 > .magic > .magic-star > svg > path {
+    fill: var(--violet);
+}
+
+h1 > .magic > .magic-star2 > svg > path {
+    fill: white;
+}
+
+h1 > .magic > .magic-text {
+    animation: background-pan 3s linear infinite;
+    background: linear-gradient(
+            to right,
+            var(--purple),
+            var(--violet),
+            var(--pink),
+            var(--purple)
+    );
+    background-size: 200%;
+    -webkit-background-clip: text; /*set the gradient colours to the text*/
+    -webkit-text-fill-color: transparent;
+    white-space: nowrap;
 }
 
 

@@ -5,9 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3ac7364e-bbf9-402b-af99-82c6ecd127c9" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/public/js/magic-text.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/categories.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/categories.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/homepage.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/homepage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/homepage.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/homepage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/fantasy.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/fantasy.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/thriller.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/thriller.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/ya.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/ya.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/categories.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/categories.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -21,8 +26,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
