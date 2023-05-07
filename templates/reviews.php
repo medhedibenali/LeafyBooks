@@ -1,5 +1,4 @@
 <?php
-require_once dirname(__FILE__, 2) . '/modules/book_identification/ProcessBookIdentity.php';
 
 $userReviewRepository = new UserReviewsRepository();
 $reviews = $userReviewRepository->find(['isbn' => $isbn]);
@@ -10,7 +9,7 @@ foreach ($reviews as $review) {
 
     $percentage = ($review->rating) * 20;
 ?>
-    <img class="pdp" src="img/<?= $user->picture ?>" alt="userPicture" />
+    <img class="pdp" src="img/users/<?= $user->image ?>" alt="userPicture" />
     <div>
         review by <?= $review->username ?>
     </div>

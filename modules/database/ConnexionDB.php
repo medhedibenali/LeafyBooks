@@ -9,7 +9,7 @@ class ConnexionDB
     {
         $dbconfig = Config::$config['db']['db1'];
         try {
-            self::$_bdd = new PDO("mysql:host=" . $dbconfig['host'] . ";dbname=" . $dbconfig['dbname'] . ";charset=utf8", $dbconfig['username'], $dbconfig['password']);
+            self::$_bdd = new PDO('mysql:host=' . $dbconfig['host'] . ';dbname=' . $dbconfig['dbname'] . ';charset=utf8', $dbconfig['username'], $dbconfig['password']);
         } catch (PDOException $e) {
             die('Erreur : ' . $e->getMessage());
         }

@@ -14,12 +14,12 @@ final class Config
      */
 
     public static $config = array(
-        "db" => array(
-            "db1" => array(
-                "dbname" => "web_project_db",
-                "username" => "web_project_user",
-                "password" => "password",
-                "host" => "localhost"
+        'db' => array(
+            'db1' => array(
+                'dbname' => 'web_project_db',
+                'username' => 'web_project_user',
+                'password' => 'password',
+                'host' => 'localhost'
             )
         )
     );
@@ -30,22 +30,36 @@ final class Config
 }
 
 /**
+ * Constant for the project root.
+ */
+
+defined('PROJECT_PATH')
+    or define('PROJECT_PATH', realpath(dirname(__FILE__, 2)));
+
+/**
+ * Constant for the public directory.
+ */
+
+defined('PUBLIC_PATH')
+    or define('PUBLIC_PATH', realpath(PROJECT_PATH . '/public'));
+
+/**
  * Constant for the modules directory.
  */
 
-defined("MODULES_PATH")
-    or define("MODULES_PATH", realpath(dirname(__FILE__, 2) . '/modules'));
+defined('MODULES_PATH')
+    or define('MODULES_PATH', realpath(PROJECT_PATH . '/modules'));
 
 /**
  * Constant for the templates directory.
  */
 
-defined("TEMPLATES_PATH")
-    or define("TEMPLATES_PATH", realpath(dirname(__FILE__, 2) . '/templates'));
+defined('TEMPLATES_PATH')
+    or define('TEMPLATES_PATH', realpath(PROJECT_PATH . '/templates'));
 
 /**
  * Error reporting.
  */
 
-ini_set("error_reporting", "true");
+ini_set('error_reporting', 'true');
 error_reporting(E_ALL | E_STRICT);

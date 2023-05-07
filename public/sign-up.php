@@ -1,4 +1,7 @@
 <?php
+session_start();
+
+$_SESSION['HTTP_REFERER'] = $_SERVER['HTTP_REFERER'] ?? '../index.php';
 
 require_once dirname(__FILE__, 2) . '/config/config.php';
 
@@ -16,7 +19,21 @@ require TEMPLATES_PATH . '/base-header.php';
         <div>
             Sign Up
         </div>
-        <form action="php/SignUpAction.php" method="post">
+
+        <?php
+        if (isset($_SESSION['error'])) {
+        ?>
+            <div class="error">
+                <?= $_SESSION['error'] ?>
+            </div>
+        <?php
+            unset($_SESSION['error']);
+        }
+        ?>
+
+        <form action="php/SignUpAction.php" method="post" enctype="multipart/form-data">
+            <label for="image">Profile Picture</label>
+            <input type="file" name="image" id="image">
             <label for="first_name">First Name</label>
             <input type="text" name="first_name" id="first_name" required>
             <label for="last_name">Last Name</label>
@@ -27,7 +44,7 @@ require TEMPLATES_PATH . '/base-header.php';
             <input type="password" name="password" id="password" autocomplete="new-password" required>
             <label for="birthday">Birthday</label>
             <input type="date" name="birthday" id="birthday" required>
-            <button type="submit">Sign up</button>
+            <button type="submit" name="submit" value="submit">Sign up</button>
         </form>
     </div>
 </div>

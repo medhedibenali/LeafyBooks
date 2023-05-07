@@ -1,171 +1,110 @@
 <?php
 session_start();
-//$_SESSION['username']='salma';
+
 require_once dirname(__FILE__, 2) . '/config/config.php';
 require_once MODULES_PATH . '/autoloader.php';
 
-$isbn = htmlspecialchars($_GET['isbn']);
-
-$bookRepository = new BookRepository();
-$book = $bookRepository->find(['isbn' => $isbn]);
-$pageTitle = $book->title;
+$pageTitle = "Book Page";
 
 $stylesheets = array(
     'css/book-identity.css',
-    'css/static-rating.css',
-    'css/book-template.css'
+    'css/static-rating.css'
 );
 
 require TEMPLATES_PATH . '/header.php';
-require TEMPLATES_PATH . '/footer.php';
+
+$isbn = htmlspecialchars($_GET['isbn'] ?? '');
+
+if ($isbn === '') {
+    header('Location: index.php');
+    die();
+}
+
+$bookRepository = new BookRepository();
+$book = $bookRepository->find(['isbn' => $isbn]);
+
+if ($book === false) {
+    header('Location: index.php');
+    die();
+}
 
 $authorRepository = new AuthorRepository();
 $author = $authorRepository->find(['id' => $book->author]);
-$tagRepository=new TagsRepository();
-$bookByTags=$tagRepository->find(['isbn'=>$isbn]);
+
 $userReviewsRepository = new UserReviewsRepository();
-$userRepository=new UserRepository();
-$user=$userRepository->find(['username'=>$_SESSION['username']]);
 $reviewsCount = count($userReviewsRepository->find(['isbn' => $isbn]));
 ?>
-    <!--   info about the book-->
-    <div class="container">
-        <div class="ImagePos">
-            <img id="cover" src="<?= $book->picture ?>"/>
-            <div>
-                <?php
-                require TEMPLATES_PATH . '/add-to-list.php';
-                ?>
-            </div>
-        </div>
-
-        <div class="box1">
-            <h1 style="font-family: 'Britannic Bold';font-size: 50px;"><?=$book->title;?></h1>
-            <!--NUMBER OF PAGES AND PUBLISHING DATE  -->
-            <p style="font-family:  'Times New Roman, serif'">
-                <?=$book->page_number.' pages'?>
-                <br>
-                First published <?=$book->publishing_year?>
-            </p>
-            <div style="font-size: 20px;font-family: 'DecoType Naskh';">
-                <?= $author->pen_name ?>
-            </div>
-            <div style="font-size: 20px;font-family: 'DecoType Naskh';">
-                <?= $book->publisher ?>
-            </div>
-            <div id="synopsis">
-                <?= $book->synopsis ?>
-            </div>
-            <!--        book average rating-->
-            <?php
-            $percentage = ($book->rating ?? 0) * 20;
-            ?>
-            <div class="flex-box-no-space">
-
-                <div class="rating-in-stars">
-                    <?php
-                    require TEMPLATES_PATH . '/rating-static-percentage.php';
-                    ?>
-                </div>
-                <div class="rating-in-digits" class="AvgReviews">
-
-                   (<?= $reviewsCount ?>  review<?= ($reviewsCount != 1) ? 's' : '' ;?>)
-                    <?php
-                    echo "  ".$book->rating;
-                    ?>
-                </div>
-
-            </div>
-            <br>
-            <p style="color: grey;margin-right: 10px;font-family: 'DecoType Naskh';font-size: 20px">Tags </p>
-            <ul id="liste" style="list-style: none;">
-                <?php
-                foreach ($bookByTags as $bookByTag)
-                {
-                    ?>
-                    <li id="lii"><?=$bookByTag->tag?></li>
-                    <?php
-                }
-                ?>
-            </ul>
-            <div class="AboutAuthor">
-                <h2>
-                    About the author
-                </h2>
-                <img id="authorpic" src="img/<?=$author->picture?>"> <?=$author->pen_name?>
-                <br><br>
-                <?= $author->bio ?>
-            </div>
-            <hr >
-            <br>
-            <!--    rating statistics-->
-            <?php
-            require TEMPLATES_PATH .'/rating-statistics.php';
-            ?>
-            <br>
-            <!--similar books-->
-            <div class="ReadersEnjoy">
-                <h2 style="font-family:'DecoType Naskh';font-style:italic ">
-                    Readers also enjoy
-                </h2>
-                <div class="flex-box">
-                    <?php
-                    require TEMPLATES_PATH . '/similar-books.php';
-                    ?>
-                </div>
-            </div>
-            <br>
-            <hr >
-            <div class="Ratings-reviews">
-                <h2 style="font-family:'DecoType Naskh';">
-                    Ratings & Reviews
-                </h2>
-                <img src="img/<?= $user->picture ?>" id="userpic">
-                <br>
-                <p id="question">
-                    what do you think, <?= $user->username ?>?
-                </p>
-
-                <div class="rating-portion">
-                    <?php
-                    require TEMPLATES_PATH . '/rating-template.php';
-                    if(isset($_SESSION['username']))
-                    {
-                    ?>
-                    <button  class="writereview">
-                        <a href="#reviewing" style="text-decoration: none;color:whitesmoke">Write a review</a>
-                    </button>
-                        <?php
-                    }
-                    ?>
-
-                </div>
-                <br>
-                <!-- reviews-->
-                <?php
-                require TEMPLATES_PATH . '/reviews.php';
-                ?>
-            </div>
-            <br>
-            <br>
-            <!--    review form-->
-            <div>
-                <?php
-                require TEMPLATES_PATH . '/reviewing-template.php';
-                ?>
-            </div>
-            </div>
-        </div>
-
+<!--   info about the book-->
+<div class="container">
+    <div class="alert alert-warning">
+        <h3>Book Info</h3>
     </div>
+    <div>
+        <img src="img/books/<?= $book->image ?>" />
     </div>
+    <div>
+        title: <?= $book->title ?>
+    </div>
+    <div>
+        author: <?= $author->pen_name ?>
+    </div>
+    <div>
+        publisher: <?= $book->publisher ?>
+    </div>
+    <!--    book average rating-->
+    <?php
+    $percentage = ($book->rating ?? 0) * 20;
+    require TEMPLATES_PATH . '/rating-static-percentage.php';
+    ?>
+    <div>
+        (<?= $reviewsCount ?> review<?= ($reviewsCount != 1) ? 's' : '' ?>)
+    </div>
+    <div>
+        synopsis: <?= $book->synopsis ?>
+    </div>
+    <?php
+    require TEMPLATES_PATH . '/add-to-list.php';
+    ?>
+    <div class="AboutAuthor">
+        <h4>
+            About the author
+        </h4>
+        <?= $author->bio ?>
+    </div>
+    <!--    rating statistics-->
+    <?php
+    require TEMPLATES_PATH . '/rating-statistics.php'
+    ?>
+    <!--similiar books-->
+    <h4 class=you-might-also-like>
+        You might also like
+    </h4>
+    <div class="flex-box">
+        <?php
+        require TEMPLATES_PATH . '/similar-books.php';
+        ?>
+    </div>
+    <div class="Ratings-reviews">
+        <h4>
+            Ratings & Reviews
+        </h4>
+        <!-- reviews-->
+        <?php
+        require TEMPLATES_PATH . '/reviews.php';
+        ?>
+    </div>
+    <!--    review form-->
+    <div class="rating-portion">
+        <?php
+        require TEMPLATES_PATH . '/rating-user-input.php';
+        ?>
+    </div>
+</div>
 
 <?php
 
 $scripts = array(
-    'js/book-identity.js',
-    'node_modules/bootstrap/dist/js/bootstrap.bundle.js',
-    'node_modules/bootstrap/dist/js/bootstrap.min.js'
-
+    'js/book-identity.js'
 );
+
 require TEMPLATES_PATH . '/footer.php';
