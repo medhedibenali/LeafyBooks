@@ -6,22 +6,24 @@ if(!isset($_GET['tag']))
 }
 $tag=trim(htmlspecialchars($_GET['tag']));
 $pageTitle= 'Browse For '.$tag;
-$stylesheets =["css/search.css","css/browse.css","https://cdn.datatables.net/responsive/2.4.1/css/responsive.bootstrap5.min.css"];
-$scripts=["https://code.jquery.com/jquery-3.6.0.min.js",
-"https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js",
-"https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js",
-"https://cdn.datatables.net/responsive/2.4.1/js/dataTables.responsive.min.js",
-"https://cdn.datatables.net/responsive/2.4.1/js/responsive.bootstrap5.js"
-];
+$stylesheets =["css/search.css",
+"css/browse.css"];
+
 require_once dirname(__FILE__,2).'/templates/header.php';
 require_once dirname(__FILE__, 2) . '/modules/book_identification/BookRepository.php';
 require_once dirname(__FILE__, 2) . '/modules/book_identification/TagsRepository.php';
-require_once dirname(__FILE__, 2) . '/modules/book_identification/AuthorRepository.php';
+require_once dirname(__FILE__, 2) . '/modules/author/AuthorRepository.php';
 $bookRepository = new BookRepository();
 $tagsRepository = new TagsRepository();
 $authorRepository = new AuthorRepository();
 $isbn=$tagsRepository->find(['tag'=>$tag]);
 ?>
+<link href="https://cdn.datatables.net/responsive/2.4.1/css/responsive.bootstrap5.min.css" rel="stylesheet"/>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.4.1/js/dataTables.responsive.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.4.1/js/responsive.bootstrap5.js"></script>
 <div class="content">
     <?php 
     if(!$isbn)
@@ -76,6 +78,6 @@ $isbn=$tagsRepository->find(['tag'=>$tag]);
 
     })
 </script>
-<? 
+<?php
     require_once dirname(__FILE__,2).'/templates/footer.php';
 ?>
