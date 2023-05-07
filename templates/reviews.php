@@ -15,7 +15,7 @@ foreach ($reviews as $review) {
     </div>
     <div style="font-size:0.8rem; color:#808080;">
         <?php
-        $status = $review->isUpdated ? "Updated" : "First submitted";
+        $status = $review->is_updated ? "Updated" : "First submitted";
         echo $status . " on " . $review->time_submitted;
         ?>
     </div>
@@ -27,3 +27,4 @@ foreach ($reviews as $review) {
     <br>
 <?php
 }
+

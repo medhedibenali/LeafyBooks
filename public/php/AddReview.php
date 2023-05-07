@@ -10,10 +10,10 @@ $bookRepo = new BookRepository();
 $userReviewsRepo = new UserReviewsRepository();
 //first time the user submits a review for a book, insert it into the database, otherwise update it
 if (!($userReviewsRepo->find(["isbn" => $isbn, "username" => $username]))) {
-    $userReviewsRepo->insert(["isbn" => $isbn, "username" => $username, "review" => $review, "time_submitted" => $time_submitted,"isUpdated"=>false]);
+    $userReviewsRepo->insert(["isbn" => $isbn, "username" => $username, "review" => $review, "time_submitted" => $time_submitted,"is_updated"=>false]);
     // This is the first time the user is submitting a review
 } else {
-    $userReviewsRepo->update(["isbn" => $isbn, "username" => $username], ["review" => $review,"time_submitted" => $time_submitted,"isUpdated"=>true]);
+    $userReviewsRepo->update(["isbn" => $isbn, "username" => $username], ["review" => $review,"time_submitted" => $time_submitted,"is_updated"=>true]);
     // The user updated the review
 }
 header("Location: " . $_SERVER['HTTP_REFERER']);

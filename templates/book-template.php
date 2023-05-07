@@ -83,7 +83,7 @@ require_once 'header.php'
 </div>
 
 
-<script src="js/book-template.js"></script>
+<script src="../public/js/book-template.js"></script>
 
 </body>
 </html>

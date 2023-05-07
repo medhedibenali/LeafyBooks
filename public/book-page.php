@@ -1,6 +1,5 @@
 <?php
 session_start();
-//$_SESSION['username']='salma';
 require_once dirname(__FILE__, 2) . '/config/config.php';
 require_once MODULES_PATH . '/autoloader.php';
 
@@ -43,7 +42,7 @@ $reviewsCount = count($userReviewsRepository->find(['isbn' => $isbn]));
             <h1 style="font-family: 'Britannic Bold';font-size: 50px;"><?=$book->title;?></h1>
             <!--NUMBER OF PAGES AND PUBLISHING DATE  -->
             <p style="font-family:  'Times New Roman, serif'">
-                <?=$book->page_number.' pages'?>
+                <?=$book->pages.' pages'?>
                 <br>
                 First published <?=$book->publishing_year?>
             </p>

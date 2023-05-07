@@ -40,7 +40,7 @@ require dirname(__FILE__) . '/base-header.php';
         <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
             <ul class="navbar-nav" style="margin-left: 15rem;">
                 <li class="nav-item">
-                    <a class="nav-link" href="homepage.php" style="margin-right: 20px;">Home</a>
+                    <a class="nav-link" href="index.php" style="margin-right: 20px;">Home</a>
                 </li>
                 <li class="nav-item">
                     <div class="dropdown">
@@ -102,9 +102,6 @@ require dirname(__FILE__) . '/base-header.php';
 </nav>
 
 <?php
-$scripts = array(
-    'js/header.js'
-);
 require TEMPLATES_PATH . '/footer.php';
 ?>
 
