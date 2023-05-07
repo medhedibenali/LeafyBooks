@@ -65,7 +65,7 @@ a.navbar-brand.active{
     background-color: #efddb3;
     border: 0;
 }
-.btn-group #2,.btn-group-vertical #2 {
+.btn-group-2 {
     position: relative;
     display: inline-flex;
     vertical-align: middle;
