@@ -63,3 +63,6 @@ CREATE TABLE `web_project_db`.`user_reviews` (
     FOREIGN KEY (`isbn`) REFERENCES `books` (`isbn`),
     FOREIGN KEY (`username`) REFERENCES `users` (`username`)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci;
+
+ALTER TABLE user_reviews ADD time_submitted DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP;
+ALTER TABLE user_reviews ADD isUpdated DATETIME bool;
