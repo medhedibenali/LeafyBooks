@@ -31,15 +31,21 @@ require TEMPLATES_PATH . '/base-header.php';
         }
         ?>
 
+
         <form action="php/SignUpAction.php" method="post" enctype="multipart/form-data">
-            <label for="image">Profile Picture</label>
-            <input type="file" name="image" id="image">
+            <label for="image">
+                <div>
+                    Profile Picture
+                </div>
+                <img src="" class="preview js-preview" alt="preview">
+            </label>
+            <input type="file" name="image" id="image" accept="image/jpeg,image/png,image/webp,image/gif">
             <label for="first_name">First Name</label>
             <input type="text" name="first_name" id="first_name" required>
             <label for="last_name">Last Name</label>
             <input type="text" name="last_name" id="last_name" required>
             <label for="username">Username</label>
-            <input type="text" name="username" id="username" required>
+            <input type="text" class="js-username" name="username" id="username" required>
             <label for="password">Password</label>
             <input type="password" name="password" id="password" autocomplete="new-password" required>
             <label for="birthday">Birthday</label>
@@ -50,4 +56,10 @@ require TEMPLATES_PATH . '/base-header.php';
 </div>
 
 <?php
+
+$scripts = array(
+    'js/image-preview.js',
+    'js/username-availability.js'
+);
+
 require TEMPLATES_PATH . '/base-footer.php';
