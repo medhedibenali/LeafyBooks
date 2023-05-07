@@ -3,23 +3,24 @@
     $stylesheets =["https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css","css/search.css","css/advanced-search.css"];
     $scripts = ["https://code.jquery.com/jquery-3.5.1.slim.min.js","https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js","https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/js/bootstrap-select.min.js"];
     require_once dirname(__FILE__,2).'/templates/header.php';
+    require_once dirname(__FILE__, 2) . '/modules/autoloader.php';
     require_once dirname(__FILE__, 2) . '/modules/book_identification/BookRepository.php';
     require_once dirname(__FILE__, 2) . '/modules/book_identification/TagsRepository.php';
     $bookRepository = new BookRepository();
     $tagsRepository = new TagsRepository();
-    $title = $_POST['title'] ?? '';
-    $author = $_POST['author'] ?? '';
-    $tags = $_POST['tags'] ?? [];
-    $rating = $_POST['rating'] ?? '';
+    $title = $_GET['title'] ?? '';
+    $author = $_GET['author'] ?? '';
+    $tags = $_GET['tags'] ?? [];
+    $rating = $_GET['rating'] ?? '';
     $title = trim($title);
     $author = trim($author);
-    $publisher = trim($_POST['publisher'] ?? '');
-    $order=$_POST['order'] ?? '';
+    $publisher = trim($_GET['publisher'] ?? '');
+    $order=$_GET['order'] ?? '';
     $allTags=$tagsRepository->getAllTags();
 ?>
 <h2>Advanced Search</h2>
 <div class="advanced-search-form" style="font-family:Script MT Bold;">
-    <form action="advanced-search.php" method="post">
+    <form action="advanced-search.php" method="get">
         <div class="container">
         <div class="row">
             <div class="col input-group">

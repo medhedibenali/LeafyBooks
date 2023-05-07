@@ -4,38 +4,29 @@ if(!isset($_GET['tag']))
     header('location: index.php');
     die();
 }
-if(isset($_POST['order']))
-{
-    $order=$_POST['order'];
-}
-else
-{
-    $order=0;
-}
 $tag=trim(htmlspecialchars($_GET['tag']));
 $pageTitle= 'Browse For '.$tag;
-$stylesheets =["css/search.css","css/browse.css"];
+$stylesheets =["css/search.css","css/browse.css","https://cdn.datatables.net/responsive/2.4.1/css/responsive.bootstrap5.min.css"];
+$scripts=["https://code.jquery.com/jquery-3.6.0.min.js",
+"https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js",
+"https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js",
+"https://cdn.datatables.net/responsive/2.4.1/js/dataTables.responsive.min.js",
+"https://cdn.datatables.net/responsive/2.4.1/js/responsive.bootstrap5.js"
+];
 require_once dirname(__FILE__,2).'/templates/header.php';
 require_once dirname(__FILE__, 2) . '/modules/book_identification/BookRepository.php';
 require_once dirname(__FILE__, 2) . '/modules/book_identification/TagsRepository.php';
+require_once dirname(__FILE__, 2) . '/modules/book_identification/AuthorRepository.php';
 $bookRepository = new BookRepository();
 $tagsRepository = new TagsRepository();
+$authorRepository = new AuthorRepository();
 $isbn=$tagsRepository->find(['tag'=>$tag]);
 ?>
-
-<link href="https://cdn.datatables.net/responsive/2.4.1/css/responsive.bootstrap5.min.css" rel="stylesheet"/>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
-<script src="https://cdn.datatables.net/responsive/2.4.1/js/dataTables.responsive.min.js"></script>
-<script src="https://cdn.datatables.net/responsive/2.4.1/js/responsive.bootstrap5.js"></script>
-
 <div class="content">
     <?php 
     if(!$isbn)
     {
        require dirname(__FILE__, 2) . '/templates/no-results.php';
-       echo '<a class="center back--btn" href="index.php"> back to homepage </a>';
             }
     else {        
         ?>
@@ -56,11 +47,12 @@ $isbn=$tagsRepository->find(['tag'=>$tag]);
             <?php
             foreach($isbn as $i){
                 $book=$bookRepository->find(['isbn'=>($i->isbn)]);
+                $author=$authorRepository->find(['id'=>($book->author)]);
             ?>
             <tr>
                 <td> <img src= <?= $book->image?>/></td>
                 <td> <?= $book->title?></td>
-                <td> <?= $book->author?></td>
+                <td> <?= "$author->first_name $author->last_name"?></td>
                 <td> <?= $book->rating?>
                 <div>
                     <?php 
