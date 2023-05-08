@@ -13,17 +13,26 @@ $stylesheets = array(
 
 require TEMPLATES_PATH . '/header.php';
 
-$isbn = htmlspecialchars($_GET['isbn']);
+$isbn = htmlspecialchars($_GET['isbn'] ?? '');
+
+if ($isbn === '') {
+    header('Location: index.php');
+    die();
+}
 
 $bookRepository = new BookRepository();
 $book = $bookRepository->find(['isbn' => $isbn]);
+
+if ($book === false) {
+    header('Location: index.php');
+    die();
+}
 
 $authorRepository = new AuthorRepository();
 $author = $authorRepository->find(['id' => $book->author]);
 
 $userReviewsRepository = new UserReviewsRepository();
 $reviewsCount = count($userReviewsRepository->find(['isbn' => $isbn]));
-
 ?>
 <!--   info about the book-->
 <div class="container">
@@ -31,7 +40,7 @@ $reviewsCount = count($userReviewsRepository->find(['isbn' => $isbn]));
         <h3>Book Info</h3>
     </div>
     <div>
-        <img src="<?= $book->picture ?>" />
+        <img src="img/books/<?= $book->image ?>" />
     </div>
     <div>
         title: <?= $book->title ?>

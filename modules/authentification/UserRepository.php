@@ -6,7 +6,18 @@ class UserRepository extends Repository
     public function __construct()
     {
         $tableName = 'users';
-        $attributes = ['username', 'password', 'first_name', 'last_name', 'birthday', 'picture'];
+        $attributes = [
+            'username',
+            'password',
+            'first_name',
+            'last_name',
+            'birthday',
+            'bio',
+            'join_date',
+            'location',
+            'image',
+            'image_seed'
+        ];
         $ids = ['username'];
         parent::__construct($tableName, $attributes, $ids);
     }
@@ -18,6 +29,6 @@ class UserRepository extends Repository
             PASSWORD_ARGON2ID,
             ['memory_cost' => 2048, 'time_cost' => 4, 'threads' => 4]
         );
-        parent::insert($params);
+        return parent::insert($params);
     }
 }
