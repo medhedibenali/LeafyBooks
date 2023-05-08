@@ -78,13 +78,19 @@ similar to the likes of To All the Boys I’ve Loved Before, The Hate U Give, an
                 </ol>
                 <div class="carousel-inner2">
                     <div class="carousel-item active" >
-                        <img class="d-block w-100" src="<?=$pictures['picture1']?>" alt="First slide" id="f1">
+                        <a href="book-page.php?isbn=<?= ($pictures[$key][0])->isbn ?>">
+                        <img class="d-block w-100" src="<?=($pictures[$key][0])->picture?>" alt="First slide" id="f1">
+                        </a>
                     </div>
                     <div class="carousel-item" >
-                        <img class="d-block w-100" src="<?=$pictures['picture2']?>" alt="Second slide" id="f2" >
+                        <a href="book-page.php?isbn=<?= ($pictures[$key][1])->isbn ?>">
+                        <img class="d-block w-100" src="<?=($pictures[$key][1])->picture?>" alt="Second slide" id="f2" >
+                        </a>
                     </div>
                     <div class="carousel-item" >
-                        <img class="d-block w-100" src="<?=$pictures['picture3']?>" alt="Third slide" id="f3">
+                        <a href="book-page.php?isbn=<?= ($pictures[$key][2])->isbn ?>">
+                        <img class="d-block w-100" src="<?=($pictures[$key][2])->picture?>" alt="Third slide" id="f3">
+                        </a>
                     </div>
                 </div>
                 <a class="carousel-control-prev" href="<?= '#carouselExampleIndicators'.$indice?>"  role="button" data-slide="prev">

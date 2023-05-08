@@ -1,5 +1,6 @@
 <?php
 require_once dirname(__FILE__, 2) . '/config/config.php';
+require_once MODULES_PATH . '/autoloader.php';
 $pageTitle = "Home";
 $stylesheets = array(
     "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css",
@@ -13,15 +14,6 @@ $stylesheets = array(
     "https://unpkg.com/bootstrap-icons@1.6.1/font/bootstrap-icons.css"
 );
 
-$pic1="img/royal.jpg";
-$pic2="img/HP1.jpg";
-$pic3="img/HP3.jpg";
-$pictures=array(
-    "picture1"=>$pic1,
-    "picture2"=>$pic2,
-    "picture3"=>$pic3,
-
-);
 require TEMPLATES_PATH . '/header.php';
 ?>
 <div class="ad">
@@ -57,7 +49,35 @@ require TEMPLATES_PATH.'/book-carrousel.php';
 
 
 </div>
+
+<h1>
+
+</h1>
+<div class="quotes">
+    <h1 class="inspo">
+        <span class="magic">
+         Your daily dose of <span class="magic-text">inspiration</span> on Leafy Books
+        </span>
+    </h1>
+    <div class="quote-box">
+
+    </div>
+</div>
 <?php
+$bookRepo=new BookRepository();
+$fantasy=$bookRepo->find(['genre'=>trim('fantasy')]);
+$sciFi=$bookRepo->find(['genre'=>trim('sci-fi')]);
+$thriller=$bookRepo->find(['genre'=>trim('thriller')]);
+$ya=$bookRepo->find(['genre'=>trim('young adult')]);
+$romance=$bookRepo->find(['genre'=>trim('romance')]);
+$pictures=array(
+    'fantasy'=>$fantasy,
+    'sciFi'=>$sciFi,
+    'thriller'=>$thriller,
+    'youngAdult'=>$ya,
+    'romance'=>$romance,
+);
+
 require TEMPLATES_PATH .'/categories.php';
 $scripts=array(
     "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js",

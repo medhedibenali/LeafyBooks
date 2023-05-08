@@ -1,15 +1,5 @@
 @import url(https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
 
-h1 {
-    color: black;
-    font-family: DecoType Naskh;
-    font-size: clamp(2em, 2vw, 4em);
-    font-weight: bold;
-    margin: 0px;
-    padding: 20px;
-    text-align: center;
-}
-
 
 .hp-anniversary-text
 {
@@ -142,6 +132,27 @@ h1 > .magic > .magic-text {
     -webkit-background-clip: text; /*set the gradient colours to the text*/
     -webkit-text-fill-color: transparent;
     white-space: nowrap;
+}
+
+
+.quote-box
+{
+    border: 1px solid black;
+    height: 400px;
+    width: 980px;
+    margin-left: 20%;
+}
+
+.inspo
+{
+    color: plum;
+    font-family:DecoType Naskh;
+    font-weight: 400;
+    font-size: 30px;
+    text-align: center;
+    margin-right: 4%;
+
+
 }
 
 
