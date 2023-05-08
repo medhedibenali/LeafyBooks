@@ -14,7 +14,7 @@ foreach ($books as $book) {
 ?>
         <div class="SimilarBook">
             <a href="book-page.php?isbn=<?= $similarisbn ?>">
-                <img src="<?= $book->picture ?>">
+                <img src="img/books/<?= $book->image ?>">
             </a>
         </div>
 <?php

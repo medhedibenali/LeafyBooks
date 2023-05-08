@@ -26,5 +26,7 @@ if (!$readActRepository->find(["isbn" => $isbn, "username" => $username])) {
         $readActRepository->update(["isbn" => $isbn, "username" => $username], ["status" => $state, "start_date" => $startingDate, "finish_date" => $finishDate]);
     }
 }
+
 $last_page = $_SERVER['HTTP_REFERER'];
+
 header("Location: $last_page");

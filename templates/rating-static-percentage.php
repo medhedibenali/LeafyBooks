@@ -13,5 +13,4 @@
         <span>★</span>
         <span>★</span>
     </div>
-
 </div>

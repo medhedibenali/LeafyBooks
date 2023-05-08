@@ -1,4 +1,5 @@
 -- work in progress
+-- web_project_user
 CREATE USER 'web_project_user' @'localhost' IDENTIFIED BY 'password';
 CREATE DATABASE `web_project_db`;
 GRANT INSERT,
@@ -12,7 +13,11 @@ CREATE TABLE `web_project_db`.`users` (
     `first_name` VARCHAR(255) NOT NULL,
     `last_name` VARCHAR(255) NOT NULL,
     `birthday` DATE NOT NULL,
-    `picture` VARCHAR(255) NOT NULL,
+    `bio` TEXT,
+    `join_date` DATE DEFAULT (CURRENT_DATE),
+    `location` VARCHAR(255),
+    `image` VARCHAR(255) NOT NULL,
+    `image_seed` VARCHAR(255) NOT NULL,
     PRIMARY KEY (`username`)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci;
 -- authors
@@ -25,7 +30,7 @@ CREATE TABLE `web_project_db`.`authors` (
     `death_day` DATE NOT NULL,
     `bio` TEXT NOT NULL,
     `nationality` VARCHAR(255) NOT NULL,
-    `picture` VARCHAR(255) NOT NULL,
+    `image` VARCHAR(255) NOT NULL,
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci;
 -- books
@@ -34,7 +39,7 @@ CREATE TABLE `web_project_db`.`books` (
     `title` VARCHAR(255) NOT NULL,
     `author` INT NOT NULL,
     `publisher` VARCHAR(255) NOT NULL,
-    `picture` VARCHAR(255) NOT NULL,
+    `image` VARCHAR(255) NOT NULL,
     `synopsis` TEXT NOT NULL,
     `publishing_year` YEAR NOT NULL,
     `rating` FLOAT,
@@ -57,12 +62,11 @@ CREATE TABLE `web_project_db`.`read_act` (
 CREATE TABLE `web_project_db`.`user_reviews` (
     `isbn` VARCHAR(255) NOT NULL,
     `username` VARCHAR(255) NOT NULL,
-    `review` TEXT NOT NULL,
-    `rating` FLOAT NOT NULL,
+    `review` TEXT,
+    `rating` FLOAT,
+    `time_submitted` DATETIME DEFAULT (CURRENT_TIMESTAMP),
+    `is_updated` BOOLEAN DEFAULT FALSE,
     PRIMARY KEY (`isbn`, `username`),
     FOREIGN KEY (`isbn`) REFERENCES `books` (`isbn`),
     FOREIGN KEY (`username`) REFERENCES `users` (`username`)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci;
-
-ALTER TABLE user_reviews ADD time_submitted DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP;
-ALTER TABLE user_reviews ADD is_updated bool;

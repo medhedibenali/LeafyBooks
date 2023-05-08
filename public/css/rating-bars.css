@@ -35,12 +35,10 @@
 
 }
 
-.ratingper-animation
-{
-        background: #E87400;
-        animation: fillBars 2.5s;
+.ratingper-animation {
+    background: #E87400;
+    animation: fillBars 2.5s;
 }
-
 
 .ratingper::before {
     content: attr(per);

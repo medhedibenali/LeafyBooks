@@ -1,13 +1,8 @@
 <?php
 session_start();
-require_once dirname(__FILE__,2).'/config/config.php';
-require_once MODULES_PATH . '/autoloader.php';
 
-$userRepository = new UserRepository();
-$user = false;
-if(isset($_SESSION['username'])){
-    $user = $userRepository->find(['username'=>$_SESSION['username']]);
-}
+require_once dirname(__FILE__, 2) . '/config/config.php';
+require_once MODULES_PATH . '/autoloader.php';
 
 $stylesheets = array_merge(
     array(
@@ -28,6 +23,14 @@ $stylesheets = array_merge(
 );
 
 require dirname(__FILE__) . '/base-header.php';
+
+$userRepository = new UserRepository();
+
+$user = false;
+
+if (isset($_SESSION['username'])) {
+    $user = $userRepository->find(['username' => $_SESSION['username']]);
+}
 ?>
 
 <!--  NAVBAR   -->
@@ -53,10 +56,10 @@ require dirname(__FILE__) . '/base-header.php';
                     </div>
                 </li>
                 <li class="nav-item">
-                    <?php if($user) { ?>
+                    <?php if ($user) { ?>
                         <a class="nav-link" href="my-books.php" style="margin-left: 20px; margin-right: 20px;">My Books</a>
                     <?php } else { ?>
-<!--                        when clicked on if user is connected it will take him to my books if not the login page-->
+                        <!--                        when clicked on if user is connected it will take him to my books if not the login page-->
                         <a class="nav-link" href="sign-in.php" style="margin-left: 20px; margin-right: 20px;">My Books</a>
                     <?php } ?>
                 </li>
@@ -72,36 +75,31 @@ require dirname(__FILE__) . '/base-header.php';
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link" href="#"></a>
-                        <?php
-                        if(!$user) {
-                            ?>
-                            <div class="btn-group btn-group-2" >
-                                <a href="sign-up.php">
-                                    <button type="button" class="navButton">Sign up</button>
-                                </a>
-                                <a href="sign-in.php">
-                                    <button type="button" class="navButton">Log in</button>
-                                </a>
-                            </div>
-                        <?php } else { ?>
-                            <div class="dropdown">
-                                <a class=" nav-link dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                    <?php
+                    if (!$user) {
+                    ?>
+                        <div class="btn-group btn-group-2">
+                            <a href="sign-up.php">
+                                <button type="button" class="navButton">Sign up</button>
+                            </a>
+                            <a href="sign-in.php">
+                                <button type="button" class="navButton">Log in</button>
+                            </a>
+                        </div>
+                    <?php } else { ?>
+                        <div class="dropdown">
+                            <a class=" nav-link dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
-                                    <img src="img/<?php echo $user->picture ?>" class="profilePic">
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="profileDropdown">
-                                    <a class="dropdown-item" href="user_profile.php"><i class="fa-solid fa-book-open-reader"></i>  View Profile</a>
-                                    <a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt me-2"></i></i>Disconnect</a>
-                                </div>
+                                <img src="img/users/<?= $user->image ?>" class="profilePic">
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="profileDropdown">
+                                <a class="dropdown-item" href="user_profile.php"><i class="fa-solid fa-book-open-reader"></i> View Profile</a>
+                                <a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt me-2"></i></i>Disconnect</a>
                             </div>
-                        <?php } ?>
+                        </div>
+                    <?php } ?>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
-
-<?php
-require TEMPLATES_PATH . '/footer.php';
-?>
-

@@ -1,16 +1,14 @@
-
-.navbar
-{
+.navbar {
     background-color: #efddb3;
-    height:3.5rem;
+    height: 3.5rem;
 
 }
-.navbar-brand
-{
+
+.navbar-brand {
     font-family: "Script MT Bold";
 }
 
-.nav-item:not(:last-child) .nav-link:hover  {
+.nav-item:not(:last-child) .nav-link:hover {
     background-color: #422f08;
     color: whitesmoke;
 }
@@ -40,18 +38,19 @@ a.navbar-brand {
     transition: all 0.3s ease;
 }
 
-a.navbar-brand.active{
+a.navbar-brand.active {
     transform: scale(2);
     opacity: 0;
 }
 
-
 @keyframes rotateFall {
+
     /*animations starts with*/
     0% {
         transform: rotate(0deg);
         opacity: 1;
     }
+
     /*animations ends with*/
     100% {
         transform: rotate(90deg) translate(50vw, 100vh);
@@ -59,20 +58,20 @@ a.navbar-brand.active{
     }
 }
 
-.navButton
-{
+.navButton {
     border-radius: 5%;
     background-color: #efddb3;
     border: 0;
 }
+
 .btn-group-2 {
     position: relative;
     display: inline-flex;
     vertical-align: middle;
     margin-top: -20px;
 }
-.navButton:hover
-{
+
+.navButton:hover {
     background-color: #422f08;
     color: whitesmoke;
 }

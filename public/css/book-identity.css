@@ -7,40 +7,37 @@ img {
     padding-left: 10cm;
 }
 
-
-#actionOnBook
-{
+#actionOnBook {
     background-color: inherit;
     border-color: transparent;
     outline: transparent;
     width: 100%;
 }
 
-select option
-{
+select option {
     background-color: white;
     font-size: medium;
 }
-
 
 .you-might-also-like {
     margin-top: 40%;
 }
 
 .no-user-error1 {
-    margin-top:10%;
+    margin-top: 10%;
     width: 100%;
-    height:3rem;
+    height: 3rem;
     text-align: center;
     font-size: 1rem;
-    border:1px solid saddlebrown;
+    border: 1px solid saddlebrown;
     text-align: center;
 }
+
 .no-user-error2 {
     width: 10rem;
-    height:3rem;
+    height: 3rem;
     text-align: center;
     font-size: 1rem;
-    border:1px solid saddlebrown;
+    border: 1px solid saddlebrown;
     text-align: center;
 }
