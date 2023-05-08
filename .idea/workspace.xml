@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3ac7364e-bbf9-402b-af99-82c6ecd127c9" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/homepage.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/homepage.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/homepage.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/homepage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/book-carrousel.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/book-carrousel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/book-carroussel.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/categories.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/categories.php" afterDir="false" />
-    </list>
+    <list default="true" id="3ac7364e-bbf9-402b-af99-82c6ecd127c9" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -118,7 +111,7 @@
       <workItem from="1683320010601" duration="13732000" />
       <workItem from="1683363496400" duration="2647000" />
       <workItem from="1683463613058" duration="1379000" />
-      <workItem from="1683503297609" duration="4017000" />
+      <workItem from="1683503297609" duration="4340000" />
     </task>
     <servers />
   </component>
