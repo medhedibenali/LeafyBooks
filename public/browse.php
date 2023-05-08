@@ -25,6 +25,9 @@ $isbn=$tagsRepository->find(['tag'=>$tag]);
 <script src="https://cdn.datatables.net/responsive/2.4.1/js/dataTables.responsive.min.js"></script>
 <script src="https://cdn.datatables.net/responsive/2.4.1/js/responsive.bootstrap5.js"></script>
 <div class="content">
+    <div class="bar">
+        <h2> <?=$tag ?> Books </h2>
+    </div>
     <?php 
     if(!$isbn)
     {
@@ -32,9 +35,6 @@ $isbn=$tagsRepository->find(['tag'=>$tag]);
             }
     else {        
         ?>
-    <div class="bar">
-        <h2> <?=$tag ?> Books </h2>
-    </div>
     <table class="table table-bordered table-striped table-hover">
         <thead>
             <tr>
