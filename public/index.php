@@ -60,7 +60,15 @@ require TEMPLATES_PATH.'/book-carrousel.php';
         </span>
     </h1>
     <div class="quote-box">
-
+        <?php
+        require_once './php/quotesApiCall.php';
+        foreach ($quotes as $quote){
+         ?>
+         <div>
+            <div> <?= $quote["content"]?> </div>
+            <div>--<?=$quote["author"] ?> </div>
+         </div>
+         <?php };?>
     </div>
 </div>
 <?php
