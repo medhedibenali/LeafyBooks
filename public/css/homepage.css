@@ -1,4 +1,5 @@
 @import url(https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
 
 
 .hp-anniversary-text
@@ -137,10 +138,12 @@ h1 > .magic > .magic-text {
 
 .quote-box
 {
-    border: 1px solid black;
-    height: 400px;
-    width: 980px;
-    margin-left: 20%;
+    border: 1px solid transparent;
+    height: 200px;
+    width: 100%;
+    position: relative;
+    background-color: rgba(221, 160, 221, 0.46);
+
 }
 
 .inspo
@@ -151,9 +154,43 @@ h1 > .magic > .magic-text {
     font-size: 30px;
     text-align: center;
     margin-right: 4%;
+    margin-top: 15%;
+}
 
+ .quote
+{
+    text-align: center;
+     font-family: 'Abril Fatface', cursive;
+     font-size: 30px;
+     color: #100000;
+     font-weight: lighter;
+     z-index: 1;
+     position: relative;
+     margin-top: 5%;
+     display: flex;
+     justify-content: center; /* Center the text horizontally */
+     align-items: center; /* Center the text vertically */
+     height: 100%; /* Make the quote element fill its container vertically */
+}
+
+
+
+ .author
+{
+    text-align: center;
+     color: #100000;
+     position:relative ;
 
 }
+
+.hidden {
+    display: none;
+}
+
+
+
+
+
 
 
 

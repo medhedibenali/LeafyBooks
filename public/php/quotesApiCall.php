@@ -30,5 +30,5 @@ function CallAPI($method, $url, $data = false)
 
     return $result;
 }
-$quotes=CallAPI("GET","https://api.quotable.io/quotes/random?limit=3");
+$quotes=CallAPI("GET","https://api.quotable.io/quotes/random?limit=4");
 $quotes=json_decode($quotes,true);

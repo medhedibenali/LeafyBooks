@@ -4,7 +4,42 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3ac7364e-bbf9-402b-af99-82c6ecd127c9" name="Changes" comment="" />
+    <list default="true" id="3ac7364e-bbf9-402b-af99-82c6ecd127c9" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/public/js/quotes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/homepage.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/homepage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/a-slow-fire-burning.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/amie-kaufman.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/andy-weir.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/banner.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/bright.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/court.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/cruel-prince.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/everything.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/fault.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/five-feet.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/gillian-flynn.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/girl-on-the-train.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/gone-girl.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/illuminae.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/jennifer.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/john-green.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/marie-lu.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/martian.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/nicola.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/one.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/paula.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/rachel.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/redqueen.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/royal.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/sarah-j-maas.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/sun.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/turtles.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/warcross.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/php/quotesApiCall.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/php/quotesApiCall.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/categories.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/categories.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -111,7 +146,9 @@
       <workItem from="1683320010601" duration="13732000" />
       <workItem from="1683363496400" duration="2647000" />
       <workItem from="1683463613058" duration="1379000" />
-      <workItem from="1683503297609" duration="4340000" />
+      <workItem from="1683503297609" duration="5327000" />
+      <workItem from="1683534948417" duration="790000" />
+      <workItem from="1683559799698" duration="8452000" />
     </task>
     <servers />
   </component>

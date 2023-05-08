@@ -45,32 +45,26 @@ require TEMPLATES_PATH.'/book-carrousel.php';
             <span style="color:plum; font-family: DecoType Naskh">with the brand-new illustrated collection by Jim Kay</span>
          </span>
     </h1>
-    <i class="fa-regular fa-ufo"></i>
-
-
-</div>
-
-<h1>
-
-</h1>
-<div class="quotes">
-    <h1 class="inspo">
-        <span class="magic">
-         Your daily dose of <span class="magic-text">inspiration</span> on Leafy Books
-        </span>
-    </h1>
+    <p class="inspo">
+        Daily words of wisdom from your favourite authors
+    </p>
     <div class="quote-box">
+        <div class="banner-quote">
+        <div class="background-banner">
+        </div>
         <?php
         require_once './php/quotesApiCall.php';
         foreach ($quotes as $quote){
-         ?>
-         <div>
-            <div> <?= $quote["content"]?> </div>
-            <div>--<?=$quote["author"] ?> </div>
-         </div>
-         <?php };?>
+            ?>
+            <div class="quote-author">
+                <div class="quote"> <?= $quote["content"]?> </div>
+                <div class="author"><?=$quote["author"] ?> </div>
+            </div>
+        <?php };?>
+    </div>
     </div>
 </div>
+    </div>
 <?php
 $bookRepo=new BookRepository();
 $fantasy=$bookRepo->find(['genre'=>trim('fantasy')]);
@@ -91,6 +85,7 @@ $scripts=array(
     "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js",
     "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js",
     "https://code.jquery.com/jquery-3.2.1.slim.min.js",
-    "js/magic-text.js"
+    "js/magic-text.js",
+    "js/quotes.js"
 );
 require TEMPLATES_PATH.'/footer.php';
