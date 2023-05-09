@@ -8,60 +8,73 @@ h2 {
   margin-top: 20px;
   font-family: "DecoType Naskh";
 }
+
 h1 {
   font-family: "DecoType Naskh";
 }
+
 .content {
   margin-top: 20px;
   height: 800px;
   position: relative;
 }
+
 .grid-container {
   display: grid;
   margin: auto;
   width: 90%;
   grid-template-columns: 25% 25% 25% 25%;
 }
+
 .book,
 .user {
   height: 400px;
 }
+
 .center {
   display: block;
   margin: auto;
   text-align: center;
   word-wrap: break-word;
 }
+
 .book_cover {
   height: 210px;
   width: 140px;
   border-radius: 10px;
 }
+
 .book_title {
   color: #422f08;
 }
+
 .pages {
   position: absolute;
   bottom: 0px;
   left: 50%;
   transform: translateX(-50%);
 }
-.book_author > a {
+
+.book_author>a {
   color: #888888;
   font-style: italic;
   text-decoration: none;
 }
+
 .page-link {
   text-align: center;
   color: #422f08;
   font-weight: bold;
 }
+
 .page-link:hover {
   color: #eb6114;
 }
+
 .pagination {
   --bs-pagination-active-bg: #c52b2f;
 }
+
 .image {
   position: relative;
 }
@@ -91,7 +104,8 @@ h1 {
 .image__overlay--blur {
   backdrop-filter: blur(5px);
 }
-.image__overlay > * {
+
+.image__overlay>* {
   transform: translateY(20px);
   transition: transform 0.25s;
 }
@@ -100,7 +114,7 @@ h1 {
   opacity: 1;
 }
 
-.image__overlay:hover > * {
+.image__overlay:hover>* {
   transform: translateY(0);
 }
 
@@ -118,10 +132,12 @@ h1 {
   word-break: break-all;
   white-space: normal;
 }
+
 .user_picture {
   border-radius: 50%;
   width: 150px;
 }
+
 .image--empty {
   display: block;
   margin: 0 auto;
@@ -132,6 +148,7 @@ h1 {
   -ms-border-radius: 2%;
   -o-border-radius: 2%;
 }
+
 .back--btn {
   color: whitesmoke;
   font-size: 17px;
@@ -142,9 +159,11 @@ h1 {
   background-color: #312403;
   text-decoration: none;
 }
+
 .back--btn:hover {
   background-color: #422f08;
 }
+
 .rating {
   display: inline-block;
   color: #888888;
@@ -158,7 +177,8 @@ h1 {
 .rating-upper {
   color: #e87400;
   padding: 0;
-  position: absolute; /*to put these stars on top of the un-highlighted ones*/
+  position: absolute;
+  /*to put these stars on top of the un-highlighted ones*/
   position: absolute;
   /*to put these stars on top of the unhighlighted ones*/
   z-index: 1;

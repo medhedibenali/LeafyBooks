@@ -6,6 +6,7 @@
   margin: 0 auto;
   margin-top: 10px;
 }
+
 .btn-search {
   background-color: #422f08;
   color: antiquewhite;
@@ -16,6 +17,7 @@
   -ms-transition: transform 330ms ease-in-out;
   -o-transition: transform 330ms ease-in-out;
 }
+
 .btn-search:hover {
   background-color: #583e09;
   color: rgb(248, 120, 73);
@@ -25,10 +27,12 @@
   -ms-transform: scale(1.1);
   -o-transform: scale(1.1);
 }
+
 .row {
   margin-top: 10px;
   margin-bottom: 10px;
 }
+
 .right {
   display: flex;
   justify-content: end;

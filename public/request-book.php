@@ -1,7 +1,11 @@
 <?php
-$pageTitle="Request Book";
-include_once dirname(__FILE__,2).'/templates/header.php';
+require_once dirname(__FILE__, 2) . '/config/config.php';
+
+$pageTitle = "Request Book";
+
+require TEMPLATES_PATH . '/header.php';
 ?>
+
 <div class="container">
     <div class="row">
         <div class="col-lg-6 m-auto">
@@ -13,16 +17,14 @@ include_once dirname(__FILE__,2).'/templates/header.php';
                     <hr>
                     <?php
                     $Msg = "";
-                    if(isset($_GET['error']))
-                    {
+                    if (isset($_GET['error'])) {
                         $Msg = " Please Fill in the Blanks ";
-                        echo '<div class="alert alert-danger">'.$Msg.'</div>';
+                        echo '<div class="alert alert-danger">' . $Msg . '</div>';
                     }
 
-                    if(isset($_GET['success']))
-                    {
+                    if (isset($_GET['success'])) {
                         $Msg = " Your Message Has Been Sent ";
-                        echo '<div class="alert alert-success">'.$Msg.'</div>';
+                        echo '<div class="alert alert-success">' . $Msg . '</div>';
                     }
 
                     ?>
@@ -39,6 +41,6 @@ include_once dirname(__FILE__,2).'/templates/header.php';
         </div>
     </div>
 </div>
+
 <?php
-include_once dirname(__FILE__,2).'/templates/footer.php'
-?>
+require TEMPLATES_PATH . '/footer.php';

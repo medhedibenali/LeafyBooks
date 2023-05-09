@@ -1,7 +1,7 @@
 <?php
 if (!isset($_SESSION['username'])) {
 ?>
-    <div class="no-user-error">
+    <div class="no-user-error2">
         Please <a href="sign-in.php">login</a> or <a href="sign-up.php">signup</a> to add a rating.
     </div>
 <?php

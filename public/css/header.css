@@ -24,7 +24,6 @@ html {
     transform: translateX(-250%);
 }
 
-
 .profilePic {
     border-radius: 50%;
     height: 2.1rem;
@@ -102,7 +101,6 @@ a.navbar-brand.active {
     transform: scale(2);
     opacity: 0;
 }
-
 
 @keyframes rotateFall {
 
@@ -233,7 +231,6 @@ a.navbar-brand.active {
     transform: scale(2);
     opacity: 0;
 }
-
 
 @keyframes rotateFall {
 

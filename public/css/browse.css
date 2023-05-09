@@ -4,7 +4,8 @@
   margin: 0 auto;
   font-family: "Script MT Bold";
 }
-td > a > img {
+
+td>a>img {
   border-radius: 10%;
   -webkit-border-radius: 10%;
   -moz-border-radius: 10%;
@@ -13,12 +14,14 @@ td > a > img {
   width: 120px;
   height: 180px;
 }
+
 td {
   text-align: center;
   vertical-align: middle;
   font-family: "Script MT Bold";
   font-size: 18px;
 }
+
 th {
   padding: 5px;
   text-align: center;
@@ -26,6 +29,7 @@ th {
   font-family: "DecoType Naskh";
   font-size: larger;
 }
+
 a {
   text-decoration: none;
   color: gray;

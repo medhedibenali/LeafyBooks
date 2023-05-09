@@ -1,10 +1,9 @@
-<?php 
+<?php
 function CallAPI($method, $url, $data = false)
 {
     $curl = curl_init();
 
-    switch ($method)
-    {
+    switch ($method) {
         case "POST":
             curl_setopt($curl, CURLOPT_POST, 1);
 
@@ -30,5 +29,6 @@ function CallAPI($method, $url, $data = false)
 
     return $result;
 }
-$result=CallAPI("GET","https://api.quotable.io/quotes/random?limit=3");
-$result=json_decode($result,true);
+
+$result = CallAPI("GET", "https://api.quotable.io/quotes/random?limit=3");
+$result = json_decode($result, true);
