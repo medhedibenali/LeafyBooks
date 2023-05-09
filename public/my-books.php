@@ -1,21 +1,30 @@
 <?php
-require_once '../modules/book-activity/ReadActRepository.php';
-require_once '../modules/book_identification/BookRepository.php';
-require_once 'header.php';
+session_start();
 
+require_once dirname(__FILE__, 2) . '/config/config.php';
+require_once TEMPLATES_PATH . '/verification.php';
+require_once MODULES_PATH . '/autoloader.php';
 
+$pageTitle = 'My Books';
+
+$stylesheets = array(
+    'css/my-books.css',
+    'css/static-rating.css',
+);
+
+require TEMPLATES_PATH . '/header.php';
+
+$userRepository = new UserRepository();
+$user = $userRepository->find(['username' => $_SESSION['username']]);
+
+$readActRepository = new ReadActRepository();
+$bookRepository = new BookRepository();
 ?>
 
-<!-- Your HTML code for the my-books.php page goes here -->
-
-?>
-<title><i class="fa-solid fa-leaf"></i> My Books </title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<link rel="stylesheet" href="css/my-books.css">
 <!--this part is for sorting the books either by book title or by start date-->
-<div class="row">
+<div class="sorting_row">
     <div class="col-md-3">
-<!--this is the drop-down menu to select the column to order by-->
+        <!--this is the drop-down menu to select the column to order by-->
         <form method="post" action="my-books.php">
             <div class="form-group d-flex align-items-center">
                 <label for="exampleFormControlSelect1" id="sort">Sort</label>
@@ -28,7 +37,7 @@ require_once 'header.php';
     </div>
 
     <div class="col-md-4">
-<!--this part is for selecting if it is ascending order or descending-->
+        <!--this part is for selecting if it is ascending order or descending-->
         <div class="form-group d-flex align-items-center">
             <label>Order by:</label>
             <div class="form-check d-flex align-items-center ml-3">
@@ -46,46 +55,48 @@ require_once 'header.php';
         </div>
     </div>
     <button type="submit" class="btn btn-success">Apply</button>
-
-
+    </form>
 </div>
 
 <!--this css grid that contains the books added by the user-->
 
-<div class="grid" >
+<div class="grid">
     <div class="text">Cover</div>
     <div class="text">Title</div>
+    <div class="text">Genre</div>
     <div class="text">Author</div>
-    <div class="text">Rating</div>
+    <div class="text">AVG Rating</div>
+    <div class="text">My Rating</div>
     <div class="text">Status</div>
     <div class="text">Starting Date</div>
 
     <?php
-    $readActRepository = new ReadActRepository();
-    $bookRepository = new BookRepository();
+
     //change user1 with the user connecting
-        $sort = $_POST["sort"] ?? 'start_date';
-        $orderBy = $_POST["exampleRadios"] ?? 'DESC';
+    $sort = $_POST["sort"] ?? 'start_date';
+    $orderBy = $_POST["exampleRadios"] ?? 'DESC';
 
-        $list = $readActRepository->find(['username' => 'user1'], ['order_by' => [$sort => $orderBy]]);
-
-        foreach ($list as $element) {
-            $book = $bookRepository->find(['isbn' => $element->isbn]);
-            echo "<a href='book-page.php?isbn=' . $book->isbn . <img src='" . $book->picture . "' alt='Book Cover'></a>";
-            echo "<div>" . $book->title . "</div>";
-            echo "<div>" . $book->author . "</div>";
-            echo "<div>" . $book->rating . "</div>";
-            echo "<div>" . $element->status . "</div>";
-            echo "<div>" . $element->start_date . "</div>";
+    $list = $readActRepository->find(['username' => 'user1'], ['order_by' => [$sort => $orderBy]]);
+    foreach ($list as $element) {
+        $book = $bookRepository->find(['isbn' => $element->isbn]);
+        $percentage = ($book->rating) * 20;
+        echo "<a href='book-page.php?isbn=" . $book->isbn . "'> <img src='" . $book->image . "' alt='Book Cover'></a>";
+        echo "<div class='content'>" . $book->title . "</div>";
+        echo "<div class='content'>" . $book->genre . "</div>";
+        echo "<div class='content'>" . $book->author . "</div>";
+        echo "<div class='content'>" . $book->rating . "</div>";
+    ?>
+        <div class="content">
+            <?php
+            require_once TEMPLATES_PATH . '/rating-static-percentage.php';
+            ?>
+        </div>
+    <?php
+        echo "<div class='content'>" . $element->status . "</div>";
+        echo "<div class='content'>" . $element->start_date . "</div>";
     }
     ?>
 </div>
 
-
-
-</body>
-</html>
-
-
-
-
+<?php
+require TEMPLATES_PATH . '/footer.php';

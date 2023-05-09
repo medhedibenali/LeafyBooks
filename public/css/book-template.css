@@ -1,277 +1,277 @@
-.d-flex{
+.d-flex {
     justify-content: center;
     display: flex;
     margin-right: auto;
 }
-.container
-{
+
+.container {
     display: flex;
     flex-direction: row;
 }
 
-.ImagePos
-{
+.ImagePos {
+    position: fixed;
     display: flex;
-    margin-top: 10%;
-    margin-left: 10%;
+    margin-top: 5%;
+    margin-left: 3%;
     flex-direction: column;
-    width: 15em;
-    height:15em ;
-
-}
-#cover
-{
-    box-shadow: 0 0 10px #141515;
+    width: 16em;
+    height: 20em;
+    margin-right: 5%
 }
 
-.box1
-{
-    margin-left: 5em;
+#cover {
+    box-shadow: 0 0 10px black;
+}
+
+.btn-group-1 {
+    position: relative;
+    display: inline-flex;
+    vertical-align: middle;
+    margin-top: 2rem;
+    width: 100%;
+}
+
+.box1 {
+    margin-left: 30%;
     display: flex;
-    margin-top: 2%;
+    margin-top: 2rem;
     flex-direction: column;
-    width: 50%;
+    width: 60%;
 
 }
 
-#synopsis
-{
+#synopsis {
     font-family: " Times New Roman, serif";
     padding-top: 20px;
     font-size: 18px;
 }
-#liste
-{
-    margin-left:30px ;
+
+#liste {
+    margin-left: 30px;
     list-style: none;
 }
-#lii
-{
+
+#lii {
     font-family: 'DecoType Naskh';
     font-size: 20px;
     display: inline-block;
     margin-right: 10px;
 }
-#lii:hover
-{
-    text-decoration:underline;
+
+#lii:hover {
+    text-decoration: underline;
     text-decoration-color: darkgreen;
     text-decoration-thickness: 2.5px;
     animation: underline 1s ease-in-out;
 }
+
 @keyframes underline {
     from {
         text-decoration-color: green;
     }
+
     to {
         text-decoration-color: ghostwhite;
     }
 }
-.AboutAuthor
-{
+
+.AboutAuthor {
     margin-top: 20px;
-    font-family:'DecoType Naskh';
+    font-family: 'DecoType Naskh';
     font-size: 18px;
 }
-#authorpic
-{
+
+#authorpic {
     border-radius: 50%;
     width: 4rem;
     height: 4rem;
     object-fit: cover;
 }
 
+.flex-box {
 
-#userpic
-{
+    display: flex;
+    flex-direction: row;
+    margin-top: 1em;
+
+}
+
+.SimilarBook {
+    margin-left: 5%;
+    transition: transform 0.3s ease-in-out;
+}
+
+.SimilarBook:hover {
+    transform: scale(1.09);
+}
+
+.book-title {
+    position: absolute;
+    top: 30%;
+    font-family: 'DecoType Naskh';
+    font-size: 1.5rem;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    background-color: transparent;
+    padding: 10px;
+    color: whitesmoke;
+
+}
+
+.ReadersEnjoy {
+    display: flex;
+    flex-direction: column;
+    margin-top: 75%;
+}
+
+.SimilarBook:hover .book-title {
+    opacity: 1;
+}
+
+#userpic {
     border-radius: 50%;
-    width:70px;
+    width: 70px;
     margin-left: 45%;
     margin-top: 5%;
 
 }
 
+.Ratings-reviews {
+    margin-top: 2%;
+}
 
-#question
-{
-    font-family:'DecoType Naskh';
+#question {
+    font-family: 'DecoType Naskh';
     display: flex;
     justify-content: center;
     font-style: italic;
-    font-size: 3em;
+    font-size: 2.5em;
 }
-.writereview
-{
+
+.rating-portion {
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    justify-content: center;
+    font-size: 50%;
+    height: 10%;
+
+}
+
+.writereview {
     margin-left: 7px;
     color: whitesmoke;
-    font-size: 17px;
-    width: 9em;
-    padding: 7px 7px 7px 7px;
+    font-size: 1rem;
+    width: 8em;
     border: 0px;
     border-radius: 40px;
     background-color: #312403;
 }
-.writereview:hover
-{
+
+.writereview:hover {
     background-color: #422f08;
 }
 
-#addToList
-{
-    margin-top: 15%;
-    display: flex;
-    justify-content: center;
-    color: white;
-    font-size: 22px;
-    border: 0px;
-    border-radius: 0.5rem;
-    background-color: #296730;
-    transition: transform 0.3s ease;
-}
-/*BUTTON ANIMATION */
-#dropdown
-{
-    color: white;
-    font-size: 22px;
-    width: 9em;
-    padding: 5px 5px 9px 10px;
-    border: 0px;
-    border-radius: 0.5rem;
-    background-color: #296730;
-    transition: transform 0.3s ease;
-}
-#addToList:hover
-{
-    background-color: #317539;
-}
-
-/* when i click on the button it goes down */
-#dropdown:active
-{
-    transform: scale(0.96);
-}
-/* ::before :insert content before the content of an element
-  we will add two "boxes" that will delimit the animation one on top and the other on the bottom
-    z-index determines stacking order of elements in the z axis to control how elements are visually layered on top of
-    each other
-*/
-#dropdown::before,#dropdown::after
-{
-    overflow: hidden;
-    content: "";
-    position: absolute;
-    height: 100%;
+#addToList {
     width: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    background-repeat: no-repeat;
-    z-index: -1;
+}
 
+.dropdown-item:hover {
+    font-weight: bold;
 }
-/*
-    we are adding the circle shapes with background-image the shapes are in different colors and sizes
-    and we add an animation
- */
-#dropdown.animate::before
-{
-    top: -70%;
-    background-image:radial-gradient(circle,#296730 20%,transparent 20%),
-    radial-gradient(circle,transparent 20%, #296730 20%,transparent 20%),
-    radial-gradient(circle,#296730 20%,transparent 20%),
-    radial-gradient(circle,transparent 10%, #296730 15%,transparent 20%),
-    radial-gradient(circle,#296730 20%,transparent 20%),
-    radial-gradient(circle, #3f8545 20%,transparent 20%),
-    radial-gradient(circle, #30803a 20%,transparent 20%),
-    radial-gradient(circle, #307338 20%,transparent 20%);
-    background-size: 10% 10%,20% 20%,15% 20%,20% 20%,18% 18% ,10% 10% ,15% 15%, 18% 18%;
-    background-position: 5% 90%,10% 90%,10% 90%,15% 90%, 25% 90%, 25% 90%,40% 90%,55% 90%,70% 90%;
-    animation: topBubbles 0.6s ease-in-out forwards ;
-}
-@keyframes topBubbles {
-    50%
-    {
-        background-position: 0% 80%,0% 20%,10% 40%,20% 0%, 30% 30%, 22% 50%,50% 50%,65% 20%,90% 30%;
-    }
-    100%
-    {
-        background-position: 0% 70%, 0% 10%, 10% 30%,20% -10%,30% 20%,22% 40%,50% 40%,65%10%,90% 20%;
-        background-size: 0% 0%,0% 0%,0% 0%,0% 0%,0% 0%,0% 0%;
-    }
-}
-#dropdown.animate::after
-{
-    bottom: -70%;
-    background-image: radial-gradient(circle,#296730 20%,transparent 20%),
-    radial-gradient(circle,transparent 10%, #296730 15%,transparent 20%),
-    radial-gradient(circle,#296730 20%,transparent 20%),
-    radial-gradient(circle,#296730 20%,transparent 20%),
-    radial-gradient(circle, #397740 20%,transparent 20%),
-    radial-gradient(circle, #36863e 20%,transparent 20%),
-    radial-gradient(circle, #23592a 20%,transparent 20%);
-    background-size: 15% 15%,20% 20%,18% 18%,20% 20%,15% 15%,20% 20%,18% 18%;
-    background-position: 10% 0%,30% 10%,55% 0%,70% 0%,85% 0%,70% 0%,70% 0%;
-    animation: bottomBubbles 0.6s ease-in-out forwards ;
-}
-@keyframes bottomBubbles {
-    50%
-    {
-        background-position: 0% 80%,20% 80%,45% 60%,60% 100%,75% 70%,95% 60%,105% 0%;
-    }
-    100%
-    {
-        background-position: 0% 90%,20% 90%,45% 70%, 60% 110%, 75% 80%, 95% 70%,110% 10% ;
-        background-size: 0% 0%,0% 0%,0% 0%,0% 0%,0% 0%,0% 0%;
-    }
 
+.dropdown-item:focus {
+    background-color: transparent;
+}
+
+.AvgReviews {
+    font-family: Apple Color Emoji;
 }
 
 /*THE STARS CSS */
 .rate {
     display: inline-block;
     border: 0;
+    font-size: 30%;
+    margin-top: -4%;
 }
 
 /* make widget invisible */
-.rate > input {
+.rate>input {
     display: none;
 }
 
 /* make the widget float to the right */
-.rate > label {
+.rate>label {
     float: right;
 }
 
 /* the star when it's un-hovered and un-checked */
-.rate > label:before {
+.rate>label:before {
     display: inline-block;
     font-size: 2rem;
     padding: .3rem .2rem;
     margin: 0;
     cursor: pointer;
     font-family: FontAwesome;
-    content: "\f005 "; /* full  black star from font awesome */
+    content: "\f005 ";
+    /* full  black star from font awesome */
 }
 
 /* Half star when it's not checked or hovered upon  */
 .rate .half:before {
-    content: "\f089 "; /* half star from font awesome  */
+    content: "\f089 ";
+    /* half star from font awesome  */
     position: absolute;
     padding-right: 0;
 }
 
 /* Click + hover color */
-input:checked ~ label, /* color every label that comes  directly after a checked star*/
-label:hover, label:hover ~ label {
+input:checked~label,
+/* color every label that comes  directly after a checked star*/
+label:hover,
+label:hover~label {
     color: #73B100;
 }
 
 /*color every hovered label and every label that comes directly after a hovered labem */
 /* Hover highlights */
-input:checked + label:hover, input:checked ~ label:hover, /* highlight selected stars when hovered upon */
-input:checked ~ label:hover ~ label, /*highlight every star directly after a selected star when hovered upon */
-label:hover ~ input:checked ~ label /* highlight hovered star and every selected star that comes after a hovered star (i.e : highlight previously selected stars)*/
-{
+input:checked+label:hover,
+input:checked~label:hover,
+/* highlight selected stars when hovered upon */
+input:checked~label:hover~label,
+/*highlight every star directly after a selected star when hovered upon */
+label:hover~input:checked~label
+
+/* highlight hovered star and every selected star that comes after a hovered star (i.e : highlight previously selected stars)*/
+    {
     color: #A6E72D;
 }
 
+/* reviewers picture   */
+.pdp {
 
+    border: 1px solid transparent;
+    border-radius: 50%;
+    width: 4rem;
+    height: 4rem;
+    object-fit: cover;
+}
+
+.Name_Review {
+    display: flex;
+    align-items: center;
+    font-family: 'DecoType Naskh';
+    font-size: 1.1rem;
+}
+
+/* TEXT AREA THING*/
+.textarea {
+    font-size: 1.1rem;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+
+}

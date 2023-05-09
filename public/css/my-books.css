@@ -1,62 +1,88 @@
-
-table
-{
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 5%;
-
-}
-.row
-{
-    margin-top: 5%;
+.sorting_row {
     display: flex;
+    flex-wrap: wrap;
+    margin-top: 5rem;
+    margin-right: calc(-.5 * var(--bs-gutter-x));
+    margin-left: calc(-.5 * var(--bs-gutter-x));
     justify-content: center;
 
 }
+
 .form-check-input:checked {
     background-color: #106b10;
 }
-.form-group
-{
+
+.form-group {
     width: 70%;
 }
-#sort
-{
+
+#sort {
     margin-right: 5%;
 }
 
-.form-check
-{
+.form-check {
     margin-left: 5%;
 }
-.btn-success
-{
+
+.btn-success {
     width: 5%;
 }
-.text
-{
+
+/* MAGIC TEXT WOOOO */
+.text {
+    animation: background-pan 2.5s linear infinite;
     font-weight: bold;
     font-family: 'DecoType Naskh';
     font-size: 20px;
+    justify-content: center;
+    display: flex;
+    background-color: #63a91f;
+    background-image: linear-gradient(to right, #63a91f 0%, #1a512e 74%);
+    background-size: 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    white-space: nowrap;
+    border-bottom: 1px solid #d3cece;
+
 }
+
+/*to get an infinite loop effect for the background*/
+@keyframes background-pan {
+    from {
+        background-position: 0% center;
+    }
+
+    to {
+        background-position: -200% center;
+    }
+}
+
 /*
     CSS GRID
     grid-template-columns sets number of columns and their width by using the repeat function
     gap : gap between the columns
  */
-.grid
-{
+.grid {
     margin-top: 5%;
     display: grid;
     justify-content: center;
-    grid-template-columns: repeat(6, 7rem);
+    grid-template-columns: repeat(8, 7rem);
     gap: 5%;
-
 }
 
-.grid img
-{
-    width:100%;
-    height:100%;
+.grid img {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Apple Color Emoji";
+    font-size: 20px;
 }
