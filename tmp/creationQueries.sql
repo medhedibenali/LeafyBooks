@@ -44,6 +44,7 @@ CREATE TABLE `web_project_db`.`books` (
     `publishing_year` YEAR NOT NULL,
     `rating` FLOAT,
     `genre` VARCHAR(255) NOT NULL,
+    `pages` INT,
     PRIMARY KEY (`isbn`),
     FOREIGN KEY (`author`) REFERENCES `authors` (`id`)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci;
@@ -70,3 +71,5 @@ CREATE TABLE `web_project_db`.`user_reviews` (
     FOREIGN KEY (`isbn`) REFERENCES `books` (`isbn`),
     FOREIGN KEY (`username`) REFERENCES `users` (`username`)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci;
+
+

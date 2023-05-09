@@ -12,5 +12,34 @@ $scripts = array_merge(
         )
     )
 );
-
 require dirname(__FILE__) . '/base-footer.php';
+
+?>
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="menu">
+                    <li><a href="index.php">Home</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Request Book</a></li>
+                    <li><a href="#"><img src="../img/gitIcon.png" class="git"></a></li>
+                </ul>
+                <hr>
+                <p class="footer-text">LeafyBooks</p>
+                <p class="description">
+                    LeafyBooks is an online platform dedicated to book enthusiasts who love to read, discover new books, and
+                    share their opinions with like-minded people. The website provides a user-friendly interface that allows
+                    users to browse and search for books by title, author, tags...
+                    In addition to browsing, LeafyBooks also offers features such as creating YOUR reading lists,
+                    rating books and leaving reviews The platform also welcomes authors
+                    to request adding their books to the website's library, making it a great platform for self-published authors
+                    to showcase their work.
+                    Whether you're a casual reader or a bookworm, LeafyBooks is the perfect online destination to explore
+                    and discover new books and stay up-to-date with the latest releases and
+                    trends in the world of literature.
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>

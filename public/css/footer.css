@@ -1,0 +1,50 @@
+footer {
+    background-image: url('../img/leaf.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 20rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    font-family: "Script MT Bold";
+}
+.menu li {
+    margin: 0 10px;
+}
+.menu li a {
+    color: #b9aea0;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+}
+hr {
+    margin: 20px 0;
+    border: none;
+    border-top: 1px solid #b9aea0;
+}
+.footer-text {
+    color: #b9aea0;
+    text-align: center;
+    font-family: "Script MT Bold";
+}
+.git
+{
+    border-radius: 50%;
+    height: 2.1rem;
+    width: 2.1rem;
+    object-fit: cover;
+}
+.description
+{
+    font-size:15px;
+    font-family: "Script MT Bold";
+}
