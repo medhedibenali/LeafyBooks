@@ -41,6 +41,10 @@ function updateRating($isbn)
     $reviews = $userReviewsRepository->find(['isbn' => $isbn]);
 
     foreach ($reviews as $review) {
+        if ($review->rating === null) {
+            continue;
+        }
+
         $sum += $review->rating;
         $count++;
     }

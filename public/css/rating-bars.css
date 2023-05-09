@@ -2,32 +2,37 @@
     width: 100%;
     max-width: 600px;
     padding: 0 20px;
+    display: flex;
+
 }
 
 .number-of-stars {
     font-size: 18px;
-    font-weight: 700;
+    font-family: 'Times New Roman, serif';
+    font-weight: 400;
     color: #100000;
     margin: 20px 0;
+    margin-left: 3%;
 }
 
 .rating-bar {
     height: 0.5cm;
-    width: 7cm;
-    background: #282828;
+    width: 25rem;
+    background: #d3d3d3;
     border-radius: 12px;
     margin-top: 4%;
-    margin-left: 3%;
     z-index: 999;
+    margin-left: 12%;
 }
 
 .ratingper {
     height: 0.5cm;
-    width: 7cm;
-    background: #E87400;
+    width: 25rem;
+    background: #296730;
     border-radius: 12px;
     position: relative;
     animation: fillBars 2.5s;
+
 }
 
 .ratingper-animation {

@@ -1,5 +1,4 @@
 <?php
-
 require_once dirname(__FILE__) . '/ImageGenerator.php';
 
 function presentProblem(array $image): string|false
