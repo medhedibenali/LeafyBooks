@@ -7,15 +7,18 @@ function CallAPI($method, $url, $data = false)
         case "POST":
             curl_setopt($curl, CURLOPT_POST, 1);
 
-            if ($data)
+            if ($data) {
                 curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+            }
             break;
         case "PUT":
             curl_setopt($curl, CURLOPT_PUT, 1);
             break;
         default:
-            if ($data)
+            if ($data) {
                 $url = sprintf("%s?%s", $url, http_build_query(array($data)));
+            }
+            break;
     }
 
     curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
