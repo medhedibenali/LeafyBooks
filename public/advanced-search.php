@@ -1,6 +1,7 @@
 <?php
     $pageTitle= 'Advanced Search';
-    $stylesheets =["https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css","css/search.css","css/advanced-search.css"];
+    $stylesheets =["https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css",
+    "css/advanced-search.css","css/search.css"];
     $scripts = ["https://code.jquery.com/jquery-3.5.1.slim.min.js","https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js","https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/js/bootstrap-select.min.js"];
     require_once dirname(__FILE__,2).'/templates/header.php';
     require_once dirname(__FILE__, 2) . '/modules/autoloader.php';
@@ -75,7 +76,7 @@
         </div>
     </form>
 </div>
-<div class="results">
+
     <?php 
         if(!$author && !$title && !$publisher && !$tags && !$rating && !$order){
             require_once dirname(__FILE__,2).'/templates/no-results.php';
@@ -86,12 +87,19 @@
                 require_once dirname(__FILE__,2).'/templates/no-results.php';
             }
             else{
-                require_once dirname(__FILE__,2).'/templates/book-content-results.php';
-                echo "</div>";
+                ?>
+                <div class="content books-content" style="margin-top: 30px;" >
+                    <div class="grid-container">
+                    <?php
+                foreach($books as $book){
+                    require dirname(__FILE__,2).'/templates/book-item.php';
+                } ?>
+                   </div>
+                    </div>
+            <?php
             }
         }
     ?>
-
-</div>
+ 
 <?php 
     require_once dirname(__FILE__,2).'/templates/footer.php';

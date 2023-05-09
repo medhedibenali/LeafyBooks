@@ -52,10 +52,10 @@ $isbn=$tagsRepository->find(['tag'=>$tag]);
                 $author=$authorRepository->find(['id'=>($book->author)]);
             ?>
             <tr>
-                <td> <img src= <?= $book->image?>/></td>
-                <td> <?= $book->title?></td>
-                <td> <?= "$author->first_name $author->last_name"?></td>
-                <td> <?= $book->rating?>
+                <td > <a href=<?="book-page.php?isbn=$book->isbn"?>><img src= <?= $book->image?>></a></td>
+                <td > <a href=<?="book-page.php?isbn=$book->isbn"?>><?= $book->title?> </a></td>
+                <td > <a href=<?="author-template.php?id=$book->author"?>><?= "$author->first_name $author->last_name"?> </a></td>
+                <td > <?= $book->rating?>
                 <div>
                     <?php 
                     $percentage= $book->rating *20;

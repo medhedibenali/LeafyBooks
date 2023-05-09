@@ -1,5 +1,6 @@
 <?php
-session_start();
+if(!isset($_SESSION))
+{session_start();}
 require_once dirname(__FILE__,2).'/config/config.php';
 require_once MODULES_PATH . '/autoloader.php';
 

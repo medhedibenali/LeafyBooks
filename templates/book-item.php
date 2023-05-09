@@ -15,25 +15,28 @@
         <a class="book_title center" href=<?="book-page.php?isbn=$book->isbn"?>><?= $book->title ?></a>
   <!--      add a link to the authors page-->
         <div class="book_author center"> <span>By: </span><a href=<?="author-template.php?id=$book->id"?>><?= $book->first_name.' '.$book->last_name ?> </a> </div>
-        <div class="book_rating center">
-            <div class="rating">
-                <div class="rating-lower">
-                    <span>★</span>
-                    <span>★</span>
-                    <span>★</span>
-                    <span>★</span>
-                    <span>★</span>
+        <div>
+            <div class="book_rating center">
+                <div class="rating">
+                    <div class="rating-lower">
+                        <span>★</span>
+                        <span>★</span>
+                        <span>★</span>
+                        <span>★</span>
+                        <span>★</span>
+                    </div>
+                    <div class="rating-upper" style="width:<?= $book->rating *20 ?>%">
+                        <span>★</span>
+                        <span>★</span>
+                        <span>★</span>
+                        <span>★</span>
+                        <span>★</span>
+                    </div>
                 </div>
-                <div class="rating-upper" style="width:<?= $book->rating *20 ?>%">
-                    <span>★</span>
-                    <span>★</span>
-                    <span>★</span>
-                    <span>★</span>
-                    <span>★</span>
-                </div>
             </div>
-            <div>
-                (<?= $book->rating ?>)
-            </div>
-            </div>
+
+        </div>
+        <div class="center">
+            (<?= $book->rating ?>)
+        </div>
     </div>
