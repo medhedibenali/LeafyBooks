@@ -23,8 +23,12 @@
         }
     }
     ?>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+
+
     <!-- Pie Charts -->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 </head>

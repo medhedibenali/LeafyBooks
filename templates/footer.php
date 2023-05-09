@@ -2,7 +2,9 @@
 
 $scripts = array_merge(
     $scripts ?? [],
-    array()
+    array(
+        
+    )
 );
 
 require dirname(__FILE__) . '/base-footer.php';

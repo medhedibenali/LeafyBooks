@@ -1,5 +1,31 @@
 <?php
-    include_once "header.php";
+    include_once "../modules/autoloader.php";
+    $UserRepo = new UserRepository();
+    $UserReviewRepo = new UserReviewsRepository();
+    $ReadActRepo = new ReadActRepository();
+    $BookRepo = new BookRepository();
+    $AuthorRepo = new AuthorRepository();
+    $author = $AuthorRepo->find(['id' => $_GET['id']]);
+
+
+    // Author does not exist
+    if (!$author){
+        $errorMessage = "The requested author was not found";
+        $redirectUrl = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : 'index.php';
+        $redirectUrl .= "?error=" . urlencode($errorMessage);
+
+        header("Location: $redirectUrl");
+        exit;
+    }   
+?>
+
+
+<?php
+    // Author exists
+    $pageTitle = "$author->pen_name - LeafyBooks";
+    include_once "../templates/header.php";
+    
+    
 ?>
 
 
@@ -7,31 +33,48 @@
     <div class="row" style="width:100%;">
         <div class="col-4" style="display:flex;align-items:flex-start;justify-content: sapce-between;">
 
-            <img src="pictures/schopenhauer.jpg" alt="image not found" style="margin-top:18%;margin-left:50px;margin-right:30px;width:270px;height:330px;">
+            <?php
+                echo '<img src="' . $author->picture . '" alt="image not found" style="margin-top:18%;margin-left:50px;margin-right:30px;width:270px;height:330px;">';
+            ?>
             
-            <button class="btn" style="margin-top:125%;margin-left:-70%;font-size:15px;border: 1px solid black;">Follow Author</button>
+            
 
         </div>
 
         <div class="col-4">
-            <h1 class="username" style="margin-top: 50px;margin-left:-20px;color:#490206; font-family: Script MT Bold; ">Arthur Schopenhauer</h1>
+            <h1 class="username" style="margin-top: 50px;margin-left:-20px;color:#490206; font-family: Script MT Bold; "><?= $author->pen_name ?></h1>
             <hr style="margin-top:105px;margin-left:-18px;opacity:10;">
 
+            <h6 style="margin-left:-18px;color:#490206;">First name</h1>
+            <p style="margin-top:-8.75%;margin-left:70px;"><?= $author->first_name ?></p>
+
+            <h6 style="margin-left:-18px;color:#490206;">Last name</h1>
+            <p style="margin-top:-8.75%;margin-left:70px;"><?= $author->last_name ?></p>
+
+            <h6 style="margin-left:-18px;color:#490206;">Nationality</h1>
+            <p style="margin-top:-8.75%;margin-left:70px;"><?= $author->nationality ?></p>
+
             <h6 style="margin-left:-18px;color:#490206;">Born</h1>
-            <p style="margin-top:-8.75%;margin-left:70px;">February 22nd, 1788 in Crown of the Kingdom of Poland</p>
+            <p style="margin-top:-8.75%;margin-left:70px;"><?= DateTime::createFromFormat('Y-m-d',$author->birthday)->format('F jS, Y')?></p>
+            
 
-            <h6 style="margin-left:-18px;color:#490206;margin-top:-13px;">Died</h1>
-            <p style="margin-top:-8.75%;margin-left:70px;">September 21st, 1860 (aged 72) in German Confederation</p>
+            <?php
+                if ($author->death_day){
+                    $birth_date = new DateTime($author->birthday);
+                    $death_date = new DateTime($author->death_day);
 
-            <h6 style="margin-left:-18px;color:#490206;margin-top:-13px;">Genre</h1>
-            <a href="#"><p style="margin-top:-8.75%;margin-left:70px;color:#034694;">Philosophy</p></a>
+                    $interval = $birth_date->diff($death_date);
+                    $years = $interval->y;
+                    echo '<h6 style="margin-left:-18px;color:#490206;">Died</h1>';
+                    echo '<p style="margin-top:-8.75%;margin-left:70px;">'. DateTime::createFromFormat('Y-m-d',$author->death_day)->format('F jS, Y') . ' (aged '. $years . ')</p>';
+                }
+            ?>
 
             
             <div class="bio-container" style="margin-top:5%;margin-left:-5%;">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae velit, et ab aperiam minima harum eligendi saepe in tenetur eius, soluta non sit sequi expedita facilis nisi neque rerum distinctio?</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae velit, et ab aperiam minima harum eligendi saepe in tenetur eius, soluta non sit sequi expedita facilis nisi neque rerum distinctio?</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae velit, et ab aperiam minima harum eligendi saepe in tenetur eius, soluta non sit sequi expedita facilis nisi neque rerum distinctio?</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit laboriosam necessitatibus corporis ipsa, autem architecto doloremque quaerat? Mollitia asperiores eos exercitationem qui! Enim possimus quaerat aliquid provident eveniet cupiditate beatae.</p>
+                <?php
+                    echo '<p>' . $author->bio . '</p>';
+                ?>
             </div>
             <a href="#" class="more-link" style="display:block;color:#034694;margin-left:-5%;">..more</a>
 
@@ -92,59 +135,61 @@
 <!-- FIRST ROW -->
 <div class="container" style="margin-bottom: 20px;">
     <div class="row" style="width:100%;">
-        <div style="width:65%;word-wrap: break-word;">
-            <div class="main-border" style="text-align:center;height:1054px;margin-bottom:10%;">
-                <h5 style="margin-top: 5%;margin-bottom:5%;font-family: Script MT Bold;">Books(17)</h5>
-
+        <div style="width:100%;word-wrap: break-word;">
+            <div class="main-border" style="text-align:center;height:1200px;margin-bottom:10%;">
+            <?php
+                // Bring books the author wrote
+                $AllBooks = $BookRepo->find(['author' => $author->id]);
+                $Books = $BookRepo->find(['author' => $author->id],['limit' => 3]);
+                
+            ?>
+                <h5 style="margin-top: 5%;margin-bottom:5%;font-family: Script MT Bold;">Books (<?= count($AllBooks) ?>)</h5>
 
                 <!-- first image row -->
-                <div style="display:flex;">
-                    <figure style="width:33%;box-sizing:border-box;">
-                        <img class="current-read" id="cover" src="pictures/playdead.jpg" alt="not found" style="margin-left:5%;margin-top:5%;margin-right:5%;">
-                        <figcaption>This is the caption for the image.</figcaption>
-                    </figure>
-
-                    <figure style="width:33%;box-sizing:border-box;">
-                        <img class="current-read" id="cover" src="pictures/playdead.jpg" alt="not found" style="margin-top:5%;margin-right:5%;">
-                        <figcaption>This is the caption for the image.</figcaption>
-                    </figure>
-
-                    <figure style="width:33%;box-sizing:border-box;">
-                        <img class="current-read" id="cover" src="pictures/playdead.jpg" alt="not found" style="margin-top:5%;margin-right:5%;">
-                        <figcaption>This is the caption for the image.</figcaption>
-                    </figure>
-                            
+                <div style="display:flex;margin-top:10%;">
+                <?php
+                    // Design measures
+                    $i = 0;
+                    // Show a maximum of 3 books, and the view all will show all books
+                    foreach($Books as $Book){
+                        echo '<figure style="width:33%;box-sizing:border-box;">';
+                        echo '<img class="current-read" id="cover" src="' . $Book->picture . '" alt="not found" style="margin-left:' . $i*5 .'%;width:182px;height:276px;">';
+                        echo '<figcaption>' . $Book->title . '</figcaption>';
+                        echo '</figure> ';
+                        $i = 1;
+                    }
+                ?>       
                 </div>
 
+                <?php
+                    $Books = $BookRepo->find(['author' => $author->id],['limit' => 3,'offset' => 3]);
+                    if (!$Books){
+                        echo '<div style="display: flex; justify-content: center;margin-top: 75%;">';
+                        echo '<button id="view-all" class="writereview" style="font-family: Script MT Bold;">View All</button>';
+                        echo '</div>';
+                    }else{
+                ?>
 
-                
                 <!-- second image row -->
-                <div style="display:flex;margin-top:5%;">
-                    <figure style="width:33%;box-sizing:border-box;">
-                        <img class="current-read" id="cover" src="pictures/playdead.jpg" alt="not found" style="margin-left:5%;margin-top:5%;margin-right:5%;">
-                        <figcaption>This is the caption for the image.</figcaption>
-                    </figure>
-
-                    <figure style="width:33%;box-sizing:border-box;">
-                        <img class="current-read" id="cover" src="pictures/playdead.jpg" alt="not found" style="margin-top:5%;margin-right:5%;">
-                        <figcaption>This is the caption for the image.</figcaption>
-                    </figure style="width:33%;box-sizing:border-box;">
-
-                    <figure style="width:33%;box-sizing:border-box;">
-                        <img class="current-read" id="cover" src="pictures/playdead.jpg" alt="not found" style="margin-top:5%;margin-right:5%;">
-                        <figcaption>This is the caption for the image.</figcaption>
-                    </figure>
-                            
+                <div style="display:flex;margin-top:15%;">
+                <?php
+                    // Design measures
+                    $i = 0;
+                    // Show a maximum of 3 books, and the view all will show all books
+                    foreach($Books as $Book){
+                        echo '<figure style="width:33%;box-sizing:border-box;">';
+                        echo '<img class="current-read" id="cover" src="' . $Book->picture . '" alt="not found" style="margin-left:' . $i*5 .'%;width:182px;height:276px;">';
+                        echo '<figcaption>' . $Book->title . '</figcaption>';
+                        echo '</figure> ';
+                        $i = 1;
+                    }
+                ?>       
                 </div>
-
-
-                
-
-
-
-                <div style="display: flex; justify-content: center;margin-top: 8%;">
-                    <button id='view-all' class="writereview" style="font-family: Script MT Bold;">View All</button>
-                </div>
+                <?php
+                echo '<div style="display: flex; justify-content: center;margin-top: 7%;">';
+                echo '<a href="#"><button id="view-all" class="writereview" style="font-family: Script MT Bold;">View All</button></a>';
+                echo '</div>';
+                } ?>
             </div>
         </div>
 
@@ -152,23 +197,24 @@
         <div  style="word-wrap: break-word;width:1%;">
         </div>
 
-
-        <div  style="width:32%;word-wrap: break-word;">
+        <!-- ignored -->
+        <!-- <div  style="width:32%;word-wrap: break-word;">
+            
             <div class="side-border" style="text-align:center;">
-               
+                -->
                 <!-- Carousel -->
-                <div id="myCarousel" class="carousel slide " data-ride="carousel" data-interval="1500">
+                <!-- <div id="myCarousel" class="carousel slide " data-ride="carousel" data-interval="1500"> -->
 
                 <!-- Indicators -->
-                <ul class="carousel-indicators">
+                <!-- <ul class="carousel-indicators">
                     <li data-target="#myCarousel" data-slide-to="0"></li>
                     <li data-target="#myCarousel" data-slide-to="1" class="active"></li>
                     <li data-target="#myCarousel" data-slide-to="2"></li>
                 </ul>
-
+ -->
 
                 <!-- Slideshow -->
-                <div class="carousel-inner">
+                <!-- <div class="carousel-inner">
 
 
 
@@ -283,11 +329,11 @@
 
 
 
-
+ -->
 
                     <!-- end Carousel -->
 
-                <div style="display: flex; justify-content: center;margin-top:115%;">
+                <!-- <div style="display: flex; justify-content: center;margin-top:115%;">
                     <button id='view-all' class="writereview" style="font-family: Script MT Bold;">View All</button>
                 </div>
 
@@ -297,24 +343,25 @@
 
 
 
-
+ -->
+            <!-- ignored -->
             <!-- second carousel -->
-            <div  style="width:100%;word-wrap: break-word;">
+            <!-- <div  style="width:100%;word-wrap: break-word;">
             <div class="side-border" style="text-align:center;">
-               
+                -->
                 <!-- Carousel -->
-                <div id="myCarousel" class="carousel slide " data-ride="carousel" data-interval="1500">
+                <!-- <div id="myCarousel" class="carousel slide " data-ride="carousel" data-interval="1500"> -->
 
                 <!-- Indicators -->
-                <ul class="carousel-indicators">
+                <!-- <ul class="carousel-indicators">
                     <li data-target="#myCarousel" data-slide-to="0"></li>
                     <li data-target="#myCarousel" data-slide-to="1" class="active"></li>
                     <li data-target="#myCarousel" data-slide-to="2"></li>
                 </ul>
-
+ -->
 
                 <!-- Slideshow -->
-                <div class="carousel-inner">
+                <!-- <div class="carousel-inner">
 
 
 
@@ -429,15 +476,15 @@
 
 
 
-
+ -->
 
                     <!-- end Carousel -->
 
-                <div style="display: flex; justify-content: center;margin-top:115%;">
+                <!-- <div style="display: flex; justify-content: center;margin-top:115%;">
                     <button id='view-all' class="writereview" style="font-family: Script MT Bold;">View All</button>
                 </div>
 
-            </div>
+            </div> -->
             
 
 

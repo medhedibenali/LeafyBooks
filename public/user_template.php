@@ -1,39 +1,94 @@
 <?php
-    include_once "header.php";
+    include_once "../modules/autoloader.php";
+    $UserRepo = new UserRepository();
+    $UserReviewRepo = new UserReviewsRepository();
+    $ReadActRepo = new ReadActRepository();
+    $BookRepo = new BookRepository();
+    $AuthorRepo = new AuthorRepository();
+    $user = $UserRepo->find(array("username" => $_GET['username']));
+
+
+    // User does not exist
+    if (!$user){
+        $errorMessage = "The requested user was not found";
+        $redirectUrl = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : 'index.php';
+        $redirectUrl .= "?error=" . urlencode($errorMessage);
+
+        
+        header("Location: $redirectUrl");
+        exit;
+    }   
 ?>
 
+
+<?php
+    // User exists
+    $pageTitle = "$user->username - LeafyBooks";
+    include_once "../templates/header.php";
+    
+    // inject js code
+    echo '<script>';
+
+    //this is for the username
+    echo 'const username = "' . $user->username . '";';
+
+                
+    echo '</script>';
+    
+?>
 
 <div class="container" style="margin-bottom: 20px;width:100%;">
     <div class="row" style="width:100%;">
         <div class="col-4" style="display:flex;align-items:flex-start;justify-content: sapce-between;">
+        
+        <?php
+            // User can choose not to upload a picture, in which we case we provide a generic picture instead
+            if ($user->picture == NULL){
+                echo '<img id="UserImagePos" src="img/user_pics/unknown_user.jpg" alt="image not found" style="margin-left:50px;margin-right:30px;width:200px;height:200px;">';
+            }else{
+                echo '<img id="UserImagePos" src="' . $user->picture . '" alt="image not found" style="margin-left:50px;margin-right:30px;width:200px;height:200px;">';
+            }
+        ?>
+        <?php
+            // Need number of reviews, number of ratings and the average of ratings
+            $RatingStats = $UserReviewRepo->RatingStatistics($user->username);
+            $ReviewStats = $UserReviewRepo->ReviewStatistics($user->username);
 
-            <img id="UserImagePos" src="pictures/jerry.png" alt="image not found" style="margin-left:50px;margin-right:30px;width:200px;height:200px;">
-            <a href="#" style="margin-top:260px;margin-left:-200px;font-size:15px;color:#034694">10 ratings</a>
-            <a href="#" style="margin-top:260px;margin-left:5px;font-size:15px;color:#034694">(3,78 avg)</a>
-            <a href="#" style="margin-top:280px;margin-left:-100px;font-size:15px;color:#034694">71 reviews</a>
+            $review_number = ($ReviewStats !== false) ? $ReviewStats->review_number : 0;
+            
+            $rating_number = ($RatingStats !== false) ? $RatingStats->rating_number : 0;
+            $rating_avg = ($RatingStats !== false && $RatingStats->rating_avg) ? $RatingStats->rating_avg : 0;
+            
+        ?>    
+            <p style="margin-top:260px;margin-left:-190px;font-size:15px;color:#034694"><?= $rating_number ?> ratings</p>
+            <p style="margin-top:260px;margin-left:5px;font-size:15px;color:#034694">(<?= number_format($rating_avg,2) ?> avg)</p>
+            <p style="margin-top:280px;margin-left:-100px;font-size:15px;color:#034694"><?= $review_number ?> reviews</p>
 
         </div>
 
         <div class="col-4">
-            <h1 class="username" style="margin-top: 50px;margin-left:-78px;color:#490206; font-family: Script MT Bold; ">Jerry</h1>
+            <h1 class="username" style="margin-top: 50px;margin-left:-78px;color:#490206; font-family: Script MT Bold; "><?= $user->username ?></h1>
             <hr style="margin-top:105px;margin-left:-80px;opacity:10;">
 
             <h6 style="margin-left:-85px;color:#490206;">Full name</h1>
-            <p style="margin-top:-31px">Jerry</p>
+            <p style="margin-top:-31px"><?= $user->username . " " . $user->username; ?></p>
 
             <h6 style="margin-left:-85px;color:#490206;margin-top:-13px;">Details</h1>
-            <p style="margin-top:-31px">Tunis, Tunisia</p>
+            <p style="margin-top:-31px"><?= $user->location ?></p>
 
             <h6 style="margin-left:-85px;color:#490206;margin-top:-13px;">Activity</h1>
-            <p style="margin-top:-31px">Joined on December 27th, 2018</p>
+            <p style="margin-top:-31px">Joined on <?= DateTime::createFromFormat('Y-m-d',$user->join_date)->format('F jS, Y') ?></p>
 
             <h6 style="margin-left:-85px;color:#490206;margin-top:-13px;">Birthday</h1>
-            <p style="margin-top:-31px">April 20th, 2000</p>
+            <p style="margin-top:-31px"><?= DateTime::createFromFormat('Y-m-d',$user->birthday)->format('F jS, Y') ?></p>
 
             <h6 style="margin-left:-85px;color:#490206;margin-top:-10px;">About Me</h1>
             <div class="bio-container" style="margin-top:-30px;">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae velit, et ab aperiam minima harum eligendi saepe in tenetur eius, soluta non sit sequi expedita facilis nisi neque rerum distinctio?</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit laboriosam necessitatibus corporis ipsa, autem architecto doloremque quaerat? Mollitia asperiores eos exercitationem qui! Enim possimus quaerat aliquid provident eveniet cupiditate beatae.</p>
+            <?php
+                $bio = ($user->bio) ? $user->bio : "Welcome to my profile page!";
+            ?>
+                <p class="bio-text"><?= $bio ?></p> 
+
             </div>
             <a href="#" class="more-link" style="display:block;color:#034694;">..more</a>
 
@@ -41,10 +96,19 @@
             <!-- Script to make the more button show more of the bio -->
             <script>
                 const BioContainer = document.querySelector('.bio-container');
+                const BioText = document.querySelector('.bio-text');
                 const moreLink = document.querySelector(".more-link");
 
+                //Maximum length to show the 'more' link
+                const maxLength = 100;
+
+                if (BioText.textContent.length <= maxLength){
+                    moreLink.style.display= 'none';
+                }
+
+                // this is part of original code
                 // Hiden extra content initially
-                BioContainer.classList.add('hide');
+                //BioContainer.classList.add('hide');
 
 
                 moreLink.addEventListener('click',()=>{
@@ -68,14 +132,10 @@
                 }
             </style>
 
-
-
-
         </div>
 
 
         <div class="col-4">
-
 
         </div>
     </div>
@@ -96,25 +156,41 @@
     <div class="row" style="width:100%;">
         <div style="width:65%;word-wrap: break-word;">
             <div class="main-border" style="text-align:center;">
-                <h5 style="margin-top: 5%;margin-bottom:5%;font-family: Script MT Bold;">Currently Reading(1)</h5>
-
-
-
-                <img class="current-read" id="cover" src="pictures/playdead.jpg" alt="not found">
-
-
-
+                <?php
+                    // Book actitvity Stats and information
+                    $ActivityStats = $ReadActRepo->ActivityStastics($user->username,'currently_reading');
+                    $ActivityBooks = $ReadActRepo->ActivityBooks($user->username,'currently_reading','picture');
+                ?>
+                <h5 style="margin-top: 5%;margin-bottom:5%;font-family: Script MT Bold;">Currently Reading (<?=$ActivityStats->activity_number ?>)</h5>
+                
+                <?php
+                    if (!$ActivityStats->activity_number){
+                        echo '<h3 style="margin-top:20%;">' . $user->username . ' has not added any books yet</h3>';
+                    }else{
+                ?>
+                <?php
+                    // Design measures
+                    $i = 0;
+                    // Show a maximum of 3 books, and the view all will show all books
+                    foreach($ActivityBooks as $ActivityBook){
+                        echo '<img class="current-read" id="cover" src="' . $ActivityBook->picture . '" alt="not found" style="margin-left:' . $i*5 .'%;width:182px;height:276px;">';
+                        $i = 1;
+                    }
+                ?>
+                
                 <div style="display: flex; justify-content: center;margin-bottom: 10%;">
-                    <button id='view-all' class="writereview" style="font-family: Script MT Bold;">View All</button>
+                    <!-- I need this to refer to the book search section -->
+                    <a href="#">
+                        <button id='view-all' class="writereview" style="font-family: Script MT Bold;">View All</button>
+                    </a>
                 </div>
+                <?php } ?>
             </div>
         </div>
 
 
         <div  style="word-wrap: break-word;width:1%;">
         </div>
-
-
         <div  style="width:32%;word-wrap: break-word;">
             <div class="side-border" style="text-align:center;">
                
@@ -134,64 +210,86 @@
 
 
 
+            
 
 
 
 
 
 
-
-
-
+                
                     <div class="carousel-item active">
                         <h5 style="margin-top:10%;font-family: Script MT Bold;">Read</h5>
+
+                        <?php
+                            echo '<script>';
+                            echo 'const status = "' . 'finished_reading' . '";';
+                            echo '</script>';
+                        ?>
 
                         <script type="text/javascript">
                             google.charts.load('current', {'packages':['corechart']});
                             google.charts.setOnLoadCallback(drawChart);
-                            
+
+                            // fetch data
+                            var url = "user_template_chart.php?username=" + username + "&status=" + status;
+                            console.log(url);
+
+                            function fetchGenreData() {
+                                var xhr = new XMLHttpRequest();
+                                xhr.open('GET', url, true);
+                                xhr.onload = function() {
+                                    console.log(this.responseText);
+                                    if (this.status == 200) {
+                                        var responseData = JSON.parse(this.responseText);
+
+                                        // Map response into wanted format
+                                        var chartData = Object.entries(responseData).map(function(item) {
+                                            return [item[0], parseFloat(item[1])];
+                                        });
+                                        chartData.unshift(['Genre', 'Number of books']);
+                                        drawChart(chartData);
+                                    }
+                                };
+
+                                xhr.send();
+                            }
 
                             function drawChart() {
 
-                                var data = google.visualization.arrayToDataTable([
-                                ['Genre', 'Number of books'],
-                                ['Action',     11],
-                                ['Adventure',      2],
-                                ['Drama',  2],
-                                ['Mystery', 2],
-                                ['Comedy',    7]
-                                ]);
+                            var data = google.visualization.arrayToDataTable([
+                            ['Genre', 'Number of books'],
+                            ['Action',     11],
+                            ['Adventure',      2],
+                            ['Drama',  2],
+                            ['Mystery', 2],
+                            ['Comedy',    7]
+                            ]);
 
-                                var options = {
-                                chartArea:  {
-                                    width: '100%',
-                                    height: '60%'
-                                }
-                                };
-                                
-                                var options1 = {
-                                chartArea:  {
-                                    width: '100%',
-                                    height: '60%'
-                                }
-                                };
-                                
-                                var options2 = {
-                                chartArea:  {
-                                    width: '100%',
-                                    height: '60%'
-                                }
-                                };
-
-                                
-                                var chart1 = new google.visualization.PieChart(document.getElementById('piechart1'));
-                                
-
-                                
-                                chart1.draw(data, options1);
-                                
+                            var options = {
+                            chartArea:  {
+                                width: '100%',
+                                height: '100%'
                             }
-                        </script>    
+                            };
+
+
+
+
+
+
+                            var chart1 = new google.visualization.PieChart(document.getElementById('piechart1'));
+
+
+
+                            chart1.draw(data, options);
+
+                            }
+
+
+                        </script>
+
+   
 
 
 
@@ -199,7 +297,9 @@
                         <div class="chart-container">
                             <div id="piechart1" style="height:300px;"></div>
                             <div style="display: flex; justify-content: center;margin-top: 23%;">
-                                <button id='view-all' class="writereview" style="font-family: Script MT Bold;">Stats</button>
+                                <a href="<?= "stats.php?username=$user->username&status=finished_reading&time=0"?>">
+                                    <button id='view-all' class="writereview" style="font-family: Script MT Bold;">Stats</button>
+                                </a>
                             </div>
                         </div>
                         
@@ -255,7 +355,9 @@
                         <div class="chart-container">
                             <div id="piechart2" style="height:300px;"></div>
                             <div style="display: flex; justify-content: center;margin-top: 5%;">
-                                <button id='view-all' class="writereview" style="font-family: Script MT Bold;">Stats</button>
+                                <a href="<?= "stats.php?username=$user->username&status=to_read&time=0"?>">
+                                    <button id='view-all' class="writereview" style="font-family: Script MT Bold;">Stats</button>
+                                </a>
                             </div>
                         </div>
                         
@@ -311,7 +413,9 @@
                         <div class="chart-container">
                             <div id="piechart3" style="height:300px;"></div>
                             <div style="display: flex; justify-content: center;margin-top: 5%;">
-                                <button id='view-all' class="writereview" style="font-family: Script MT Bold;">Stats</button>
+                                <a href="<?= "stats.php?username=$user->username&status=currently_reading&time=0"?>">
+                                    <button id='view-all' class="writereview" style="font-family: Script MT Bold;">Stats</button>
+                                </a>
                             </div>
                         </div>
                         
@@ -340,13 +444,42 @@
     <div class="row" style="width:110%">
         <div  style="word-wrap: break-word;width:65%">
             <div class="main-border" style="text-align:center;">
-                <h5 style="margin-top: 5%;margin-bottom:5%;font-family: Script MT Bold;">Read Recently</h5>
-                <img class="recent-read" id="cover" src="pictures/playdead.jpg" alt="not found">
+            <?php
+                // Book actitvity Stats and information
+                $ActivityStats = $ReadActRepo->ActivityStastics($user->username,'finished_reading');
+                $ActivityBooks = $ReadActRepo->ActivityBooks($user->username,'finished_reading','picture');
+            ?>
+                <h5 style="margin-top: 5%;margin-bottom:5%;font-family: Script MT Bold;">Read Recently (<?=$ActivityStats->activity_number ?>)</h5>
+                
+                <?php
+                    if (!$ActivityStats->activity_number){
+                        echo '<h3 style="margin-top:20%;">' . $user->username . ' has not added any books yet</h3>';
+                    }else{
+                ?>
+                <?php
+                    // Design measures
+                    $i = 0;
+                    // Show a maximum of 3 books, and the view all will show all books
+                    foreach($ActivityBooks as $ActivityBook){
+                        echo '<img class="current-read" id="cover" src="' . $ActivityBook->picture . '" alt="not found" style="margin-left:' . $i*5 . '%;width:182px;height:276px;">';
+                        $i = 1;
+                    }
+                ?>
+
                 <div style="display: flex; justify-content: center;margin-bottom: 10%;">
-                    <button id='view-all' class="writereview" style="font-family: Script MT Bold;">View All</button>
-                    <button id='reviews' style="margin-left:5px;font-family: Script MT Bold;" class="writereview">Reviews</button>
+                    <!-- I need this to refer to the book search section -->
+                    <a href="#">
+                        <button id='view-all' class="writereview" style="font-family: Script MT Bold;">View All</button>
+                    </a>
+
+                    <!-- I need this to refer to the review section -->
+                    <a href="#">
+                        <button id='reviews' style="margin-left:5px;font-family: Script MT Bold;" class="writereview">Reviews</button>
+                    </a>
+                    
                     
                 </div>
+                <?php } ?>
             </div>
         </div>
 
@@ -357,31 +490,40 @@
 
         <div  style="word-wrap: break-word;width:32%;">
             <div class="side-border" style="text-align:center;">
-                <h5 style="margin:10%;font-family: Script MT Bold;">To-Read Pile</h5>
-                <ul id="no-bulletpoints" style="text-align:left;margin-left: 10%;margin-bottom:10px;">
-                    <li style="font-size:17px;"><strong>Harry Potter</strong></li>
-                    <li>J.K.Rowling</li>
-                </ul>
+
+            <?php
+                // Book actitvity Stats and information
+                $ActivityStats = $ReadActRepo->ActivityStastics($user->username,'to_read');
+                $ActivityBooks = $ReadActRepo->ActivityBooks($user->username,'to_read','isbn');
+            ?>
+
+                <h5 style="margin:10%;font-family: Script MT Bold;">To-Read Pile (<?=$ActivityStats->activity_number ?>) </h5>   
+
+            
+            <?php
+                    if (!$ActivityStats->activity_number){
+                    echo '<h3 style="margin-top:43%;">' . $user->username . ' has not added any books yet</h3>';
+                }else{
+            ?>
+            <?php
+                    foreach($ActivityBooks as $ActivityBook){
+                        echo '<ul id="no-bulletpoints" style="text-align:left;margin-left: 10%;margin-bottom:40px;">';
+                        $Book = $BookRepo->find(['isbn' => $ActivityBook->isbn]);
+                        $Author = $AuthorRepo->find(['id' => $Book->author]);
+                        echo '<li style="font-size:17px;"><strong>' . $Book->title . '</strong></li>';
+                        echo '<li>' . $Author->pen_name . '</li>';
+                        echo '</ul>';
+                        echo ' <hr style="margin-left: auto;margin-right:auto;width:90%;opacity:10;">';
+                    }
+            ?>    
                 
-                <hr style="margin-left: auto;margin-right:auto;width:90%;opacity:10;">   
-
-
-                <ul id="no-bulletpoints" style="text-align:left;margin-left: 10%;margin-bottom:10px;">
-                    <li style="font-size:17px;"><strong> Broken Half</strong></li>
-                    <li>Jessie Cave</li>
-                </ul>
-
-                <hr style="margin-left: auto;margin-right:auto;width:90%;opacity:10;">   
-
-
-                <ul id="no-bulletpoints" style="text-align:left;margin-left: 10%;margin-bottom:10%;">
-                    <li style="font-size:17px;"><strong> Sea Of Tranquility</strong></li>
-                    <li>Emily St.John Mandel</li>
-                </ul>
-                
-                <div style="display: flex; justify-content: left;margin-bottom: 10%;margin-left:10%;">
+                <div style="display: flex; justify-content: center;margin-top:15%;">
+                    <!-- need to link here aswell -->
+                    <a href="#">
                     <button id='view-all' class="writereview" style="font-family: Script MT Bold;">View All</button>
+                    </a>
                 </div>
+            <?php } ?>
             </div>
         </div>
     </div>
@@ -392,13 +534,36 @@
 <!-- THIRD ROW -->
 <div class="container" style="margin-bottom: 20px;margin-top:5%;">
     <div class="row" style="width:110%">
-        <div  style="word-wrap: break-word;width:65%;">
-            <div class="main-border" style="text-align:center;">
-                <h5 style="margin-top: 5%;margin-bottom:5%;font-family: Script MT Bold;">Favorites</h5>
-                <img class="favorites" id="cover" src="pictures/playdead.jpg" alt="not found">
+        <div  style="word-wrap: break-word;width:99%;">
+            <div class="main-border" style="text-align:center;height:600px;">
+            <?php
+                $Favorites = $UserReviewRepo->find(['username' => $user->username, 'rating' => 5]);
+            ?>
+                <h5 style="margin-top: 5%;margin-bottom:5%;font-family: Script MT Bold;">Favorites (<?= count($Favorites) ?>)</h5>
+
+
+            <?php
+                if (!$ActivityStats->activity_number){
+                    echo '<h3 style="margin-top:20%;">' . $user->username . ' has not added any books yet</h3>';
+                }else{
+            ?>
+
+            <?php
+                // Design measures
+                $i = 0;
+                // Show a maximum of 3 books, and the view all will show all books
+                foreach($Favorites as $Favorite){
+                    $Book = $BookRepo->find(['isbn' => $Favorite->isbn]);
+                    echo '<img class="current-read" id="cover" src="' . $Book->picture . '" alt="not found" style="margin-left:' . $i*5 .'%;width:182px;height:276px;">';
+                    $i = 1;
+                }
+            ?>
+
+
                 <div style="display: flex; justify-content: center;margin-bottom: 10%;">
-                    <button id='view-all' class="writereview" style="font-family: Script MT Bold;">View All</button>
+                    <a href="#"><button id='view-all' class="writereview" style="font-family: Script MT Bold;">View All</button></a>
                 </div>
+            <?php } ?>
             </div>
         </div>
 
@@ -407,22 +572,26 @@
         </div>
 
 
-        <div  style="width:32%;word-wrap: break-word;">
-            <div class="side-border" style="text-align:center;">
+
+
+        <!-- ignored -->
+        
+        <!-- <div  style="width:32%;word-wrap: break-word;">
+            <div class="side-border" style="text-align:center;"> -->
                
                 <!-- Carousel -->
-                <div id="myCarousel" class="carousel slide " data-ride="carousel" data-interval="1500">
+                <!-- <div id="myCarousel" class="carousel slide " data-ride="carousel" data-interval="1500"> -->
 
                 <!-- Indicators -->
-                <ul class="carousel-indicators">
+                <!-- <ul class="carousel-indicators">
                     <li data-target="#myCarousel" data-slide-to="0"></li>
                     <li data-target="#myCarousel" data-slide-to="1" class="active"></li>
                     <li data-target="#myCarousel" data-slide-to="2"></li>
-                </ul>
+                </ul> -->
 
 
                 <!-- Slideshow -->
-                <div class="carousel-inner">
+                <!-- <div class="carousel-inner">
 
 
 
@@ -537,16 +706,16 @@
 
 
 
-
+                    -->
 
                     <!-- end Carousel -->
 
-                <div style="display: flex; justify-content: center;margin-top:116%;">
+                <!-- <div style="display: flex; justify-content: center;margin-top:116%;">
                     <button id='view-all' class="writereview" style="font-family: Script MT Bold;">View All</button>
-                </div>
+            </div>
 
             </div>
-            
+             -->
 
 
 

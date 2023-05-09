@@ -25,7 +25,7 @@ CREATE TABLE `web_project_db`.`authors` (
     `first_name` VARCHAR(255) NOT NULL,
     `last_name` VARCHAR(255) NOT NULL,
     `birthday` DATE NOT NULL,
-    `death_day` DATE NOT NULL,
+    `death_day` DATE DEFAULT NULL,
     `bio` TEXT NOT NULL,
     `nationality` VARCHAR(255) NOT NULL,
     `picture` VARCHAR(255) NOT NULL,
@@ -52,7 +52,7 @@ CREATE TABLE `web_project_db`.`read_act` (
     `username` VARCHAR(255) NOT NULL,
     `status` VARCHAR(255) NOT NULL,
     `start_date` DATETIME NOT NULL,
-    `finish_date` DATETIME DEFAULT NULL,
+    `finish_date` DATETIME,
     PRIMARY KEY (`isbn`, `username`),
     FOREIGN KEY (`isbn`) REFERENCES `books` (`isbn`),
     FOREIGN KEY (`username`) REFERENCES `users` (`username`)
@@ -63,11 +63,12 @@ CREATE TABLE `web_project_db`.`user_reviews` (
     `username` VARCHAR(255) NOT NULL,
     `review` TEXT NOT NULL,
     `rating` FLOAT NOT NULL,
+    'time_submitted' DATETIME NOT NULL,
     PRIMARY KEY (`isbn`, `username`),
     FOREIGN KEY (`isbn`) REFERENCES `books` (`isbn`),
     FOREIGN KEY (`username`) REFERENCES `users` (`username`)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci;
---tags--
+-- tags 
 CREATE TABLE `web_project_db` . `tags` (
     `isbn` varchar(255) NOT NULL,
     `tag` varchar(255) NOT NULL,
