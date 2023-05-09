@@ -38,6 +38,7 @@ CREATE TABLE `web_project_db`.`books` (
     `isbn` VARCHAR(255) NOT NULL,
     `title` VARCHAR(255) NOT NULL,
     `author` INT NOT NULL,
+    `pages` INT NOT NULL,
     `publisher` VARCHAR(255) NOT NULL,
     `image` VARCHAR(255) NOT NULL,
     `synopsis` TEXT NOT NULL,
@@ -52,8 +53,8 @@ CREATE TABLE `web_project_db`.`read_act` (
     `isbn` VARCHAR(255) NOT NULL,
     `username` VARCHAR(255) NOT NULL,
     `status` VARCHAR(255) NOT NULL,
-    `start_date` DATETIME NOT NULL,
-    `finish_date` DATETIME NOT NULL,
+    `start_date` DATETIME,
+    `finish_date` DATETIME,
     PRIMARY KEY (`isbn`, `username`),
     FOREIGN KEY (`isbn`) REFERENCES `books` (`isbn`),
     FOREIGN KEY (`username`) REFERENCES `users` (`username`)
@@ -62,9 +63,18 @@ CREATE TABLE `web_project_db`.`read_act` (
 CREATE TABLE `web_project_db`.`user_reviews` (
     `isbn` VARCHAR(255) NOT NULL,
     `username` VARCHAR(255) NOT NULL,
-    `review` TEXT NOT NULL,
-    `rating` FLOAT NOT NULL,
+    `review` TEXT,
+    `rating` FLOAT,
+    `time_submitted` DATETIME DEFAULT (CURRENT_TIMESTAMP),
+    `is_updated` BOOLEAN DEFAULT FALSE,
     PRIMARY KEY (`isbn`, `username`),
     FOREIGN KEY (`isbn`) REFERENCES `books` (`isbn`),
     FOREIGN KEY (`username`) REFERENCES `users` (`username`)
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci;
+-- tags
+CREATE TABLE `web_project_db`.`tags` (
+    `isbn` varchar(255) NOT NULL,
+    `tag` varchar(255) NOT NULL,
+    PRIMARY KEY (`isbn`, `tag`),
+    FOREIGN KEY (`isbn`) REFERENCES `books` (`isbn`)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci;

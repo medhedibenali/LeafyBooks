@@ -11,8 +11,10 @@ $stylesheets = array(
 require TEMPLATES_PATH . '/header.php';
 
 $bookRepository = new BookRepository();
-$authorRepository = new AuthorRepository();
 $books = $bookRepository->find();
+
+$authorRepository = new AuthorRepository();
+
 foreach ($books as $book) {
     $author = $authorRepository->find(['id' => trim($book->author)]);
 ?>

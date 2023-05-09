@@ -32,4 +32,5 @@ if (password_verify($_POST['password'], $user->password)) {
 
 $_SESSION['error'] = 'The password you\'ve entered is incorrect.';
 $_SESSION['attempted_username'] = $user->username;
+
 header('Location: ../sign-in.php');

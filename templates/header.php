@@ -1,4 +1,8 @@
 <?php
+session_start();
+
+require_once dirname(__FILE__, 2) . '/config/config.php';
+require_once MODULES_PATH . '/autoloader.php';
 
 $stylesheets = array_merge(
     array(
@@ -19,6 +23,14 @@ $stylesheets = array_merge(
 );
 
 require dirname(__FILE__) . '/base-header.php';
+
+$userRepository = new UserRepository();
+
+$user = false;
+
+if (isset($_SESSION['username'])) {
+    $user = $userRepository->find(['username' => $_SESSION['username']]);
+}
 ?>
 
 <!--  NAVBAR   -->
@@ -31,17 +43,29 @@ require dirname(__FILE__) . '/base-header.php';
         <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
             <ul class="navbar-nav" style="margin-left: 15rem;">
                 <li class="nav-item">
-                    <a class="nav-link" href="#" style="margin-right: 20px;">Home</a>
+                    <a class="nav-link" href="index.php" style="margin-right: 20px;">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" style="margin-left: 20px; margin-right: 20px;">Browse</a>
+                    <div class="dropdown">
+                        <a class=" nav-link dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-left: 20px; margin-right: 20px;">Browse</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" style="margin-left: 20px; margin-right: 20px;">My Books</a>
+                    <?php if ($user) { ?>
+                        <a class="nav-link" href="my-books.php" style="margin-left: 20px; margin-right: 20px;">My Books</a>
+                    <?php } else { ?>
+                        <!--                        when clicked on if user is connected it will take him to my books if not the login page-->
+                        <a class="nav-link" href="sign-in.php" style="margin-left: 20px; margin-right: 20px;">My Books</a>
+                    <?php } ?>
                 </li>
                 <li class="nav-item">
-                    <form class="d-flex">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" style="width: 20rem;margin-left: 3rem">
+                    <form class="d-flex" role="search" action="search.php" method="get">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search" style="width: 20rem;margin-left: 3rem">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </form>
                 </li>
@@ -50,7 +74,30 @@ require dirname(__FILE__) . '/base-header.php';
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><img src="img/user.png" class="profilePic"></a>
+                    <a class="nav-link" href="#"></a>
+                    <?php
+                    if (!$user) {
+                    ?>
+                        <div class="btn-group btn-group-2">
+                            <a href="sign-up.php">
+                                <button type="button" class="navButton">Sign up</button>
+                            </a>
+                            <a href="sign-in.php">
+                                <button type="button" class="navButton">Log in</button>
+                            </a>
+                        </div>
+                    <?php } else { ?>
+                        <div class="dropdown">
+                            <a class=" nav-link dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                                <img src="img/users/<?= $user->image ?>" class="profilePic">
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="profileDropdown">
+                                <a class="dropdown-item" href="user_profile.php"><i class="fa-solid fa-book-open-reader"></i> View Profile</a>
+                                <a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt me-2"></i></i>Disconnect</a>
+                            </div>
+                        </div>
+                    <?php } ?>
                 </li>
             </ul>
         </div>
