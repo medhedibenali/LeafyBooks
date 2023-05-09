@@ -1,4 +1,5 @@
 -- work in progress
+-- web_project_user
 CREATE USER 'web_project_user' @'localhost' IDENTIFIED BY 'password';
 CREATE DATABASE `web_project_db`;
 GRANT INSERT,
@@ -12,10 +13,11 @@ CREATE TABLE `web_project_db`.`users` (
     `first_name` VARCHAR(255) NOT NULL,
     `last_name` VARCHAR(255) NOT NULL,
     `birthday` DATE NOT NULL,
-    `bio` text DEFAULT NULL,
-    `picture` VARCHAR(255) DEFAULT NULL,
-    'join_date' DATE NOT NULL,
-    'location' VARCHAR(255) NOT NULL,
+    `bio` TEXT,
+    `join_date` DATE DEFAULT (CURRENT_DATE),
+    `location` VARCHAR(255),
+    `image` VARCHAR(255) NOT NULL,
+    `image_seed` VARCHAR(255) NOT NULL,
     PRIMARY KEY (`username`)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci;
 -- authors
@@ -28,7 +30,7 @@ CREATE TABLE `web_project_db`.`authors` (
     `death_day` DATE DEFAULT NULL,
     `bio` TEXT NOT NULL,
     `nationality` VARCHAR(255) NOT NULL,
-    `picture` VARCHAR(255) NOT NULL,
+    `image` VARCHAR(255) NOT NULL,
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci;
 -- books
@@ -36,9 +38,9 @@ CREATE TABLE `web_project_db`.`books` (
     `isbn` VARCHAR(255) NOT NULL,
     `title` VARCHAR(255) NOT NULL,
     `author` INT NOT NULL,
+    `pages` INT NOT NULL,
     `publisher` VARCHAR(255) NOT NULL,
-    `page_number` INT NOT NULL,
-    `picture` VARCHAR(255) NOT NULL,
+    `image` VARCHAR(255) NOT NULL,
     `synopsis` TEXT NOT NULL,
     `publishing_year` YEAR NOT NULL,
     `rating` FLOAT,
@@ -51,7 +53,7 @@ CREATE TABLE `web_project_db`.`read_act` (
     `isbn` VARCHAR(255) NOT NULL,
     `username` VARCHAR(255) NOT NULL,
     `status` VARCHAR(255) NOT NULL,
-    `start_date` DATETIME NOT NULL,
+    `start_date` DATETIME,
     `finish_date` DATETIME,
     PRIMARY KEY (`isbn`, `username`),
     FOREIGN KEY (`isbn`) REFERENCES `books` (`isbn`),
@@ -61,17 +63,18 @@ CREATE TABLE `web_project_db`.`read_act` (
 CREATE TABLE `web_project_db`.`user_reviews` (
     `isbn` VARCHAR(255) NOT NULL,
     `username` VARCHAR(255) NOT NULL,
-    `review` TEXT NOT NULL,
-    `rating` FLOAT NOT NULL,
-    'time_submitted' DATETIME NOT NULL,
+    `review` TEXT,
+    `rating` FLOAT,
+    `time_submitted` DATETIME DEFAULT (CURRENT_TIMESTAMP),
+    `is_updated` BOOLEAN DEFAULT FALSE,
     PRIMARY KEY (`isbn`, `username`),
     FOREIGN KEY (`isbn`) REFERENCES `books` (`isbn`),
     FOREIGN KEY (`username`) REFERENCES `users` (`username`)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci;
--- tags 
-CREATE TABLE `web_project_db` . `tags` (
+-- tags
+CREATE TABLE `web_project_db`.`tags` (
     `isbn` varchar(255) NOT NULL,
     `tag` varchar(255) NOT NULL,
-    PRIMARY KEY (`isbn`,`tag`),
-    CONSTRAINT `fk_1` FOREIGN KEY (`isbn`) REFERENCES `books` (`isbn`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci
+    PRIMARY KEY (`isbn`, `tag`),
+    FOREIGN KEY (`isbn`) REFERENCES `books` (`isbn`)
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci;

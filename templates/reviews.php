@@ -1,27 +1,44 @@
 <?php
-require_once dirname(__FILE__, 2) . '/modules/book_identification/ProcessBookIdentity.php';
 
 $userReviewRepository = new UserReviewsRepository();
 $reviews = $userReviewRepository->find(['isbn' => $isbn]);
 
-foreach ($reviews as $review) {
-    $userRepository = new UserRepository();
-    $user = $userRepository->find(['username' => $username]);
+$userRepository = new UserRepository();
 
-    $percentage = ($review->rating) * 20;
+foreach ($reviews as $review) {
+    $user = $userRepository->find(['username' => $_SESSION['username']]);
 ?>
-    <img class="pdp" src="img/<?= $user->picture ?>" alt="userPicture" />
-    <div>
-        review by <?= $review->username ?>
+    <div class="Name_Review">
+        <img class="pdp" src="img/users/<?= $user->image ?>" alt="userPicture" style="margin-right: 10px;" />
+        <div>
+            <div>
+                <?= $review->username ?>
+            </div>
+            <?php
+            if ($review->rating !== null) {
+                $percentage = ($review->rating) * 20;
+                require dirname(__FILE__) . '/rating-static-percentage.php';
+            }
+            ?>
+        </div>
     </div>
-    <!--the review-->
-    <div>
-        <?= $review->review ?>
-    </div>
-    <div>
+    <div style="font-size:0.8rem; color:#808080;">
         <?php
-        require dirname(__FILE__) . '/rating-static-percentage.php';
+        $status = $review->is_updated ? "Updated" : "First submitted";
+        echo $status . " on " . $review->time_submitted;
         ?>
     </div>
+    <!--the review-->
+    <?php
+    if ($review->review !== null) {
+    ?>
+        <div style="font-family:'DecoType Naskh';font-size:1.2rem;">
+            <?= $review->review ?>
+        </div>
+    <?php
+    }
+    ?>
+    <br>
+
 <?php
 }

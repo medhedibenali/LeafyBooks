@@ -92,7 +92,7 @@
 ?>
 
 <!-- Introductory for stats -->
-<div class="container" style="width:100%%;margin-top:3%;">
+<div class="container" style="width:100%;margin-top:3%;">
     <div class="main-border" style="text-align:center;width:100%;height:230px;">
         <h5 style="margin-top: 2%;margin-bottom:5%;font-family: Script MT Bold;"><?= $user->username ?>'s reading stats</h5>
 
