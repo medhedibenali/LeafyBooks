@@ -3,7 +3,7 @@
 if (!isset($_SESSION['username'])) {
 ?>
     <div class="no-user-error1">
-        Please <a href="sign-in.php">sign-in</a> or <a href="sign-up.php">sign-up</a> to post a review
+        Please <a href="sign-in.php">login</a> or <a href="sign-up.php">signup</a> to add to a list.
     </div>
 <?php
 } //        Rating Stars
