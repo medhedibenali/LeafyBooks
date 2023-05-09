@@ -168,9 +168,10 @@ h1 > .magic > .magic-text {
      position: relative;
      margin-top: 5%;
      display: flex;
-     justify-content: center; /* Center the text horizontally */
-     align-items: center; /* Center the text vertically */
-     height: 100%; /* Make the quote element fill its container vertically */
+     justify-content: center;
+     align-items: center;
+     height: 100%;
+     animation: slideup 0.3s ease-out;
 }
 
 
@@ -180,6 +181,7 @@ h1 > .magic > .magic-text {
     text-align: center;
      color: #100000;
      position:relative ;
+     animation: slideup 0.3s ease-out;
 
 }
 
@@ -189,12 +191,32 @@ h1 > .magic > .magic-text {
 
 
 
+.animate
+{
+    animation: slide-right 2s;
+}
 
 
+@keyframes slideup
+{
+    0%
+    {
+        transform: translateY(100px)
+    }
+    100%
+    {
+            transform: translateY(0);
+    }
+}
 
-
-
-
+@keyframes slide-right {
+    from {
+        margin-left: -50%;
+    }
+    to {
+        margin-left: 0%;
+    }
+}
 
 
 
