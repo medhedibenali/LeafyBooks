@@ -1,7 +1,8 @@
 <?php
 session_start();
 
-require_once dirname(__FILE__, 3) . '/modules/autoloader.php';
+require_once dirname(__FILE__, 3) . '/config/config.php';
+require_once MODULES_PATH . '/autoloader.php';
 require_once MODULES_PATH . '/book_identification/Rating.php';
 
 $isbn = $_POST['isbn'];

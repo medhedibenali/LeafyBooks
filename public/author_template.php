@@ -1,5 +1,7 @@
 <?php
-include_once "../modules/autoloader.php";
+require_once dirname(__FILE__, 2) . '/config/config.php';
+require_once MODULES_PATH . '/autoloader.php';
+
 $UserRepo = new UserRepository();
 $UserReviewRepo = new UserReviewsRepository();
 $ReadActRepo = new ReadActRepository();
@@ -16,12 +18,10 @@ if (!$author) {
     header("Location: $redirectUrl");
     exit;
 }
-?>
 
-<?php
 // Author exists
 $pageTitle = "$author->pen_name - LeafyBooks";
-include_once "../templates/header.php";
+require TEMPLATES_PATH . '/header.php';
 ?>
 
 <div class="container" style="margin-bottom: 20px;width:100%;">
@@ -175,3 +175,6 @@ include_once "../templates/header.php";
         </div>
     </div>
 </div>
+
+<?php
+require TEMPLATES_PATH . '/footer.php';

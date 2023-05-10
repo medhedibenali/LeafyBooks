@@ -1,5 +1,7 @@
 <?php
-include_once "../modules/autoloader.php";
+require_once dirname(__FILE__, 2) . '/config/config.php';
+require_once MODULES_PATH . '/autoloader.php';
+
 // can include stats.php to achieve the desired query stated below
 // for now i need username,status and time
 $BookRepo = new BookRepository();

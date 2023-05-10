@@ -1,5 +1,7 @@
 <?php
-include_once "../modules/autoloader.php";
+require_once dirname(__FILE__, 2) . '/config/config.php';
+require_once MODULES_PATH . '/autoloader.php';
+
 $UserRepo = new UserRepository();
 $UserReviewRepo = new UserReviewsRepository();
 $ReadActRepo = new ReadActRepository();
@@ -21,7 +23,7 @@ if (!$user) {
 <?php
 // User exists
 $pageTitle = "$user->username - LeafyBooks";
-include_once "../templates/header.php";
+require TEMPLATES_PATH . '/header.php';
 
 // inject js code
 echo '<script>';
@@ -479,6 +481,9 @@ echo '</script>';
                 <div style="word-wrap: break-word;width:1%">
                 </div>
             </div>
-            </div>
-            </div>
         </div>
+    </div>
+</div>
+
+<?php
+require TEMPLATES_PATH . '/footer.php';

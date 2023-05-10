@@ -2,7 +2,7 @@
 session_start();
 
 require_once dirname(__FILE__, 2) . '/config/config.php';
-require_once TEMPLATES_PATH . '/verification.php';
+require TEMPLATES_PATH . '/verification.php';
 require_once MODULES_PATH . '/autoloader.php';
 
 $pageTitle = 'My Books';

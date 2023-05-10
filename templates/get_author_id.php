@@ -1,5 +1,6 @@
 <?php
-include_once "../modules/autoloader.php";
+require_once dirname(__FILE__, 2) . '/config/config.php';
+require_once MODULES_PATH . '/autoloader.php';
 
 $AuthorRepo = new AuthorRepository();
 $author = $_GET['author'];
