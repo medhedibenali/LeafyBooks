@@ -49,7 +49,7 @@ if (isset($_SESSION['username'])) {
                 <!-- TODO link to browse -->
                 <li class="nav-item">
                     <div class="dropdown">
-                        <a class=" nav-link dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-left: 20px; margin-right: 20px;">Browse</a>
+                        <a class="nav-link dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-left: 20px; margin-right: 20px;">Browse</a>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <a class="dropdown-item" href="browse.php?tag=action">Action</a>
                             <a class="dropdown-item" href="browse.php?tag=fantasy">Fantasy</a>
@@ -79,10 +79,9 @@ if (isset($_SESSION['username'])) {
                 </li>
             </ul>
         </div>
-        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <div class="collapse navbar-collapse justify-content-end" id="navbarProfile">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="#"></a>
                     <?php
                     if (!$user) {
                     ?>
@@ -97,12 +96,11 @@ if (isset($_SESSION['username'])) {
                     <?php } else { ?>
                         <div class="dropdown">
                             <a class=" nav-link dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-
-                                <img src="img/users/<?= $user->image ?>" class="profilePic">
+                                <img src="img/users/<?= $user->image ?>" class="profilePic" alt="profile-picture">
                             </a>
                             <div class="dropdown-menu" aria-labelledby="profileDropdown">
-                                <a class="dropdown-item" href="user_profile.php"><i class="fa-solid fa-book-open-reader"></i> View Profile</a>
-                                <a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt me-2"></i></i>Disconnect</a>
+                                <a class="dropdown-item" href="user-profile.php"><i class="fa-solid fa-book-open-reader"></i>View Profile</a>
+                                <a class="dropdown-item" href="php/Disconnect.php"><i class="fas fa-sign-out-alt me-2"></i></i>Disconnect</a>
                             </div>
                         </div>
                     <?php } ?>
@@ -111,31 +109,3 @@ if (isset($_SESSION['username'])) {
         </div>
     </div>
 </nav>
-
-<script>
-    const navbarBrandIcon = document.querySelector(".fa-leaf");
-    // variable initialized to track if the leaf was clicked once or not
-    let clickedOnce = false;
-    // the icon is clicked, it first checks whether clickedOnce is false
-    navbarBrandIcon.addEventListener("click", event => {
-        event.preventDefault();
-
-        if (!clickedOnce) {
-            // it is, it adds the class active to the icon and scales it up to twice its size using the transform property.
-            navbarBrandIcon.classList.add("active");
-            navbarBrandIcon.style.transform = "scale(2)";
-            setTimeout(() => {
-                navbarBrandIcon.classList.remove("active");
-            }, 300);
-            clickedOnce = true;
-            // after a delay of 300 it removes the active class and sets clickedOnce to true.
-        } else {
-            // sets the animation property of the icon to "rotateFall 2s forwards" triggers a CSS animation called rotateFall
-            navbarBrandIcon.style.animation = "rotateFall 1s forwards";
-            setTimeout(() => {
-                navbarBrandIcon.remove();
-            }, 2000);
-            // after 2 sec the setTimeout function is called  which removes the icon from the DOM using the remove method.
-        }
-    });
-</script>
