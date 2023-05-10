@@ -7,7 +7,7 @@ navbarBrandIcon.addEventListener("click", (event) => {
   event.preventDefault();
 
   if (!clickedOnce) {
-    // it is, it adds the class active to the icon and scales it up to twice its size using the transform property.
+    // if it is, it adds the class active to the icon and makes it bigger
     navbarBrandIcon.classList.add("active");
     navbarBrandIcon.style.transform = "scale(2)";
     setTimeout(() => {
@@ -24,3 +24,5 @@ navbarBrandIcon.addEventListener("click", (event) => {
     // after 2 sec the setTimeout function is called  which removes the icon from the DOM using the remove method.
   }
 });
+
+

@@ -5,6 +5,7 @@ $scripts = array_merge(
     array(
         'js/scroll-to-top.js',
         'js/header.js',
+        'js/footer.js',
         array(
             'src' => 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js',
             'integrity' => 'sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe',
@@ -21,12 +22,12 @@ require dirname(__FILE__) . '/base-footer.php';
             <div class="col-md-12">
                 <ul class="menu">
                     <li><a href="index.php">Home</a></li>
-                    <li><a href="#">Contact Us</a></li>
-                    <li><a href="#">Request Book</a></li>
-                    <li><a href="#"><img src="../img/gitIcon.png" class="git"></a></li>
+                    <li><a href="request-book.php">Contact Us</a></li>
+                    <li><a href="request-book.php">Request Book</a></li>
+
                 </ul>
                 <hr>
-                <p class="footer-text">LeafyBooks</p>
+                <p class="footer-text"><i class="fa-solid fa-leaf" id="footerLeaf"></i>  LeafyBooks</p>
                 <p class="description">
                     LeafyBooks is an online platform dedicated to book enthusiasts who love to read, discover new books, and
                     share their opinions with like-minded people. The website provides a user-friendly interface that allows
@@ -39,6 +40,11 @@ require dirname(__FILE__) . '/base-footer.php';
                     and discover new books and stay up-to-date with the latest releases and
                     trends in the world of literature.
                 </p>
+            </div>
+            <div style="display:flex;justify-content:center;">
+            <a href="https://github.com/medhedibenali/web-project/"><img src="../img/gitIcon.png" class="git"></a>
+            <a href="https://github.com/medhedibenali/web-project/"><img src="../img/fb.png" class="git"></a>
+            <a href="https://github.com/medhedibenali/web-project/"><img src="../img/insta.png" class="git"></a>
             </div>
         </div>
     </div>
