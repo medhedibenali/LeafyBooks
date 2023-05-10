@@ -24,5 +24,3 @@ navbarBrandIcon.addEventListener("click", (event) => {
     // after 2 sec the setTimeout function is called  which removes the icon from the DOM using the remove method.
   }
 });
-
-

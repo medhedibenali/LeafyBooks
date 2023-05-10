@@ -7,10 +7,9 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    width:100%;
-    margin-top:3rem;
+    width: 100%;
+    margin-top: 3rem;
 }
-
 
 .menu {
     list-style: none;
@@ -20,42 +19,48 @@ footer {
     justify-content: center;
     font-family: "Script MT Bold";
 }
+
 .menu li {
     margin: 0 10px;
 }
+
 .menu li a {
     color: #502222;
     text-decoration: none;
     font-weight: bold;
     font-size: 18px;
 }
+
 hr {
     margin: 20px 0;
     border: none;
     border-top: 1px solid #b9aea0;
 }
+
 .footer-text {
     color: #988f81;
     text-align: center;
     font-family: "Script MT Bold";
 }
-.git
-{
+
+.git {
     border-radius: 50%;
     height: 2.1rem;
     width: 2.1rem;
     object-fit: cover;
 }
-.description
-{
-    font-size:15px;
+
+.description {
+    font-size: 15px;
     font-family: "Script MT Bold";
     color: #331616;
 }
-#footerLeaf{
+
+#footerLeaf {
     transform: rotate(0deg);
     transition: transform 0.5s;
 }
+
 #footerLeaf.rotate {
     transform: rotate(360deg);
 }
