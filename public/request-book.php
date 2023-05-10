@@ -1,8 +1,8 @@
 <?php
 require_once dirname(__FILE__, 2) . '/config/config.php';
-
+if(!isset($_SESSION))
+    session_start();
 $pageTitle = "Request Book";
-
 require TEMPLATES_PATH . '/header.php';
 ?>
 
@@ -17,14 +17,16 @@ require TEMPLATES_PATH . '/header.php';
                     <hr>
                     <?php
                     $Msg = "";
-                    if (isset($_GET['error'])) {
+                    if (isset($_SESSION["error"])) {
                         $Msg = " Please Fill in the Blanks ";
                         echo '<div class="alert alert-danger">' . $Msg . '</div>';
+                        unset($_SESSION["error"]);
                     }
 
-                    if (isset($_GET['success'])) {
+                    if (isset($_SESSION["success"])) {
                         $Msg = " Your Message Has Been Sent ";
                         echo '<div class="alert alert-success">' . $Msg . '</div>';
+                       unset($_SESSION["success"]);
                     }
 
                     ?>

@@ -1,11 +1,15 @@
 <?php
+if(!isset($_SESSION))
+    session_start();
 if (isset($_POST['btn-send'])) {
     $email = $_POST['email'];
     $author = $_POST['author'];
     $bookTitle = $_POST['bookTitle'];
 
     if (empty($author) || empty($email) || empty($bookTitle)) {
-        header('Location: ../request-book.php?error');
+        $_SESSION["error"] = true;
+        header('Location: ../request-book.php');
+        die();
     } else {
         $to = "leafybookscontact@gmail.com";
         $subject = "book request";
@@ -16,7 +20,9 @@ if (isset($_POST['btn-send'])) {
         https://www.codingnepalweb.com/configure-xampp-to-send-mail-from-localhost/
          */
         if (mail($to, $subject, $msg, "From: " . $email)) {
-            header("location:../request-book.php?success");
+            $_SESSION["success"] = true;
+            header("location:../request-book.php");
+            die();
         }
     }
 } else {
