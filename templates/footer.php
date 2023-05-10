@@ -21,9 +21,8 @@ require dirname(__FILE__) . '/base-footer.php';
         <div class="row">
             <div class="col-md-12">
                 <ul class="menu">
-                    <li><a href="index.php">Home</a></li>
-                    <li><a href="request-book.php">Contact Us</a></li>
-                    <li><a href="request-book.php">Request Book</a></li>
+                    <li style="margin-left:20px;"><a href="index.php">Home</a></li>
+                    <li><a href="request-book.php">Request a Book</a></li>
 
                 </ul>
                 <hr>
