@@ -50,14 +50,14 @@
     right: 0;
 }
 
-[data-aos="example-anim3"] {
+[data-aos="example-anim"] {
     width: 0;
     animation-name: fillBars;
     animation-duration: 3s;
     animation-timing-function: ease-out;
 }
 
-[data-aos="example-anim3"].aos-animate {
+[data-aos="example-anim"].aos-animate {
     width: 100%;
 }
 

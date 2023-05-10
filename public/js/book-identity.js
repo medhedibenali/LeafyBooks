@@ -2,6 +2,7 @@ AOS.init(
     {
       easing:'ease-out',
       duration:3000,
+        delay:100,
     }
 );
 
