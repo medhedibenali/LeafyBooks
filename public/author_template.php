@@ -29,7 +29,7 @@ include_once "../templates/header.php";
         <div class="col-4" style="display:flex;align-items:flex-start;justify-content: sapce-between;">
 
             <?php
-            echo '<img src="' . $author->picture . '" alt="image not found" style="margin-top:18%;margin-left:50px;margin-right:30px;width:270px;height:330px;">';
+            echo '<img src="img/authors/' . $author->image . '" alt="image not found" style="margin-top:18%;margin-left:50px;margin-right:30px;width:270px;height:330px;">';
             ?>
 
         </div>
@@ -131,7 +131,7 @@ include_once "../templates/header.php";
                     // Show a maximum of 3 books, and the view all will show all books
                     foreach ($Books as $Book) {
                         echo '<figure style="width:33%;box-sizing:border-box;">';
-                        echo '<img class="current-read" id="cover" src="' . $Book->picture . '" alt="not found" style="margin-left:' . $i * 5 . '%;width:182px;height:276px;">';
+                        echo '<img class="current-read" id="cover" src="img/books/' . $Book->image . '" alt="not found" style="margin-left:' . $i * 5 . '%;width:182px;height:276px;">';
                         echo '<figcaption>' . $Book->title . '</figcaption>';
                         echo '</figure> ';
                         $i = 1;
@@ -156,7 +156,7 @@ include_once "../templates/header.php";
                         // Show a maximum of 3 books, and the view all will show all books
                         foreach ($Books as $Book) {
                             echo '<figure style="width:33%;box-sizing:border-box;">';
-                            echo '<img class="current-read" id="cover" src="' . $Book->picture . '" alt="not found" style="margin-left:' . $i * 5 . '%;width:182px;height:276px;">';
+                            echo '<img class="current-read" id="cover" src="img/books/' . $Book->image . '" alt="not found" style="margin-left:' . $i * 5 . '%;width:182px;height:276px;">';
                             echo '<figcaption>' . $Book->title . '</figcaption>';
                             echo '</figure> ';
                             $i = 1;

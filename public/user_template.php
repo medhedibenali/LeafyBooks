@@ -39,10 +39,10 @@ echo '</script>';
 
             <?php
             // User can choose not to upload a picture, in which we case we provide a generic picture instead
-            if ($user->picture == NULL) {
-                echo '<img id="UserImagePos" src="img/user_pics/unknown_user.jpg" alt="image not found" style="margin-left:50px;margin-right:30px;width:200px;height:200px;">';
+            if ($user->image == NULL) {
+                echo '<img id="UserImagePos" src="img/users/unknown_user.jpg" alt="image not found" style="margin-left:50px;margin-right:30px;width:200px;height:200px;">';
             } else {
-                echo '<img id="UserImagePos" src="' . $user->picture . '" alt="image not found" style="margin-left:50px;margin-right:30px;width:200px;height:200px;">';
+                echo '<img id="UserImagePos" src="img/users/' . $user->image . '" alt="image not found" style="margin-left:50px;margin-right:30px;width:200px;height:200px;">';
             }
             ?>
             <?php
@@ -149,7 +149,7 @@ echo '</script>';
                 <?php
                 // Book actitvity Stats and information
                 $ActivityStats = $ReadActRepo->ActivityStastics($user->username, 'currently_reading');
-                $ActivityBooks = $ReadActRepo->ActivityBooks($user->username, 'currently_reading', 'picture');
+                $ActivityBooks = $ReadActRepo->ActivityBooks($user->username, 'currently_reading', 'image');
                 ?>
                 <h5 style="margin-top: 5%;margin-bottom:5%;font-family: Script MT Bold;">Currently Reading (<?= $ActivityStats->activity_number ?>)</h5>
 
@@ -163,7 +163,7 @@ echo '</script>';
                     $i = 0;
                     // Show a maximum of 3 books, and the view all will show all books
                     foreach ($ActivityBooks as $ActivityBook) {
-                        echo '<img class="current-read" id="cover" src="' . $ActivityBook->picture . '" alt="not found" style="margin-left:' . $i * 5 . '%;width:182px;height:276px;">';
+                        echo '<img class="current-read" id="cover" src="img/books/' . $ActivityBook->image . '" alt="not found" style="margin-left:' . $i * 5 . '%;width:182px;height:276px;">';
                         $i = 1;
                     }
                     ?>
@@ -365,7 +365,7 @@ echo '</script>';
                         <?php
                         // Book actitvity Stats and information
                         $ActivityStats = $ReadActRepo->ActivityStastics($user->username, 'finished_reading');
-                        $ActivityBooks = $ReadActRepo->ActivityBooks($user->username, 'finished_reading', 'picture');
+                        $ActivityBooks = $ReadActRepo->ActivityBooks($user->username, 'finished_reading', 'image');
                         ?>
                         <h5 style="margin-top: 5%;margin-bottom:5%;font-family: Script MT Bold;">Read Recently (<?= $ActivityStats->activity_number ?>)</h5>
 
@@ -379,7 +379,7 @@ echo '</script>';
                             $i = 0;
                             // Show a maximum of 3 books, and the view all will show all books
                             foreach ($ActivityBooks as $ActivityBook) {
-                                echo '<img class="current-read" id="cover" src="' . $ActivityBook->picture . '" alt="not found" style="margin-left:' . $i * 5 . '%;width:182px;height:276px;">';
+                                echo '<img class="current-read" id="cover" src="img/books/' . $ActivityBook->image . '" alt="not found" style="margin-left:' . $i * 5 . '%;width:182px;height:276px;">';
                                 $i = 1;
                             }
                             ?>
@@ -464,7 +464,7 @@ echo '</script>';
                             // Show a maximum of 3 books, and the view all will show all books
                             foreach ($Favorites as $Favorite) {
                                 $Book = $BookRepo->find(['isbn' => $Favorite->isbn]);
-                                echo '<img class="current-read" id="cover" src="' . $Book->picture . '" alt="not found" style="margin-left:' . $i * 5 . '%;width:182px;height:276px;">';
+                                echo '<img class="current-read" id="cover" src="img/books/' . $Book->image . '" alt="not found" style="margin-left:' . $i * 5 . '%;width:182px;height:276px;">';
                                 $i = 1;
                             }
                             ?>
@@ -479,6 +479,6 @@ echo '</script>';
                 <div style="word-wrap: break-word;width:1%">
                 </div>
             </div>
+            </div>
+            </div>
         </div>
-    </div>
-</div>
