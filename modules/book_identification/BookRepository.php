@@ -12,9 +12,9 @@ class BookRepository extends Repository
         parent::__construct($tableName, $attributes, $ids);
     }
 
-    public function findByTitleOrAuthor($search = "")
+    public function countFindByTitleOrAuthor($search = "")
     {
-        $request = "select * from " . $this->tableName . " as b , authors as a
+        $request = "select count(*) as total from " . $this->tableName . " as b , authors as a
         where b.author=a.id and ( b.title like concat('%',?,'%') or concat(a.first_name,' ',a.last_name) like concat('%',?,'%') )";
         $response = $this->db->prepare($request);
         $response->execute([$search, $search]);

@@ -31,9 +31,9 @@ class UserRepository extends Repository
         );
         return parent::insert($params);
     }
-    public function findByUsernameOrFullName($search = "")
+    public function countFindByUsernameOrFullName($search = "")
     {
-        $request = 'select * from ' . $this->tableName . '
+        $request = 'select count(*) as total from ' . $this->tableName . '
          where username like concat("%",?,"%") or concat(first_name," ",last_name) like concat("%",?,"%")';
         $response = $this->db->prepare($request);
         $response->execute([$search, $search]);

@@ -75,9 +75,10 @@ if (isset($_SESSION['username'])) {
                 <li class="nav-item">
                     <form class="d-flex" role="search" action="search.php" method="get">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search" style="width: 20rem;margin-left: 3rem">
-                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <a  href="advanced-search.php" ><i class="fa-solid fa-magnifying-glass"></i> </a>
                     </form>
                 </li>
+
             </ul>
         </div>
         <div class="collapse navbar-collapse justify-content-end" id="navbarProfile">
