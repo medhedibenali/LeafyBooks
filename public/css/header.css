@@ -3,7 +3,7 @@ html {
 }
 
 .navbar {
-    background-color: #efddb3;
+    background-color: #72C783;
     height: 3.5rem;
 
 }
@@ -65,7 +65,7 @@ a.navbar-brand.active {
 
 .navButton {
     border-radius: 5%;
-    background-color: #efddb3;
+    background-color: #72C783;
     border: 0;
 }
 

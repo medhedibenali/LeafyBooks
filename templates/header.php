@@ -18,7 +18,8 @@ $stylesheets = array_merge(
             'crossorigin' => 'anonymous',
             'referrerpolicy' => 'no-referrer'
         ),
-        'css/header.css'
+        'css/header.css',
+        'css/footer.css'
     ),
     $stylesheets ?? []
 );
