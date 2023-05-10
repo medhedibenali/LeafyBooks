@@ -47,6 +47,7 @@ Be prepared for coming-of-age stories from all walks of life,
 similar to the likes of To All the Boys I’ve Loved Before, The Hate U Give, and Simon vs. the Homo Sapiens Agenda.";
 
 ?>
+<div data-aos="fade-up">
 <div class="category-box">
     <div class="discover-more">
         Discover your next favourite book on Leafy Books
@@ -58,6 +59,21 @@ similar to the likes of To All the Boys I’ve Loved Before, The Hate U Give, an
         foreach($icons as $key => $value)
         {
     ?>
+            <?php
+            if ($indice%2==0)
+            {
+            ?>
+                <div data-aos="fade-right" data-aos-offset="200">
+        <?php
+            }
+        else
+            {
+        ?>
+                <div data-aos="fade-left" data-aos-offset="200"  data-aos-delay="200">
+
+                    <?php
+            }
+        ?>
     <div class="flex-item" >
         <div class="picture">
             <div class="category-head">
@@ -103,6 +119,7 @@ similar to the likes of To All the Boys I’ve Loved Before, The Hate U Give, an
                 </a>
             </div>
         </div>
+        </div>
 
     </div>
     <?php
@@ -118,4 +135,6 @@ similar to the likes of To All the Boys I’ve Loved Before, The Hate U Give, an
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 
 
+</div>
+</div>
 </div>

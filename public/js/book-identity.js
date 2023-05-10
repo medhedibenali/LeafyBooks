@@ -1,3 +1,11 @@
+AOS.init(
+    {
+      easing:'ease-out',
+      duration:3000,
+    }
+);
+
+
 list = document.querySelector("#actionOnBook");
 form = document.querySelector("#addToList");
 

@@ -4,19 +4,19 @@ require_once MODULES_PATH . '/autoloader.php';
 $pageTitle = "Home";
 $stylesheets = array(
     "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css",
-    'css/book-identity.css',
     'css/static-rating.css',
     'css/homepage.css',
     'css/header.css',
     'css/categories.css',
     'css/carousel-principal.css',
     'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css',
-    "https://unpkg.com/bootstrap-icons@1.6.1/font/bootstrap-icons.css"
+    "https://unpkg.com/bootstrap-icons@1.6.1/font/bootstrap-icons.css",
+    "https://unpkg.com/aos@next/dist/aos.css"
 );
 
 require TEMPLATES_PATH . '/header.php';
 ?>
-<div class="ad">
+    <div data-aos="zoom-in" >
 <div class="hp-anniversary-text">
     <h1>
        Join us in celebration of 25 years
@@ -37,9 +37,12 @@ require TEMPLATES_PATH . '/header.php';
   </span>
     </h1>
 </div>
+    </div>
 <?php
 require TEMPLATES_PATH.'/book-carrousel.php';
 ?>
+
+    <div data-aos="zoom-in" data-aos-duration="2000">
     <h1 class="carousel-footer">
         <span class="magic">
             <span style="color:plum; font-family: DecoType Naskh">with the brand-new illustrated collection by Jim Kay</span>
@@ -48,10 +51,8 @@ require TEMPLATES_PATH.'/book-carrousel.php';
     <p class="inspo">
         Daily words of wisdom from your favourite authors
     </p>
+    <div data-aos="fade-right" data-aos-duration="1000">
     <div class="quote-box">
-        <div class="banner-quote">
-        <div class="background-banner">
-        </div>
         <?php
         require_once './php/quotesApiCall.php';
         foreach ($quotes as $quote){
@@ -62,9 +63,7 @@ require TEMPLATES_PATH.'/book-carrousel.php';
             </div>
         <?php };?>
     </div>
-    </div>
 </div>
-    </div>
 <?php
 $bookRepo=new BookRepository();
 $fantasy=$bookRepo->find(['genre'=>trim('fantasy')]);
@@ -87,5 +86,8 @@ $scripts=array(
     "https://code.jquery.com/jquery-3.2.1.slim.min.js",
     "js/magic-text.js",
     "js/quotes.js",
+    "https://unpkg.com/aos@next/dist/aos.js",
+    "js/homepage.js"
+
 );
 require TEMPLATES_PATH.'/footer.php';

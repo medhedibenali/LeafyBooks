@@ -2,6 +2,7 @@
 
 ?>
 
+<div data-aos="zoom-in" >
 <div class="carouselPrincipal">
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
@@ -11,7 +12,6 @@
         <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
         <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
         <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="6"></li>
 
 
 
@@ -28,9 +28,6 @@
         </div>
         <div class="carousel-item">
             <img class="d-block w-100" src="img/HP-ann3.jpg" alt="4th slide" id="4">
-        </div>
-        <div class="carousel-item">
-            <img class="d-block w-100" src="img/HP-ann4.jpg" alt="5th slide" id="5">
         </div>
         <div class="carousel-item">
             <img class="d-block w-100" src="img/HP-ann5.jpg" alt="6th slide" id="6">
@@ -50,4 +47,4 @@
 </div>
 </div>
 
-
+</div>
