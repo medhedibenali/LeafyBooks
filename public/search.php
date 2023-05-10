@@ -23,7 +23,7 @@ $nextBookPage = $booksPage + 1;
             echo '<div> Oops! No results found! </div>';
         } else {
             foreach ($books as $book) {
-                require dirname(__FILE__,2) . '/templates/book-item.php';
+                require TEMPLATES_PATH . '/book-item.php';
             }
         } ?>
     </div>
