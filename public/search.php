@@ -16,10 +16,17 @@ $nextBookPage = $booksPage + 1;
 <h1 style="margin-top: 70px; margin-left: 30px; ">Search Results For "<?= $search ?>"</h1>
 <h2>All Books</h2>
 
-<?php
-require TEMPLATES_PATH . '/book-content-results.php';
-?>
-
+<div class="content books-content">
+    <div class="grid-container">
+        <?php
+        if (!$books) {
+            echo '<div> Oops! No results found! </div>';
+        } else {
+            foreach ($books as $book) {
+                require dirname(__FILE__,2) . '/templates/book-item.php';
+            }
+        } ?>
+    </div>
 <nav class="pages ">
     <ul class="pagination pagination-sm">
         <li class="page-item">
