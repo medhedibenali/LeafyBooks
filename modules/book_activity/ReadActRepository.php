@@ -15,57 +15,60 @@ class ReadActRepository extends Repository
         parent::__construct($tableName, $attributes, $ids);
     }
 
-    public function ActivityStastics($username,$status){
+    public function ActivityStastics($username, $status)
+    {
         $query = "SELECT COUNT(*) AS activity_number FROM $this->tableName WHERE username= :username AND status= :status";
         $reponse = $this->db->prepare($query);
         $reponse->execute([':username' => $username, 'status' => $status]);
         return $reponse->fetch(PDO::FETCH_OBJ);
     }
 
-    public function ActivityBooks($username,$status,$element){
+    public function ActivityBooks($username, $status, $element)
+    {
         $query = "SELECT b.$element AS $element FROM books AS b LEFT JOIN $this->tableName AS act ON act.isbn = b.isbn WHERE username= :username AND status= :status LIMIT 3";
         $reponse = $this->db->prepare($query);
         $reponse->execute([':username' => $username, 'status' => $status]);
         return $reponse->fetchAll(PDO::FETCH_OBJ);
     }
 
-
-    public function BookCount($username, $status, $year){
+    public function BookCount($username, $status, $year)
+    {
         $query = "SELECT COUNT(*) AS Total
                   FROM $this->tableName
                   WHERE username = :username
                   AND status = :status";
-        if ($status == 'to_read'){
+        if ($status == 'to_read') {
             $query .= ' AND YEAR(start_date) = :year;';
-        }else{
+        } else {
             $query .= ' AND YEAR(finish_date) = :year;';
         }
         $reponse = $this->db->prepare($query);
-        $reponse->execute([':username' => $username, 'status' => $status,'year' => $year]);
+        $reponse->execute([':username' => $username, 'status' => $status, 'year' => $year]);
         return $reponse->fetchAll(PDO::FETCH_OBJ);
     }
 
-
-    public function getTotalPages($username,$status,$year){
-        if ($year == ''){
+    public function getTotalPages($username, $status, $year)
+    {
+        if ($year == '') {
             $query = "SELECT SUM(b.pages) AS Total FROM books AS b LEFT JOIN $this->tableName AS act ON act.isbn = b.isbn WHERE act.username = :username AND act.status = :status";
             $reponse = $this->db->prepare($query);
-            $reponse->execute(['username' => $username ,'status' => $status]);
-        }else if ($status == 'to_read'){
+            $reponse->execute(['username' => $username, 'status' => $status]);
+        } else if ($status == 'to_read') {
             $query = "SELECT SUM(b.pages) AS Total FROM books AS b LEFT JOIN $this->tableName AS act ON act.isbn = b.isbn WHERE act.username = :username AND act.status = :status AND YEAR(act.start_date) = :year";
             $reponse = $this->db->prepare($query);
-            $reponse->execute(['username' => $username ,'status' => $status, 'year' => $year]);
-        }else{
+            $reponse->execute(['username' => $username, 'status' => $status, 'year' => $year]);
+        } else {
             $query = "SELECT SUM(b.pages) AS Total FROM books AS b LEFT JOIN $this->tableName AS act ON act.isbn = b.isbn WHERE act.username = :username AND act.status = :status AND YEAR(act.finish_date) = :year";
             $reponse = $this->db->prepare($query);
-            $reponse->execute(['username' => $username ,'status' => $status, 'year' => $year]);
+            $reponse->execute(['username' => $username, 'status' => $status, 'year' => $year]);
         }
         return $reponse->fetchAll(PDO::FETCH_OBJ);
     }
 
-    public function getGenres($username,$status,$year, $genre){
-        if ($year != '0'){
-            if ($status == 'to_read'){
+    public function getGenres($username, $status, $year, $genre)
+    {
+        if ($year != '0') {
+            if ($status == 'to_read') {
                 $query = "SELECT SUM(Total) AS Total_sum
                   FROM (
                     SELECT COUNT(*) AS Total
@@ -86,10 +89,10 @@ class ReadActRepository extends Repository
                     AND t.tag = :genre
                     AND YEAR(act.start_date) = :year
                 ) AS subquery;";
-            $reponse = $this->db->prepare($query);
-            $reponse->execute(['username' => $username,'status' => $status, 'genre' => $genre, 'year' => $year]);
-        }else{
-            $query = "SELECT SUM(Total) AS Total_sum
+                $reponse = $this->db->prepare($query);
+                $reponse->execute(['username' => $username, 'status' => $status, 'genre' => $genre, 'year' => $year]);
+            } else {
+                $query = "SELECT SUM(Total) AS Total_sum
                   FROM (
                     SELECT COUNT(*) AS Total
                     FROM books AS b 
@@ -109,10 +112,10 @@ class ReadActRepository extends Repository
                     AND t.tag = :genre
                     AND YEAR(act.finish_date) = :year
                 ) AS subquery;";
-            $reponse = $this->db->prepare($query);
-            $reponse->execute(['username' => $username,'status' => $status, 'genre' => $genre, 'year' => $year]);
-        }
-        }else{
+                $reponse = $this->db->prepare($query);
+                $reponse->execute(['username' => $username, 'status' => $status, 'genre' => $genre, 'year' => $year]);
+            }
+        } else {
             $query = "SELECT SUM(Total) AS Total_sum
                   FROM (
                     SELECT COUNT(*) AS Total
@@ -132,7 +135,7 @@ class ReadActRepository extends Repository
                     AND t.tag = :genre
                 ) AS subquery;";
             $reponse = $this->db->prepare($query);
-            $reponse->execute(['username' => $username,'status' => $status, 'genre' => $genre]);
+            $reponse->execute(['username' => $username, 'status' => $status, 'genre' => $genre]);
         }
         return $reponse->fetch(PDO::FETCH_OBJ);
     }

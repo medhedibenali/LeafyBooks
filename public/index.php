@@ -8,8 +8,3 @@ require TEMPLATES_PATH . '/header.php';
 echo "<div>Hello, World!</div>";
 
 require TEMPLATES_PATH . '/footer.php';
-
-
-
-
-?>

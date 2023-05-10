@@ -12,19 +12,19 @@ class UserReviewsRepository extends Repository
         parent::__construct($tableName, $attributes, $ids);
     }
 
-
-    public function RatingStatistics($username){
+    public function RatingStatistics($username)
+    {
         $query = "SELECT COUNT(*) AS rating_number, AVG(rating) AS rating_avg FROM $this->tableName WHERE username= :username";
         $response = $this->db->prepare($query);
         $response->execute([':username' => $username]);
-        return $response->fetch(PDO::FETCH_OBJ); 
+        return $response->fetch(PDO::FETCH_OBJ);
     }
 
-    
-    public function ReviewStatistics($username){
+    public function ReviewStatistics($username)
+    {
         $query = "SELECT COUNT(*) AS review_number FROM $this->tableName WHERE username= :username AND review IS NOT NULL";
         $response = $this->db->prepare($query);
         $response->execute([':username' => $username]);
-        return $response->fetch(PDO::FETCH_OBJ); 
+        return $response->fetch(PDO::FETCH_OBJ);
     }
 }

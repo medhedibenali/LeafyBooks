@@ -1,43 +1,36 @@
 <?php
-    include_once "../modules/autoloader.php";
-    $UserRepo = new UserRepository();
-    $UserReviewRepo = new UserReviewsRepository();
-    $ReadActRepo = new ReadActRepository();
-    $BookRepo = new BookRepository();
-    $AuthorRepo = new AuthorRepository();
-    $author = $AuthorRepo->find(['id' => $_GET['id']]);
+include_once "../modules/autoloader.php";
+$UserRepo = new UserRepository();
+$UserReviewRepo = new UserReviewsRepository();
+$ReadActRepo = new ReadActRepository();
+$BookRepo = new BookRepository();
+$AuthorRepo = new AuthorRepository();
+$author = $AuthorRepo->find(['id' => $_GET['id']]);
 
+// Author does not exist
+if (!$author) {
+    $errorMessage = "The requested author was not found";
+    $redirectUrl = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : 'index.php';
+    $redirectUrl .= "?error=" . urlencode($errorMessage);
 
-    // Author does not exist
-    if (!$author){
-        $errorMessage = "The requested author was not found";
-        $redirectUrl = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : 'index.php';
-        $redirectUrl .= "?error=" . urlencode($errorMessage);
-
-        header("Location: $redirectUrl");
-        exit;
-    }   
+    header("Location: $redirectUrl");
+    exit;
+}
 ?>
-
 
 <?php
-    // Author exists
-    $pageTitle = "$author->pen_name - LeafyBooks";
-    include_once "../templates/header.php";
-    
-    
+// Author exists
+$pageTitle = "$author->pen_name - LeafyBooks";
+include_once "../templates/header.php";
 ?>
-
 
 <div class="container" style="margin-bottom: 20px;width:100%;">
     <div class="row" style="width:100%;">
         <div class="col-4" style="display:flex;align-items:flex-start;justify-content: sapce-between;">
 
             <?php
-                echo '<img src="' . $author->picture . '" alt="image not found" style="margin-top:18%;margin-left:50px;margin-right:30px;width:270px;height:330px;">';
+            echo '<img src="' . $author->picture . '" alt="image not found" style="margin-top:18%;margin-left:50px;margin-right:30px;width:270px;height:330px;">';
             ?>
-            
-            
 
         </div>
 
@@ -45,39 +38,36 @@
             <h1 class="username" style="margin-top: 50px;margin-left:-20px;color:#490206; font-family: Script MT Bold; "><?= $author->pen_name ?></h1>
             <hr style="margin-top:105px;margin-left:-18px;opacity:10;">
 
-            <h6 style="margin-left:-18px;color:#490206;">First name</h1>
+            <h6 style="margin-left:-18px;color:#490206;">First name</h6>
             <p style="margin-top:-8.75%;margin-left:70px;"><?= $author->first_name ?></p>
 
-            <h6 style="margin-left:-18px;color:#490206;">Last name</h1>
+            <h6 style="margin-left:-18px;color:#490206;">Last name</h6>
             <p style="margin-top:-8.75%;margin-left:70px;"><?= $author->last_name ?></p>
 
-            <h6 style="margin-left:-18px;color:#490206;">Nationality</h1>
+            <h6 style="margin-left:-18px;color:#490206;">Nationality</h6>
             <p style="margin-top:-8.75%;margin-left:70px;"><?= $author->nationality ?></p>
 
-            <h6 style="margin-left:-18px;color:#490206;">Born</h1>
-            <p style="margin-top:-8.75%;margin-left:70px;"><?= DateTime::createFromFormat('Y-m-d',$author->birthday)->format('F jS, Y')?></p>
-            
+            <h6 style="margin-left:-18px;color:#490206;">Born</h6>
+            <p style="margin-top:-8.75%;margin-left:70px;"><?= DateTime::createFromFormat('Y-m-d', $author->birthday)->format('F jS, Y') ?></p>
 
             <?php
-                if ($author->death_day){
-                    $birth_date = new DateTime($author->birthday);
-                    $death_date = new DateTime($author->death_day);
+            if ($author->death_day) {
+                $birth_date = new DateTime($author->birthday);
+                $death_date = new DateTime($author->death_day);
 
-                    $interval = $birth_date->diff($death_date);
-                    $years = $interval->y;
-                    echo '<h6 style="margin-left:-18px;color:#490206;">Died</h1>';
-                    echo '<p style="margin-top:-8.75%;margin-left:70px;">'. DateTime::createFromFormat('Y-m-d',$author->death_day)->format('F jS, Y') . ' (aged '. $years . ')</p>';
-                }
+                $interval = $birth_date->diff($death_date);
+                $years = $interval->y;
+                echo '<h6 style="margin-left:-18px;color:#490206;">Died</h6>';
+                echo '<p style="margin-top:-8.75%;margin-left:70px;">' . DateTime::createFromFormat('Y-m-d', $author->death_day)->format('F jS, Y') . ' (aged ' . $years . ')</p>';
+            }
             ?>
 
-            
             <div class="bio-container" style="margin-top:5%;margin-left:-5%;">
                 <?php
-                    echo '<p>' . $author->bio . '</p>';
+                echo '<p>' . $author->bio . '</p>';
                 ?>
             </div>
             <a href="#" class="more-link" style="display:block;color:#034694;margin-left:-5%;">..more</a>
-
 
             <!-- Script to make the more button show more of the bio -->
             <script>
@@ -87,41 +77,30 @@
                 // Hiden extra content initially
                 BioContainer.classList.add('hide');
 
-
-                moreLink.addEventListener('click',()=>{
+                moreLink.addEventListener('click', () => {
                     // Toggle hide class on bio-container to show or hide the extra information
                     BioContainer.classList.toggle('hide');
 
-
                     // Update the text in more-link
-                    if (BioContainer.classList.contains('hide')){
+                    if (BioContainer.classList.contains('hide')) {
                         moreLink.textContent = '..more';
-                    }else{
+                    } else {
                         moreLink.textContent = 'less';
                     }
                 });
             </script>
 
             <style>
-                .hide{
+                .hide {
                     height: 300px;
                     overflow: hidden;
                 }
             </style>
 
-
-
-
         </div>
-
-
-        <div class="col-4">
-
-
-        </div>
+        <div class="col-4"> </div>
     </div>
 </div>
-
 
 <div class="container">
     <div class="row" style="width:100%;margin-bottom:20px">
@@ -131,374 +110,68 @@
     </div>
 </div>
 
-
 <!-- FIRST ROW -->
 <div class="container" style="margin-bottom: 20px;">
     <div class="row" style="width:100%;">
         <div style="width:100%;word-wrap: break-word;">
             <div class="main-border" style="text-align:center;height:1200px;margin-bottom:10%;">
-            <?php
+                <?php
                 // Bring books the author wrote
                 $AllBooks = $BookRepo->find(['author' => $author->id]);
-                $Books = $BookRepo->find(['author' => $author->id],['limit' => 3]);
-                
-            ?>
+                $Books = $BookRepo->find(['author' => $author->id], ['limit' => 3]);
+
+                ?>
                 <h5 style="margin-top: 5%;margin-bottom:5%;font-family: Script MT Bold;">Books (<?= count($AllBooks) ?>)</h5>
 
                 <!-- first image row -->
                 <div style="display:flex;margin-top:10%;">
-                <?php
+                    <?php
                     // Design measures
                     $i = 0;
                     // Show a maximum of 3 books, and the view all will show all books
-                    foreach($Books as $Book){
+                    foreach ($Books as $Book) {
                         echo '<figure style="width:33%;box-sizing:border-box;">';
-                        echo '<img class="current-read" id="cover" src="' . $Book->picture . '" alt="not found" style="margin-left:' . $i*5 .'%;width:182px;height:276px;">';
+                        echo '<img class="current-read" id="cover" src="' . $Book->picture . '" alt="not found" style="margin-left:' . $i * 5 . '%;width:182px;height:276px;">';
                         echo '<figcaption>' . $Book->title . '</figcaption>';
                         echo '</figure> ';
                         $i = 1;
                     }
-                ?>       
+                    ?>
                 </div>
 
                 <?php
-                    $Books = $BookRepo->find(['author' => $author->id],['limit' => 3,'offset' => 3]);
-                    if (!$Books){
-                        echo '<div style="display: flex; justify-content: center;margin-top: 75%;">';
-                        echo '<button id="view-all" class="writereview" style="font-family: Script MT Bold;">View All</button>';
-                        echo '</div>';
-                    }else{
+                $Books = $BookRepo->find(['author' => $author->id], ['limit' => 3, 'offset' => 3]);
+                if (!$Books) {
+                    echo '<div style="display: flex; justify-content: center;margin-top: 75%;">';
+                    echo '<button id="view-all" class="writereview" style="font-family: Script MT Bold;">View All</button>';
+                    echo '</div>';
+                } else {
                 ?>
 
-                <!-- second image row -->
-                <div style="display:flex;margin-top:15%;">
+                    <!-- second image row -->
+                    <div style="display:flex;margin-top:15%;">
+                        <?php
+                        // Design measures
+                        $i = 0;
+                        // Show a maximum of 3 books, and the view all will show all books
+                        foreach ($Books as $Book) {
+                            echo '<figure style="width:33%;box-sizing:border-box;">';
+                            echo '<img class="current-read" id="cover" src="' . $Book->picture . '" alt="not found" style="margin-left:' . $i * 5 . '%;width:182px;height:276px;">';
+                            echo '<figcaption>' . $Book->title . '</figcaption>';
+                            echo '</figure> ';
+                            $i = 1;
+                        }
+                        ?>
+                    </div>
                 <?php
-                    // Design measures
-                    $i = 0;
-                    // Show a maximum of 3 books, and the view all will show all books
-                    foreach($Books as $Book){
-                        echo '<figure style="width:33%;box-sizing:border-box;">';
-                        echo '<img class="current-read" id="cover" src="' . $Book->picture . '" alt="not found" style="margin-left:' . $i*5 .'%;width:182px;height:276px;">';
-                        echo '<figcaption>' . $Book->title . '</figcaption>';
-                        echo '</figure> ';
-                        $i = 1;
-                    }
-                ?>       
-                </div>
-                <?php
-                echo '<div style="display: flex; justify-content: center;margin-top: 7%;">';
-                echo '<a href="#"><button id="view-all" class="writereview" style="font-family: Script MT Bold;">View All</button></a>';
-                echo '</div>';
-                } ?>
+                    echo '<div style="display: flex; justify-content: center;margin-top: 7%;">';
+                    echo '<a href="#"><button id="view-all" class="writereview" style="font-family: Script MT Bold;">View All</button></a>';
+                    echo '</div>';
+                }
+                ?>
             </div>
         </div>
-
-
-        <div  style="word-wrap: break-word;width:1%;">
-        </div>
-
-        <!-- ignored -->
-        <!-- <div  style="width:32%;word-wrap: break-word;">
-            
-            <div class="side-border" style="text-align:center;">
-                -->
-                <!-- Carousel -->
-                <!-- <div id="myCarousel" class="carousel slide " data-ride="carousel" data-interval="1500"> -->
-
-                <!-- Indicators -->
-                <!-- <ul class="carousel-indicators">
-                    <li data-target="#myCarousel" data-slide-to="0"></li>
-                    <li data-target="#myCarousel" data-slide-to="1" class="active"></li>
-                    <li data-target="#myCarousel" data-slide-to="2"></li>
-                </ul>
- -->
-
-                <!-- Slideshow -->
-                <!-- <div class="carousel-inner">
-
-
-
-
-
-
-
-
-
-
-
-                    <h5 style="margin-top:10%;margin-bottom:10%;font-family: Script MT Bold;">Quotes</h5>
-                    <div class="carousel-item active">
-                        <div style="word-wrap: break-word;width:101%;margin-top:5%;margin-left:-0.5%;height:447px;">
-                            <div style="text-align:center;">
-                                <ul id="no-bulletpoints" style="text-align:left;margin-left: 10%;margin-bottom:10px;">
-                                    <li style="font-size:17px;"><strong>Harry Potter</strong></li>
-                                    <li>J.K.Rowling</li>
-                                </ul>
-                
-                                <hr style="margin-left: auto;margin-right:auto;width:90%;opacity:10;">   
-
-
-                                <ul id="no-bulletpoints" style="text-align:left;margin-left: 10%;margin-bottom:10px;">
-                                    <li style="font-size:17px;"><strong> Broken Half</strong></li>
-                                    <li>Jessie Cave</li>
-                                </ul>
-
-                                <hr style="margin-left: auto;margin-right:auto;width:90%;opacity:10;">   
-
-
-                                <ul id="no-bulletpoints" style="text-align:left;margin-left: 10%;margin-bottom:10%;">
-                                    <li style="font-size:17px;"><strong> Sea Of Tranquility</strong></li>
-                                    <li>Emily St.John Mandel</li>
-                                </ul>
-                
-                                
-                            </div>
-                        </div>    
-                    </div>
-
-
-
-
-
-                    <div class="carousel-item ">
-                    <div style="word-wrap: break-word;width:101%;margin-top:5%;margin-left:-0.5%;height:447px;">
-                            <div style="text-align:center;">
-                                <ul id="no-bulletpoints" style="text-align:left;margin-left: 10%;margin-bottom:10px;">
-                                    <li style="font-size:17px;"><strong>Harry Potter</strong></li>
-                                    <li>J.K.Rowling</li>
-                                </ul>
-                
-                                <hr style="margin-left: auto;margin-right:auto;width:90%;opacity:10;">   
-
-
-                                <ul id="no-bulletpoints" style="text-align:left;margin-left: 10%;margin-bottom:10px;">
-                                    <li style="font-size:17px;"><strong> Broken Half</strong></li>
-                                    <li>Jessie Cave</li>
-                                </ul>
-
-                                <hr style="margin-left: auto;margin-right:auto;width:90%;opacity:10;">   
-
-
-                                <ul id="no-bulletpoints" style="text-align:left;margin-left: 10%;margin-bottom:10%;">
-                                    <li style="font-size:17px;"><strong> Sea Of Tranquility</strong></li>
-                                    <li>Emily St.John Mandel</li>
-                                </ul>
-                
-                                
-                            </div>
-                        </div>
-                    </div>
-
-
-
-
-
-
-
-
-                    <div class="carousel-item ">
-                    <div style="word-wrap: break-word;width:101%;margin-top:5%;margin-left:-0.5%;height:447px;">
-                            <div style="text-align:center;">
-                                <ul id="no-bulletpoints" style="text-align:left;margin-left: 10%;margin-bottom:10px;">
-                                    <li style="font-size:17px;"><strong>Harry Potter</strong></li>
-                                    <li>J.K.Rowling</li>
-                                </ul>
-                
-                                <hr style="margin-left: auto;margin-right:auto;width:90%;opacity:10;">   
-
-
-                                <ul id="no-bulletpoints" style="text-align:left;margin-left: 10%;margin-bottom:10px;">
-                                    <li style="font-size:17px;"><strong> Broken Half</strong></li>
-                                    <li>Jessie Cave</li>
-                                </ul>
-
-                                <hr style="margin-left: auto;margin-right:auto;width:90%;opacity:10;">   
-
-
-                                <ul id="no-bulletpoints" style="text-align:left;margin-left: 10%;margin-bottom:10%;">
-                                    <li style="font-size:17px;"><strong> Sea Of Tranquility</strong></li>
-                                    <li>Emily St.John Mandel</li>
-                                </ul>
-                
-                                
-                            </div>
-                        </div>
-                    </div>
-
-
-
-
-
- -->
-
-                    <!-- end Carousel -->
-
-                <!-- <div style="display: flex; justify-content: center;margin-top:115%;">
-                    <button id='view-all' class="writereview" style="font-family: Script MT Bold;">View All</button>
-                </div>
-
-            </div>
-            
-
-
-
-
- -->
-            <!-- ignored -->
-            <!-- second carousel -->
-            <!-- <div  style="width:100%;word-wrap: break-word;">
-            <div class="side-border" style="text-align:center;">
-                -->
-                <!-- Carousel -->
-                <!-- <div id="myCarousel" class="carousel slide " data-ride="carousel" data-interval="1500"> -->
-
-                <!-- Indicators -->
-                <!-- <ul class="carousel-indicators">
-                    <li data-target="#myCarousel" data-slide-to="0"></li>
-                    <li data-target="#myCarousel" data-slide-to="1" class="active"></li>
-                    <li data-target="#myCarousel" data-slide-to="2"></li>
-                </ul>
- -->
-
-                <!-- Slideshow -->
-                <!-- <div class="carousel-inner">
-
-
-
-
-
-
-
-
-
-
-
-                    <h5 style="margin-top:10%;margin-bottom:10%;font-family: Script MT Bold;">Followers</h5>
-                    <div class="carousel-item active">
-                        <div style="word-wrap: break-word;width:101%;margin-top:5%;margin-left:-0.5%;height:447px;">
-                            <div style="text-align:center;">
-                                <ul id="no-bulletpoints" style="text-align:left;margin-left: 10%;margin-bottom:10px;">
-                                    <li style="font-size:17px;"><strong>Harry Potter</strong></li>
-                                    <li>J.K.Rowling</li>
-                                </ul>
-                
-                                <hr style="margin-left: auto;margin-right:auto;width:90%;opacity:10;">   
-
-
-                                <ul id="no-bulletpoints" style="text-align:left;margin-left: 10%;margin-bottom:10px;">
-                                    <li style="font-size:17px;"><strong> Broken Half</strong></li>
-                                    <li>Jessie Cave</li>
-                                </ul>
-
-                                <hr style="margin-left: auto;margin-right:auto;width:90%;opacity:10;">   
-
-
-                                <ul id="no-bulletpoints" style="text-align:left;margin-left: 10%;margin-bottom:10%;">
-                                    <li style="font-size:17px;"><strong> Sea Of Tranquility</strong></li>
-                                    <li>Emily St.John Mandel</li>
-                                </ul>
-                
-                                
-                            </div>
-                        </div>    
-                    </div>
-
-
-
-
-
-                    <div class="carousel-item ">
-                    <div style="word-wrap: break-word;width:101%;margin-top:5%;margin-left:-0.5%;height:447px;">
-                            <div style="text-align:center;">
-                                <ul id="no-bulletpoints" style="text-align:left;margin-left: 10%;margin-bottom:10px;">
-                                    <li style="font-size:17px;"><strong>Harry Potter</strong></li>
-                                    <li>J.K.Rowling</li>
-                                </ul>
-                
-                                <hr style="margin-left: auto;margin-right:auto;width:90%;opacity:10;">   
-
-
-                                <ul id="no-bulletpoints" style="text-align:left;margin-left: 10%;margin-bottom:10px;">
-                                    <li style="font-size:17px;"><strong> Broken Half</strong></li>
-                                    <li>Jessie Cave</li>
-                                </ul>
-
-                                <hr style="margin-left: auto;margin-right:auto;width:90%;opacity:10;">   
-
-
-                                <ul id="no-bulletpoints" style="text-align:left;margin-left: 10%;margin-bottom:10%;">
-                                    <li style="font-size:17px;"><strong> Sea Of Tranquility</strong></li>
-                                    <li>Emily St.John Mandel</li>
-                                </ul>
-                
-                                
-                            </div>
-                        </div>
-                    </div>
-
-
-
-
-
-
-
-
-                    <div class="carousel-item ">
-                    <div style="word-wrap: break-word;width:101%;margin-top:5%;margin-left:-0.5%;height:447px;">
-                            <div style="text-align:center;">
-                                <ul id="no-bulletpoints" style="text-align:left;margin-left: 10%;margin-bottom:10px;">
-                                    <li style="font-size:17px;"><strong>Harry Potter</strong></li>
-                                    <li>J.K.Rowling</li>
-                                </ul>
-                
-                                <hr style="margin-left: auto;margin-right:auto;width:90%;opacity:10;">   
-
-
-                                <ul id="no-bulletpoints" style="text-align:left;margin-left: 10%;margin-bottom:10px;">
-                                    <li style="font-size:17px;"><strong> Broken Half</strong></li>
-                                    <li>Jessie Cave</li>
-                                </ul>
-
-                                <hr style="margin-left: auto;margin-right:auto;width:90%;opacity:10;">   
-
-
-                                <ul id="no-bulletpoints" style="text-align:left;margin-left: 10%;margin-bottom:10%;">
-                                    <li style="font-size:17px;"><strong> Sea Of Tranquility</strong></li>
-                                    <li>Emily St.John Mandel</li>
-                                </ul>
-                
-                                
-                            </div>
-                        </div>
-                    </div>
-
-
-
-
-
- -->
-
-                    <!-- end Carousel -->
-
-                <!-- <div style="display: flex; justify-content: center;margin-top:115%;">
-                    <button id='view-all' class="writereview" style="font-family: Script MT Bold;">View All</button>
-                </div>
-
-            </div> -->
-            
-
-
-
-
-
-
-
-
-
-
-
-
-
+        <div style="word-wrap: break-word;width:1%;">
         </div>
     </div>
 </div>
