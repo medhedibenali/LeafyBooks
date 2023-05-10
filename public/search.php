@@ -1,5 +1,5 @@
 <?php
-require_once dirname(__FILE__, 3) . '/config/config.php';
+require_once dirname(__FILE__, 2) . '/config/config.php';
 require_once PUBLIC_PATH . '/php/SearchManager.php';
 
 $pageTitle = 'Search';
