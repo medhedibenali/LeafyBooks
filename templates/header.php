@@ -101,7 +101,7 @@ if (isset($_SESSION['username'])) {
                                 <img src="img/users/<?= $user->image ?>" class="profilePic" alt="profile-picture">
                             </a>
                             <div class="dropdown-menu" aria-labelledby="profileDropdown">
-                                <a class="dropdown-item" href="user-profile.php"><i class="fa-solid fa-book-open-reader"></i>View Profile</a>
+                                <a class="dropdown-item" href="user.php"><i class="fa-solid fa-book-open-reader"></i>View Profile</a>
                                 <a class="dropdown-item" href="php/Disconnect.php"><i class="fas fa-sign-out-alt me-2"></i></i>Disconnect</a>
                             </div>
                         </div>

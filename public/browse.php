@@ -61,7 +61,7 @@ $isbn = $tagsRepository->find(['tag' => $tag]);
                     <tr>
                         <td> <a href=<?= "book-page.php?isbn=$book->isbn" ?>><img src=<?= $book->image ?>></a></td>
                         <td> <a href=<?= "book-page.php?isbn=$book->isbn" ?>><?= $book->title ?> </a></td>
-                        <td> <a href=<?= "author-template.php?id=$book->author" ?>><?= "$author->first_name $author->last_name" ?> </a></td>
+                        <td> <a href=<?= "author.php?id=$book->author" ?>><?= "$author->first_name $author->last_name" ?> </a></td>
                         <td> <?= $book->rating ?>
                             <div>
                                 <?php
