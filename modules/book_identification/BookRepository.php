@@ -3,7 +3,6 @@ require_once dirname(__FILE__, 2) . '/autoloader.php';
 
 class BookRepository extends Repository
 {
-
     public function __construct()
     {
         $tableName = 'books';

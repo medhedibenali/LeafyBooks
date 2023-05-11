@@ -24,7 +24,7 @@ $percentages = getPercentages($isbn);
             </td>
             <td>
                 <div class="rating-bar">
-                    <div class="ratingper"  data-aos="example-anim" per="<?= $percentages[4] ?>%" style="max-width:<?= $percentages[4] ?>%"></div>
+                    <div class="ratingper" data-aos="example-anim" per="<?= $percentages[4] ?>%" style="max-width:<?= $percentages[4] ?>%"></div>
                 </div>
             </td>
         </tr>
@@ -54,7 +54,7 @@ $percentages = getPercentages($isbn);
             </td>
             <td>
                 <div class="rating-bar">
-                    <div class="ratingper" data-aos="example-anim"  per="<?= $percentages[1] ?>%" style="max-width:<?= $percentages[1] ?>%"></div>
+                    <div class="ratingper" data-aos="example-anim" per="<?= $percentages[1] ?>%" style="max-width:<?= $percentages[1] ?>%"></div>
                 </div>
             </td>
         </tr>
@@ -64,7 +64,7 @@ $percentages = getPercentages($isbn);
             </td>
             <td>
                 <div class="rating-bar">
-                    <div class="ratingper" data-aos="example-anim"  per="<?= $percentages[0] ?>%" style="max-width:<?= $percentages[0] ?>%"></div>
+                    <div class="ratingper" data-aos="example-anim" per="<?= $percentages[0] ?>%" style="max-width:<?= $percentages[0] ?>%"></div>
                 </div>
             </td>
         </tr>

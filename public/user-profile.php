@@ -5,15 +5,12 @@ $userRepo = new UserRepository();
 // USED GET METHOD
 $user = $userRepo->find(array("username" => $_GET['username']));
 
-
 $bookRepo = new BookRepository();
-
 
 $readActRepo = new ReadActRepository();
 $toreadActs = $readActRepo->find(array("username" => $_GET['username'], 'status' => 'toread'));
 $currentreadActs = $readActRepo->find(array("username" => $_GET['username'], 'status' => 'currentlyreading'));
 $finishreadActs = $readActRepo->find(array("username" => $_GET['username'], 'status' => 'finishedreading'));
-
 
 ?>
 
@@ -56,7 +53,6 @@ $finishreadActs = $readActRepo->find(array("username" => $_GET['username'], 'sta
         </tbody>
     </table>
 
-
     <?php if (!empty($toreadActs)) { ?>
         <?php $i = 0; ?>
         <h4> <?= $user->username ?> wants to read</h4>
@@ -92,7 +88,6 @@ $finishreadActs = $readActRepo->find(array("username" => $_GET['username'], 'sta
     <?php } else { ?>
         <h1><?= $user->username ?> has not added any books</h1>
     <?php } ?>
-
 
     <?php if (!empty($currentreadActs)) { ?>
         <?php $i = 0; ?>
@@ -130,10 +125,6 @@ $finishreadActs = $readActRepo->find(array("username" => $_GET['username'], 'sta
         <h1><?= $user->username ?> is not currently reading any books</h1>
     <?php } ?>
 
-
-
-
-
     <?php if (!empty($finishreadActs)) { ?>
         <?php $i = 0; ?>
         <h4> <?= $user->username ?> finished reading</h4>
@@ -169,7 +160,6 @@ $finishreadActs = $readActRepo->find(array("username" => $_GET['username'], 'sta
     <?php } else { ?>
         <h1><?= $user->username ?> has not finished any books</h1>
     <?php } ?>
-
 
 </body>
 
