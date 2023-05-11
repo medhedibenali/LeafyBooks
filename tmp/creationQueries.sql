@@ -1,7 +1,8 @@
 -- work in progress
+-- web_project_db
+CREATE DATABASE `web_project_db`;
 -- web_project_user
 CREATE USER 'web_project_user' @'localhost' IDENTIFIED BY 'password';
-CREATE DATABASE `web_project_db`;
 GRANT INSERT,
     SELECT,
     UPDATE,

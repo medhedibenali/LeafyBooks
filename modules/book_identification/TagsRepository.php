@@ -49,4 +49,12 @@ class TagsRepository extends Repository
         $response->execute(['username' => $username, 'status' => $status]);
         return $response->fetchAll(PDO::FETCH_OBJ);
     }
+
+    public function getAllTags()
+    {
+        $request = 'select distinct tag from ' . $this->tableName;
+        $response = $this->db->prepare($request);
+        $response->execute();
+        return $response->fetchAll(PDO::FETCH_OBJ);
+    }
 }

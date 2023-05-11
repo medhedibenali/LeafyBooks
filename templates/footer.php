@@ -29,6 +29,9 @@
         </div>
     </div>
 </footer>
+<botton id="back-to-top-btn">
+    <i class="fa fa-angle-double-up"></i>
+</botton>
 
 <?php
 

@@ -2,8 +2,8 @@
 session_start();
 
 require_once dirname(__FILE__, 2) . '/config/config.php';
-require TEMPLATES_PATH . '/verification.php';
 require_once MODULES_PATH . '/autoloader.php';
+require TEMPLATES_PATH . '/verification.php';
 
 $pageTitle = 'My Books';
 
@@ -88,7 +88,7 @@ $bookRepository = new BookRepository();
     ?>
         <div class="content">
             <?php
-            require_once TEMPLATES_PATH . '/rating-static-percentage.php';
+            require TEMPLATES_PATH . '/rating-static-percentage.php';
             ?>
         </div>
     <?php
