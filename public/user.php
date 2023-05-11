@@ -57,12 +57,13 @@ require TEMPLATES_PATH . '/header.php';
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <?php
-
+$user = $UserRepo->find(array("username" => $_GET['username']));
 // inject js code
 echo '<script>';
 
 //this is for the username
 echo 'const username = "' . $user->username . '";';
+
 
 echo '</script>';
 
@@ -206,7 +207,7 @@ echo '</script>';
                     <div style="display: flex; justify-content: center;margin-bottom: 10%;">
                         <!-- I need this to refer to the book search section -->
                         <a href="#">
-                            <button id='view-all' class="writereview" style="font-family: Script MT Bold;">View All</button>
+                            <button id='view-all' class="button" style="font-family: Script MT Bold;">View All</button>
                         </a>
                     </div>
                 <?php } ?>
@@ -294,7 +295,7 @@ echo '</script>';
                                 <div id="piechart1" style="height:300px;"></div>
                                 <div style="display: flex; justify-content: center;margin-top: 23%;">
                                     <a href="<?= "stats.php?username=$user->username&status=finished_reading&time=0" ?>">
-                                        <button id='view-all' class="writereview" style="font-family: Script MT Bold;">Stats</button>
+                                        <button id='view-all' class="button" style="font-family: Script MT Bold;">Stats</button>
                                     </a>
                                 </div>
                             </div>
@@ -335,7 +336,7 @@ echo '</script>';
                                 <div id="piechart2" style="height:300px;"></div>
                                 <div style="display: flex; justify-content: center;margin-top: 5%;">
                                     <a href="<?= "stats.php?username=$user->username&status=to_read&time=0" ?>">
-                                        <button id='view-all' class="writereview" style="font-family: Script MT Bold;">Stats</button>
+                                        <button id='view-all' class="button" style="font-family: Script MT Bold;">Stats</button>
                                     </a>
                                 </div>
                             </div>
@@ -378,7 +379,7 @@ echo '</script>';
                                 <div id="piechart3" style="height:300px;"></div>
                                 <div style="display: flex; justify-content: center;margin-top: 5%;">
                                     <a href="<?= "stats.php?username=$user->username&status=currently_reading&time=0" ?>">
-                                        <button id='view-all' class="writereview" style="font-family: Script MT Bold;">Stats</button>
+                                        <button id='view-all' class="button" style="font-family: Script MT Bold;">Stats</button>
                                     </a>
                                 </div>
                             </div>
@@ -420,12 +421,12 @@ echo '</script>';
                             <div style="display: flex; justify-content: center;margin-bottom: 10%;">
                                 <!-- I need this to refer to the book search section -->
                                 <a href="#">
-                                    <button id='view-all' class="writereview" style="font-family: Script MT Bold;">View All</button>
+                                    <button id='view-all' class="button" style="font-family: Script MT Bold;">View All</button>
                                 </a>
 
                                 <!-- I need this to refer to the review section -->
                                 <a href="#">
-                                    <button id='reviews' style="margin-left:5px;font-family: Script MT Bold;" class="writereview">Reviews</button>
+                                    <button id='reviews' style="margin-left:5px;font-family: Script MT Bold;" class="button">Reviews</button>
                                 </a>
                             </div>
                         <?php } ?>
@@ -466,7 +467,7 @@ echo '</script>';
                             <div style="display: flex; justify-content: center;margin-top:15%;">
                                 <!-- need to link here aswell -->
                                 <a href="#">
-                                    <button id='view-all' class="writereview" style="font-family: Script MT Bold;">View All</button>
+                                    <button id='view-all' class="button" style="font-family: Script MT Bold;">View All</button>
                                 </a>
                             </div>
                         <?php } ?>
@@ -503,7 +504,7 @@ echo '</script>';
                             ?>
 
                             <div style="display: flex; justify-content: center;margin-bottom: 10%;">
-                                <a href="#"><button id='view-all' class="writereview" style="font-family: Script MT Bold;">View All</button></a>
+                                <a href="#"><button id='view-all' class="button" style="font-family: Script MT Bold;">View All</button></a>
                             </div>
                         <?php } ?>
                     </div>

@@ -76,7 +76,7 @@ $bookRepository = new BookRepository();
     $sort = $_POST["sort"] ?? 'start_date';
     $orderBy = $_POST["exampleRadios"] ?? 'DESC';
 
-    $list = $readActRepository->find(['username' => 'user1'], ['order_by' => [$sort => $orderBy]]);
+    $list = $readActRepository->find(['username' => $_SESSION['username']], ['order_by' => [$sort => $orderBy]]);
     foreach ($list as $element) {
         $book = $bookRepository->find(['isbn' => $element->isbn]);
         $percentage = ($book->rating) * 20;

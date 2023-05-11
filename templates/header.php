@@ -38,7 +38,7 @@ if (isset($_SESSION['username'])) {
 <!--  NAVBAR   -->
 <nav class="navbar navbar-expand-lg t d-flex justify-content-center sticky-lg-top">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#"><i class="fa-solid fa-leaf"></i> LeafyBooks</a>
+        <a class="navbar-brand" href="index.php"><i class="fa-solid fa-leaf"></i> LeafyBooks</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -102,7 +102,7 @@ if (isset($_SESSION['username'])) {
                                 <img src="img/users/<?= $user->image ?>" class="profilePic" alt="profile-picture">
                             </a>
                             <div class="dropdown-menu" aria-labelledby="profileDropdown">
-                                <a class="dropdown-item" href="user.php"><i class="fa-solid fa-book-open-reader"></i>View Profile</a>
+                                <a class="dropdown-item" href="user.php?username=<?= $_SESSION['username']?>"><i class="fa-solid fa-book-open-reader"></i>View Profile</a>
                                 <a class="dropdown-item" href="php/Disconnect.php"><i class="fas fa-sign-out-alt me-2"></i></i>Disconnect</a>
                             </div>
                         </div>
