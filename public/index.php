@@ -79,7 +79,7 @@ $sciFi = $bookRepo->find(['genre' => trim('sci-fi')]);
 $thriller = $bookRepo->find(['genre' => trim('thriller')]);
 $ya = $bookRepo->find(['genre' => trim('young adult')]);
 $romance = $bookRepo->find(['genre' => trim('romance')]);
-$pictures = array(
+$images = array(
     'fantasy' => $fantasy,
     'sciFi' => $sciFi,
     'thriller' => $thriller,

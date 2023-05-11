@@ -7,7 +7,7 @@ $icons = array(
     'youngAdult' => "bi bi-cloud-rain-fill cloudicon",
 );
 
-$genrePicture = array(
+$genreImage = array(
     'fantasy' => "img/fantasy.png",
     'sciFi' => "img/sci-fi.png",
     'thriller' => "img/thriller.png",
@@ -66,7 +66,7 @@ similar to the likes of To All the Boys I've Loved Before, The Hate U Give, and 
                                 <p class="genre"><?= $key ?></p>
                                 <i class="<?= $value ?>" style="color:white;" id="my-icons"></i>
                             </div>
-                            <img src="<?= $genrePicture[$key] ?>" class="genre-picture">
+                            <img src="<?= $genreImage[$key] ?>" class="genre-picture">
                             <p class="genre-description">
                                 <?= ${$key . "String"} ?>
                             </p>
@@ -81,17 +81,17 @@ similar to the likes of To All the Boys I've Loved Before, The Hate U Give, and 
                                 <div class="carousel-inner2">
                                     <div class="carousel-item active">
                                         <a href="book-page.php?isbn=<?= ($pictures[$key][0])->isbn ?>">
-                                            <img class="d-block w-100" src="<?= ($pictures[$key][0])->picture ?>" alt="First slide" id="f1">
+                                            <img class="d-block w-100" src="<?= ($images[$key][0])->image ?>" alt="First slide" id="f1">
                                         </a>
                                     </div>
                                     <div class="carousel-item">
-                                        <a href="book-page.php?isbn=<?= ($pictures[$key][1])->isbn ?>">
-                                            <img class="d-block w-100" src="<?= ($pictures[$key][1])->picture ?>" alt="Second slide" id="f2">
+                                        <a href="book-page.php?isbn=<?= ($images[$key][1])->isbn ?>">
+                                            <img class="d-block w-100" src="<?= ($images[$key][1])->image ?>" alt="Second slide" id="f2">
                                         </a>
                                     </div>
                                     <div class="carousel-item">
-                                        <a href="book-page.php?isbn=<?= ($pictures[$key][2])->isbn ?>">
-                                            <img class="d-block w-100" src="<?= ($pictures[$key][2])->picture ?>" alt="Third slide" id="f3">
+                                        <a href="book-page.php?isbn=<?= ($images[$key][2])->isbn ?>">
+                                            <img class="d-block w-100" src="<?= ($images[$key][2])->image ?>" alt="Third slide" id="f3">
                                         </a>
                                     </div>
                                 </div>
