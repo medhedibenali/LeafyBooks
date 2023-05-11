@@ -63,6 +63,20 @@ if ($time == -1) {
 
 // Everything checks out
 $pageTitle = "$user->username's stats - LeafyBooks";
+
+$stylesheets = array(
+    // Google fonts for stats
+    array(
+        'href' => 'https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,200&display=swap'
+    ),
+
+    // Adding Carousel
+    array(
+        'href' => 'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'
+    ),
+    'css/user.css'
+);
+
 require TEMPLATES_PATH . '/header.php';
 ?>
 

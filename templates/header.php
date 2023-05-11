@@ -17,19 +17,8 @@ $stylesheets = array_merge(
             'crossorigin' => 'anonymous',
             'referrerpolicy' => 'no-referrer'
         ),
-
-        // Google fonts for stats
-        array(
-            'href' => 'https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,200&display=swap'
-        ),
-
-        // Adding Carousel
-        array(
-            'href' => 'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'
-        ),
-
         'css/header.css',
-        'css/user.css'
+        'css/footer.css'
     ),
     $stylesheets ?? []
 );
