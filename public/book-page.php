@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (!isset($_SESSION)) {
+    session_start();
+}
 
 require_once dirname(__FILE__, 2) . '/config/config.php';
 require_once MODULES_PATH . '/autoloader.php';
@@ -131,11 +133,23 @@ $reviewsCount = count($userReviewsRepository->find(['isbn' => $isbn]));
             <h2 style="font-family:'DecoType Naskh';">
                 Ratings & Reviews
             </h2>
-            <img src="img/users/<?= $user->image ?>" id="userpic">
-            <br>
-            <p id="question">
-                what do you think, <?= $user->username ?>?
-            </p>
+            <?php
+            if ($user !== false) {
+            ?>
+                <img src="img/users/<?= $user->image ?>" id="userpic">
+                <br>
+                <p id="question">
+                    what do you think, <?= $user->username ?>?
+                </p>
+            <?php
+            } else {
+            ?>
+                <p id="question">
+                    what do you think?
+                </p>
+            <?php
+            }
+            ?>
 
             <div class="rating-portion">
                 <?php

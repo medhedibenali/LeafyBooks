@@ -1,6 +1,7 @@
 <?php
-session_start();
-
+if (!isset($_SESSION)) {
+    session_start();
+}
 require_once dirname(__FILE__, 2) . '/config/config.php';
 require_once MODULES_PATH . '/autoloader.php';
 
@@ -22,7 +23,6 @@ $stylesheets = array_merge(
     ),
     $stylesheets ?? []
 );
-
 require dirname(__FILE__) . '/base-header.php';
 
 $userRepository = new UserRepository();
@@ -35,6 +35,7 @@ if (isset($_SESSION['username'])) {
 ?>
 
 <!--  NAVBAR   -->
+
 <nav class="navbar navbar-expand-lg t d-flex justify-content-center sticky-lg-top">
     <div class="container-fluid">
         <a class="navbar-brand" href="#"><i class="fa-solid fa-leaf"></i> LeafyBooks</a>
@@ -46,13 +47,20 @@ if (isset($_SESSION['username'])) {
                 <li class="nav-item">
                     <a class="nav-link" href="index.php" style="margin-right: 20px;">Home</a>
                 </li>
+                <!-- TODO link to browse -->
                 <li class="nav-item">
                     <div class="dropdown">
-                        <a class=" nav-link dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-left: 20px; margin-right: 20px;">Browse</a>
+                        <a class="nav-link dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-left: 20px; margin-right: 20px;">Browse</a>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
+                            <a class="dropdown-item" href="browse.php?tag=action">Action</a>
+                            <a class="dropdown-item" href="browse.php?tag=fantasy">Fantasy</a>
+                            <a class="dropdown-item" href="browse.php?tag=adventure">Adventure</a>
+                            <a class="dropdown-item" href="browse.php?tag=horror">Horror</a>
+                            <a class="dropdown-item" href="browse.php?tag=thriller">Thriller</a>
+                            <a class="dropdown-item" href="browse.php?tag=sci-fi">Sci-fi</a>
+                            <a class="dropdown-item" href="browse.php?tag=mystery">Mystery</a>
+                            <a class="dropdown-item" href="browse.php?tag=contemporary">Contempopary</a>
+                            <a class="dropdown-item" href="browse.php?tag=young+adult">Young Adult</a>
                         </div>
                     </div>
                 </li>
@@ -67,15 +75,15 @@ if (isset($_SESSION['username'])) {
                 <li class="nav-item">
                     <form class="d-flex" role="search" action="search.php" method="get">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search" style="width: 20rem;margin-left: 3rem">
-                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <a  href="advanced-search.php" ><i class="fa-solid fa-magnifying-glass"></i> </a>
                     </form>
                 </li>
+
             </ul>
         </div>
-        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <div class="collapse navbar-collapse justify-content-end" id="navbarProfile">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="#"></a>
                     <?php
                     if (!$user) {
                     ?>
@@ -90,12 +98,11 @@ if (isset($_SESSION['username'])) {
                     <?php } else { ?>
                         <div class="dropdown">
                             <a class=" nav-link dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-
-                                <img src="img/users/<?= $user->image ?>" class="profilePic">
+                                <img src="img/users/<?= $user->image ?>" class="profilePic" alt="profile-picture">
                             </a>
                             <div class="dropdown-menu" aria-labelledby="profileDropdown">
-                                <a class="dropdown-item" href="user.php"><i class="fa-solid fa-book-open-reader"></i> View Profile</a>
-                                <a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt me-2"></i></i>Disconnect</a>
+                                <a class="dropdown-item" href="user.php"><i class="fa-solid fa-book-open-reader"></i>View Profile</a>
+                                <a class="dropdown-item" href="php/Disconnect.php"><i class="fas fa-sign-out-alt me-2"></i></i>Disconnect</a>
                             </div>
                         </div>
                     <?php } ?>
