@@ -5,7 +5,7 @@ require_once MODULES_PATH . '/autoloader.php';
 $username = $_GET['username'];
 $status = $_GET['status'];
 $time = $_GET['time'];
-$TagRepo = new TagRepository();
+$TagsRepo = new TagsRepository();
 // Getting stat data for my first pie chart  
 $moods = [
     'adventurous' => 0,
@@ -27,7 +27,7 @@ $moods = [
 $sum = 0;
 // Modify each key with their number of occurences in the database
 foreach ($moods as $mood => $value) {
-    $Number = $TagRepo->TagNumber($username, $status, $time, $mood);
+    $Number = $TagsRepo->TagNumber($username, $status, $time, $mood);
     $sum += $Number->Total;
     $moods[$mood] = $Number->Total;
 }

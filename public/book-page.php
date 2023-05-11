@@ -32,8 +32,8 @@ require TEMPLATES_PATH . '/header.php';
 $authorRepository = new AuthorRepository();
 $author = $authorRepository->find(['id' => $book->author]);
 
-$tagRepository = new TagsRepository();
-$bookByTags = $tagRepository->find(['isbn' => $isbn]);
+$tagsRepository = new TagsRepository();
+$bookByTags = $tagsRepository->find(['isbn' => $isbn]);
 
 $userRepository = new UserRepository();
 $user = $userRepository->find(['username' => $_SESSION['username']]);

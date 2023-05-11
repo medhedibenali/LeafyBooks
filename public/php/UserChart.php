@@ -4,14 +4,14 @@ require_once MODULES_PATH . '/autoloader.php';
 
 $username = $_GET['username'];
 $status = $_GET['status'];
-$TagRepo = new TagRepository();
+$TagsRepo = new TagsRepository();
 // Getting stat data for my first pie chart  
 $genres = [];
 
 $sum = 0;
 
 // Modify each key with their number of occurences in the database
-$Results = $TagRepo->getSortedTags($username, $status);
+$Results = $TagsRepo->getSortedTags($username, $status);
 
 foreach ($Results as $Result) {
     $genres[$Result->tag] = $Result->Total;
