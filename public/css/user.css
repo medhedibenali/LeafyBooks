@@ -1,0 +1,61 @@
+#UserImagePos {
+    margin-top: 15%;
+    width: 200px;
+    height: 200px;
+    box-shadow: 0 0 10px #141515;
+    border-radius: 50%;
+    float: left;
+}
+
+.username {
+
+    text-align: center;
+    margin-top: 20%;
+    float: left;
+}
+
+.main-border {
+    border: solid #ccc 2px;
+    height: 500px;
+}
+
+.current-read,
+.recent-read,
+.favorites {
+    text-align: center;
+    margin-bottom: 10%;
+}
+
+.discover-read {
+    width: 10%;
+}
+
+.side-border {
+    border: solid #ccc 2px;
+    height: 500px;
+}
+
+#no-bulletpoints {
+    list-style-type: none;
+}
+
+.carousel-container {
+    width: 500px;
+    height: 300px;
+    overflow: scroll;
+    scroll-snap-type: x mandatory;
+}
+
+.carousel-wrapper {
+    width: 2000px;
+    height: 300px;
+    display: flex;
+    scroll-snap-type: x mandatory;
+}
+
+.carousel-slide {
+    width: 500px;
+    height: 300px;
+    display: inline-block;
+    scroll-snap-align: start;
+}

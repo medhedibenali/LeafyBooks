@@ -80,7 +80,7 @@ $bookRepository = new BookRepository();
     foreach ($list as $element) {
         $book = $bookRepository->find(['isbn' => $element->isbn]);
         $percentage = ($book->rating) * 20;
-        echo "<a href='book-page.php?isbn=" . $book->isbn . "'> <img src='" . $book->image . "' alt='Book Cover'></a>";
+        echo "<a href='book-page.php?isbn=" . $book->isbn . "'> <img src='img/books/" . $book->image . "' alt='Book Cover'></a>";
         echo "<div class='content'>" . $book->title . "</div>";
         echo "<div class='content'>" . $book->genre . "</div>";
         echo "<div class='content'>" . $book->author . "</div>";

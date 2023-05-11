@@ -31,6 +31,7 @@ class UserRepository extends Repository
         );
         return parent::insert($params);
     }
+
     public function countFindByUsernameOrFullName($search = "")
     {
         $request = 'select count(*) as total from ' . $this->tableName . '
@@ -39,6 +40,7 @@ class UserRepository extends Repository
         $response->execute([$search, $search]);
         return $response->fetchAll(PDO::FETCH_OBJ);
     }
+
     public function findByUsernameOrFullNameLimit($search = "", $offset = 0, $numberMAX = 0)
     {
         $request = 'select * from ' . $this->tableName . '

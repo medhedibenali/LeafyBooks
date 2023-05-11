@@ -23,6 +23,7 @@ $stylesheets = array_merge(
     ),
     $stylesheets ?? []
 );
+
 require dirname(__FILE__) . '/base-header.php';
 
 $userRepository = new UserRepository();
@@ -35,7 +36,6 @@ if (isset($_SESSION['username'])) {
 ?>
 
 <!--  NAVBAR   -->
-
 <nav class="navbar navbar-expand-lg t d-flex justify-content-center sticky-lg-top">
     <div class="container-fluid">
         <a class="navbar-brand" href="#"><i class="fa-solid fa-leaf"></i> LeafyBooks</a>
@@ -47,7 +47,6 @@ if (isset($_SESSION['username'])) {
                 <li class="nav-item">
                     <a class="nav-link" href="index.php" style="margin-right: 20px;">Home</a>
                 </li>
-                <!-- TODO link to browse -->
                 <li class="nav-item">
                     <div class="dropdown">
                         <a class="nav-link dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-left: 20px; margin-right: 20px;">Browse</a>
@@ -75,7 +74,7 @@ if (isset($_SESSION['username'])) {
                 <li class="nav-item">
                     <form class="d-flex" role="search" action="search.php" method="get">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search" style="width: 20rem;margin-left: 3rem">
-                        <a  href="advanced-search.php" ><i class="fa-solid fa-magnifying-glass"></i> </a>
+                        <a href="advanced-search.php"><i class="fa-solid fa-magnifying-glass"></i> </a>
                     </form>
                 </li>
 
@@ -95,7 +94,9 @@ if (isset($_SESSION['username'])) {
                                 <button type="button" class="navButton">Log in</button>
                             </a>
                         </div>
-                    <?php } else { ?>
+                    <?php
+                    } else {
+                    ?>
                         <div class="dropdown">
                             <a class=" nav-link dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <img src="img/users/<?= $user->image ?>" class="profilePic" alt="profile-picture">
@@ -105,7 +106,9 @@ if (isset($_SESSION['username'])) {
                                 <a class="dropdown-item" href="php/Disconnect.php"><i class="fas fa-sign-out-alt me-2"></i></i>Disconnect</a>
                             </div>
                         </div>
-                    <?php } ?>
+                    <?php
+                    }
+                    ?>
                 </li>
             </ul>
         </div>

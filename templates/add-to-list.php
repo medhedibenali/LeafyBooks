@@ -6,8 +6,8 @@ if (!isset($_SESSION['username'])) {
         Please <a href="sign-in.php">login</a> or <a href="sign-up.php">signup</a> to add to a list.
     </div>
 <?php
-} //        Rating Stars
-else {
+} else {
+    //        Rating Stars
 ?>
     <div class="btn-group btn-group-1">
         <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color:darkgreen;border:none;">
