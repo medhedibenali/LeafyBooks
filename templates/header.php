@@ -60,7 +60,7 @@ if (isset($_SESSION['username'])) {
                             <a class="dropdown-item" href="browse.php?tag=sci-fi">Sci-fi</a>
                             <a class="dropdown-item" href="browse.php?tag=mystery">Mystery</a>
                             <a class="dropdown-item" href="browse.php?tag=contemporary">Contempopary</a>
-                            <a class="dropdown-item" href="browse.php?tag=young">Young Adult</a>
+                            <a class="dropdown-item" href="browse.php?tag=young+adult">Young Adult</a>
                         </div>
                     </div>
                 </li>
