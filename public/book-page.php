@@ -24,7 +24,7 @@ $pageTitle = $book->title;
 $stylesheets = array(
     'css/book-identity.css',
     'css/static-rating.css',
-    'css/book-template.css'
+    'css/book-page.css'
 );
 
 require TEMPLATES_PATH . '/header.php';

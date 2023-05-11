@@ -29,8 +29,7 @@ $stylesheets = array_merge(
         ),
 
         'css/header.css',
-        'css/BookTemplate.css',
-        'css/UserTemplate.css'
+        'css/user.css'
     ),
     $stylesheets ?? []
 );
