@@ -213,14 +213,12 @@ echo '</script>';
                                 google.charts.setOnLoadCallback(drawChart);
 
                                 // fetch data
-                                var url = "user_template_chart.php?username=" + username + "&status=" + status;
-                                console.log(url);
+                                var url = "php/UserTemplateChart.php?username=" + username + "&status=" + status;
 
                                 function fetchGenreData() {
                                     var xhr = new XMLHttpRequest();
                                     xhr.open('GET', url, true);
                                     xhr.onload = function() {
-                                        console.log(this.responseText);
                                         if (this.status == 200) {
                                             var responseData = JSON.parse(this.responseText);
 

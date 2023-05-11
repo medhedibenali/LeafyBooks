@@ -222,7 +222,6 @@ echo '</script>';
                     xhr.onload = function() {
                         if (this.status == 200) {
                             if (this.responseText) {
-                                console.log("this is my text" + this.responseText);
                                 var responseData = JSON.parse(this.responseText);
                                 var parsedData = Object.keys(responseData).map(function(key) {
                                     return {
@@ -231,8 +230,6 @@ echo '</script>';
                                     };
                                 });
                                 callback(parsedData);
-                            } else {
-                                console.log("Response text is empty");
                             }
                         }
                     };
@@ -280,7 +277,6 @@ echo '</script>';
                                         // Take me to book section with associated title
                                         // required url is of the form /books/{this.name} where this.name is the category search parameter
                                         window.location.href = "browse.php?tag=" + this.name;
-                                        console.log("Name: " + this.name + ", Value: " + this.y);
                                     }
                                 }
                             }
@@ -288,54 +284,46 @@ echo '</script>';
                     });
                 }
                 // generic get parameters for all request urls
-                RequestUrl = "_pie_chart.php?username=" + username + "&status=" + status + "&time=" + time;
-                redirectUrl = "../templates/";
+                RequestUrl = "PieChart.php?username=" + username + "&status=" + status + "&time=" + time;
+                redirectUrl = "php/";
 
                 // Generate first pie chart
                 // Need to modify the url when refactoring
-                fetchPieChartData(redirectUrl + "first" + RequestUrl, function(data) {
+                fetchPieChartData(redirectUrl + "First" + RequestUrl, function(data) {
                     if (data.length > 0) {
                         generatePieChart('container', 'Mood', data);
                     } else {
                         var element = document.getElementById('comment1');
                         element.innerHTML = "No data available to draw the pie chart";
-                        console.log("No data available to draw the pie chart");
                     }
                 });
 
                 // Generate second pie chart
-                fetchPieChartData(redirectUrl + "second" + RequestUrl, function(data) {
+                fetchPieChartData(redirectUrl + "Second" + RequestUrl, function(data) {
                     if (data.length > 0) {
                         generatePieChart('second-container', 'Pace', data);
                     } else {
                         var element = document.getElementById('comment2');
                         element.innerHTML = "No data available to draw the pie chart";
-                        console.log("No data available to draw the pie chart");
                     }
                 });
 
                 // // Generate third pie chart
-                fetchPieChartData(redirectUrl + "third" + RequestUrl, function(data) {
+                fetchPieChartData(redirectUrl + "Third" + RequestUrl, function(data) {
                     if (data.length > 0) {
                         generatePieChart('third-container', 'Pages', data);
                     } else {
                         var element = document.getElementById('comment3');
                         element.innerHTML = "No data available to draw the pie chart";
-                        console.log("No data available to draw the pie chart");
                     }
                 });
 
-                // // Generate fourth pie chart
-                // fetchPieChartData('fourth_pie_chart.php'+RequestUrl,function(data){
-                //     generatePieChart('fourth-container','Fiction/Non-Fiction',data);
-                // });
-                fetchPieChartData(redirectUrl + "fourth" + RequestUrl, function(data) {
+                fetchPieChartData(redirectUrl + "Fourth" + RequestUrl, function(data) {
                     if (data.length > 0) {
                         generatePieChart('fourth-container', 'Fiction/Non-Fiction', data);
                     } else {
                         var element = document.getElementById('comment4');
                         element.innerHTML = "No data available to draw the pie chart";
-                        console.log("No data available to draw the pie chart");
                     }
                 });
             </script>
@@ -388,7 +376,7 @@ echo '</script>';
                 // Ajax to get author id
                 function fetchAuthorId(author_name, callback) {
                     var xhr = new XMLHttpRequest();
-                    xhr.open('GET', '../templates/get_author_id.php?author=' + author_name, true);
+                    xhr.open('GET', 'php/GetAuthorId.php?author=' + author_name, true);
                     xhr.onload = function() {
                         if (this.status == 200) {
                             var responseData = JSON.parse(this.responseText);
@@ -407,7 +395,6 @@ echo '</script>';
                     xhr.onload = function() {
                         if (this.status == 200) {
                             if (this.responseText) {
-                                console.log(this.responseText);
                                 var responseData = JSON.parse(this.responseText);
 
                                 // Decode the star symbols in the keys
@@ -420,8 +407,6 @@ echo '</script>';
                                     decodedData[decodedKey] = value;
                                 });
                                 callback(decodedData);
-                            } else {
-                                console.log('');
                             }
                         }
                     };
@@ -472,35 +457,32 @@ echo '</script>';
                 const label = "Number of books";
 
                 // generic get parameters for all request urls
-                RequestUrl = "_bar_chart.php?username=" + username + "&status=" + status + "&time=" + time;
+                RequestUrl = "BarChart.php?username=" + username + "&status=" + status + "&time=" + time;
 
-                fetchBarChartData(redirectUrl + 'first' + RequestUrl, function(data) {
+                fetchBarChartData(redirectUrl + 'First' + RequestUrl, function(data) {
                     if (Object.keys(data).length > 0) {
                         generateChart('first-chart', Object.keys(data), label, Object.values(data), true, true, false);
                     } else {
                         var element = document.getElementById('bar1');
                         element.innerHTML = "No data available to draw the pie chart";
-                        console.log("No data available to draw the pie chart");
                     }
                 });
 
-                fetchBarChartData(redirectUrl + 'second' + RequestUrl, function(data) {
+                fetchBarChartData(redirectUrl + 'Second' + RequestUrl, function(data) {
                     if (Object.keys(data).length > 0) {
                         generateChart('second-chart', Object.keys(data), label, Object.values(data), true, true, true);
                     } else {
                         var element = document.getElementById('bar2');
                         element.innerHTML = "No data available to draw the pie chart";
-                        console.log("No data available to draw the pie chart");
                     }
                 });
 
-                fetchBarChartData(redirectUrl + 'third' + RequestUrl, function(data) {
+                fetchBarChartData(redirectUrl + 'Third' + RequestUrl, function(data) {
                     if (Object.keys(data).length > 0) {
                         generateChart('third-chart', Object.keys(data), label, Object.values(data), false, false, false);
                     } else {
                         var element = document.getElementById('bar3');
                         element.innerHTML = "No data available to draw the pie chart";
-                        console.log("No data available to draw the pie chart");
                     }
                 });
             </script>
