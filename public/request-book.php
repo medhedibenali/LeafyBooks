@@ -1,8 +1,12 @@
 <?php
 require_once dirname(__FILE__, 2) . '/config/config.php';
-if(!isset($_SESSION))
+
+if (!isset($_SESSION)) {
     session_start();
+}
+
 $pageTitle = "Request Book";
+
 require TEMPLATES_PATH . '/header.php';
 ?>
 
@@ -15,21 +19,29 @@ require TEMPLATES_PATH . '/header.php';
                     font-family:'Lucida Console', 'Courier New', monospace; "> psst we want your help!</small><br> Request To Add A Book To Our Amazing Collection!
                     </h2>
                     <hr>
+
                     <?php
-                    $Msg = "";
-                    if (isset($_SESSION["error"])) {
-                        $Msg = " Please Fill in the Blanks ";
-                        echo '<div class="alert alert-danger">' . $Msg . '</div>';
-                        unset($_SESSION["error"]);
+
+                    if (isset($_SESSION['request-error'])) {
+                    ?>
+                        <div class="alert alert-danger">
+                            Please Fill in the Blanks
+                        </div>
+                    <?php
+                        unset($_SESSION['request-error']);
                     }
 
-                    if (isset($_SESSION["success"])) {
-                        $Msg = " Your Message Has Been Sent ";
-                        echo '<div class="alert alert-success">' . $Msg . '</div>';
-                       unset($_SESSION["success"]);
+                    if (isset($_SESSION['request-success'])) {
+                    ?>
+                        <div class="alert alert-success">
+                            Your Message Has Been Sent
+                        </div>
+                    <?php
+                        unset($_SESSION['request-success']);
                     }
 
                     ?>
+
                 </div>
                 <div class="card-body">
                     <form action="php/BookRequestManager.php" method="post">

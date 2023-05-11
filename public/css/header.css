@@ -47,6 +47,7 @@ a.navbar-brand.active {
 }
 
 @keyframes rotateFall {
+
   /*animations starts with*/
   0% {
     transform: rotate(0deg);
@@ -92,6 +93,7 @@ a.navbar-brand.active {
 }
 
 @keyframes rotateFall {
+
   /*animations starts with*/
   0% {
     transform: rotate(0deg);
@@ -218,6 +220,7 @@ a.navbar-brand.active {
 }
 
 @keyframes rotateFall {
+
   /*animations starts with*/
   0% {
     transform: rotate(0deg);
@@ -276,17 +279,6 @@ a.navbar-brand.active {
   animation-name: btnEntrance;
 }
 
-/* zoomIn */
-/* @keyframes btnEntrance {
-  from {
-    opacity: 0;
-    transform: scale3d(0.3, 0.3, 0.3);
-  }
-  to {
-    opacity: 1;
-  }
-} */
-
 /* fadeInUp */
 @keyframes btnEntrance {
   from {
@@ -305,17 +297,6 @@ a.navbar-brand.active {
   animation-fill-mode: both;
   animation-name: btnExit;
 }
-
-/* zoomOut */
-/* @keyframes btnExit {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-    transform: scale3d(0.3, 0.3, 0.3);
-  }
-} */
 
 /* fadeOutDown */
 @keyframes btnExit {

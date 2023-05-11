@@ -20,7 +20,7 @@ if (!isset($_GET['booksPage'])) {
 $booksResults_per_page = 8;
 $booksPage_first_result = ($booksPage - 1) * $booksResults_per_page;
 
-$search = trim (htmlspecialchars($_GET['search']));
+$search = trim(htmlspecialchars($_GET['search']));
 $result = $bookRepo->countFindByTitleOrAuthor($search);
 $booksNumber_of_result = $result[0]->total;
 $booksNumber_of_page = ceil($booksNumber_of_result / $booksResults_per_page);
