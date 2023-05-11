@@ -45,8 +45,8 @@ and navigating high-school crushes and first romantic experiences. The Young Adu
 real-world stories that capture an authentic teen voice and the emotional stakes of growing up. 
 Be prepared for coming-of-age stories from all walks of life, 
 similar to the likes of To All the Boys I've Loved Before, The Hate U Give, and Simon vs. the Homo Sapiens Agenda.";
-
 ?>
+
 <div data-aos="fade-up">
     <div class="category-box">
         <div class="discover-more">
@@ -58,77 +58,64 @@ similar to the likes of To All the Boys I've Loved Before, The Hate U Give, and 
             $indice = 2;
             foreach ($icons as $key => $value) {
             ?>
-                <?php
-                if ($indice % 2 == 0) {
-                ?>
-                    <div data-aos="fade-right" data-aos-offset="200">
-                    <?php
-                } else {
-                    ?>
-                        <div data-aos="fade-left" data-aos-offset="200" data-aos-delay="200">
 
-                        <?php
-                    }
-                        ?>
-                        <div class="flex-item">
-                            <div class="picture">
-                                <div class="category-head">
-                                    <p class="genre"><?= $key ?></p>
-                                    <i class="<?= $value ?>" style="color:white;" id="my-icons"></i>
-                                </div>
-                                <img src="<?= $genrePicture[$key] ?>" class="genre-picture">
-                                <p class="genre-description">
-                                    <?= ${$key . "String"} ?>
-                                </p>
+                <div data-aos="fade-<?= ($indice % 2 == 0) ? 'right' : 'left' ?>" data-aos-offset="200" <?= ($indice % 2 != 0) ? 'data-aos-delay="200"' : '' ?>>
+                    <div class="flex-item">
+                        <div class="picture">
+                            <div class="category-head">
+                                <p class="genre"><?= $key ?></p>
+                                <i class="<?= $value ?>" style="color:white;" id="my-icons"></i>
                             </div>
-                            <div class="carousel-books">
-                                <div id="<?= 'carouselExampleIndicators' . $indice ?>" class="carousel slide" data-ride="carousel">
-                                    <ol class="carousel-indicators">
-                                        <li data-target="<?= '#carouselExampleIndicators' . $indice ?>" data-slide-to="0" class="active"></li>
-                                        <li data-target="<?= '#carouselExampleIndicators' . $indice ?>" data-slide-to="1"></li>
-                                        <li data-target="<?= '#carouselExampleIndicators' . $indice ?>" data-slide-to="2"></li>
-                                    </ol>
-                                    <div class="carousel-inner2">
-                                        <div class="carousel-item active">
-                                            <a href="book-page.php?isbn=<?= ($pictures[$key][0])->isbn ?>">
-                                                <img class="d-block w-100" src="<?= ($pictures[$key][0])->picture ?>" alt="First slide" id="f1">
-                                            </a>
-                                        </div>
-                                        <div class="carousel-item">
-                                            <a href="book-page.php?isbn=<?= ($pictures[$key][1])->isbn ?>">
-                                                <img class="d-block w-100" src="<?= ($pictures[$key][1])->picture ?>" alt="Second slide" id="f2">
-                                            </a>
-                                        </div>
-                                        <div class="carousel-item">
-                                            <a href="book-page.php?isbn=<?= ($pictures[$key][2])->isbn ?>">
-                                                <img class="d-block w-100" src="<?= ($pictures[$key][2])->picture ?>" alt="Third slide" id="f3">
-                                            </a>
-                                        </div>
+                            <img src="<?= $genrePicture[$key] ?>" class="genre-picture">
+                            <p class="genre-description">
+                                <?= ${$key . "String"} ?>
+                            </p>
+                        </div>
+                        <div class="carousel-books">
+                            <div id="<?= 'carouselExampleIndicators' . $indice ?>" class="carousel slide" data-ride="carousel">
+                                <ol class="carousel-indicators">
+                                    <li data-target="<?= '#carouselExampleIndicators' . $indice ?>" data-slide-to="0" class="active"></li>
+                                    <li data-target="<?= '#carouselExampleIndicators' . $indice ?>" data-slide-to="1"></li>
+                                    <li data-target="<?= '#carouselExampleIndicators' . $indice ?>" data-slide-to="2"></li>
+                                </ol>
+                                <div class="carousel-inner2">
+                                    <div class="carousel-item active">
+                                        <a href="book-page.php?isbn=<?= ($pictures[$key][0])->isbn ?>">
+                                            <img class="d-block w-100" src="<?= ($pictures[$key][0])->picture ?>" alt="First slide" id="f1">
+                                        </a>
                                     </div>
-                                    <a class="carousel-control-prev" href="<?= '#carouselExampleIndicators' . $indice ?>" role="button" data-slide="prev">
-                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                        <span class="sr-only">Previous</span>
-                                    </a>
-                                    <a class="carousel-control-next" href="<?= '#carouselExampleIndicators' . $indice ?>" role="button" data-slide="next" ">
-                    <span class=" carousel-control-next-icon" aria-hidden="true"></span>
-                                        <span class="sr-only">Next</span>
-                                    </a>
+                                    <div class="carousel-item">
+                                        <a href="book-page.php?isbn=<?= ($pictures[$key][1])->isbn ?>">
+                                            <img class="d-block w-100" src="<?= ($pictures[$key][1])->picture ?>" alt="Second slide" id="f2">
+                                        </a>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <a href="book-page.php?isbn=<?= ($pictures[$key][2])->isbn ?>">
+                                            <img class="d-block w-100" src="<?= ($pictures[$key][2])->picture ?>" alt="Third slide" id="f3">
+                                        </a>
+                                    </div>
                                 </div>
+                                <a class="carousel-control-prev" href="<?= '#carouselExampleIndicators' . $indice ?>" role="button" data-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next" href="<?= '#carouselExampleIndicators' . $indice ?>" role="button" data-slide="next">
+                                    <span class=" carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
                             </div>
                         </div>
-
-                        </div>
-                    <?php
-
-                    $indice = $indice + 1;
-                }
-                    ?>
-
                     </div>
-                    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-                    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-                    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+                </div>
 
+            <?php
+                $indice = $indice + 1;
+            }
+            ?>
+
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+            <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
         </div>
     </div>
 </div>

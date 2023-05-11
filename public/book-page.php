@@ -25,7 +25,7 @@ $stylesheets = array(
     "https://unpkg.com/aos@next/dist/aos.css",
     'css/book-identity.css',
     'css/static-rating.css',
-    'css/book-template.css',
+    'css/book-template.css'
 );
 
 require TEMPLATES_PATH . '/header.php';
@@ -173,8 +173,7 @@ $scripts = array(
     "https://unpkg.com/aos@next/dist/aos.js",
     'js/book-identity.js',
     'node_modules/bootstrap/dist/js/bootstrap.bundle.js',
-    'node_modules/bootstrap/dist/js/bootstrap.min.js',
-
+    'node_modules/bootstrap/dist/js/bootstrap.min.js'
 );
 
 require TEMPLATES_PATH . '/footer.php';

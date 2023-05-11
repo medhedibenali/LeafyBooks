@@ -6,14 +6,14 @@ $pageTitle = "Home";
 
 $stylesheets = array(
     "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css",
-    'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css',
-    "https://unpkg.com/bootstrap-icons@1.6.1/font/bootstrap-icons.css",
-    "https://unpkg.com/aos@next/dist/aos.css",
     'css/static-rating.css',
     'css/index.css',
     'css/header.css',
     'css/categories.css',
-    'css/carousel-principal.css'
+    'css/carousel-principal.css',
+    'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css',
+    "https://unpkg.com/bootstrap-icons@1.6.1/font/bootstrap-icons.css",
+    "https://unpkg.com/aos@next/dist/aos.css"
 );
 
 require TEMPLATES_PATH . '/header.php';
@@ -64,7 +64,9 @@ require TEMPLATES_PATH . '/book-carrousel.php';
                     <div class="quote"> <?= $quote["content"] ?> </div>
                     <div class="author"><?= $quote["author"] ?> </div>
                 </div>
-            <?php }; ?>
+            <?php
+            }
+            ?>
         </div>
     </div>
 </div>
