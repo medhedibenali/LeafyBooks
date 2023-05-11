@@ -34,4 +34,4 @@ function CallAPI($method, $url, $data = false)
 }
 
 $quotes = CallAPI("GET", "https://api.quotable.io/quotes/random?limit=3");
-$quotes = json_decode($result, true);
+$quotes = json_decode($quotes, true);
