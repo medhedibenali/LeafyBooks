@@ -1,3 +1,6 @@
+<botton id="back-to-top-btn">
+    <i class="fa fa-angle-double-up"></i>
+</botton>
 <?php
 foreach ($scripts ?? [] as $script) {
     if (is_array($script)) {

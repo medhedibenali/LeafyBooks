@@ -27,6 +27,8 @@ $formInput = array_merge($_POST, $imageInfo);
 $userRepository = new UserRepository();
 $userRepository->insert($formInput);
 
+$_SESSION['username'] = $formInput['username'];
+
 $httpReferer = $_SESSION['HTTP_REFERER'] ?? '../index.php';
 unset($_SESSION['HTTP_REFERER']);
 

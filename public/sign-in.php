@@ -1,9 +1,27 @@
 <?php
 session_start();
 
-$_SESSION['HTTP_REFERER'] = $_SERVER['HTTP_REFERER'] ?? '../index.php';
-
 require_once dirname(__FILE__, 2) . '/config/config.php';
+
+if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
+    $url = "https://";
+} else {
+    $url = "http://";
+}
+
+// Append the host(domain name, ip) to the URL.   
+$url .= $_SERVER['HTTP_HOST'];
+
+$urls[] = $url . '/sign-in.php';
+$urls[] = $url . '/sign-up.php';
+
+$httpReferer = $_SERVER['HTTP_REFERER'] ?? '../index.php';
+
+if (in_array($httpReferer, $urls)) {
+    $_SESSION['HTTP_REFERER'] = $_SESSION['HTTP_REFERER'] ?? '../index.php';
+} else {
+    $_SESSION['HTTP_REFERER'] = $httpReferer;
+}
 
 $pageTitle = 'Sign in';
 
@@ -36,7 +54,7 @@ require TEMPLATES_PATH . '/base-header.php';
             <input type="text" name="username" id="username" value="<?= $_SESSION['attempted_username'] ?? '' ?>" required>
             <label for="password">Password</label>
             <input type="password" name="password" id="password" autocomplete="new-password" required>
-            <button type="submit">Sign in</button>
+            <button type="submit" name="submit" value="submit">Sign in</button>
         </form>
     </div>
 </div>

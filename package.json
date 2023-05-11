@@ -17,7 +17,6 @@
   },
   "homepage": "https://github.com/medhedibenali/web-project#readme",
   "dependencies": {
-    "bootstrap": "^5.3.0-alpha3",
-    "bootswatch": "^5.2.3"
+    "bootstrap": "^5.2.3"
   }
 }
