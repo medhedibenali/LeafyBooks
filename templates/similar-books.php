@@ -1,5 +1,6 @@
 <?php
-require dirname(__FILE__, 2) . '/modules/book_identification/SimilarBooks.php';
+require_once dirname(__FILE__, 2) . '/config/config.php';
+require_once MODULES_PATH . '/book_identification/SimilarBooks.php';
 
 $nb = 0;
 $books = getSimilarBooks($isbn);
