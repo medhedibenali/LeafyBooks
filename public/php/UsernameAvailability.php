@@ -5,8 +5,8 @@ require_once MODULES_PATH . '/autoloader.php';
 $username = $_GET['username'] ?? '';
 
 if ($username === '') {
-    echo json_encode(false);
-    die;
+    echo json_encode(true);
+    die();
 }
 
 $userRepository = new UserRepository();

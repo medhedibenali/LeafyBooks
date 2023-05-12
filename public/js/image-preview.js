@@ -7,6 +7,7 @@ fileInput.addEventListener("change", () => {
   const image = fileInput.files[0];
   if (!image) {
     preview.src = originalSrc;
+    return;
   }
   const url = URL.createObjectURL(image);
   preview.src = url;

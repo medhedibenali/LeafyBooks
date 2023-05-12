@@ -18,11 +18,18 @@ usernameInput.addEventListener("keyup", async () => {
   clearTimeout(timeoutId);
   timeoutId = setTimeout(async () => {
     const username = usernameInput.value;
-    const isAvailable = await checkAvailability(username);
-    if (isAvailable) {
-      usernameInput.classList.add("is-available");
-    } else {
-      usernameInput.classList.remove("is-available");
+    if (username === "") {
+      usernameInput.classList.remove("is-not-available");
+      usernameInput.setCustomValidity("");
+      return;
     }
-  }, 200);
+    const isAvailable = await checkAvailability(username);
+    if (!isAvailable) {
+      usernameInput.classList.add("is-not-available");
+      usernameInput.setCustomValidity("Username already exists.");
+    } else {
+      usernameInput.classList.remove("is-not-available");
+      usernameInput.setCustomValidity("");
+    }
+  }, 300);
 });
