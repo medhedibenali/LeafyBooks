@@ -19,6 +19,7 @@ $user = $userRepository->find(['username' => $_SESSION['username']]);
 
 $readActRepository = new ReadActRepository();
 $bookRepository = new BookRepository();
+$UserReviewRepo = new UserReviewsRepository();
 ?>
 
 <!--this part is for sorting the books either by book title or by start date-->
@@ -76,10 +77,16 @@ $bookRepository = new BookRepository();
     $sort = $_POST["sort"] ?? 'start_date';
     $orderBy = $_POST["exampleRadios"] ?? 'DESC';
 
-    $list = $readActRepository->find(['username' => $_SESSION['username']], ['order_by' => [$sort => $orderBy]]);
+    if (!isset($_GET['status'])){
+        $list = $readActRepository->find(['username' => $_SESSION['username']], ['order_by' => [$sort => $orderBy]]);
+    }else{
+        $list = $readActRepository->find(['username' => $_SESSION['username'],'status' => $_GET['status']], ['order_by' => [$sort => $orderBy]]);
+    }
     foreach ($list as $element) {
         $book = $bookRepository->find(['isbn' => $element->isbn]);
         $percentage = ($book->rating) * 20;
+    ?>
+    <?php
         echo "<a href='book-page.php?isbn=" . $book->isbn . "'> <img src='img/books/" . $book->image . "' alt='Book Cover'></a>";
         echo "<div class='content'>" . $book->title . "</div>";
         echo "<div class='content'>" . $book->genre . "</div>";
@@ -98,4 +105,7 @@ $bookRepository = new BookRepository();
     ?>
 </div>
 
-<?php
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js">
+</script>
+
+

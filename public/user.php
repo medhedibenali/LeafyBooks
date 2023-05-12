@@ -206,7 +206,7 @@ echo '</script>';
 
                     <div style="display: flex; justify-content: center;margin-bottom: 10%;">
                         <!-- I need this to refer to the book search section -->
-                        <a href="#">
+                        <a href="my-books.php?status=currently_reading">
                             <button id='view-all' class="button" style="font-family: Script MT Bold;">View All</button>
                         </a>
                     </div>
@@ -419,14 +419,8 @@ echo '</script>';
                             ?>
 
                             <div style="display: flex; justify-content: center;margin-bottom: 10%;">
-                                <!-- I need this to refer to the book search section -->
-                                <a href="#">
+                                <a href="my-books.php?status=finished_reading">
                                     <button id='view-all' class="button" style="font-family: Script MT Bold;">View All</button>
-                                </a>
-
-                                <!-- I need this to refer to the review section -->
-                                <a href="#">
-                                    <button id='reviews' style="margin-left:5px;font-family: Script MT Bold;" class="button">Reviews</button>
                                 </a>
                             </div>
                         <?php } ?>
@@ -465,8 +459,8 @@ echo '</script>';
                             ?>
 
                             <div style="display: flex; justify-content: center;margin-top:15%;">
-                                <!-- need to link here aswell -->
-                                <a href="#">
+                                
+                                <a href="my-books.php?status=to_read">
                                     <button id='view-all' class="button" style="font-family: Script MT Bold;">View All</button>
                                 </a>
                             </div>
@@ -503,9 +497,7 @@ echo '</script>';
                             }
                             ?>
 
-                            <div style="display: flex; justify-content: center;margin-bottom: 10%;">
-                                <a href="#"><button id='view-all' class="button" style="font-family: Script MT Bold;">View All</button></a>
-                            </div>
+                           
                         <?php } ?>
                     </div>
                 </div>

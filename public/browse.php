@@ -86,5 +86,4 @@ $isbn = $tagsRepository->find(['tag' => $tag]);
     })
 </script>
 <?php
-
-
+require TEMPLATES_PATH . '/footer.php';
