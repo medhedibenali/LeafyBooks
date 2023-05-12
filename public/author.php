@@ -16,7 +16,7 @@ if (!$author) {
     $redirectUrl .= "?error=" . urlencode($errorMessage);
 
     header("Location: $redirectUrl");
-    exit;
+    exit();
 }
 
 // Author exists
