@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 require_once dirname(__FILE__, 2) . '/config/config.php';
 require_once MODULES_PATH . '/autoloader.php';
 
@@ -7,20 +9,18 @@ $UserReviewRepo = new UserReviewsRepository();
 $ReadActRepo = new ReadActRepository();
 $BookRepo = new BookRepository();
 $AuthorRepo = new AuthorRepository();
-$user = $UserRepo->find(array("username" => $_GET['username']));
+
+$username = $_GET['username'] ?? $_SESSION['username'] ?? '';
+$user = $UserRepo->find(array("username" => $username));
 
 // User does not exist
 if (!$user) {
-    $errorMessage = "The requested user was not found";
-    $redirectUrl = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : 'index.php';
-    $redirectUrl .= "?error=" . urlencode($errorMessage);
-
-    header("Location: $redirectUrl");
-    exit;
+    header("Location: index.php");
+    exit();
 }
 
 // User exists
-$pageTitle = "$user->username - LeafyBooks";
+$pageTitle = "$username - LeafyBooks";
 
 $stylesheets = array(
     // Google fonts for stats
@@ -36,6 +36,9 @@ $stylesheets = array(
 );
 
 require TEMPLATES_PATH . '/header.php';
+
+$username = $_GET['username'] ?? $_SESSION['username'] ?? '';
+$user = $UserRepo->find(array("username" => $username));
 ?>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -98,67 +101,69 @@ echo '</script>';
         </div>
 
         <div class="col-4">
-            <h1 class="username" style="margin-top: 50px;margin-left:-78px;color:#490206; font-family: Script MT Bold; "><?= $user->username ?></h1>
+            <h1 class="username" style="margin-top: 50px;margin-left:-78px;color:#490206; font-family: Script MT Bold; ">
+                <?= $user->username ?>
+            </h1>
             <hr style="margin-top:105px;margin-left:-80px;opacity:10;">
 
-            <h6 style="margin-left:-85px;color:#490206;">Full name</h1>
-                <p style="margin-top:-31px"><?= $user->username . " " . $user->username; ?></p>
+            <h6 style="margin-left:-85px;color:#490206;">Full name</h6>
+            <p style="margin-top:-31px"><?= $user->first_name . " " . $user->last_name; ?></p>
 
-                <h6 style="margin-left:-85px;color:#490206;margin-top:-13px;">Details</h1>
-                    <p style="margin-top:-31px"><?= $user->location ?></p>
+            <h6 style="margin-left:-85px;color:#490206;margin-top:-13px;">Details</h6>
+            <p style="margin-top:-31px"><?= $user->location ?></p>
 
-                    <h6 style="margin-left:-85px;color:#490206;margin-top:-13px;">Activity</h1>
-                        <p style="margin-top:-31px">Joined on <?= DateTime::createFromFormat('Y-m-d', $user->join_date)->format('F jS, Y') ?></p>
+            <h6 style="margin-left:-85px;color:#490206;margin-top:-13px;">Activity</h6>
+            <p style="margin-top:-31px">Joined on <?= DateTime::createFromFormat('Y-m-d', $user->join_date)->format('F jS, Y') ?></p>
 
-                        <h6 style="margin-left:-85px;color:#490206;margin-top:-13px;">Birthday</h1>
-                            <p style="margin-top:-31px"><?= DateTime::createFromFormat('Y-m-d', $user->birthday)->format('F jS, Y') ?></p>
+            <h6 style="margin-left:-85px;color:#490206;margin-top:-13px;">Birthday</h6>
+            <p style="margin-top:-31px"><?= DateTime::createFromFormat('Y-m-d', $user->birthday)->format('F jS, Y') ?></p>
 
-                            <h6 style="margin-left:-85px;color:#490206;margin-top:-10px;">About Me</h1>
-                                <div class="bio-container" style="margin-top:-30px;">
-                                    <?php
-                                    $bio = ($user->bio) ? $user->bio : "Welcome to my profile page!";
-                                    ?>
-                                    <p class="bio-text"><?= $bio ?></p>
+            <h6 style="margin-left:-85px;color:#490206;margin-top:-10px;">About Me</h6>
+            <div class="bio-container" style="margin-top:-30px;">
+                <?php
+                $bio = ($user->bio) ? $user->bio : "Welcome to my profile page!";
+                ?>
+                <p class="bio-text"><?= $bio ?></p>
 
-                                </div>
-                                <a href="#" class="more-link" style="display:block;color:#034694;">..more</a>
+            </div>
+            <a href="#" class="more-link" style="display:block;color:#034694;">..more</a>
 
-                                <!-- Script to make the more button show more of the bio -->
-                                <script>
-                                    const BioContainer = document.querySelector('.bio-container');
-                                    const BioText = document.querySelector('.bio-text');
-                                    const moreLink = document.querySelector(".more-link");
+            <!-- Script to make the more button show more of the bio -->
+            <script>
+                const BioContainer = document.querySelector('.bio-container');
+                const BioText = document.querySelector('.bio-text');
+                const moreLink = document.querySelector(".more-link");
 
-                                    //Maximum length to show the 'more' link
-                                    const maxLength = 100;
+                //Maximum length to show the 'more' link
+                const maxLength = 100;
 
-                                    if (BioText.textContent.length <= maxLength) {
-                                        moreLink.style.display = 'none';
-                                    }
+                if (BioText.textContent.length <= maxLength) {
+                    moreLink.style.display = 'none';
+                }
 
-                                    // this is part of original code
-                                    // Hiden extra content initially
-                                    //BioContainer.classList.add('hide');
+                // this is part of original code
+                // Hiden extra content initially
+                //BioContainer.classList.add('hide');
 
-                                    moreLink.addEventListener('click', () => {
-                                        // Toggle hide class on bio-container to show or hide the extra information
-                                        BioContainer.classList.toggle('hide');
+                moreLink.addEventListener('click', () => {
+                    // Toggle hide class on bio-container to show or hide the extra information
+                    BioContainer.classList.toggle('hide');
 
-                                        // Update the text in more-link
-                                        if (BioContainer.classList.contains('hide')) {
-                                            moreLink.textContent = '..more';
-                                        } else {
-                                            moreLink.textContent = 'less';
-                                        }
-                                    });
-                                </script>
+                    // Update the text in more-link
+                    if (BioContainer.classList.contains('hide')) {
+                        moreLink.textContent = '..more';
+                    } else {
+                        moreLink.textContent = 'less';
+                    }
+                });
+            </script>
 
-                                <style>
-                                    .hide {
-                                        height: 70px;
-                                        overflow: hidden;
-                                    }
-                                </style>
+            <style>
+                .hide {
+                    height: 70px;
+                    overflow: hidden;
+                }
+            </style>
 
         </div>
 
