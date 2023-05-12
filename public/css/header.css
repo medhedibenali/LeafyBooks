@@ -67,6 +67,11 @@ a.navbar-brand.active {
   border: 0;
 }
 
+.navButton:hover {
+  background-color: #422f08;
+  color: whitesmoke;
+}
+
 .btn-group-2 {
   position: relative;
   display: inline-flex;
@@ -105,17 +110,6 @@ a.navbar-brand.active {
     transform: rotate(90deg) translate(50vw, 100vh);
     opacity: 0;
   }
-}
-
-.navButton {
-  border-radius: 5%;
-  background-color: #efddb3;
-  border: 0;
-}
-
-.navButton:hover {
-  background-color: #422f08;
-  color: whitesmoke;
 }
 
 #back-to-top-btn {
@@ -232,17 +226,6 @@ a.navbar-brand.active {
     transform: rotate(90deg) translate(50vw, 100vh);
     opacity: 0;
   }
-}
-
-.navButton {
-  border-radius: 5%;
-  background-color: #efddb3;
-  border: 0;
-}
-
-.navButton:hover {
-  background-color: #422f08;
-  color: whitesmoke;
 }
 
 #back-to-top-btn {
