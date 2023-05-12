@@ -23,14 +23,10 @@ body {
     grid-template-rows: 4rem 1fr;
     position: relative;
     height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
-.container {
-    
-    align-self: center;
+.form-container {
+    place-self: center;
     width: 20rem;
     display: flex;
     flex-direction: column;
