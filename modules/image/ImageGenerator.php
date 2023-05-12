@@ -81,7 +81,6 @@ function generateBlueprint(): int
     return $blueprint;
 }
 
-
 function encodeBlueprint(int $blueprint): string
 {
     $blueprint = $blueprint & 0o77777;
