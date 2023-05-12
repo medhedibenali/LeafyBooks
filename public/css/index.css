@@ -162,7 +162,7 @@ h1>.magic>.magic-text {
     font-weight: lighter;
     z-index: 1;
     position: relative;
-    margin-top: 5%;
+    padding-top: 5%;
     display: flex;
     justify-content: center;
     align-items: center;
