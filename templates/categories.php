@@ -95,11 +95,11 @@ similar to the likes of To All the Boys I've Loved Before, The Hate U Give, and 
                                         </a>
                                     </div>
                                 </div>
-                                <a class="carousel-control-prev" href="<?= '#carouselExampleIndicators' . $indice ?>" role="button" data-slide="prev">
+                                <a class="carousel-control-prev"  id="control2"href="<?= '#carouselExampleIndicators' . $indice ?>" role="button" data-slide="prev">
                                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                     <span class="sr-only">Previous</span>
                                 </a>
-                                <a class="carousel-control-next" href="<?= '#carouselExampleIndicators' . $indice ?>" role="button" data-slide="next">
+                                <a class="carousel-control-next" id="control1" href="<?= '#carouselExampleIndicators' . $indice ?>" role="button" data-slide="next">
                                     <span class=" carousel-control-next-icon" aria-hidden="true"></span>
                                     <span class="sr-only">Next</span>
                                 </a>

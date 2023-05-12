@@ -99,4 +99,3 @@ $bookRepository = new BookRepository();
 </div>
 
 <?php
-require TEMPLATES_PATH . '/footer.php';

@@ -129,7 +129,7 @@ $reviewsCount = count($userReviewsRepository->find(['isbn' => $isbn]));
             </div>
         </div>
         <br>
-        <hr>
+        <hr style="width:50%;margin-left:30%">
         <div class="Ratings-reviews">
             <h2 style="font-family:'DecoType Naskh';">
                 Ratings & Reviews

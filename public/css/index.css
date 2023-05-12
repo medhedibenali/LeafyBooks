@@ -3,15 +3,15 @@
 
 .hp-anniversary-text {
     text-align: center;
-    margin-top: 5%;
-    margin-left: 4%;
+    margin-top: 7%;
+    margin-left: 8%;
     font-weight: bold;
 }
 
 .carousel-footer {
     text-align: center;
     font-weight: bold;
-    margin-left: 4%;
+    margin-left: 8%;
     font-size: larger;
 }
 
@@ -140,6 +140,7 @@ h1>.magic>.magic-text {
     background-color: rgba(221, 160, 221, 0.46);
     /*if fail*/
     background: linear-gradient(88.8deg, rgb(239, 171, 245) 13.4%, rgb(196, 181, 249) 76.3%);
+    margin:0;
 
 }
 
@@ -167,6 +168,7 @@ h1>.magic>.magic-text {
     align-items: center;
     height: 100%;
     animation: slideup 0.3s ease-out;
+    margin:0;
 }
 
 .author {
