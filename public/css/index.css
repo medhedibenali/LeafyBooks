@@ -1,0 +1,206 @@
+@import url('https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css');
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
+
+.hp-anniversary-text {
+    text-align: center;
+    margin-top: 5%;
+    margin-left: 4%;
+    font-weight: bold;
+}
+
+.carousel-footer {
+    text-align: center;
+    font-weight: bold;
+    margin-left: 4%;
+    font-size: larger;
+}
+
+.discover-more {
+    padding-top: 15%;
+    text-align: center;
+    font-weight: bold;
+    font-family: 'Playfair Display', serif;
+    font-size: 35px;
+    margin-left: 4%;
+    color: white;
+}
+
+.picture img {
+    border: 1px solid transparent;
+}
+
+:root {
+    /* defining some variables to use later*/
+    --purple: rgb(123, 31, 162);
+    --violet: rgb(103, 58, 183);
+    --pink: rgb(244, 143, 177);
+}
+
+/*colour sliding in text effect*/
+@keyframes background-pan {
+    from {
+        background-position: 0% center;
+    }
+
+    to {
+        background-position: -200% center;
+        /*gradually shift the background image to the left by 200% of its original size*/
+    }
+}
+
+/*animation we'll use to  zoom in on the stars*/
+@keyframes scale {
+
+    from,
+    to {
+        transform: scale(0);
+    }
+
+    50% {
+        transform: scale(1);
+    }
+}
+
+/*animation we'll use to make the stars rotate*/
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(180deg);
+    }
+}
+
+h1 {
+    color: plum;
+    font-family: DecoType Naskh;
+    font-size: clamp(2em, 2vw, 4em);
+    font-weight: 400;
+    margin: 0px;
+    padding: 20px;
+    text-align: center;
+    margin-right: 10%;
+}
+
+h1>.magic {
+    display: inline-block;
+    position: relative;
+}
+
+h1>.magic>.magic-star {
+    /*set the minimum width, the preferred one and the maximum one*/
+    --size: clamp(20px, 1.5vw, 30px);
+    animation: scale 700ms ease forwards;
+    /*return to the last state of the animation , not original state*/
+    display: block;
+    height: var(--size);
+    left: var(--star-left);
+    /*will be set randomly using js later*/
+    position: absolute;
+    top: var(--star-top);
+    /*will be set randomly using js later*/
+    width: var(--size);
+}
+
+h1>.magic>.magic-star>svg {
+    animation: rotate 1000ms linear infinite;
+    display: block;
+    opacity: 0.7;
+}
+
+h1>.magic>.magic-star>svg>path {
+    fill: var(--violet);
+}
+
+h1>.magic>.magic-star2>svg>path {
+    fill: white;
+}
+
+h1>.magic>.magic-text {
+    animation: background-pan 3s linear infinite;
+    background: linear-gradient(to right,
+            var(--purple),
+            var(--violet),
+            var(--pink),
+            var(--purple));
+    background-size: 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    /*set the gradient colours to the text*/
+    -webkit-text-fill-color: transparent;
+    white-space: nowrap;
+}
+
+.quote-box {
+    border: 1px solid transparent;
+    height: 200px;
+    width: 100%;
+    position: relative;
+    background-color: rgba(221, 160, 221, 0.46);
+    /*if fail*/
+    background: linear-gradient(88.8deg, rgb(239, 171, 245) 13.4%, rgb(196, 181, 249) 76.3%);
+
+}
+
+.inspo {
+    color: plum;
+    font-family: DecoType Naskh;
+    font-weight: 400;
+    font-size: 30px;
+    text-align: center;
+    margin-right: 4%;
+    margin-top: 15%;
+}
+
+.quote {
+    text-align: center;
+    font-family: 'Abril Fatface', cursive;
+    font-size: 30px;
+    color: white;
+    font-weight: lighter;
+    z-index: 1;
+    position: relative;
+    margin-top: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    animation: slideup 0.3s ease-out;
+}
+
+.author {
+    text-align: center;
+    color: white;
+    position: relative;
+    animation: slideup 0.3s ease-out;
+
+}
+
+.hidden {
+    display: none;
+}
+
+.animate {
+    animation: slide-right 2s;
+}
+
+@keyframes slideup {
+    0% {
+        transform: translateY(100px)
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes slide-right {
+    from {
+        margin-left: -50%;
+    }
+
+    to {
+        margin-left: 0%;
+    }
+}

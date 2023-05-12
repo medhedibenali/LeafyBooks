@@ -24,6 +24,7 @@ if ($book === false) {
 $pageTitle = $book->title;
 
 $stylesheets = array(
+    "https://unpkg.com/aos@next/dist/aos.css",
     'css/book-identity.css',
     'css/static-rating.css',
     'css/book-page.css'
@@ -104,7 +105,8 @@ $reviewsCount = count($userReviewsRepository->find(['isbn' => $isbn]));
             <h2>
                 About the author
             </h2>
-            <img id="authorpic" src="img/authors/<?= $author->image ?>"> <?= $author->pen_name ?>
+            <a href="author.php?id=<?=$author->id?>"><img id="authorpic" src="img/authors/<?= $author->image ?>"></a>
+            <a href="author.php?id=<?=$author->id?>" style="text-decoration:none;color:#034694"><?= $author->pen_name ?></a>
             <br><br>
             <?= $author->bio ?>
         </div>
@@ -183,6 +185,7 @@ $reviewsCount = count($userReviewsRepository->find(['isbn' => $isbn]));
 <?php
 
 $scripts = array(
+    "https://unpkg.com/aos@next/dist/aos.js",
     'js/book-identity.js',
     'node_modules/bootstrap/dist/js/bootstrap.bundle.js',
     'node_modules/bootstrap/dist/js/bootstrap.min.js'
