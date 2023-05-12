@@ -99,9 +99,15 @@
 
 }
 
-.SimilarBook {
+.SimilarBook{
     margin-left: 5%;
     transition: transform 0.3s ease-in-out;
+}
+.SimilarBook img{
+    max-width: 249px;
+    min-width: 249px;
+    max-height: 377px;
+    min-height: 377px;
 }
 
 .SimilarBook:hover {
