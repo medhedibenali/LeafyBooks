@@ -55,7 +55,7 @@ $UserReviewRepo = new UserReviewsRepository();
             </div>
         </div>
     </div>
-    <button type="submit" class="btn btn-success">Apply</button>
+    <button type="submit" class="btn btn-success" style="background-color:#422f08;">Apply</button>
     </form>
 </div>
 

@@ -1,6 +1,18 @@
-.rating-upper {
-    color: #c52b2f;
+.rating {
+    display: inline-block;
+    color: #888888;
+    font-size: 25px;
+    height: 25px;
+    width: 125px;
+    position: relative;
+    font-size: 30px;
+  }
+  
+  .rating-upper {
+    color: #e87400;
     padding: 0;
+    position: absolute;
+    /*to put these stars on top of the un-highlighted ones*/
     position: absolute;
     /*to put these stars on top of the unhighlighted ones*/
     z-index: 1;
@@ -9,21 +21,10 @@
     left: 0;
     overflow: hidden;
     /*to crop down the  combined width of the spans if it's > width of the rating-upper div*/
-}
-
-.rating-lower {
+  }
+  
+  .rating-lower {
     padding: 0;
     display: flex;
     z-index: 0;
-
-}
-
-.rating {
-    display: inline-block;
-    color: #888888;
-    font-size: 25px;
-    height: 25px;
-    width: 120px;
-    /* so the container adjusts to the size of the upper+lower stars*/
-    position: relative;
-}
+  }
