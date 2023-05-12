@@ -103,7 +103,7 @@ echo '</script>';
             <hr style="margin-top:105px;margin-left:-80px;opacity:10;">
 
             <h6 style="margin-left:-85px;color:#490206;">Full name</h1>
-                <p style="margin-top:-31px"><?= $user->username . " " . $user->username; ?></p>
+                <p style="margin-top:-31px"><?= $user->first_name . " " . $user->last_name; ?></p>
 
                 <h6 style="margin-left:-85px;color:#490206;margin-top:-13px;">Details</h1>
                     <p style="margin-top:-31px"><?= $user->location ?></p>

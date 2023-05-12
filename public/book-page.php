@@ -39,7 +39,10 @@ $tagsRepository = new TagsRepository();
 $bookByTags = $tagsRepository->find(['isbn' => $isbn]);
 
 $userRepository = new UserRepository();
+if(isset($_SESSION['username']))
+{
 $user = $userRepository->find(['username' => $_SESSION['username']]);
+}
 
 $userReviewsRepository = new UserReviewsRepository();
 $reviewsCount = count($userReviewsRepository->find(['isbn' => $isbn]));
