@@ -34,7 +34,7 @@ require TEMPLATES_PATH . '/base-header.php';
 
 <div class="wrapper">
     <div class="container">
-        <div>
+        <div class="title">
             Sign Up
         </div>
 

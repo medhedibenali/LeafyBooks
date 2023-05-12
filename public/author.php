@@ -36,7 +36,7 @@ require TEMPLATES_PATH . '/header.php';
 
         <div class="col-4">
             <h1 class="username" style="margin-top: 50px;margin-left:-20px;color:#490206; font-family: Script MT Bold; "><?= $author->pen_name ?></h1>
-            <hr style="margin-top:105px;margin-left:-18px;opacity:10;">
+            <hr style="margin-top:15px;margin-left:-18px;opacity:10;">
 
             <h6 style="margin-left:-18px;color:#490206;">First name</h6>
             <p style="margin-top:-8.75%;margin-left:70px;"><?= $author->first_name ?></p>
@@ -51,7 +51,7 @@ require TEMPLATES_PATH . '/header.php';
             <p style="margin-top:-8.75%;margin-left:70px;"><?= DateTime::createFromFormat('Y-m-d', $author->birthday)->format('F jS, Y') ?></p>
 
             <?php
-            if ($author->death_day) {
+            /*if ($author->death_day) {
                 $birth_date = new DateTime($author->birthday);
                 $death_date = new DateTime($author->death_day);
 
@@ -59,7 +59,7 @@ require TEMPLATES_PATH . '/header.php';
                 $years = $interval->y;
                 echo '<h6 style="margin-left:-18px;color:#490206;">Died</h6>';
                 echo '<p style="margin-top:-8.75%;margin-left:70px;">' . DateTime::createFromFormat('Y-m-d', $author->death_day)->format('F jS, Y') . ' (aged ' . $years . ')</p>';
-            }
+            }*/
             ?>
 
             <div class="bio-container" style="margin-top:5%;margin-left:-5%;">

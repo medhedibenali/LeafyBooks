@@ -221,7 +221,7 @@ class BookRepository extends Repository
 
     public function findByTitleOrAuthorLimit($search = "", $offset = 0, $numberMAX = 0)
     {
-        $request = "select * from " . $this->tableName . " as b , authors as a
+        $request = "select b.*,a.first_name,a.last_name, a.id from " . $this->tableName . " as b , authors as a
          where b.author=a.id and ( b.title like concat('%',?,'%') or concat(a.first_name,' ',a.last_name) like concat('%',?,'%') )
          limit " . intval($offset) . ' , ' . intval($numberMAX);
         $response = $this->db->prepare($request);
@@ -274,7 +274,7 @@ class BookRepository extends Repository
             $tagsString = implode("','", $tags);
             $tagsString = "('" . $tagsString . "')";
         }
-        $request = 'select distinct b.isbn,b.image,b.title,b.synopsis,b.image,b.rating,a.* from ' . $this->tableName . ' as b, tags as t, authors as a where b.isbn=t.isbn 
+        $request = 'select distinct b.isbn,b.image,b.title,b.synopsis,b.image ,b.rating,a.first_name, a.last_name,a.id from ' . $this->tableName . ' as b, tags as t, authors as a where b.isbn=t.isbn 
         and b.author=a.id ';
         $request .= ' and b.title like concat("%",?,"%") ';
         $request .= " and concat(a.first_name,' ',a.last_name) like concat('%',?,'%') ";
