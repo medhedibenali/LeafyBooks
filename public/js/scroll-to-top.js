@@ -20,3 +20,5 @@ function scrollFunction() {
 button.addEventListener("click", () => {
   window.scrollTo(0, 0);
 });
+
+

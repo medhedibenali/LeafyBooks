@@ -31,12 +31,10 @@
     background: #296730;
     border-radius: 12px;
     position: relative;
-    animation: fillBars 2.5s;
 }
 
 .ratingper-animation {
     background: #E87400;
-    animation: fillBars 2.5s;
 }
 
 .ratingper::before {
@@ -49,6 +47,17 @@
     font-size: 12px;
     top: -35px;
     right: 0;
+}
+
+[data-aos="example-anim"] {
+    width: 0;
+    animation-name: fillBars;
+    animation-duration: 3s;
+    animation-timing-function: ease-out;
+}
+
+[data-aos="example-anim"].aos-animate {
+    width: 100%;
 }
 
 @keyframes fillBars {

@@ -17,8 +17,8 @@ final class Config
         'db' => array(
             'db1' => array(
                 'dbname' => 'web_project_db',
-                'username' => 'web_project_user',
-                'password' => 'password',
+                'username' => 'root',
+                'password' => '',
                 'host' => 'localhost'
             )
         )

@@ -10,14 +10,14 @@ if (!isset($_SESSION['username'])) {
 
     <form action="php/AddReviewAction.php" method="post">
         <!--    rating template-->
-        <h3 style="font-family: 'Britannic Bold';font-style:italic;">
+        <h3 style="font-family: 'Britannic Bold';font-style:italic;margin-left:30%">
             write a review !
         </h3>
         <div style="position:relative;">
             <textarea name="review" rows="5" cols="100" class="textarea"></textarea>
             <br>
             <input type="hidden" value="<?= $isbn ?>" name="isbn">
-            <button type="submit" class="writereview" style="position: relative; bottom: 0; right: 0;left: 90%; margin-top: 10px;">Submit</button>
+            <button type="submit" class="writereview" style="position: relative; bottom: 0; right: 0;left: 85%; margin-top: 10px;">Submit</button>
         </div>
     </form>
 

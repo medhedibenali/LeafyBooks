@@ -24,6 +24,7 @@ if ($book === false) {
 $pageTitle = $book->title;
 
 $stylesheets = array(
+    "https://unpkg.com/aos@next/dist/aos.css",
     'css/book-identity.css',
     'css/static-rating.css',
     'css/book-page.css'
@@ -38,7 +39,10 @@ $tagsRepository = new TagsRepository();
 $bookByTags = $tagsRepository->find(['isbn' => $isbn]);
 
 $userRepository = new UserRepository();
+if(isset($_SESSION['username']))
+{
 $user = $userRepository->find(['username' => $_SESSION['username']]);
+}
 
 $userReviewsRepository = new UserReviewsRepository();
 $reviewsCount = count($userReviewsRepository->find(['isbn' => $isbn]));
@@ -104,7 +108,8 @@ $reviewsCount = count($userReviewsRepository->find(['isbn' => $isbn]));
             <h2>
                 About the author
             </h2>
-            <img id="authorpic" src="img/authors/<?= $author->image ?>"> <?= $author->pen_name ?>
+            <a href="author.php?id=<?=$author->id?>"><img id="authorpic" src="img/authors/<?= $author->image ?>"></a>
+            <a href="author.php?id=<?=$author->id?>" style="text-decoration:none;color:#034694"><?= $author->pen_name ?></a>
             <br><br>
             <?= $author->bio ?>
         </div>
@@ -127,7 +132,7 @@ $reviewsCount = count($userReviewsRepository->find(['isbn' => $isbn]));
             </div>
         </div>
         <br>
-        <hr>
+        <hr style="width:50%;margin-left:30%">
         <div class="Ratings-reviews">
             <h2 style="font-family:'DecoType Naskh';">
                 Ratings & Reviews
@@ -183,6 +188,7 @@ $reviewsCount = count($userReviewsRepository->find(['isbn' => $isbn]));
 <?php
 
 $scripts = array(
+    "https://unpkg.com/aos@next/dist/aos.js",
     'js/book-identity.js',
     'node_modules/bootstrap/dist/js/bootstrap.bundle.js',
     'node_modules/bootstrap/dist/js/bootstrap.min.js'

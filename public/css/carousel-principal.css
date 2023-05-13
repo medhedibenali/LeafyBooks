@@ -1,0 +1,47 @@
+.carouselPrincipal {
+    margin-left: 20%;
+    max-width: 970px;
+    max-height: 300px;
+    overflow: hidden;
+    display: block;
+}
+
+.carousel-item {
+    max-height: 100%;
+    max-width: 100%;
+    margin: 0;
+}
+
+#1,
+#2,
+#3,
+#4,
+#5,
+#6,
+#7 {
+    max-width: 970px;
+    max-height: 300px;
+    object-fit: cover;
+}
+
+.carousel-control-next-icon,
+.carousel-control-prev-icon {
+    background-color: rgb(16, 0, 0);
+    /* change the color of the next button */
+    position: absolute;
+}
+
+.carousel-indicators li {
+    background-color: #ccbebe !important;
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+}
+
+.carousel-indicators .active {
+    background-color: #7ef639 !important;
+}
+
+.carousel-indicators {
+    bottom: -9px !important;
+}

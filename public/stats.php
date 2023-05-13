@@ -96,7 +96,7 @@ require TEMPLATES_PATH . '/header.php';
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <?php
-
+$user = $UserRepo->find(array("username" => $_GET['username']));
 // Big brain move to inject php into javascript
 
 echo '<script>';

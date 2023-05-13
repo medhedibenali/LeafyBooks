@@ -59,7 +59,7 @@ if (isset($_SESSION['username'])) {
                             <a class="dropdown-item" href="browse.php?tag=sci-fi">Sci-fi</a>
                             <a class="dropdown-item" href="browse.php?tag=mystery">Mystery</a>
                             <a class="dropdown-item" href="browse.php?tag=contemporary">Contempopary</a>
-                            <a class="dropdown-item" href="browse.php?tag=young+adult">Young Adult</a>
+                            <a class="dropdown-item" href="browse.php?tag=young_adult">Young Adult</a>
                         </div>
                     </div>
                 </li>
@@ -102,7 +102,7 @@ if (isset($_SESSION['username'])) {
                                 <img src="img/users/<?= $user->image ?>" class="profilePic" alt="profile-picture">
                             </a>
                             <div class="dropdown-menu" aria-labelledby="profileDropdown">
-                                <a class="dropdown-item" href="user.php"><i class="fa-solid fa-book-open-reader"></i>View Profile</a>
+                                <a class="dropdown-item" href="user.php?username=<?= $_SESSION['username']?>"><i class="fa-solid fa-book-open-reader"></i>View Profile</a>
                                 <a class="dropdown-item" href="php/Disconnect.php"><i class="fas fa-sign-out-alt me-2"></i></i>Disconnect</a>
                             </div>
                         </div>

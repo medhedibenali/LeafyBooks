@@ -28,7 +28,7 @@ CREATE TABLE `web_project_db`.`authors` (
     `first_name` VARCHAR(255) NOT NULL,
     `last_name` VARCHAR(255) NOT NULL,
     `birthday` DATE NOT NULL,
-    `death_day` DATE DEFAULT NULL,
+    `deathday` DATE DEFAULT NULL,
     `bio` TEXT NOT NULL,
     `nationality` VARCHAR(255) NOT NULL,
     `image` VARCHAR(255) NOT NULL,
