@@ -14,7 +14,7 @@ if (!$user) {
     $redirectUrl .= "?error=" . urlencode($errorMessage);
 
     header("Location: $redirectUrl");
-    exit;
+    exit();
 }
 
 if ($_GET['status'] == 'currently_reading') {
@@ -33,7 +33,7 @@ if ($status == 'error') {
     $redirectUrl .= "?error=" . urlencode($errorMessage);
 
     header("Location: $redirectUrl");
-    exit;
+    exit();
 }
 
 $time = (ctype_digit($_GET['time'])) ? (int) $_GET['time'] : -1;
@@ -48,14 +48,14 @@ if ($time == -1) {
     $redirectUrl .= "?error=" . urlencode($errorMessage);
 
     header("Location: $redirectUrl");
-    exit;
+    exit();
 } else if ($time && $time < $join_year) {
     $errorMessage = "The requested year does not exist for user";
     $redirectUrl = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : 'index.php';
     $redirectUrl .= "?error=" . urlencode($errorMessage);
 
     header("Location: $redirectUrl");
-    exit;
+    exit();
 }
 
 // Everything checks out

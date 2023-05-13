@@ -14,8 +14,10 @@ $stylesheets = array(
 
 require TEMPLATES_PATH . '/header.php';
 
+$username = $_SESSION['username'];
+
 $userRepository = new UserRepository();
-$user = $userRepository->find(['username' => $_SESSION['username']]);
+$user = $userRepository->find(['username' => $username]);
 
 $readActRepository = new ReadActRepository();
 $bookRepository = new BookRepository();
@@ -72,11 +74,10 @@ $bookRepository = new BookRepository();
 
     <?php
 
-    //change user1 with the user connecting
     $sort = $_POST["sort"] ?? 'start_date';
     $orderBy = $_POST["exampleRadios"] ?? 'DESC';
 
-    $list = $readActRepository->find(['username' => 'user1'], ['order_by' => [$sort => $orderBy]]);
+    $list = $readActRepository->find(['username' => $username], ['order_by' => [$sort => $orderBy]]);
     foreach ($list as $element) {
         $book = $bookRepository->find(['isbn' => $element->isbn]);
         $percentage = ($book->rating) * 20;

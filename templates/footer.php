@@ -22,9 +22,9 @@
                 </p>
             </div>
             <div style="display:flex;justify-content:center;">
-                <a href="https://github.com/medhedibenali/web-project/"><img src="../img/gitIcon.png" class="git"></a>
-                <a href="https://github.com/medhedibenali/web-project/"><img src="../img/fb.png" class="git"></a>
-                <a href="https://github.com/medhedibenali/web-project/"><img src="../img/insta.png" class="git"></a>
+                <a href="https://github.com/medhedibenali/web-project/"><img src="img/gitIcon.png" class="git"></a>
+                <a href="https://github.com/medhedibenali/web-project/"><img src="img/fb.png" class="git"></a>
+                <a href="https://github.com/medhedibenali/web-project/"><img src="img/insta.png" class="git"></a>
             </div>
         </div>
     </div>
