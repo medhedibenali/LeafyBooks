@@ -52,7 +52,7 @@ similar to the likes of To All the Boys I’ve Loved Before, The Hate U Give, an
     <div class="discover-more">
         Discover your next favourite book on Leafy Books
     </div>
-<div class="flex-box">
+<div class="flex-box2">
 
     <?php
         $indice=2;
@@ -74,7 +74,7 @@ similar to the likes of To All the Boys I’ve Loved Before, The Hate U Give, an
                     <?php
             }
         ?>
-    <div class="flex-item" >
+    <div class="flex-item" id="#my_flex">
         <div class="picture">
             <div class="category-head">
                 <p class="genre"><?=$key?></p>
@@ -119,7 +119,7 @@ similar to the likes of To All the Boys I’ve Loved Before, The Hate U Give, an
                 </a>
             </div>
         </div>
-        </div>
+    </div>
 
     </div>
     <?php

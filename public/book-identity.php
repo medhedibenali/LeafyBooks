@@ -9,7 +9,6 @@ require_once '../templates/header.php';
 
 <?php
 $ISBN = htmlspecialchars($_GET['ISBN']);
-require '../public/php/book-info-dump.php'
 ?>
 
 <div class="container">

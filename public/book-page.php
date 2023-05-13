@@ -119,7 +119,7 @@ $reviewsCount = count($userReviewsRepository->find(['isbn' => $isbn]));
             <h2 style="font-family:'DecoType Naskh';font-style:italic ">
                 Readers also enjoy
             </h2>
-            <div class="flex-box">
+            <div class="flex-boxxx">
                 <?php
                 require TEMPLATES_PATH . '/similar-books.php';
                 ?>
