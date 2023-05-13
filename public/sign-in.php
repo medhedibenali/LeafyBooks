@@ -32,9 +32,9 @@ require TEMPLATES_PATH . '/access-header.php';
 
         <form action="php/SignInAction.php" method="post">
             <label for="username">Username</label>
-            <input type="text" name="username" id="username" value="<?= $_SESSION['attempted_username'] ?? '' ?>" pattern="\S{6,30}" autofocus required>
+            <input type="text" name="username" id="username" value="<?= $_SESSION['attempted_username'] ?? '' ?>" autofocus required>
             <label for="password">Password</label>
-            <input type="password" name="password" id="password" autocomplete="new-password" pattern="\S{8,}" required>
+            <input type="password" name="password" id="password" autocomplete="new-password" required>
             <button type="submit" name="submit" value="submit">Sign in</button>
         </form>
         <div class="redirect">

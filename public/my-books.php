@@ -14,8 +14,10 @@ $stylesheets = array(
 
 require TEMPLATES_PATH . '/header.php';
 
+$username = $_SESSION['username'];
+
 $userRepository = new UserRepository();
-$user = $userRepository->find(['username' => $_SESSION['username']]);
+$user = $userRepository->find(['username' => $username]);
 
 $readActRepository = new ReadActRepository();
 $bookRepository = new BookRepository();
@@ -73,7 +75,6 @@ $UserReviewRepo = new UserReviewsRepository();
 
     <?php
 
-    //change user1 with the user connecting
     $sort = $_POST["sort"] ?? 'start_date';
     $orderBy = $_POST["exampleRadios"] ?? 'DESC';
 
